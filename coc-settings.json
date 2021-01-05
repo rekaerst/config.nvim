@@ -1,0 +1,39 @@
+{
+	"clangd.fallbackFlags": [
+		// "-I/usr/lib/gcc/x86_64-linux-gnu/10/include"
+	],
+	"clangd.arguments": [
+		"--background-index",
+		"--clang-tidy",
+		"--fallback-style",
+		"Google"
+	],
+	"languageserver": {
+		"bash": {
+			"command": "bash-language-server",
+			"args": [
+				"start"
+			],
+			"filetypes": [
+				"zsh",
+				"sh",
+				"make"
+			],
+			"ignoredRootPaths": [
+				"/"
+			]
+		}
+	},
+	"java.home": "/usr/lib/jvm/java-15-openjdk-amd64",
+	"java.completion.filteredTypes": [
+		"java.awt.List",
+		"com.sun.*"
+	],
+	"java.signatureHelp.enabled": true,
+	"coc.source.file.ignoreHidden": false ,
+	"python.pythonPath":"/usr/bin/python3",
+	"python.linting.flake8Enabled": true,
+	"python.linting.pylintEnabled":false,
+	"python.autoComplete.addBrackets":true
+	
+}
