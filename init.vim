@@ -4,27 +4,29 @@ set nocompatible
 
 call plug#begin()
 " Intellisense engine for Vim8 & Neovim
-if has("nvim") || has("unix")
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-" Parenthesizing plugin
-Plug 'jiangmiao/auto-pairs'
-" lean & mean status/tabline for vim that's light as air
-Plug 'vim-airline/vim-airline'
-" Adds file type icons to Vim plugins
-Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle'] }
+" Onedark theme
+Plug 'joshdick/onedark.vim'
+" Adds file type icons to Vim plugins
+Plug 'ryanoasis/vim-devicons'
+" lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+" Parenthesizing plugin
+Plug 'jiangmiao/auto-pairs'
+"Rainbow Parentheses
+Plug 'luochen1990/rainbow'
+" A solid language pack for Vim.
+Plug 'sheerun/vim-polyglot'
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP','CtrlPBuffer'] }
 " Vim plugin that displays tags in a window, ordered by scope
 Plug 'majutsushi/tagbar', { 'on': 'Tagbar'}
-" Onedark theme
-Plug 'joshdick/onedark.vim'
 " Multiple cursors plugin for vim/neovim
 Plug 'mg979/vim-visual-multi'
-" A solid language pack for Vim.
-Plug 'sheerun/vim-polyglot'
 " A plugin for git
 Plug 'tpope/vim-fugitive'
 " Comment stuff out
@@ -33,11 +35,16 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 " html auto pairs
 Plug 'alvan/vim-closetag'
+" Mordern database interface for VIM
+Plug 'tpope/vim-dadbod'
+" Simple ui for dadbod
+Plug 'kristijanhusak/vim-dadbod-ui', { 'on' : ['DBUI'] }
 call plug#end()
 
 " Color scheme
 colorscheme onedark
 
+" airline configuraion
 let g:airlinetheme="onedark"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -52,6 +59,9 @@ let g:loaded_perl_provider = 0
 
 " Coc data folder
 let g:coc_data_home = '/home/arthur/.local/share/coc'
+
+" Rainbow configuraion
+let g:rainbow_active = 1
 
 "opt
 syn on

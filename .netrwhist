@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/arthur/src/repo/rappel'
 let g:netrw_dirhist_1='/home/arthur/Studio/icons/material-design-icons'
 let g:netrw_dirhist_0='/home/arthur/src/repo/material-design-icons'
 let g:netrw_dirhist_9='/home/arthur/.local/share/dosbox/TMP'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/home/arthur/src/lab/java/gamedev/src/com/rekaerst/image'
 let g:netrw_dirhist_5='/home/arthur/src/lab/java/gamedev/src/com/rekaerst'
 let g:netrw_dirhist_4='/home/arthur/src/lab/java/gamedev/src/com'
 let g:netrw_dirhist_3='/home/arthur/src/lab/java/gamedev/src'
-let g:netrw_dirhist_2='/home/arthur/src/lab/java/gamedev/src/resources'

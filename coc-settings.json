@@ -22,6 +22,23 @@
 			"ignoredRootPaths": [
 				"/"
 			]
+		},
+		"sql": {
+			"command": "sqls",
+			"args": [
+				"-config",
+				"$HOME/.config/sqls/config.yml"
+			],
+			"filetypes": [
+				"sql"
+			],
+			"shell": true
+		},
+		"vala": {
+			"command": "vala-language-server",
+			"filetypes": [
+				"vala"
+			]
 		}
 	},
 	"java.home": "/usr/lib/jvm/java-15-openjdk-amd64",
@@ -30,10 +47,37 @@
 		"com.sun.*"
 	],
 	"java.signatureHelp.enabled": true,
-	"coc.source.file.ignoreHidden": false ,
-	"python.pythonPath":"/usr/bin/python3",
+	"coc.source.file.ignoreHidden": false,
+	"python.pythonPath": "/usr/bin/python3",
 	"python.linting.flake8Enabled": true,
-	"python.linting.pylintEnabled":false,
-	"python.autoComplete.addBrackets":true
-	
+	"python.linting.pylintEnabled": false,
+	"python.autoComplete.addBrackets": true,
+	"diagnostic.errorSign": "☢",
+	"suggest.completionItemKindLabels": {
+		"variable": "\uf8d6",
+		"constant": "\uf8d6",
+		"function": "\uf6a6",
+		"method": "\uf6a6",
+		"module":"\uf673",
+		"struct": "\uf0e8",
+		"class": "\ufb44",
+		"interface": "\uf805",
+		"keyword": "\uf767",
+		"text": "\uf719",
+		"enum": "\uf636",
+		"enumMember": "\uf02b",
+		"color": "\ue22b",
+		"property": "\uf48d",
+		"field": "\uf01c",
+		"unit": "\uf475",
+		"file": "\uf471",
+		"value": "\uf8a3",
+		"event": "\ufacd",
+		"snippet": "\ue612",
+		"operator": "\uf915",
+		"reference": "\uf87a",
+		"typeParameter": "\uf278",
+		"folder": "\ue5ff",
+		"default": "\uf29c"
+	}
 }
