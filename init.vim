@@ -48,27 +48,23 @@ Plug 'kristijanhusak/vim-dadbod-ui', { 'on' : ['DBUI'] }
 call plug#end()
 
 " Color scheme
-" colorscheme onedark
-colorscheme gruvbox
+colorscheme onedark
+" colorscheme gruvbox
 
 " airline configuraion
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = '%{getcwd()}'
 let g:airline#extensions#tagbar#enabled = 0
-
 " Neovim provider
 let g:python3_host_prog = '/usr/bin/python3'
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
-
 " Coc data folder
 let g:coc_data_home = '/home/arthur/.local/share/coc'
-
 " Enable Rainbow
 let g:rainbow_active = 1
-
 " Enable Indent Guide 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
@@ -88,29 +84,19 @@ set wildmode=longest:full,full
 set wildmenu
 set timeoutlen=400
 set nottimeout
-" A better looking list
-" set list
-" set listchars=tab:\│\ ""
 set inccommand=nosplit
-
 " TextEdit might fail if hidden is not set.
 set hidden
-
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Signcolumn
+set shm+=I
 set signcolumn=number
-
-" Gui Font
 set guifont=UbuntuMono\ Nerd\ Font
 
 packadd termdebug
