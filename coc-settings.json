@@ -1,13 +1,4 @@
 {
-	"clangd.fallbackFlags": [
-		// "-I/usr/lib/gcc/x86_64-linux-gnu/10/include"
-	],
-	"clangd.arguments": [
-		"--background-index",
-		"--clang-tidy",
-		"--fallback-style",
-		"Google"
-	],
 	"languageserver": {
 		"bash": {
 			"command": "bash-language-server",
@@ -33,32 +24,36 @@
 				"sql"
 			],
 			"shell": true
-		},
-		"vala": {
-			"command": "vala-language-server",
-			"filetypes": [
-				"vala"
-			]
 		}
 	},
-	"java.home": "/usr/lib/jvm/java-15-openjdk-amd64",
+	"coc.source.file.ignoreHidden": false,
+	"clangd.fallbackFlags": [
+		// "-I/usr/lib/gcc/x86_64-linux-gnu/10/include"
+	],
+	"clangd.arguments": [
+		"--clang-tidy",
+		"--fallback-style",
+		"Google"
+	],
+	"java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
 	"java.completion.filteredTypes": [
 		"java.awt.List",
 		"com.sun.*"
 	],
 	"java.signatureHelp.enabled": true,
-	"coc.source.file.ignoreHidden": false,
+	"java.jdt.ls.home": "/home/arthur/.local/share/jdtls",
 	"python.pythonPath": "/usr/bin/python3",
-	"python.linting.flake8Enabled": true,
-	"python.linting.pylintEnabled": false,
+	"python.linting.pylintArgs": [
+		"--extension-pkg-whitelist=PyQt5"
+	],
 	"python.autoComplete.addBrackets": true,
 	"diagnostic.errorSign": "☢",
 	"suggest.completionItemKindLabels": {
-		"variable": "\uf8d6",
-		"constant": "\uf8d6",
+		"variable": "\uf6a5",
+		"constant": "\uf6a5",
 		"function": "\uf6a6",
 		"method": "\uf6a6",
-		"module":"\uf673",
+		"module": "\uf673",
 		"struct": "\uf0e8",
 		"class": "\ufb44",
 		"interface": "\uf805",
@@ -69,9 +64,9 @@
 		"color": "\ue22b",
 		"property": "\uf48d",
 		"field": "\uf01c",
-		"unit": "\uf475",
-		"file": "\uf471",
-		"value": "\uf8a3",
+		"unit": "\uf767",
+		"file": "\uf016",
+		"value": "\uf471",
 		"event": "\ufacd",
 		"snippet": "\ue612",
 		"operator": "\uf915",
@@ -79,5 +74,6 @@
 		"typeParameter": "\uf278",
 		"folder": "\ue5ff",
 		"default": "\uf29c"
-	}
+	},
+	"yank.priority": 0
 }

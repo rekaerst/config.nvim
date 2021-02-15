@@ -19,6 +19,8 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 "Rainbow Parentheses
 Plug 'luochen1990/rainbow'
+" Indent guides
+Plug 'nathanaelkane/vim-indent-guides'
 " A solid language pack for Vim.
 Plug 'sheerun/vim-polyglot'
 " Fuzzy file, buffer, mru, tag, etc finder.
@@ -60,8 +62,14 @@ let g:loaded_perl_provider = 0
 " Coc data folder
 let g:coc_data_home = '/home/arthur/.local/share/coc'
 
-" Rainbow configuraion
+" Enable Rainbow
 let g:rainbow_active = 1
+
+" Enable Indent Guide 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2E3F49 ctermbg=4
 
 "opt
 syn on
@@ -77,11 +85,8 @@ set wildmenu
 set timeoutlen=400
 set nottimeout
 " A better looking list
-set list
-set listchars=tab:\│\ ""
-" Highlight current cloumn and line
-set cursorline
-set cursorcolumn
+" set list
+" set listchars=tab:\│\ ""
 set inccommand=nosplit
 
 " TextEdit might fail if hidden is not set.
@@ -101,8 +106,10 @@ set shortmess+=c
 " Signcolumn
 set signcolumn=number
 
-packadd termdebug
+" Gui Font
+set guifont=UbuntuMono\ Nerd\ Font
 
+packadd termdebug
 
 " ========================== Custom Commands =====================================
 command CursorAim :set cursorcolumn | :set cursorline
@@ -119,7 +126,11 @@ hi SpecialChar guifg=#56B6C2
 " ========================== Misc =====================================
 autocmd BufEnter *.asm set syntax=asm
 autocmd BufEnter *.S set syntax=asm
-
+" neovim's yank highlight
+augroup highlight_yank
+	autocmd!
+	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=400}
+augroup END
 " ========================== Key Mappings =====================================
 " Remove current search highlighting
 nnoremap <silent> ,h :noh<CR>
@@ -134,22 +145,11 @@ function! s:if_set_relative_number()
 endfunction
 nnoremap <silent> ,r :call <SID>if_set_relative_number()<CR>
 nnoremap <silent> ,w :w<CR>
+nnoremap <silent> ,n :NERDTree<CR>
+nnoremap <silent> ,t :Tagbar<CR>
 
 " Jump to end of line
 inoremap <C-e> <C-o>A
-
-" =======================================================
-" ===================coc.nvim============================
-" =======================================================
-" Show yank history
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ search('\%#[]>)}''"`]', 'n') ? '<Right>' :
-			\ "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Compile c/cpp code and run
 autocmd filetype cpp inoremap <F29> <ESC>:w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('./%:r')<CR>
@@ -169,19 +169,21 @@ autocmd filetype python inoremap <F29> <ESC>:w <bar> exec '!python3 '.shellescap
 nnoremap <silent> <f7> :w <bar> :make<CR>
 inoremap <silent> <f7> <ESC> :w <bar> :make<CR>
 
+" =======================================================
+" Show yank history
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
+			\ "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-" One can also use <M-y> for confirm completion
-inoremap <expr> <M-y> "\<C-y>"
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -199,8 +201,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
 	if (index(['vim','help'], &filetype) >= 0)
 		execute 'h '.expand('<cword>')
+	elseif (coc#rpc#ready())
+		call CocActionAsync('doHover')
 	else
-		call CocAction('doHover')
+		execute '!' . &keywordprg . " " . expand('<cword>')
 	endif
 endfunction
 
@@ -213,6 +217,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <silent> <leader>f  <Plug>(coc-format-selected)
 nmap <silent> <leader>f  <Plug>(coc-format-selected)
+nmap <silent> ,f :call CocAction('format')<CR>
 
 augroup mygrrup
 	autocmd!
@@ -245,17 +250,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 " Note coc#float#scroll works on neovim >= 0.4.3 or vim >= 8.2.0750
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-
-" NeoVim-only mapping for visual mode scroll
-" Useful on signatureHelp after jump placeholder of snippet expansion
-if has('nvim')
-  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
-  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
-endif
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
@@ -294,6 +294,3 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" ==============================================
-" ================vim-closetag==================
-" ==============================================
