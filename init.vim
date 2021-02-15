@@ -3,6 +3,8 @@ set termguicolors
 set nocompatible
 
 call plug#begin()
+" Gruvbox theme
+Plug 'morhetz/gruvbox'
 " Intellisense engine for Vim8 & Neovim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " A tree explorer plugin for vim.
@@ -24,13 +26,15 @@ Plug 'nathanaelkane/vim-indent-guides'
 " A solid language pack for Vim.
 Plug 'sheerun/vim-polyglot'
 " Fuzzy file, buffer, mru, tag, etc finder.
-Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP','CtrlPBuffer'] }
+Plug 'ctrlpvim/ctrlp.vim'
 " Vim plugin that displays tags in a window, ordered by scope
 Plug 'majutsushi/tagbar', { 'on': 'Tagbar'}
 " Multiple cursors plugin for vim/neovim
 Plug 'mg979/vim-visual-multi'
 " A plugin for git
 Plug 'tpope/vim-fugitive'
+" Advanced syntax highlighting for GNU as
+Plug 'shirk/vim-gas'
 " Comment stuff out
 Plug 'tpope/vim-commentary'
 " Fizzy
@@ -44,10 +48,10 @@ Plug 'kristijanhusak/vim-dadbod-ui', { 'on' : ['DBUI'] }
 call plug#end()
 
 " Color scheme
-colorscheme onedark
+" colorscheme onedark
+colorscheme gruvbox
 
 " airline configuraion
-let g:airlinetheme="onedark"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = '%{getcwd()}'
@@ -115,6 +119,12 @@ packadd termdebug
 augroup highlight_yank
 	autocmd!
 	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=400}
+augroup END
+
+" assembly language
+augroup asm_ft
+	au!
+	autocmd BufNewFile,BufRead *.[sS],*.asm set ft=asm
 augroup END
 
 " ========================== Custom Commands ==========================
