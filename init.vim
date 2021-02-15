@@ -111,27 +111,24 @@ set guifont=UbuntuMono\ Nerd\ Font
 
 packadd termdebug
 
-" ========================== Custom Commands =====================================
-command CursorAim :set cursorcolumn | :set cursorline
-command CursorUnAim :set nocursorcolumn | :set nocursorline
-
-
-" ========================== Highlighting =====================================
-hi SpecialKey guifg=#5c6370
-hi Number ctermfg=173 guifg=#FFDCB6
-hi Type ctermfg=180 guifg=#3276EB
-hi SpecialChar guifg=#56B6C2
-
-
-" ========================== Misc =====================================
-autocmd BufEnter *.asm set syntax=asm
-autocmd BufEnter *.S set syntax=asm
 " neovim's yank highlight
 augroup highlight_yank
 	autocmd!
 	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=400}
 augroup END
-" ========================== Key Mappings =====================================
+
+" ========================== Custom Commands ==========================
+command CursorAim :set cursorcolumn | :set cursorline
+command CursorUnAim :set nocursorcolumn | :set nocursorline
+
+
+" ========================== Highlighting ==============================
+hi SpecialKey guifg=#5c6370
+hi Number ctermfg=173 guifg=#FFDCB6
+hi Type ctermfg=180 guifg=#3276EB
+hi SpecialChar guifg=#56B6C2
+
+" ========================== Key Mappings ============================
 " Remove current search highlighting
 nnoremap <silent> ,h :noh<CR>
 
