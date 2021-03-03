@@ -68,6 +68,8 @@ let g:rainbow_active = 1
 " Enable Indent Guide 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
+" Hide NERDTree help banner
+let g:NERDTreeMinimalUI = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2E3F49 ctermbg=4
 
@@ -77,11 +79,9 @@ set number
 set tabstop=4
 set shiftwidth=4
 set smartindent
-set backspace=indent,eol,start
 set mouse=a
 set splitbelow
 set wildmode=longest:full,full
-set wildmenu
 set timeoutlen=400
 set nottimeout
 set inccommand=nosplit
@@ -141,8 +141,9 @@ nnoremap <silent> ,w :w<CR>
 nnoremap <silent> ,n :NERDTree<CR>
 nnoremap <silent> ,t :Tagbar<CR>
 
-" Jump to end of line
-inoremap <C-e> <C-o>A
+" Emacs keybindings
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
 
 " Compile c/cpp code and run
 autocmd filetype cpp inoremap <F29> <ESC>:w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('./%:r')<CR>
@@ -152,15 +153,15 @@ autocmd filetype c nnoremap <F29> :w <bar> exec '!gcc '.shellescape('%').' -o '.
 
 " Execute java code
 autocmd filetype java nnoremap <F29> :w <bar> exec '!java '.shellescape('%')<CR>
-autocmd filetype java inoremap <F29> <ESC>:w <bar> exec '!java '.shellescape('%')<CR>
+autocmd filetype java inoremap <F31> <ESC>:w <bar> exec '!java '.shellescape('%')<CR>
 
 " Execute python code
 autocmd filetype python nnoremap <F29> :w <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype python inoremap <F29> <ESC>:w <bar> exec '!python3 '.shellescape('%')<CR>
 
 " Run GNU make
-nnoremap <silent> <f7> :w <bar> :make<CR>
-inoremap <silent> <f7> <ESC> :w <bar> :make<CR>
+nnoremap <silent> <f7> :w <bar> :make run<CR>
+inoremap <silent> <f7> <ESC> :w <bar> :make run<CR>
 
 " =======================================================
 " Show yank history
