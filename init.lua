@@ -1,11 +1,8 @@
 local utils = require('utils')
--- require('plugins')
+require('plugins')
+require('color')
 
-utils.source('plugins')
 utils.source('keymap')
-vim.cmd('colorscheme onedark')
-vim.cmd('syntax enable')
-vim.cmd('packadd termdebug')
 
 vim.wo.number = true -- enable line number
 vim.o.number = true -- enable line number
@@ -23,13 +20,11 @@ vim.o.inccommand = 'nosplit'
 
 vim.o.smartindent = true
 vim.bo.smartindent = true
-vim.o.tabstop = 4 
-vim.bo.tabstop = 4 
-vim.o.shiftwidth = 4 
-vim.bo.shiftwidth = 4 
+vim.o.tabstop = 4
+vim.bo.tabstop = 4
+vim.o.shiftwidth = 4
+vim.bo.shiftwidth = 4
 
--- Highlight on yank
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 
 -- airline
 vim.g['airline#extensions#tabline#enabled'] = 1
@@ -118,12 +113,12 @@ dap.configurations.go = {
     }
 }
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+require('nvim-treesitter.configs').setup ({
+  ensure_installed = {"bash","c", "clojure", "cpp", "css", "go", "gdscript", "haskell", "html",
+  "javascript", "java", "latex", "lua", "python", "r", "regex", "rust", "typescript", "vue"},
   ignore_install = { "javascript" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = {"dart", "julia" },  -- list of language that will be disabled
   },
   incremental_selection = {
     enable = true,
@@ -136,7 +131,6 @@ require'nvim-treesitter.configs'.setup {
   },
   playground = {
     enable = true,
-    disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
     keybindings = {
@@ -151,5 +145,10 @@ require'nvim-treesitter.configs'.setup {
       goto_node = '<cr>',
       show_help = '?',
     },
+  },
+  rainbow = {
+	enable = true,
+	extended_mode = true,
+	max_file_lines = 1000,
   }
-}
+})

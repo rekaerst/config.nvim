@@ -1,7 +1,7 @@
+vim.cmd('packadd termdebug')
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
-	-- Gruvbox theme
-	use 'morhetz/gruvbox'
+
 	-- Intellisense engine for Vim8 & Neovim
 	use {'neoclide/coc.nvim', branch= 'release'}
 	-- Tree file explorer
@@ -18,19 +18,19 @@ return require('packer').startup(function()
 	-- Parenthesizing plugin
 	use 'jiangmiao/auto-pairs'
 	--Rainbow Parentheses
-	use 'luochen1990/rainbow'
+	-- use 'luochen1990/rainbow'
 	-- Indent guides
 	use 'nathanaelkane/vim-indent-guides'
 	-- Fuzzy file, buffer, mru, tag, etc finder.
 	use 'ctrlpvim/ctrlp.vim'
 	-- Vim plugin that displays tags in a window, ordered by scope
-	use 'majutsushi/tagbar'
+	use {'perservim/tagbar', cmd = "Tagbar"}
 	-- Multiple cursors plugin for vim/neovim
 	use 'mg979/vim-visual-multi'
 	-- A plugin for git
 	use 'tpope/vim-fugitive'
 	-- Advanced syntax highlighting for GNU as
-	use 'shirk/vim-gas'
+	use {'shirk/vim-gas', ft = {"s", "asm", "S"} }
 	-- Comment stuff out
 	use 'tpope/vim-commentary'
 	-- Fizzy
@@ -40,11 +40,12 @@ return require('packer').startup(function()
 	-- Mordern database interface for VIM
 	use 'tpope/vim-dadbod'
 	-- Simple ui for dadbod
-	use 'kristijanhusak/vim-dadbod-ui'
+	use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
 	-- DAP
 	use 'mfussenegger/nvim-dap'
 	-- Semantic highlighting
-	use 'nvim-treesitter/nvim-treesitter'
-	use 'nvim-treesitter/playground'
+	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {'nvim-treesitter/playground', cmd="TSPlaygroundToggle" }
+	use "p00f/nvim-ts-rainbow"
 end
 )
