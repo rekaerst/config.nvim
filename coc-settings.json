@@ -1,5 +1,22 @@
 {
 	"languageserver": {
+		"haskell": {
+			"command": "haskell-language-server",
+			"args": [
+				"--lsp"
+			],
+			"rootPatterns": [
+				"*.cabal",
+				"stack.yaml",
+				"cabal.project",
+				"package.yaml",
+				"hie.yaml"
+			],
+			"filetypes": [
+				"haskell",
+				"lhaskell"
+			]
+		},
 		"bash": {
 			"command": "bash-language-server",
 			"args": [
@@ -12,6 +29,13 @@
 			],
 			"ignoredRootPaths": [
 				"/"
+			]
+		},
+		"vala": {
+			"command": "vala-language-server",
+			"filetypes": [
+				"vala",
+				"genie"
 			]
 		},
 		"sql": {
@@ -27,6 +51,7 @@
 		}
 	},
 	"coc.source.file.ignoreHidden": false,
+	"coc.preferences.formatOnType": true,
 	"clangd.fallbackFlags": [
 		// "-I/usr/lib/gcc/x86_64-linux-gnu/10/include"
 	],
@@ -35,6 +60,9 @@
 		"--fallback-style",
 		"Google"
 	],
+	// go
+	"go.goplsPath": "/home/arthur/go/bin/gopls",
+	// java
 	"java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
 	"java.completion.filteredTypes": [
 		"java.awt.List",
@@ -42,12 +70,25 @@
 	],
 	"java.signatureHelp.enabled": true,
 	"java.jdt.ls.home": "/home/arthur/.local/share/jdtls",
+	"java.project.referencedLibraries": {
+		"include": [
+			"lib/**/*.jar",
+			"/usr/share/java/junit4.jar"
+		],
+		"exclude": [
+			"lib/sources/**"
+		]
+	},
 	"python.pythonPath": "/usr/bin/python3",
 	"python.linting.pylintArgs": [
-		"--extension-pkg-whitelist=PyQt5"
+		"--extension-pkg-whitelist=PyQt5",
+		"--disable=C0111"
 	],
 	"python.autoComplete.addBrackets": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
 	"diagnostic.errorSign": "☢",
+	"rust-analyzer.server.path":"/usr/local/bin/rust-analyzer",
 	"suggest.completionItemKindLabels": {
 		"variable": "\uf6a5",
 		"constant": "\uf6a5",
@@ -74,6 +115,5 @@
 		"typeParameter": "\uf278",
 		"folder": "\ue5ff",
 		"default": "\uf29c"
-	},
-	"yank.priority": 0
+	}
 }

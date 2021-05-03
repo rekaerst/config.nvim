@@ -1,117 +1,19 @@
-set encoding=utf-8
-set termguicolors
-set nocompatible
-
-call plug#begin()
-" Gruvbox theme
-Plug 'morhetz/gruvbox'
-" Intellisense engine for Vim8 & Neovim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle'] }
-" Onedark theme
-Plug 'joshdick/onedark.vim'
-" Adds file type icons to Vim plugins
-Plug 'ryanoasis/vim-devicons'
-" lean & mean status/tabline for vim that's light as air
-Plug 'vim-airline/vim-airline'
-" quoting/parenthesizing made simple
-Plug 'tpope/vim-surround'
-" Parenthesizing plugin
-Plug 'jiangmiao/auto-pairs'
-"Rainbow Parentheses
-Plug 'luochen1990/rainbow'
-" Indent guides
-Plug 'nathanaelkane/vim-indent-guides'
-" A solid language pack for Vim.
-Plug 'sheerun/vim-polyglot'
-" Fuzzy file, buffer, mru, tag, etc finder.
-Plug 'ctrlpvim/ctrlp.vim'
-" Vim plugin that displays tags in a window, ordered by scope
-Plug 'majutsushi/tagbar', { 'on': 'Tagbar'}
-" Multiple cursors plugin for vim/neovim
-Plug 'mg979/vim-visual-multi'
-" A plugin for git
-Plug 'tpope/vim-fugitive'
-" Advanced syntax highlighting for GNU as
-Plug 'shirk/vim-gas'
-" Comment stuff out
-Plug 'tpope/vim-commentary'
-" Fizzy
-Plug 'junegunn/fzf.vim'
-" html auto pairs
-Plug 'alvan/vim-closetag'
-" Mordern database interface for VIM
-Plug 'tpope/vim-dadbod'
-" Simple ui for dadbod
-Plug 'kristijanhusak/vim-dadbod-ui', { 'on' : ['DBUI'] }
-call plug#end()
-
-" Color scheme
-colorscheme onedark
-" colorscheme gruvbox
-
-" airline configuraion
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_section_b = '%{getcwd()}'
-let g:airline#extensions#tagbar#enabled = 0
-" Neovim provider
-let g:python3_host_prog = '/usr/bin/python3'
-let g:loaded_python_provider = 0
-let g:loaded_ruby_provider = 0
-let g:loaded_perl_provider = 0
-" Coc data folder
-let g:coc_data_home = '/home/arthur/.local/share/coc'
-" Enable Rainbow
-let g:rainbow_active = 1
-" Enable Indent Guide 
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-" Hide NERDTree help banner
-let g:NERDTreeMinimalUI = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2E3F49 ctermbg=4
-
 "opt
-syn on
-set number
-set tabstop=4
-set shiftwidth=4
-set smartindent
-set mouse=a
-set splitbelow
-set wildmode=longest:full,full
-set timeoutlen=400
-set nottimeout
-set inccommand=nosplit
-" TextEdit might fail if hidden is not set.
-set hidden
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-set shm+=I
-set signcolumn=number
-set guifont=UbuntuMono\ Nerd\ Font
-
-packadd termdebug
-
-" neovim's yank highlight
-augroup highlight_yank
-	autocmd!
-	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=400}
-augroup END
-
 " assembly language
 augroup asm_ft
 	au!
-	autocmd BufNewFile,BufRead *.[sS],*.asm set ft=asm
+	autocmd BufNewFile,BufRead *.[sS],*.asm set ft=nasm
 augroup END
+
+augroup tab_preference
+	au!
+	au FileType python set expandtab
+	au FileType nim set expandtab
+	au FileType markdown set expandtab | set tabstop=2 | set shiftwidth=2
+augroup END
+
 
 " ========================== Custom Commands ==========================
 command CursorAim :set cursorcolumn | :set cursorline
@@ -125,19 +27,12 @@ hi Type ctermfg=180 guifg=#3276EB
 hi SpecialChar guifg=#56B6C2
 
 " ========================== Key Mappings ============================
-" Remove current search highlighting
 nnoremap <silent> ,h :noh<CR>
 
 " Set relative line number
-function! s:if_set_relative_number()
-	if &relativenumber
-		set norelativenumber
-	else
-		set relativenumber
-	endif
-endfunction
-nnoremap <silent> ,r :call <SID>if_set_relative_number()<CR>
+nnoremap <silent> ,r :set invrelativenumber<CR>
 nnoremap <silent> ,w :w<CR>
+nnoremap <silent> ,a :wa<CR>
 nnoremap <silent> ,n :NERDTree<CR>
 nnoremap <silent> ,t :Tagbar<CR>
 
@@ -159,13 +54,50 @@ autocmd filetype java inoremap <F31> <ESC>:w <bar> exec '!java '.shellescape('%'
 autocmd filetype python nnoremap <F29> :w <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype python inoremap <F29> <ESC>:w <bar> exec '!python3 '.shellescape('%')<CR>
 
-" Run GNU make
-nnoremap <silent> <f7> :w <bar> :make run<CR>
-inoremap <silent> <f7> <ESC> :w <bar> :make run<CR>
+" Execute javascript code with node
+autocmd filetype javascript nnoremap <F29> :w <bar> exec '!node '.shellescape('%')<CR>
+autocmd filetype javascript inoremap <F29> <ESC>:w <bar> exec '!node '.shellescape('%')<CR>
 
-" =======================================================
-" Show yank history
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" Run Go code with go run
+autocmd filetype go nnoremap <F29> :w <bar> exec '!go run '.shellescape('%')<CR>
+autocmd filetype go nnoremap <F29> <ESC>:w <bar> exec '!go run '.shellescape('%')<CR>
+
+" get binary name from Makefile
+function! GetBinName()
+	let binName = system("grep 'BIN =' Makefile | sed 's/BIN =[ ]//g'")
+	return substitute(binName, '\n\+$', '','')
+endfunction
+
+" C and C++
+autocmd filetype c,cpp call s:SetMakeOptions('c')
+autocmd filetype rust call s:SetMakeOptions('rust')
+autocmd filetype go call s:SetMakeOptions('go')
+
+let g:make_option = ""
+function s:SetMakeOptions(file_type)
+	if a:file_type == 'c'
+		nnoremap <silent> <F5> :wa <bar> :make run DEBUG=1<CR>
+		inoremap <silent> <f5> <ESC> :wa <bar> :make run DEBUG=1<CR>
+		nnoremap <silent> <F17> :wa <bar> :silent make DEBUG=1 <bar> :execute 'Termdebug '.GetBinName()<CR>
+		nnoremap <silent> <F17> <ESC> :wa <bar> :silent make DEBUG=1 <bar> :execute 'Termdebug '.GetBinName()<CR>
+	elseif a:file_type == "rust"
+		nnoremap <silent> <F5> :wa <bar> :make run <CR>
+		inoremap <silent> <f5> <ESC> :wa <bar> :make run <CR>
+		nnoremap <silent> <F17> :wa <bar> :make build <CR> :Termdebug <CR>
+		inoremap <silent> <f17> <ESC> :wa <bar> :make build <CR> :Termdebug <CR>
+	elseif a:file_type == "go"
+		nnoremap <silent> <F5> :wa <bar> :!go run . <CR>
+		inoremap <silent> <f5> <ESC> :wa <bar> :!go run . <CR>
+		nnoremap <silent> <F17> :wa <bar> :!go build <CR> :Termdebug <CR>
+		inoremap <silent> <f17> <ESC> :wa <bar> :!go build <CR> :Termdebug <CR>
+	endif
+endfunction
+
+
+" vim-closetag work around
+au FileType html inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+au FileType xml inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -207,6 +139,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nmap <F2> <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <silent> <leader>f  <Plug>(coc-format-selected)
@@ -287,4 +220,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
