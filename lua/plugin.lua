@@ -4,7 +4,7 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
 	-- LSP and completion
-	use {'neoclide/coc.nvim', branch= 'release', cmd="CocStart"}
+	use {'neoclide/coc.nvim',branch= 'release',cmd="CocStart"}
 	use {'neovim/nvim-lspconfig'}
 	use {'nvim-lua/completion-nvim'}
 

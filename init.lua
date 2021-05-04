@@ -15,6 +15,3 @@ require('config')
 
 -- Colorscheme and highlighting configurations
 require('color')
-vim.cmd [[
-let @q = '0ivar wwi a A;j'
-]]
