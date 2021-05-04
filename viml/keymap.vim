@@ -1,20 +1,8 @@
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2E3F49 ctermbg=4
-"opt
 " assembly language
 augroup asm_ft
 	au!
 	autocmd BufNewFile,BufRead *.[sS],*.asm set ft=nasm
 augroup END
-
-augroup tab_preference
-	au!
-	au FileType python set expandtab
-	au FileType nim set expandtab
-	au FileType markdown set expandtab | set tabstop=2 | set shiftwidth=2
-augroup END
-
-
 " ========================== Custom Commands ==========================
 command CursorAim :set cursorcolumn | :set cursorline
 command CursorUnAim :set nocursorcolumn | :set nocursorline
@@ -22,9 +10,6 @@ command CursorUnAim :set nocursorcolumn | :set nocursorline
 
 " ========================== Highlighting ==============================
 hi SpecialKey guifg=#5c6370
-hi Number ctermfg=173 guifg=#FFDCB6
-hi Type ctermfg=180 guifg=#3276EB
-hi SpecialChar guifg=#56B6C2
 
 " ========================== Key Mappings ============================
 nnoremap <silent> ,h :noh<CR>
@@ -220,3 +205,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
