@@ -1,11 +1,8 @@
 -- Installed plugins
 require('plugin')
 
--- LSP (code completion, formating, etc.)
-require('lang')
-
--- DAP (debugging)
-require('debug')
+-- Colorscheme and highlighting configurations
+require('color')
 
 -- Key mappings
 require('keymap')
@@ -13,5 +10,8 @@ require('keymap')
 -- Plugin configurations
 require('config')
 
--- Colorscheme and highlighting configurations
-require('color')
+-- LSP (code completion, formating, etc.)
+require('lang')
+
+-- DAP (debugging)
+require('debug')
