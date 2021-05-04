@@ -1,6 +1,6 @@
 -- native neovim options
-vim.wo.number = true -- enable line number
-vim.o.number = true -- enable line number
+vim.wo.number = true
+vim.o.number = true
 vim.wo.signcolumn = "number"
 vim.o.signcolumn = "number"
 vim.o.mouse = 'a'
@@ -19,3 +19,6 @@ vim.o.tabstop = 4
 vim.bo.tabstop = 4
 vim.o.shiftwidth = 4
 vim.bo.shiftwidth = 4
+
+-- enable lazyredraw to speedup marcos
+vim.o.lazyredraw = true
