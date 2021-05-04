@@ -3,54 +3,45 @@ vim.cmd('packadd termdebug')
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
-	-- Intellisense engine for Vim8 & Neovim
-	use {'neoclide/coc.nvim', branch= 'release'}
-	-- Tree file explorer
-	use 'kyazdani42/nvim-web-devicons' -- for file icons
-	use 'kyazdani42/nvim-tree.lua'
-	-- Onedark theme
-	use {'joshdick/onedark.vim'}
-	-- Adds file type icons to Vim plugins
-	use {'ryanoasis/vim-devicons'}
-	-- lean & mean status/tabline for vim that's light as air
-	use {'vim-airline/vim-airline'}
-	-- quoting/parenthesizing made simple
-	use {'tpope/vim-surround'}
-	-- Parenthesizing plugin
-	use {'jiangmiao/auto-pairs'}
-	--Rainbow Parentheses
-	-- use 'luochen1990/rainbow'
-	-- Indent guides
-	use {'nathanaelkane/vim-indent-guides'}
-	-- Fuzzy file, buffer, mru, tag, etc finder.
-	use {'ctrlpvim/ctrlp.vim'}
-	-- Vim plugin that displays tags in a window, ordered by scope
-	use {'perservim/tagbar', cmd = "Tagbar"}
-	-- Multiple cursors plugin for vim/neovim
-	use {'mg979/vim-visual-multi'}
-	-- A plugin for git
-	use {'tpope/vim-fugitive'}
-	-- Advanced syntax highlighting for GNU as
-	use {'shirk/vim-gas', ft = {"s", "asm", "S"} }
-	-- Comment stuff out
-	use {'tpope/vim-commentary'}
-	-- Find, Filter, Preview, Pick
-	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}
-	-- html auto pairs
-	use {'alvan/vim-closetag'}
-	-- Mordern database interface for VIM
-	use {'tpope/vim-dadbod'}
-	-- Simple ui for dadbod
-	use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
-	-- DAP
+	-- LSP and completion
+	use {'neoclide/coc.nvim', branch= 'release', cmd="CocStart"}
+	use {'neovim/nvim-lspconfig'}
+	use {'nvim-lua/completion-nvim'}
+
+	-- Debugging
 	use {'mfussenegger/nvim-dap'}
-	-- use 'theHamsta/nvim-dap-virtual-text'
-	-- Semantic highlighting
-	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+	-- User Interface
+	use {'joshdick/onedark.vim'} -- Onedark theme
+	use {'ryanoasis/vim-devicons'}
+	use {'vim-airline/vim-airline'} -- Status line
+	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
+
+	-- File explorer
+	use {'kyazdani42/nvim-web-devicons'} -- for file icons
+	use {'kyazdani42/nvim-tree.lua'}
+	
+	-- Editing Tools
+	use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
+	use {'jiangmiao/auto-pairs'} -- auto pair parentheses
+	use {'nathanaelkane/vim-indent-guides'}	-- Indent guides
+	use {'mg979/vim-visual-multi'} -- Multiple cursors
+
+	-- Development tools
+	use {'perservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
+	use {'shirk/vim-gas', ft = {"s", "asm", "S"} } -- syntax highlighting for GNU as
+	use {'tpope/vim-commentary'} -- Comment stuff out
+	use {'tpope/vim-dadbod'}	-- Mordern database interface for VIM
+	use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}	-- Simple ui for dadbod
+	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }	-- Semantic highlighting
 	use {'nvim-treesitter/playground', cmd={'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'} }
-	-- rainbow parentheses
-	use "p00f/nvim-ts-rainbow"
-	-- autopairs
-	use {"dstein64/vim-startuptime"}
+	use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
+	use {'alvan/vim-closetag'}	-- html auto pairs
+
+	-- Git
+	use {'tpope/vim-fugitive'} -- A plugin for git
+
+	-- Utils
+	use {"dstein64/vim-startuptime"}	-- Profile startup time
 end
 )
