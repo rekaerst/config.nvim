@@ -1,4 +1,5 @@
 vim.cmd('packadd termdebug')
+
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
