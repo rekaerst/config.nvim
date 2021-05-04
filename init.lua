@@ -10,10 +10,6 @@ require('debug')
 -- Key mappings
 require('keymap')
 
--- lagcy vimscript keymap
-local util = require('util')
-util.source('keymap')
-
 -- Plugin configurations
 require('config')
 
