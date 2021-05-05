@@ -14,11 +14,13 @@ return require('packer').startup(function()
 
 	-- User Interface
 	use {'joshdick/onedark.vim'} -- Onedark theme
+
 	use {'ryanoasis/vim-devicons'}
 	use {'vim-airline/vim-airline', opt = true} -- Status line
 	use {'hoob3rt/lualine.nvim'}
 	use {'romgrk/barbar.nvim'}
 	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
+  use {'folke/which-key.nvim'} -- displays keybindings when you started typing
 
 	-- File explorer
 	use {'kyazdani42/nvim-web-devicons'} -- for file icons

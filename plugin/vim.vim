@@ -24,4 +24,3 @@ nnoremap <silent> ,t :Tagbar<CR>
 " Emacs keybindings
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-

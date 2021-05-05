@@ -1,6 +1,6 @@
 local util = require('util')
-vim.cmd('lua dap=require(\'dap\')')
 
+vim.cmd('lua dap=require(\'dap\')')
 util.map('<F5>', '<cmd>lua dap.continue()<CR>')
 util.map('<F9>', '<cmd>lua dap.toggle_breakpoint()<CR>')
 util.map('<F10>', '<cmd>lua dap.step_over()<CR>')

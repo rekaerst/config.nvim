@@ -1,6 +1,8 @@
-vim.cmd [[
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-]]
+local util = require('util')
+
+util.lmap('ff','<cmd>Telescope find_files<cr>')
+util.lmap('fg','<cmd>Telescope live_grep<cr>')
+util.lmap('fb','<cmd>Telescope buffers<cr>')
+util.lmap('fh','<cmd>Telescope help_tags<cr>')
+
+util.lmap('fk','<cmd>Telescope keymaps<cr>')

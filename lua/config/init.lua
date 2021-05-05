@@ -1,14 +1,14 @@
 -- vim options
 require('config.vim')
 
+-- coc nvim
+require('config.coc')
+
 -- nvim-treesitter
-require('config.treesitter')
+require('config.nvim-treesitter')
 
 -- nvim-tree
-require('config.tree')
-
--- galaxyline
--- require('config.galaxyline')
+require('config.nvim-tree')
 
 -- lualine
 require('config.lualine')
@@ -16,8 +16,6 @@ require('config.lualine')
 -- airline
 -- require('config.airline')
 
--- coc nvim
-require('config.coc')
 
 -- misc plugins
 vim.g.rainbow_active = 1
