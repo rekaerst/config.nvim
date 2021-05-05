@@ -6,7 +6,7 @@ function util.source(srcript)
 	vim.cmd('source ' .. script_dir .. srcript .. '.vim')
 end
 
-function util.hi(token, fg)
+function util.hi(token, fg )
 	vim.cmd('hi ' .. token .. ' guifg=' .. fg)
 end
 

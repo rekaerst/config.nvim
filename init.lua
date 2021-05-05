@@ -1,3 +1,6 @@
+-- Installed plugins
+require('plugin')
+
 -- Colorscheme and highlighting configurations
 require('color')
 
@@ -12,6 +15,3 @@ require('keymap')
 
 -- Plugin configurations was done in plugin/vim.vim
 require('config')
-
--- Installed plugins
-require('plugin')

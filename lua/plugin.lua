@@ -1,5 +1,13 @@
 vim.cmd('packadd termdebug')
 
+-- bootstrapping code
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.fn.system({'git', 'clone', '--depth 1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.cmd 'packadd packer.nvim'
+end
+
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
@@ -22,6 +30,9 @@ return require('packer').startup(function()
 	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
 	use {'folke/which-key.nvim'} -- displays keybindings when you started typing
 
+	use {'junegunn/fzf'}
+	use {'junegunn/fzf.vim'}
+
 	-- File explorer
 	use {'kyazdani42/nvim-web-devicons'} -- for file icons
 	use {'kyazdani42/nvim-tree.lua'}
@@ -34,7 +45,7 @@ return require('packer').startup(function()
 	use {'RRethy/vim-hexokinase', run = 'make'}
 
 	-- Development tools
-	use {'perservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
+	use {'preservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
 	use {'shirk/vim-gas', ft = {"s", "asm", "S"} } -- syntax highlighting for GNU as
 	use {'tpope/vim-commentary'} -- Comment stuff out
 	use {'tpope/vim-dadbod'}	-- Mordern database interface for VIM
