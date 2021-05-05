@@ -22,3 +22,13 @@ vim.bo.shiftwidth = 4
 
 -- enable lazyredraw to speedup marcos
 vim.o.lazyredraw = true
+
+-- nvim providers
+vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- for lsp
+vim.o.backup = false -- some language servers have issues with backup file
+vim.o.writebackup = false
+vim.o.updatetime = 300 -- having longer updatetime leads to noticeable delays

@@ -10,17 +10,20 @@ return require('packer').startup(function()
 
 	-- Debugging
 	use {'mfussenegger/nvim-dap'}
+	use {'nvim-telescope/telescope-dap.nvim'}
 
 	-- User Interface
 	use {'joshdick/onedark.vim'} -- Onedark theme
 	use {'ryanoasis/vim-devicons'}
-	use {'vim-airline/vim-airline'} -- Status line
+	use {'vim-airline/vim-airline', opt = true} -- Status line
+	use {'hoob3rt/lualine.nvim'}
+	use {'romgrk/barbar.nvim'}
 	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
 
 	-- File explorer
 	use {'kyazdani42/nvim-web-devicons'} -- for file icons
 	use {'kyazdani42/nvim-tree.lua'}
-	
+
 	-- Editing Tools
 	use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
 	use {'jiangmiao/auto-pairs'} -- auto pair parentheses

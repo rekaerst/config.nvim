@@ -76,14 +76,16 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
   ["coc.nvim"] = {
-    commands = { "CocStart" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/coc.nvim"
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/coc.nvim"
   },
   ["completion-nvim"] = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -142,8 +144,9 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-airline"] = {
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/vim-airline"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/vim-airline"
   },
   ["vim-closetag"] = {
     loaded = true,
@@ -199,9 +202,8 @@ time("Defining packer_plugins", false)
 -- Command lazy-loads
 time("Defining lazy-load commands", true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file CocStart lua require("packer.load")({'coc.nvim'}, { cmd = "CocStart", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 

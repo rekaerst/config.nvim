@@ -14,4 +14,4 @@ require('config')
 require('lang')
 
 -- DAP (debugging)
-require('debug')
+require('dbg')

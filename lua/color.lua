@@ -11,7 +11,7 @@ util.hi('TSParameter', '#ABB2BF')
 util.hi('TSConstructor', '#E5C07B')
 util.hi('TSInclude', '#C678DD')
 util.hi('TSFuncMacro', '#61AFEF')
-util.hi('TSFuncBuiltin', '#4281EF')
+util.hi('TSFuncBuiltin', '#56B6C2')
 util.hi('pythonTSVariableBuiltin', '#E5C07B')
 
 -- Highlight on yank
