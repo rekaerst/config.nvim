@@ -20,7 +20,7 @@ return require('packer').startup(function()
 	use {'hoob3rt/lualine.nvim'}
 	use {'romgrk/barbar.nvim'}
 	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
-  use {'folke/which-key.nvim'} -- displays keybindings when you started typing
+	use {'folke/which-key.nvim'} -- displays keybindings when you started typing
 
 	-- File explorer
 	use {'kyazdani42/nvim-web-devicons'} -- for file icons
@@ -31,6 +31,7 @@ return require('packer').startup(function()
 	use {'jiangmiao/auto-pairs'} -- auto pair parentheses
 	use {'nathanaelkane/vim-indent-guides'}	-- Indent guides
 	use {'mg979/vim-visual-multi'} -- Multiple cursors
+	use {'RRethy/vim-hexokinase', run = 'make'}
 
 	-- Development tools
 	use {'perservim/tagbar', cmd = "Tagbar"} -- displays tags in a window

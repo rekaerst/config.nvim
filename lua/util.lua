@@ -33,18 +33,7 @@ function util.map(lh, rh)
 	util.imap(lh, '<ESC>' .. rh .. 'i')
 end
 
-function util.set_theme(theme)
-	vim.cmd("colorscheme " .. theme)
-	if util.plugin_loaded('lualine.nvim') then
-	require('lualine').setup{
-		options = { theme = theme },
-	}
-	end
-end
 
----
---- check if plugin is loaded
----
 function util.plugin_loaded(plugin_name)
 	return packer_plugins[plugin_name] and packer_plugins[plugin_name].loaded
 end
