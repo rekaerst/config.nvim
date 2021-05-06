@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
 	use {'nathanaelkane/vim-indent-guides'}	-- Indent guides
 	use {'mg979/vim-visual-multi'} -- Multiple cursors
 	use {'RRethy/vim-hexokinase', run = 'make'}
+	use {'windwp/nvim-autopairs', opt = true}
 
 	-- Development
 	use {'preservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
@@ -54,6 +55,7 @@ return require('packer').startup(function(use)
 	use {'neoclide/coc.nvim',branch= 'release'}
 	use {'neovim/nvim-lspconfig'}
 	use {'nvim-lua/completion-nvim'}
+	use {'kosayoda/nvim-lightbulb'}
 
 	-- Debugging
 	use {'mfussenegger/nvim-dap'}

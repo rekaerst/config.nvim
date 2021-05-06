@@ -17,6 +17,7 @@ require('config.lualine')
 -- require('config.airline')
 
 require('gitsigns').setup()
+-- require('nvim-autopairs').setup()
 
 -- rainbow indent
 vim.g.rainbow_active = 1

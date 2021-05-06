@@ -5,3 +5,5 @@ require('keymap.tree')
 require('keymap.telescope')
 -- dap
 require('keymap.dap')
+-- barbar
+require('keymap.babar')
