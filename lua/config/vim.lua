@@ -1,15 +1,14 @@
 -- native neovim options
 vim.wo.number = true
 vim.o.number = true
-vim.wo.signcolumn = "number"
-vim.o.signcolumn = "number"
+vim.wo.signcolumn = "yes"
+vim.o.signcolumn = "yes"
 vim.o.mouse = 'a'
 vim.o.wildmode = 'longest:full,full'
 vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.hidden = true
 vim.o.shortmess = vim.o.shortmess .. "cI"
-vim.o.signcolumn = "number"
 vim.o.timeoutlen = 400
 vim.o.inccommand = 'nosplit'
 

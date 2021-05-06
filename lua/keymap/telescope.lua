@@ -5,4 +5,4 @@ util.lmap('fg','<cmd>Telescope live_grep<cr>')
 util.lmap('fb','<cmd>Telescope buffers<cr>')
 util.lmap('fh','<cmd>Telescope help_tags<cr>')
 
-util.lmap('fk','<cmd>Telescope keymaps<cr>')
+util.lmap('fm','<cmd>Telescope keymaps<cr>')

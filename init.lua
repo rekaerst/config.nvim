@@ -15,3 +15,4 @@ require('keymap')
 
 -- Plugin configurations was done in plugin/vim.vim
 require('config')
+

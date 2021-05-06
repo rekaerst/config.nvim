@@ -1,0 +1,10 @@
+configuration: lua
+keymaps, autocmds: vimL, lua
+
+plugins
+	do something quickly: python
+	runtime efficent: lua
+	i am speed: go, rust, c
+	portable: vimL
+
+port vimL to lua or something

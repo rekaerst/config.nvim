@@ -19,7 +19,7 @@ if vim.g.colors_name == "onedark" then
 	util.hi('TSFuncMacro', '#61AFEF')
 	util.hi('TSFuncBuiltin', '#56B6C2')
 	util.hi('pythonTSVariableBuiltin', '#E5C07B')
-	vim.cmd 'hi Identifier guifg=#ABB2BF'
+	-- vim.cmd 'hi Identifier guifg=#ABB2BF'
 	vim.cmd "hi Comment gui=italic"
 end
 

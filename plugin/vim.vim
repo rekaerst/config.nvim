@@ -18,7 +18,6 @@ nnoremap <silent> ,h :noh<CR>
 nnoremap <silent> ,r :set invrelativenumber<CR>
 nnoremap <silent> ,w :w<CR>
 nnoremap <silent> ,a :wa<CR>
-nnoremap <silent> ,n :NERDTree<CR>
 nnoremap <silent> ,t :Tagbar<CR>
 
 " Emacs keybindings

@@ -8,43 +8,38 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd 'packadd packer.nvim'
 end
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
-	-- LSP and completion
-	use {'neoclide/coc.nvim',branch= 'release'}
-	use {'neovim/nvim-lspconfig'}
-	use {'nvim-lua/completion-nvim'}
-
-	-- Debugging
-	use {'mfussenegger/nvim-dap'}
-	use {'nvim-telescope/telescope-dap.nvim'}
+	-- Libraries
+	use {'nvim-lua/plenary.nvim'}
+	use {'nvim-lua/popup.nvim'}
 
 	-- User Interface
-	use {'joshdick/onedark.vim'} -- Onedark theme
+	use {'joshdick/onedark.vim'}
 
-	use {'ryanoasis/vim-devicons'}
-	use {'vim-airline/vim-airline', opt = true} -- Status line
-	use {'hoob3rt/lualine.nvim'}
-	use {'romgrk/barbar.nvim'}
-	use {'nvim-telescope/telescope.nvim',requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}	-- Find, Filter, Preview, Pick
-	use {'folke/which-key.nvim'} -- displays keybindings when you started typing
-
+	use {'nvim-telescope/telescope.nvim'} -- Fizzy
 	use {'junegunn/fzf'}
 	use {'junegunn/fzf.vim'}
 
+	use {'kyazdani42/nvim-web-devicons'}
+	use {'ryanoasis/vim-devicons', opt = true}
+	use {'vim-airline/vim-airline', opt = true}
+	use {'hoob3rt/lualine.nvim'}
+	use {'romgrk/barbar.nvim'}
+	use {'folke/which-key.nvim'} -- displays keybindings when typing
+
 	-- File explorer
-	use {'kyazdani42/nvim-web-devicons'} -- for file icons
 	use {'kyazdani42/nvim-tree.lua'}
 
-	-- Editing Tools
+	-- Editing
 	use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
 	use {'jiangmiao/auto-pairs'} -- auto pair parentheses
 	use {'nathanaelkane/vim-indent-guides'}	-- Indent guides
 	use {'mg979/vim-visual-multi'} -- Multiple cursors
 	use {'RRethy/vim-hexokinase', run = 'make'}
 
-	-- Development tools
+	-- Development
 	use {'preservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
 	use {'shirk/vim-gas', ft = {"s", "asm", "S"} } -- syntax highlighting for GNU as
 	use {'tpope/vim-commentary'} -- Comment stuff out
@@ -55,8 +50,22 @@ return require('packer').startup(function()
 	use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
 	use {'alvan/vim-closetag'}	-- html auto pairs
 
+	-- LSP and completion
+	use {'neoclide/coc.nvim',branch= 'release'}
+	use {'neovim/nvim-lspconfig'}
+	use {'nvim-lua/completion-nvim'}
+
+	-- Debugging
+	use {'mfussenegger/nvim-dap'}
+	use {'nvim-telescope/telescope-dap.nvim'}
+
 	-- Git
 	use {'tpope/vim-fugitive'} -- A plugin for git
+	use {'lewis6991/gitsigns.nvim'} -- git side signs
+
+	-- Nevim Development
+	use {'tjdevries/nlua.nvim', opt = true}
+	use {'rafcamlet/nvim-luapad' , opt = true, cmd = "Luapad"}
 
 	-- Utils
 	use {"dstein64/vim-startuptime"}	-- Profile startup time

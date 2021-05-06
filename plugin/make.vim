@@ -20,34 +20,12 @@ autocmd filetype javascript inoremap <F29> <ESC>:w <bar> exec '!node '.shellesca
 autocmd filetype go nnoremap <F29> :w <bar> exec '!go run '.shellescape('%')<CR>
 autocmd filetype go nnoremap <F29> <ESC>:w <bar> exec '!go run '.shellescape('%')<CR>
 
+autocmd filetype lua nmap <F5> <cmd>:w <bar> :!lua % <CR>
+autocmd filetype lua inoremap <F5> <cmd>:w <bar> :!lua % <CR>
+
 " get binary name from Makefile
 function! GetBinName()
 	let binName = system("grep 'BIN =' Makefile | sed 's/BIN =[ ]//g'")
 	return substitute(binName, '\n\+$', '','')
 endfunction
-
-" " C and C++
-" autocmd filetype c,cpp call s:SetMakeOptions('c')
-" autocmd filetype rust call s:SetMakeOptions('rust')
-" autocmd filetype go call s:SetMakeOptions('go')
-
-" let g:make_option = ""
-" function s:SetMakeOptions(file_type)
-" 	if a:file_type == 'c'
-" 		nnoremap <silent> <F5> :wa <bar> :make run DEBUG=1<CR>
-" 		inoremap <silent> <f5> <ESC> :wa <bar> :make run DEBUG=1<CR>
-" 		nnoremap <silent> <F17> :wa <bar> :silent make DEBUG=1 <bar> :execute 'Termdebug '.GetBinName()<CR>
-" 		nnoremap <silent> <F17> <ESC> :wa <bar> :silent make DEBUG=1 <bar> :execute 'Termdebug '.GetBinName()<CR>
-" 	elseif a:file_type == "rust"
-" 		nnoremap <silent> <F5> :wa <bar> :make run <CR>
-" 		inoremap <silent> <f5> <ESC> :wa <bar> :make run <CR>
-" 		nnoremap <silent> <F17> :wa <bar> :make build <CR> :Termdebug <CR>
-" 		inoremap <silent> <f17> <ESC> :wa <bar> :make build <CR> :Termdebug <CR>
-" 	elseif a:file_type == "go"
-" 		nnoremap <silent> <F5> :wa <bar> :!go run . <CR>
-" 		inoremap <silent> <f5> <ESC> :wa <bar> :!go run . <CR>
-" 		nnoremap <silent> <F17> :wa <bar> :!go build <CR> :Termdebug <CR>
-" 		inoremap <silent> <f17> <ESC> :wa <bar> :!go build <CR> :Termdebug <CR>
-" 	endif
-" endfunction
 

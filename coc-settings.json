@@ -115,5 +115,6 @@
 		"typeParameter": "\uf278",
 		"folder": "\ue5ff",
 		"default": "\uf29c"
-	}
+  },
+  "git.enableGutters": true
 }

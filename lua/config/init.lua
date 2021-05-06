@@ -16,6 +16,8 @@ require('config.lualine')
 -- airline
 -- require('config.airline')
 
+require('gitsigns').setup()
+
 -- rainbow indent
 vim.g.rainbow_active = 1
 vim.g.indent_guides_enable_on_vim_startup = 1
