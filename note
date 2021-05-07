@@ -8,3 +8,5 @@ plugins
 	portable: vimL
 
 port vimL to lua or something
+
+set dictionary to /usr/share/dict/words to enable word complete

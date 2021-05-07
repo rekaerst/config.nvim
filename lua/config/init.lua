@@ -1,23 +1,13 @@
--- vim options
 require('config.vim')
-
--- coc nvim
-require('config.coc')
-
--- nvim-treesitter
+-- require('config.coc')
 require('config.nvim-treesitter')
-
--- nvim-tree
 require('config.nvim-tree')
-
--- lualine
 require('config.lualine')
-
--- airline
 -- require('config.airline')
-
 require('gitsigns').setup()
 -- require('nvim-autopairs').setup()
+require('config.compe')
+require('config.lightbulb')
 
 -- rainbow indent
 vim.g.rainbow_active = 1

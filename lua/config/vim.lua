@@ -8,9 +8,10 @@ vim.o.wildmode = 'longest:full,full'
 vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.hidden = true
-vim.o.shortmess = vim.o.shortmess .. "cI"
+vim.o.shortmess = vim.o.shortmess .. 'cI'
 vim.o.timeoutlen = 400
 vim.o.inccommand = 'nosplit'
+vim.o.completeopt = 'menuone,noselect'
 
 vim.o.smartindent = true
 vim.bo.smartindent = true

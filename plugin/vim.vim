@@ -23,3 +23,9 @@ nnoremap <silent> ,t :Tagbar<CR>
 " Emacs keybindings
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
+
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
+			\ "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"

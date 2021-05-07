@@ -35,10 +35,12 @@ return require('packer').startup(function(use)
 	-- Editing
 	use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
 	use {'jiangmiao/auto-pairs'} -- auto pair parentheses
+	use {'alvan/vim-closetag'}	-- html auto pairs
 	use {'nathanaelkane/vim-indent-guides'}	-- Indent guides
 	use {'mg979/vim-visual-multi'} -- Multiple cursors
 	use {'RRethy/vim-hexokinase', run = 'make'}
 	use {'windwp/nvim-autopairs', opt = true}
+	use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
 
 	-- Development
 	use {'preservim/tagbar', cmd = "Tagbar"} -- displays tags in a window
@@ -48,13 +50,14 @@ return require('packer').startup(function(use)
 	use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}	-- Simple ui for dadbod
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }	-- Semantic highlighting
 	use {'nvim-treesitter/playground', cmd={'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'} }
-	use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
-	use {'alvan/vim-closetag'}	-- html auto pairs
+
+  -- Completion
+	use {'hrsh7th/nvim-compe'}
+	use {'nvim-lua/completion-nvim'}
 
 	-- LSP and completion
-	use {'neoclide/coc.nvim',branch= 'release'}
+	use {'neoclide/coc.nvim',opt=true,branch= 'release'}
 	use {'neovim/nvim-lspconfig'}
-	use {'nvim-lua/completion-nvim'}
 	use {'kosayoda/nvim-lightbulb'}
 
 	-- Debugging

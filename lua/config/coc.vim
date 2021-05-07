@@ -4,11 +4,6 @@ au FileType xml inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(
 
 
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
-			\ "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 
 " Use <c-space> to trigger completion.
