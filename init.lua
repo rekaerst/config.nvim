@@ -38,10 +38,10 @@ require('plugin')
 require('color')
 
 -- LSP (code completion, formating, etc.)
-require('lang')
+require('lsp')
 
 -- DAP (debugging)
-require('dbg')
+require('dap')
 
 -- Plugin configurations was done in plugin/vim.vim
 require('config')
