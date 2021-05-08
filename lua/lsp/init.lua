@@ -1,4 +1,5 @@
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -61,7 +62,7 @@ local servers = {
 	'hls',
 	'cmake'}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  lspconfig[lsp].setup { on_attach = on_attach }
 end
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 --
@@ -96,3 +97,53 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+local kind_symbols = {
+  Text = '',
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Field = '',
+  Variable = '',
+  Class = 'פּ',
+  Interface = '',
+  Module = '',
+  Property = '',
+  Unit = 'ﭧ',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Event = '鬒',
+  Operator = '',
+  TypeParameter = '',
+}
+
+local kind_order = {
+	'Text', 'Method', 'Function', 'Constructor', 'Field', 'Variable', 'Class', 'Interface', 'Module',
+	'Property', 'Unit', 'Value', 'Enum', 'Keyword', 'Snippet', 'Color', 'File', 'Reference', 'Folder',
+	'EnumMember', 'Constant', 'Struct', 'Event', 'Operator', 'TypeParameter'
+}
+
+local symbols = {}
+local len = 25
+
+for i = 1, len do
+	local name = kind_order[i]
+	symbols[i] = kind_symbols[name]
+end
+
+vim.lsp.protocol.CompletionItemKind = symbols
+
+local signdef = vim.fn.sign_define
+signdef('LspDiagnosticsSignError', {text='', numhl = 'RedSign'})
+signdef('LspDiagnosticsSignWarning', {text='', numhl = 'YellowSign'})
+signdef('LspDiagnosticsSignInformation', {text='', numhl='WhiteSing'})
+signdef('LspDiagnosticsSignHint', {text='', numhl='BlueSign'})
+
