@@ -1,4 +1,4 @@
-local util = require('util')
+local util = require('utils')
 
 vim.cmd('lua dap=require(\'dap\')')
 util.map('<F5>', '<cmd>lua dap.continue()<CR>')

@@ -76,10 +76,12 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
   ["barbar.nvim"] = {
+    config = { 'require("config.barbar")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/barbar.nvim"
   },
   ["coc.nvim"] = {
+    config = { 'require("config.coc")' },
     loaded = false,
     needs_bufread = false,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/coc.nvim"
@@ -101,6 +103,7 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["lualine.nvim"] = {
+    config = { 'require("config.lualine")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
@@ -115,6 +118,7 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-compe"] = {
+    config = { 'require("config.compe")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
@@ -137,10 +141,12 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nvim-luapad"
   },
   ["nvim-tree.lua"] = {
+    config = { 'require("config.tree")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
+    config = { 'require("config.treesitter")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
@@ -163,7 +169,7 @@ _G.packer_plugins = {
   playground = {
     commands = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/playground"
   },
   ["plenary.nvim"] = {
@@ -184,11 +190,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim"
   },
+  ["telescope-packer.nvim"] = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/telescope-packer.nvim"
+  },
   ["telescope.nvim"] = {
+    config = { 'require("config.telescope")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-airline"] = {
+    config = { ' require("config.airline")' },
     loaded = false,
     needs_bufread = false,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/vim-airline"
@@ -252,14 +264,38 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
+-- Config for: barbar.nvim
+time("Config for barbar.nvim", true)
+require("config.barbar")
+time("Config for barbar.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+require("config.telescope")
+time("Config for telescope.nvim", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+require("config.compe")
+time("Config for nvim-compe", false)
+-- Config for: nvim-tree.lua
+time("Config for nvim-tree.lua", true)
+require("config.tree")
+time("Config for nvim-tree.lua", false)
+-- Config for: lualine.nvim
+time("Config for lualine.nvim", true)
+require("config.lualine")
+time("Config for lualine.nvim", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+require("config.treesitter")
+time("Config for nvim-treesitter", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)
+vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 
 vim.cmd [[augroup packer_load_aucmds]]

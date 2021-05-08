@@ -1,3 +1,3 @@
-local util = require('util')
+local util = require('utils')
 
 util.lmap('bd', "<cmd>BufferClose!<CR>")

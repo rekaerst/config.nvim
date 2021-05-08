@@ -1,4 +1,4 @@
-local util = require('util')
+local util = require('utils')
 vim.cmd('syntax enable')
 vim.cmd('colorscheme onedark')
 

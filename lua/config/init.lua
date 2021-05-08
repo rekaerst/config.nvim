@@ -1,13 +1,12 @@
-require('config.vim')
 -- require('config.coc')
-require('config.nvim-treesitter')
-require('config.nvim-tree')
-require('config.lualine')
+-- require('config.nvim-treesitter')
+-- require('config.nvim-tree')
+-- require('config.lualine')
 -- require('config.airline')
-require('gitsigns').setup()
+-- require('gitsigns').setup()
 -- require('nvim-autopairs').setup()
-require('config.compe')
-require('config.lightbulb')
+-- require('config.compe')
+-- require('config.lightbulb')
 
 -- rainbow indent
 vim.g.rainbow_active = 1
