@@ -2,8 +2,6 @@ local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -48,21 +46,29 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
+-- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-	"pyright", 
-	"rust_analyzer", 
-	"tsserver", 
-	"clangd", 
-	"gopls", 
-	"bashls", 
-	'gdscript', 
+	"pyright",
+	"rust_analyzer",
+	"tsserver",
+	"clangd",
+	"gopls",
+	"bashls",
+	'gdscript',
 	'vala_ls',
 	'hls',
 	'cmake'}
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup { on_attach = on_attach }
+  lspconfig[lsp].setup { on_attach = function()
+	  require'lsp_signature'.on_attach{
+		  bind = true,
+		  handler_opts = {
+			  border = 'none'
+		  }
+	  }
+	return on_attach
+  end }
 end
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 --
@@ -142,8 +148,8 @@ end
 vim.lsp.protocol.CompletionItemKind = symbols
 
 local signdef = vim.fn.sign_define
-signdef('LspDiagnosticsSignError', {text='', numhl = 'RedSign'})
-signdef('LspDiagnosticsSignWarning', {text='', numhl = 'YellowSign'})
-signdef('LspDiagnosticsSignInformation', {text='', numhl='WhiteSing'})
-signdef('LspDiagnosticsSignHint', {text='', numhl='BlueSign'})
+signdef('LspDiagnosticsSignError', {text='', numhl = 'RedSign'})
+signdef('LspDiagnosticsSignWarning', {text='', numhl = 'YellowSign'})
+signdef('LspDiagnosticsSignInformation', {text='', numhl='WhiteSing'})
+signdef('LspDiagnosticsSignHint', {text='', numhl='BlueSign'})
 

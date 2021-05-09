@@ -43,6 +43,5 @@ require('lsp')
 -- DAP (debugging)
 require('dap')
 
--- Plugin configurations was done in plugin/vim.vim
-require('config')
-
+-- Misc
+require('config.misc')

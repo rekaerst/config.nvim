@@ -90,6 +90,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
+  edge = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/edge"
+  },
   fzf = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/fzf"
@@ -102,6 +106,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+  },
+  kommentary = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lsp-status.nvim"] = {
+    config = { 'require("config.lsp-status")' },
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
+  },
+  ["lsp-trouble.nvim"] = {
+    config = { 'require("config.lsp-trouble")' },
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lsp-trouble.nvim"
+  },
+  ["lsp_signature.nvim"] = {
+    config = { 'require("config.lsp_signature")' },
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
   ["lspsaga.nvim"] = {
     config = { 'require("config.lspsaga")' },
     loaded = true,
@@ -111,6 +138,10 @@ _G.packer_plugins = {
     config = { 'require("config.lualine")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
   ["nlua.nvim"] = {
     loaded = false,
@@ -131,11 +162,6 @@ _G.packer_plugins = {
     config = { 'require("config.dap")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-dap"
-  },
-  ["nvim-lightbulb"] = {
-    config = { 'require("config.lightbulb")' },
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -165,6 +191,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
+  ["one-nvim"] = {
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/one-nvim"
+  },
   ["onedark.vim"] = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/onedark.vim"
@@ -187,6 +217,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  sniprun = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/sniprun"
+  },
   tagbar = {
     commands = { "Tagbar" },
     loaded = false,
@@ -206,7 +241,7 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/telescope-packer.nvim"
   },
   ["telescope.nvim"] = {
-    after = { "telescope-packer.nvim", "telescope-dap.nvim" },
+    after = { "telescope-dap.nvim", "telescope-packer.nvim" },
     only_config = true
   },
   undotree = {
@@ -227,8 +262,9 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/vim-closetag"
   },
   ["vim-commentary"] = {
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/vim-commentary"
   },
   ["vim-dadbod"] = {
     commands = { "DB", "DBUI" },
@@ -256,8 +292,9 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/vim-hexokinase"
   },
   ["vim-indent-guides"] = {
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/vim-indent-guides"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/vim-indent-guides"
   },
   ["vim-startuptime"] = {
     loaded = true,
@@ -278,42 +315,50 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: nvim-treesitter
-time("Config for nvim-treesitter", true)
-require("config.treesitter")
-time("Config for nvim-treesitter", false)
 -- Config for: nvim-compe
 time("Config for nvim-compe", true)
 require("config.compe")
 time("Config for nvim-compe", false)
--- Config for: nvim-dap
-time("Config for nvim-dap", true)
-require("config.dap")
-time("Config for nvim-dap", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-require("config.telescope")
-time("Config for telescope.nvim", false)
--- Config for: lualine.nvim
-time("Config for lualine.nvim", true)
-require("config.lualine")
-time("Config for lualine.nvim", false)
--- Config for: barbar.nvim
-time("Config for barbar.nvim", true)
-require("config.barbar")
-time("Config for barbar.nvim", false)
--- Config for: nvim-lightbulb
-time("Config for nvim-lightbulb", true)
-require("config.lightbulb")
-time("Config for nvim-lightbulb", false)
 -- Config for: lspsaga.nvim
 time("Config for lspsaga.nvim", true)
 require("config.lspsaga")
 time("Config for lspsaga.nvim", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+require("config.treesitter")
+time("Config for nvim-treesitter", false)
 -- Config for: nvim-tree.lua
 time("Config for nvim-tree.lua", true)
 require("config.tree")
 time("Config for nvim-tree.lua", false)
+-- Config for: lsp-status.nvim
+time("Config for lsp-status.nvim", true)
+require("config.lsp-status")
+time("Config for lsp-status.nvim", false)
+-- Config for: lsp-trouble.nvim
+time("Config for lsp-trouble.nvim", true)
+require("config.lsp-trouble")
+time("Config for lsp-trouble.nvim", false)
+-- Config for: lualine.nvim
+time("Config for lualine.nvim", true)
+require("config.lualine")
+time("Config for lualine.nvim", false)
+-- Config for: lsp_signature.nvim
+time("Config for lsp_signature.nvim", true)
+require("config.lsp_signature")
+time("Config for lsp_signature.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+require("config.telescope")
+time("Config for telescope.nvim", false)
+-- Config for: nvim-dap
+time("Config for nvim-dap", true)
+require("config.dap")
+time("Config for nvim-dap", false)
+-- Config for: barbar.nvim
+time("Config for barbar.nvim", true)
+require("config.barbar")
+time("Config for barbar.nvim", false)
 -- Load plugins in order defined by `after`
 time("Sequenced loading", true)
 vim.cmd [[ packadd telescope-packer.nvim ]]
@@ -324,11 +369,11 @@ time("Sequenced loading", false)
 time("Defining lazy-load commands", true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod', 'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 
 if should_profile then save_profiles() end

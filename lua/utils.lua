@@ -1,50 +1,39 @@
-local utils = {}
+local M = {}
 
 local script_dir = vim.env.XDG_CONFIG_HOME .. '/nvim/lua/'
 
-function utils.source(srcript)
+function M.source(srcript)
 	vim.cmd('source ' .. script_dir .. srcript .. '.vim')
 end
 
-function utils.hi(token, fg )
+function M.hi(token, fg )
 	vim.cmd('hi ' .. token .. ' guifg=' .. fg)
 end
 
-function utils.nmap(lh, rh)
+---
+--- Map to normal mode
+---
+function M.nmap(lh, rh)
 	vim.api.nvim_set_keymap('n',lh,rh, {noremap = true, silent = true})
 end
 
 ---
 --- Nmap with leader key
 ---
-function utils.lmap(lh, rh)
+function M.lmap(lh, rh)
 	vim.api.nvim_set_keymap('n','<leader>' .. lh,rh, {noremap = true, silent = true})
 end
 
-function utils.imap(lh, rh)
+function M.imap(lh, rh)
 	vim.api.nvim_set_keymap('i',lh,rh, {silent = true})
 end
 
 ---
 --- map to both normal mode and insert mode
 ---
-function utils.map(lh, rh)
-	utils.nmap(lh, rh)
-	utils.imap(lh, '<ESC>' .. rh .. 'i')
-end
-
-
-function utils.plugin_loaded(plugin_name)
-	return packer_plugins[plugin_name] and packer_plugins[plugin_name].loaded
-end
-
----
---- load lua module only if the corresponding plugin is loaded
----
-function utils.config(module)
-	if utils.plugin_loaded(module) or utils.plugin_loaded(module .. '.nvim') then
-		require(module)
-	end
+function M.map(lh, rh)
+	M.nmap(lh, rh)
+	M.imap(lh, '<ESC>' .. rh .. 'i')
 end
 
 local window_options = {
@@ -87,7 +76,10 @@ function mt:__index(k)
 	return vim.o[k]
 end
 
+setmetatable(mt, mt)
+m = mt
 setmetatable(opt, mt)
-utils.opt = opt
 
-return utils
+M.opt = opt
+
+return M
