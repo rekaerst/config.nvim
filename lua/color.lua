@@ -16,7 +16,7 @@ if vim.g.colors_name == "onedark" then
 	util.hi('TSConstructor', '#E5C07B')
 	util.hi('Operator', '#7680EF')
 	util.hi('Include', '#C678DD')
-	util.hi('TSFuncMacro', '#61AFEF')
+	util.hi('TSFuncMacro', '#61DEEF')
 	util.hi('TSFuncBuiltin', '#56B6C2')
 	util.hi('pythonTSVariableBuiltin', '#E5C07B')
 	-- vim.cmd 'hi Identifier guifg=#ABB2BF'

@@ -13,8 +13,10 @@ use {'nvim-lua/popup.nvim'}
 
 -- Colorscheme
 use {'joshdick/onedark.vim'}
+use {'folke/tokyonight.nvim'}
 use {'Th3Whit3Wolf/one-nvim'}
 use {'sainnhe/edge'}
+use {'marko-cerovac/material.nvim'}
 
 -- Fuzzy
 use {'nvim-telescope/telescope.nvim', config='require("config.telescope")'} -- Fizzy
@@ -26,8 +28,7 @@ use {'kyazdani42/nvim-web-devicons'}
 use {'ryanoasis/vim-devicons', opt = true}
 
 -- Powerline
-use {'vim-airline/vim-airline',config= ' require("config.airline")',opt = true}
-use {'hoob3rt/lualine.nvim', config='require("config.lualine")'}
+use {'hoob-31rt/lualine.nvim', config='require("config.lualine")'}
 
 -- Tab bar
 use {'romgrk/barbar.nvim', config = 'require("config.barbar")' }
@@ -59,8 +60,8 @@ use {'RRethy/vim-hexokinase', run = 'make'}
 use {'preservim/tagbar', cmd = "Tagbar"}
 
 -- Commenting
-use 'b3nj5m1n/kommentary'
-use {'tpope/vim-commentary', opt = true}
+use {'b3nj5m1n/kommentary', opt = true}
+use {'tpope/vim-commentary', opt = false}
 
 -- Undo
 use {
@@ -90,11 +91,11 @@ use {'neoclide/coc.nvim',
 }
 
 -- Runner
-use {'michaelb/sniprun', opt = true}
+use {'michaelb/sniprun', run = 'bash ./install.sh', opt = true}
 
 -- Debugging
 use {'mfussenegger/nvim-dap', config='require("config.dap")'}
-use {'nvim-telescope/telescope-dap.nvim', after='telescope.nvim'}
+use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
 
 -- Git
 use {'tpope/vim-fugitive'} -- A plugin for git

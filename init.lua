@@ -32,8 +32,11 @@ opt.backup = false -- some language servers have issues with backup file
 opt.writebackup = false
 opt.updatetime = 300 -- having longer updatetime leads to noticeable delays
 
+vim.cmd [[
+autocmd TermOpen * setlocal nonumber
+]]
 ---- packer bootstrapping -----
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -50,7 +53,8 @@ require('color')
 require('lsp')
 
 -- DAP (debugging)
-require('dap')
+require('dbg')
 
 -- Misc
 require('config.misc')
+
