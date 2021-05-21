@@ -12,13 +12,13 @@ command CursorUnAim :set nocursorcolumn | :set nocursorline
 hi SpecialKey guifg=#5c6370
 
 " ========================== Key Mappings ============================
-nnoremap <silent> ,h :noh<CR>
+nnoremap <silent> <leader>h :noh<CR>
 
 " Set relative line number
-nnoremap <silent> ,r :set invrelativenumber<CR>
-nnoremap <silent> ,w :w<CR>
-nnoremap <silent> ,a :wa<CR>
-nnoremap <silent> ,t :Tagbar<CR>
+nnoremap <silent> <leader>nr :set invrelativenumber<CR>
+nnoremap <silent> <leader>ww :w<CR>
+nnoremap <silent> <leader>wa :wa<CR>
+nnoremap <silent> <leader>tg :Tagbar<CR>
 
 " Emacs keybindings
 inoremap <C-e> <C-o>$

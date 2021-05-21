@@ -320,14 +320,38 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: lspsaga.nvim
-time("Config for lspsaga.nvim", true)
-require("config.lspsaga")
-time("Config for lspsaga.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+require("config.telescope")
+time("Config for telescope.nvim", false)
 -- Config for: lsp_signature.nvim
 time("Config for lsp_signature.nvim", true)
 require("config.lsp_signature")
 time("Config for lsp_signature.nvim", false)
+-- Config for: nvim-dap
+time("Config for nvim-dap", true)
+require("config.dap")
+time("Config for nvim-dap", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+require("config.compe")
+time("Config for nvim-compe", false)
+-- Config for: telescope-dap.nvim
+time("Config for telescope-dap.nvim", true)
+require("config.telescope-dap")
+time("Config for telescope-dap.nvim", false)
+-- Config for: nvim-tree.lua
+time("Config for nvim-tree.lua", true)
+require("config.tree")
+time("Config for nvim-tree.lua", false)
+-- Config for: lspsaga.nvim
+time("Config for lspsaga.nvim", true)
+require("config.lspsaga")
+time("Config for lspsaga.nvim", false)
+-- Config for: lualine.nvim
+time("Config for lualine.nvim", true)
+require("config.lualine")
+time("Config for lualine.nvim", false)
 -- Config for: lsp-status.nvim
 time("Config for lsp-status.nvim", true)
 require("config.lsp-status")
@@ -340,34 +364,10 @@ time("Config for lsp-trouble.nvim", false)
 time("Config for nvim-treesitter", true)
 require("config.treesitter")
 time("Config for nvim-treesitter", false)
--- Config for: lualine.nvim
-time("Config for lualine.nvim", true)
-require("config.lualine")
-time("Config for lualine.nvim", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-require("config.compe")
-time("Config for nvim-compe", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-require("config.telescope")
-time("Config for telescope.nvim", false)
 -- Config for: barbar.nvim
 time("Config for barbar.nvim", true)
 require("config.barbar")
 time("Config for barbar.nvim", false)
--- Config for: telescope-dap.nvim
-time("Config for telescope-dap.nvim", true)
-require("config.telescope-dap")
-time("Config for telescope-dap.nvim", false)
--- Config for: nvim-dap
-time("Config for nvim-dap", true)
-require("config.dap")
-time("Config for nvim-dap", false)
--- Config for: nvim-tree.lua
-time("Config for nvim-tree.lua", true)
-require("config.tree")
-time("Config for nvim-tree.lua", false)
 -- Load plugins in order defined by `after`
 time("Sequenced loading", true)
 vim.cmd [[ packadd telescope-packer.nvim ]]
@@ -375,13 +375,13 @@ time("Sequenced loading", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod', 'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 
 if should_profile then save_profiles() end

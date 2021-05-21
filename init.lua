@@ -5,7 +5,7 @@ local g = vim.g
 
 -- Leader/local leader
 g.mapleader = ' '
-g.maplocalleader = ','
+g.maplocalleader = '\\'
 
 -- neovim remote providers
 g.python3_host_prog = '/usr/bin/python3'
