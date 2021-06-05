@@ -28,10 +28,11 @@ use {'kyazdani42/nvim-web-devicons'}
 use {'ryanoasis/vim-devicons', opt = true}
 
 -- Powerline
-use {'hoob-31rt/lualine.nvim', config='require("config.lualine")'}
+use {'hoob3rt/lualine.nvim', config='require("config.lualine")'}
 
 -- Tab bar
 use {'romgrk/barbar.nvim', config = 'require("config.barbar")' }
+use {'akinsho/nvim-bufferline.lua', opt = true, config = 'require("bufferline").setup{}'}
 
 -- Keymapping
 use {'folke/which-key.nvim'} -- displays keybindings when typing
@@ -47,8 +48,8 @@ use {'alvan/vim-closetag'}	-- html auto pairs
 use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
 
 -- Indentation tracking
-use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
-use {'nathanaelkane/vim-indent-guides', opt = true}	-- Indent guides
+use {'lukas-reineke/indent-blankline.nvim',opt=true, branch = 'lua'}
+use {'nathanaelkane/vim-indent-guides'}
 
 -- Mutli line
 use {'mg979/vim-visual-multi'} -- Multiple cursors
@@ -91,7 +92,7 @@ use {'neoclide/coc.nvim',
 }
 
 -- Runner
-use {'michaelb/sniprun', run = 'bash ./install.sh', opt = true}
+use {'michaelb/sniprun', run = 'bash ./install.sh'}
 
 -- Debugging
 use {'mfussenegger/nvim-dap', config='require("config.dap")'}
@@ -108,6 +109,9 @@ use {'pwntester/octo.nvim'}
 use {'tpope/vim-dadbod', cmd = {"DB", "DBUI"}}
 use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
 
+-- Preview
+use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+
 -- Nevim Development
 use {'tjdevries/nlua.nvim', opt = true} -- lua
 use {'rafcamlet/nvim-luapad' , opt = true, cmd = "Luapad"} -- lua
@@ -115,3 +119,6 @@ use {'rktjmp/lush.nvim'} -- theme
 
 -- Utils
 use {"dstein64/vim-startuptime"}	-- Profile startup time
+
+-- Tabnine
+-- use {"codota/tabnine-vim"}
