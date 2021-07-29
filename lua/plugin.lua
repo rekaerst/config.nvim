@@ -16,7 +16,6 @@ use {'joshdick/onedark.vim'}
 use {'folke/tokyonight.nvim'}
 use {'Th3Whit3Wolf/one-nvim'}
 use {'sainnhe/edge'}
-use {'marko-cerovac/material.nvim'}
 
 -- Fuzzy
 use {'nvim-telescope/telescope.nvim', config='require("config.telescope")'} -- Fizzy
@@ -32,7 +31,6 @@ use {'hoob3rt/lualine.nvim', config='require("config.lualine")'}
 
 -- Tab bar
 use {'romgrk/barbar.nvim', config = 'require("config.barbar")' }
-use {'akinsho/nvim-bufferline.lua', opt = true, config = 'require("bufferline").setup{}'}
 
 -- Keymapping
 use {'folke/which-key.nvim'} -- displays keybindings when typing
@@ -82,14 +80,9 @@ use {'nvim-lua/completion-nvim'}
 -- LSP
 use {'neovim/nvim-lspconfig'}
 use {'glepnir/lspsaga.nvim', config='require("config.lspsaga")'}
-use {'ray-x/lsp_signature.nvim', config = 'require("config.lsp_signature")'}
+use {'ray-x/lsp_signature.nvim', opt = true, config = 'require("config.lsp_signature")'}
 use {'nvim-lua/lsp-status.nvim', config = 'require("config.lsp-status")'}
 use {'folke/lsp-trouble.nvim', config = 'require("config.lsp-trouble")'}
-use {'neoclide/coc.nvim',
-	config='require("config.coc")',
-	opt=true,
-	branch= 'release'
-}
 
 -- Runner
 use {'michaelb/sniprun', run = 'bash ./install.sh'}

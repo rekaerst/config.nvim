@@ -49,7 +49,8 @@ end
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-	"pyright",
+	-- "pyright",
+	"jedi_language_server",
 	"rust_analyzer",
 	"tsserver",
 	"clangd",

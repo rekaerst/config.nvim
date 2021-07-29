@@ -1,17 +1,14 @@
-" Automatically generated packer.nvim plugin loader code
+-- Automatically generated packer.nvim plugin loader code
 
-if !has('nvim-0.5')
-  echohl WarningMsg
-  echom "Invalid Neovim version for packer.nvim!"
-  echohl None
-  finish
-endif
+if vim.api.nvim_call_function('has', {'nvim-0.5'}) ~= 1 then
+  vim.api.nvim_command('echohl WarningMsg | echom "Invalid Neovim version for packer.nvim! | echohl None"')
+  return
+end
 
-packadd packer.nvim
+vim.api.nvim_command('packadd packer.nvim')
 
-try
+local no_errors, error_msg = pcall(function()
 
-lua << END
   local time
   local profile_info
   local should_profile = false
@@ -46,9 +43,9 @@ local function save_profiles(threshold)
   _G._packer.profile_output = results
 end
 
-time("Luarocks path setup", true)
-local package_path_str = "/home/arthur/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/arthur/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/arthur/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/arthur/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/arthur/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+time([[Luarocks path setup]], true)
+local package_path_str = "/home/arthur/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/arthur/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/arthur/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/arthur/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/arthur/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -57,19 +54,20 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
   package.cpath = package.cpath .. ';' .. install_cpath_pattern
 end
 
-time("Luarocks path setup", false)
-time("try_loadstring definition", true)
+time([[Luarocks path setup]], false)
+time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
 
-time("try_loadstring definition", false)
-time("Defining packer_plugins", true)
+time([[try_loadstring definition]], false)
+time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["auto-pairs"] = {
     loaded = true,
@@ -79,12 +77,6 @@ _G.packer_plugins = {
     config = { 'require("config.barbar")' },
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/barbar.nvim"
-  },
-  ["coc.nvim"] = {
-    config = { 'require("config.coc")' },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/coc.nvim"
   },
   ["completion-nvim"] = {
     loaded = true,
@@ -128,8 +120,9 @@ _G.packer_plugins = {
   },
   ["lsp_signature.nvim"] = {
     config = { 'require("config.lsp_signature")' },
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim"
   },
   ["lspsaga.nvim"] = {
     config = { 'require("config.lspsaga")' },
@@ -149,10 +142,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
   },
-  ["material.nvim"] = {
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/material.nvim"
-  },
   ["nlua.nvim"] = {
     loaded = false,
     needs_bufread = true,
@@ -162,12 +151,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
-  },
-  ["nvim-bufferline.lua"] = {
-    config = { 'require("bufferline").setup{}' },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nvim-bufferline.lua"
   },
   ["nvim-compe"] = {
     config = { 'require("config.compe")' },
@@ -254,12 +237,13 @@ _G.packer_plugins = {
   },
   ["telescope-packer.nvim"] = {
     load_after = {},
-    loaded = false,
+    loaded = true,
     needs_bufread = false,
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/telescope-packer.nvim"
   },
   ["telescope.nvim"] = {
     after = { "telescope-packer.nvim" },
+    loaded = true,
     only_config = true
   },
   ["tokyonight.nvim"] = {
@@ -328,78 +312,71 @@ _G.packer_plugins = {
   }
 }
 
-time("Defining packer_plugins", false)
--- Config for: lualine.nvim
-time("Config for lualine.nvim", true)
-require("config.lualine")
-time("Config for lualine.nvim", false)
--- Config for: nvim-dap
-time("Config for nvim-dap", true)
-require("config.dap")
-time("Config for nvim-dap", false)
--- Config for: lsp-status.nvim
-time("Config for lsp-status.nvim", true)
-require("config.lsp-status")
-time("Config for lsp-status.nvim", false)
--- Config for: lsp-trouble.nvim
-time("Config for lsp-trouble.nvim", true)
-require("config.lsp-trouble")
-time("Config for lsp-trouble.nvim", false)
--- Config for: barbar.nvim
-time("Config for barbar.nvim", true)
-require("config.barbar")
-time("Config for barbar.nvim", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-require("config.compe")
-time("Config for nvim-compe", false)
--- Config for: telescope-dap.nvim
-time("Config for telescope-dap.nvim", true)
-require("config.telescope-dap")
-time("Config for telescope-dap.nvim", false)
--- Config for: lsp_signature.nvim
-time("Config for lsp_signature.nvim", true)
-require("config.lsp_signature")
-time("Config for lsp_signature.nvim", false)
+time([[Defining packer_plugins]], false)
 -- Config for: nvim-treesitter
-time("Config for nvim-treesitter", true)
+time([[Config for nvim-treesitter]], true)
 require("config.treesitter")
-time("Config for nvim-treesitter", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-require("config.telescope")
-time("Config for telescope.nvim", false)
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-tree.lua
-time("Config for nvim-tree.lua", true)
+time([[Config for nvim-tree.lua]], true)
 require("config.tree")
-time("Config for nvim-tree.lua", false)
+time([[Config for nvim-tree.lua]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+require("config.barbar")
+time([[Config for barbar.nvim]], false)
+-- Config for: nvim-compe
+time([[Config for nvim-compe]], true)
+require("config.compe")
+time([[Config for nvim-compe]], false)
+-- Config for: lsp-status.nvim
+time([[Config for lsp-status.nvim]], true)
+require("config.lsp-status")
+time([[Config for lsp-status.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require("config.dap")
+time([[Config for nvim-dap]], false)
 -- Config for: lspsaga.nvim
-time("Config for lspsaga.nvim", true)
+time([[Config for lspsaga.nvim]], true)
 require("config.lspsaga")
-time("Config for lspsaga.nvim", false)
+time([[Config for lspsaga.nvim]], false)
+-- Config for: telescope-dap.nvim
+time([[Config for telescope-dap.nvim]], true)
+require("config.telescope-dap")
+time([[Config for telescope-dap.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("config.telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: lsp-trouble.nvim
+time([[Config for lsp-trouble.nvim]], true)
+require("config.lsp-trouble")
+time([[Config for lsp-trouble.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("config.lualine")
+time([[Config for lualine.nvim]], false)
 -- Load plugins in order defined by `after`
-time("Sequenced loading", true)
+time([[Sequenced loading]], true)
 vim.cmd [[ packadd telescope-packer.nvim ]]
-time("Sequenced loading", false)
+time([[Sequenced loading]], false)
 
 -- Command lazy-loads
-time("Defining lazy-load commands", true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod', 'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-time("Defining lazy-load commands", false)
+time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSHighlightCapturesUnderCursor lua require("packer.load")({'playground'}, { cmd = "TSHighlightCapturesUnderCursor", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Tagbar lua require("packer.load")({'tagbar'}, { cmd = "Tagbar", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DBUI lua require("packer.load")({'vim-dadbod', 'vim-dadbod-ui'}, { cmd = "DBUI", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+time([[Defining lazy-load commands]], false)
 
 if should_profile then save_profiles() end
 
-END
+end)
 
-catch
-  echohl ErrorMsg
-  echom "Error in packer_compiled: " .. v:exception
-  echom "Please check your config for correctness"
-  echohl None
-endtry
+if not no_errors then
+  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
+end

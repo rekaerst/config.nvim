@@ -7,7 +7,6 @@ augroup END
 command CursorAim :set cursorcolumn | :set cursorline
 command CursorUnAim :set nocursorcolumn | :set nocursorline
 
-
 " ========================== Highlighting ==============================
 hi SpecialKey guifg=#5c6370
 
@@ -21,11 +20,12 @@ nnoremap <silent> <leader>wa :wa<CR>
 nnoremap <silent> <leader>tg :Tagbar<CR>
 
 " Emacs keybindings
-inoremap <C-e> <C-o>$
-inoremap <C-a> <C-o>^
 
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? "\<C-n>" :
 			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
 			\ "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$

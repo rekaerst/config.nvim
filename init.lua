@@ -58,3 +58,5 @@ require('dbg')
 -- Misc
 require('config.misc')
 
+vim.cmd [[
+]]

@@ -15,7 +15,6 @@ require'compe'.setup {
 vim.cmd [[
 imap <silent><expr> <C-Space> compe#complete()
 imap <silent><expr> <C-y> compe#confirm()
-imap <silent><expr> <C-e> compe#close('<C-e>')
 imap <silent><expr> <C-f> compe#scroll({'delta': +4})
 imap <silent><expr> <C-b> compe#scroll({'delta': -4})
 ]]
