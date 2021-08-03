@@ -40,8 +40,8 @@ use {'kyazdani42/nvim-tree.lua', config='require("config.tree")'}
 
 -- Parentheses
 use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
-use {'jiangmiao/auto-pairs'} -- auto pair parentheses
-use {'windwp/nvim-autopairs', opt = true}
+use {'jiangmiao/auto-pairs', opt = true} -- auto pair parentheses
+use {'windwp/nvim-autopairs', opt = false, config='require("config.auto-pairs")'}
 use {'alvan/vim-closetag'}	-- html auto pairs
 use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
 

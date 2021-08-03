@@ -70,8 +70,9 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["auto-pairs"] = {
-    loaded = true,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/auto-pairs"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/auto-pairs"
   },
   ["barbar.nvim"] = {
     config = { 'require("config.barbar")' },
@@ -148,9 +149,9 @@ _G.packer_plugins = {
     path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nlua.nvim"
   },
   ["nvim-autopairs"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/arthur/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
+    config = { 'require("config.auto-pairs")' },
+    loaded = true,
+    path = "/home/arthur/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-compe"] = {
     config = { 'require("config.compe")' },
@@ -333,10 +334,14 @@ time([[Config for nvim-compe]], false)
 time([[Config for lsp-status.nvim]], true)
 require("config.lsp-status")
 time([[Config for lsp-status.nvim]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require("config.dap")
-time([[Config for nvim-dap]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("config.telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("config.lualine")
+time([[Config for lualine.nvim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 require("config.lspsaga")
@@ -345,18 +350,18 @@ time([[Config for lspsaga.nvim]], false)
 time([[Config for telescope-dap.nvim]], true)
 require("config.telescope-dap")
 time([[Config for telescope-dap.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("config.telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require("config.dap")
+time([[Config for nvim-dap]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require("config.auto-pairs")
+time([[Config for nvim-autopairs]], false)
 -- Config for: lsp-trouble.nvim
 time([[Config for lsp-trouble.nvim]], true)
 require("config.lsp-trouble")
 time([[Config for lsp-trouble.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require("config.lualine")
-time([[Config for lualine.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd telescope-packer.nvim ]]
