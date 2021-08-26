@@ -46,7 +46,6 @@ use {'alvan/vim-closetag'}	-- html auto pairs
 use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
 
 -- Indentation tracking
-use {'lukas-reineke/indent-blankline.nvim',opt=true, branch = 'lua'}
 use {'nathanaelkane/vim-indent-guides'}
 
 -- Mutli line
