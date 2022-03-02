@@ -73,8 +73,14 @@ use {'nvim-treesitter/nvim-treesitter',config='require("config.treesitter")',run
 use {'nvim-treesitter/playground', cmd={'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'} }
 
 -- Completion
-use {'hrsh7th/nvim-compe', config='require("config.compe")'}
-use {'nvim-lua/completion-nvim'}
+use {'hrsh7th/cmp-nvim-lsp'}
+use {'hrsh7th/cmp-path'}
+use {'hrsh7th/cmp-buffer'}
+use {'saadparwaiz1/cmp_luasnip'}
+use {'hrsh7th/nvim-cmp', config='require("config.cmp")'}
+
+-- Snips
+use {'L3MON4D3/LuaSnip'}
 
 -- LSP
 use {'neovim/nvim-lspconfig'}

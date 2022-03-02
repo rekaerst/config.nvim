@@ -18,11 +18,3 @@ MUtils.completion_confirm=function()
 end
 remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 
--- Workaround compe
-local parenthesis_rule = npairs.get_rule("(")
-parenthesis_rule:with_pair(function()
-  if vim.fn.pumvisible() then
-    vim.cmd([[ call timer_start(0, { -> luaeval('require"compe"._close()') }) ]])
-  end
-  return true
-end)

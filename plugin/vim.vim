@@ -21,11 +21,11 @@ nnoremap <silent> <leader>tg :Tagbar<CR>
 
 " Emacs keybindings
 
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
-			\ "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+" 			\ pumvisible() ? "\<C-n>" :
+" 			\ search('\%#[]>)};''"`]', 'n') ? '<Right>' :
+" 			\ "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
