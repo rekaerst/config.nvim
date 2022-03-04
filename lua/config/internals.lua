@@ -1,6 +1,5 @@
 local g = vim.g
-local utils = require('utils')
-local o = utils.opt
+local o = vim.opt
 vim.cmd [[
 autocmd TermOpen * setlocal nonumber
 ]]

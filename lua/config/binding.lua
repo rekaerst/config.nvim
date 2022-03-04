@@ -7,7 +7,7 @@ wk.register({
 			name = "File",
 			w = {':w<cr>', "Save Current File"},
 			a = {':wa<cr>', "Save All Files"},
-			x = {':wq', "Save and Close"},
+			x = {':wq<cr>', "Save and Close"},
 			r = {
 				"<cmd>Telescope oldfiles<cr>",
 				"Open Recent File",
@@ -39,17 +39,24 @@ wk.register({
 		d = {
 			name = "Debug",
 			b = {':lua require"dap".toggle_breakpoint()<cr>', "Toggle Breakpoint"},
+			B = {':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', "Conditional BreakPoint"},
 			c = {':lua require"dap".continue()<cr>', "Continue"},
 			o = {':lua require"dap".step_over()<cr>', "Step Over"},
-			i = {':lua require"dap".step_into()<cr>', "Step Into"}
+			O = {':lua require"dap".step_out()<cr>', "Step Out"},
+			i = {':lua require"dap".step_into()<cr>', "Step Into"},
+			r = {':lua require"dap".repl.open()<cr>', "Open Debug REPL"},
+			t = {':lua require"dap".terminate()<cr>', "Stop Debugging"},
+			g = {':lua require"dap".run_to_cursor()<cr>', "Run to Cursor"},
+			G = {':lua require"dap".goto_()<cr>', "Goto Cursor"},
+			u = {':lua require"dapui".toggle()<cr>', "Toggle Debug UI"}
 		},
 		v = {
 			name = "View",
-			t = {':NvimTreeToggle<cr>', "File Browser"},
-			T = {':NvimTreeRefresh<cr>', "Refresh File Browser"},
-			g = {':IndentGuidesToggle<cr>', "Toggle Indent Guides"},
+			t = {'<cmd>NvimTreeToggle<cr>', "File Browser"},
+			T = {'<cmd>NvimTreeRefresh<cr>', "Refresh File Browser"},
 			e = {':if &ve == "all" | echo "disable venn " | set ve= | else | set ve=all | echo "enable venn" | endif | :IndentGuidesToggle | :lua Toggle_venn() <cr>',
         "Venn"},
+			s = {'<cmd>SymbolsOutline<cr>', "Outline"},
 			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"}
 		},
 		h = {
@@ -58,11 +65,13 @@ wk.register({
 			f = {'<cmd>Telescope help_tags<cr>', "Find Help"}
 		}
 	},
-	['<C-b'] = {':w | :make<cr>', "Make"},
+	['<F6>'] = {':w | :make<cr>', "Make"},
 	['<F9>'] = {':lua require"dap".toggle_breakpoint()<cr>', "Toggle Breakpoint"},
 	['<F5>'] = {':lua require"dap".continue()<cr>', "Continue"},
 	['<F10>'] = {':lua require"dap".step_over()<cr>', "Step Over"},
-	['<F11>'] = {':lua require"dap".step_into()<cr>', "Step Into"}
+	['<F11>'] = {':lua require"dap".step_into()<cr>', "Step Into"},
+	['<F23>'] = {':lua require"dap".setp_out()<cr>', "Step Out"},
+	['<F29>'] = {':lua require"dap".terminate()<cr>', "Stop Debugging"}
 }, {
 	silent = true
 })

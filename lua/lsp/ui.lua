@@ -1,26 +1,24 @@
-local utils = require('utils')
-local symbols = utils.symbols
+local u = require('utils')
 
-vim.lsp.protocol.CompletionItemKind = symbols
+vim.lsp.protocol.CompletionItemKind = u.symbols
 
 -- LSP Signs
-local signdef = vim.fn.sign_define
-signdef('DiagnosticSignError', {
+u.signdef('DiagnosticSignError', {
 	text = '',
 	texthl = 'DiagnosticSignError',
 	numhl = 'DiagnosticSignError'
 })
-signdef('DiagnosticSignWarn', {
+u.signdef('DiagnosticSignWarn', {
 	text = '',
 	texthl = 'DiagnosticSignWarn',
 	numhl = 'DiagnosticSignWarn'
 })
-signdef('DiagnosticSignInfo', {
+u.signdef('DiagnosticSignInfo', {
 	text = '',
 	texthl = 'DiagnosticSignInfo',
 	numhl = 'DiagnosticSignInfo'
 })
-signdef('DiagnosticSignHint', {
+u.signdef('DiagnosticSignHint', {
 	text = '',
 	texthl = 'DiagnosticSignHint',
 	numhl = 'DiagnosticSignHint'

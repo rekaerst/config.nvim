@@ -16,9 +16,9 @@ M.on_attach = function(client, bufnr)
 				t = {'<cmd>Trouble<cr>', "Trouble"},
 				w = {'<cmd>Trouble workspace_diagnostics<cr>', "Workspace Diagnostics"},
 				r = {'<cmd>Trouble lsp_references<cr>', "References"},
-				q = {'<cmd>Trouble quickfix<cr>'},
-				s = {'<cmd>Telescope lsp_document_symbols', "Document Symbols"},
-				S = {'<cmd>Telescope lsp_workspace_symbols', "Workspace Symbols"},
+				q = {'<cmd>Trouble quickfix<cr>', "Quick Fix"},
+				s = {'<cmd>Telescope lsp_document_symbols<cr>', "Document Symbols"},
+				S = {'<cmd>Telescope lsp_workspace_symbols<cr>', "Workspace Symbols"},
 				['['] = {'<cmd>Lspsaga diagnostic_jump_prev<CR>', "Previous Diagnostic"},
 				[']'] = {'<cmd>Lspsaga diagnostic_jump_next<CR>', "Next Diagnostic"}
 

@@ -1,5 +1,7 @@
-local dap = require('dap')
-local u = require('utils')
+local dap = require 'dap'
+
+require'dap.ext.vscode'.load_launchjs()
+require 'dbg.ui'
 
 dap.adapters.lldb = {
 	type = 'executable',
@@ -7,6 +9,6 @@ dap.adapters.lldb = {
 	name = "lldb"
 }
 
-u.map('<F9>', ':lua require"dap".toggle_breakpoint()<cr>')
-u.map('<F5>', ':lua require"dap".continue()<cr>')
-require('dbg.lldb')
+require 'dbg.lldb'
+
+vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]

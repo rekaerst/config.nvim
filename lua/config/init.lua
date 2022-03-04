@@ -14,6 +14,8 @@ require("nvim-dap-virtual-text").setup()
 require 'config.lualine'
 require 'config.bufferline'
 
+require 'config.indent-blankline'
+
 require 'config.tree'
 
 require 'config.treesitter'

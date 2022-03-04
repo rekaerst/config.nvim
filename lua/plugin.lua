@@ -85,7 +85,7 @@ use {'abecodes/tabout.nvim'}
 use {'tpope/vim-surround'}
 
 -- Indentation tracking
-use {'nathanaelkane/vim-indent-guides'}
+use {'lukas-reineke/indent-blankline.nvim'}
 
 -- -- Mutli line
 use {'mg979/vim-visual-multi'} -- Multiple cursors
