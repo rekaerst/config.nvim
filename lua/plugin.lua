@@ -1,11 +1,9 @@
+-- Packer configurations
 local packer = require('packer')
 packer.init()
 local use = packer.use
 packer.reset()
-
--- Packer
 use 'wbthomason/packer.nvim'
-use {'nvim-telescope/telescope-packer.nvim', after='telescope.nvim'}
 
 -- Libraries
 use {'nvim-lua/plenary.nvim'}
@@ -13,110 +11,119 @@ use {'nvim-lua/popup.nvim'}
 
 -- Colorscheme
 use {'joshdick/onedark.vim'}
+use {'EdenEast/nightfox.nvim'}
 use {'folke/tokyonight.nvim'}
-use {'Th3Whit3Wolf/one-nvim'}
-use {'sainnhe/edge'}
-
--- Fuzzy
-use {'nvim-telescope/telescope.nvim', config='require("config.telescope")'} -- Fizzy
-use {'junegunn/fzf'}
-use {'junegunn/fzf.vim'}
 
 -- Icons
 use {'kyazdani42/nvim-web-devicons'}
-use {'ryanoasis/vim-devicons', opt = true}
 
--- Powerline
-use {'hoob3rt/lualine.nvim', config='require("config.lualine")'}
-
--- Tab bar
-use {'romgrk/barbar.nvim', config = 'require("config.barbar")' }
-
--- Keymapping
-use {'folke/which-key.nvim'} -- displays keybindings when typing
-
--- File explorer
-use {'kyazdani42/nvim-tree.lua', config='require("config.tree")'}
-
--- Parentheses
-use {'tpope/vim-surround'} -- quoting/parenthesizing made simple
-use {'jiangmiao/auto-pairs', opt = true} -- auto pair parentheses
-use {'windwp/nvim-autopairs', opt = false, config='require("config.auto-pairs")'}
-use {'alvan/vim-closetag'}	-- html auto pairs
-use "p00f/nvim-ts-rainbow"	-- rainbow parentheses
-
--- Indentation tracking
-use {'nathanaelkane/vim-indent-guides'}
-
--- Mutli line
-use {'mg979/vim-visual-multi'} -- Multiple cursors
-
--- Highlight colors
-use {'RRethy/vim-hexokinase', run = 'make'}
-
--- Tags
-use {'preservim/tagbar', cmd = "Tagbar"}
-
--- Commenting
-use {'b3nj5m1n/kommentary', opt = true}
-use {'tpope/vim-commentary', opt = false}
-
--- Undo
-use {
-	'mbbill/undotree',
-	cmd = 'UndotreeToggle',
-	config='vim.g.undotree_SetFocusWhenToggle = 1'
-}
-
--- Semantic Highlight
-use {'nvim-treesitter/nvim-treesitter',config='require("config.treesitter")',run = ':TSUpdate' }	-- Semantic highlighting
-use {'nvim-treesitter/playground', cmd={'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'} }
+-- LSP
+use {'neovim/nvim-lspconfig'}
+use {'tami5/lspsaga.nvim'}
+use {'folke/trouble.nvim'}
+use {'ray-x/lsp_signature.nvim'}
+use {'rmagatti/goto-preview'}
+use {'simrat39/symbols-outline.nvim'}
+use {'j-hui/fidget.nvim'}
 
 -- Completion
+use {'hrsh7th/nvim-cmp'}
 use {'hrsh7th/cmp-nvim-lsp'}
 use {'hrsh7th/cmp-path'}
 use {'hrsh7th/cmp-buffer'}
 use {'saadparwaiz1/cmp_luasnip'}
-use {'hrsh7th/nvim-cmp', config='require("config.cmp")'}
 
+-- Treesitter
+use {
+	'nvim-treesitter/nvim-treesitter',
+	run = ':TSUpdate'
+} -- Semantic highlighting
+use {
+	'nvim-treesitter/playground',
+	cmd = {'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'}
+}
 -- Snips
 use {'L3MON4D3/LuaSnip'}
 
--- LSP
-use {'neovim/nvim-lspconfig'}
-use {'glepnir/lspsaga.nvim', config='require("config.lspsaga")'}
-use {'ray-x/lsp_signature.nvim', opt = true, config = 'require("config.lsp_signature")'}
-use {'nvim-lua/lsp-status.nvim', config = 'require("config.lsp-status")'}
-use {'folke/lsp-trouble.nvim', config = 'require("config.lsp-trouble")'}
+-- Commenting
+use {'numToStr/Comment.nvim'}
 
--- Runner
-use {'michaelb/sniprun', run = 'bash ./install.sh'}
+-- Telescope
+use {'nvim-telescope/telescope.nvim'} -- Fizzy
+use {'nvim-telescope/telescope-packer.nvim'}
+use {
+	'nvim-telescope/telescope-fzf-native.nvim',
+	run = 'make'
+}
+use {'xiyaowong/telescope-emoji.nvim'}
 
--- Debugging
-use {'mfussenegger/nvim-dap', config='require("config.dap")'}
-use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
+-- Powerline
+use {'hoob3rt/lualine.nvim'}
 
--- Git
-use {'tpope/vim-fugitive'} -- A plugin for git
-use {'lewis6991/gitsigns.nvim'} -- git side signs
+-- -- Tab bar
+use {'akinsho/bufferline.nvim'}
+
+-- File explorer
+use {'kyazdani42/nvim-tree.lua'}
+
+-- Keymapping
+use {'folke/which-key.nvim'} -- displays keybindings when typing
+
+-- Parentheses
+use {'windwp/nvim-autopairs'}
+use {'windwp/nvim-ts-autotag'}
+use {'p00f/nvim-ts-rainbow'}
+use {'abecodes/tabout.nvim'}
+
+-- Indentation tracking
+use {'nathanaelkane/vim-indent-guides'}
+
+-- -- Mutli line
+-- use {'mg979/vim-visual-multi'} -- Multiple cursors
+
+-- Highlight colors
+use {
+	'RRethy/vim-hexokinase',
+	run = 'make'
+}
+
+-- -- Undo
+-- use {
+-- 	'mbbill/undotree',
+-- 	cmd = 'UndotreeToggle',
+-- 	config='vim.g.undotree_SetFocusWhenToggle = 1'
+-- }
+
+-- -- Runner
+-- use {'michaelb/sniprun', run = 'bash ./install.sh'}
+
+-- -- Debugging
+-- use {'mfussenegger/nvim-dap', config='require("config.dap")'}
+-- use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
+
+-- -- Git
+-- use {'tpope/vim-fugitive'} -- A plugin for git
+-- use {'lewis6991/gitsigns.nvim'} -- git side signs
 
 -- Github
 use {'pwntester/octo.nvim'}
 
--- Database
-use {'tpope/vim-dadbod', cmd = {"DB", "DBUI"}}
-use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
+-- -- Database
+-- use {'tpope/vim-dadbod', cmd = {"DB", "DBUI"}}
+-- use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
 
 -- Preview
-use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+use {'davidgranstrom/nvim-markdown-preview'}
 
--- Nevim Development
-use {'tjdevries/nlua.nvim', opt = true} -- lua
-use {'rafcamlet/nvim-luapad' , opt = true, cmd = "Luapad"} -- lua
-use {'rktjmp/lush.nvim'} -- theme
+-- -- Nevim Development
+-- use {'tjdevries/nlua.nvim', opt = true} -- lua
+-- use {'rafcamlet/nvim-luapad' , opt = true, cmd = "Luapad"} -- lua
+-- use {'rktjmp/lush.nvim'} -- theme
+
+-- Note
+use {"jbyuki/venn.nvim"}
 
 -- Utils
-use {"dstein64/vim-startuptime"}	-- Profile startup time
+use {"dstein64/vim-startuptime"} -- Profile startup time
 
--- Tabnine
--- use {"codota/tabnine-vim"}
+-- -- Tabnine

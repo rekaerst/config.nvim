@@ -1,8 +1,6 @@
-local util = require('utils')
-util.nmap('<leader>tt', ':NvimTreeToggle<CR>')
-util.nmap('<leader>tr', ':NvimTreeRefresh<CR>')
-util.nmap('<leader>tf', ':NvimTreeFindFile<CR>')
+local u = require('utils')
+u.nmap('<leader>tt', ':NvimTreeToggle<CR>')
+u.nmap('<leader>tr', ':NvimTreeRefresh<CR>')
+u.nmap('<leader>tf', ':NvimTreeFindFile<CR>')
 
-require 'nvim-tree'.setup {
-
-}
+require'nvim-tree'.setup {}

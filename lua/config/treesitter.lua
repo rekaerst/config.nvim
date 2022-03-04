@@ -1,25 +1,24 @@
 -- treesitter
-require('nvim-treesitter.configs').setup ({
-	ensure_installed = {"bash","c", "clojure","commonlisp", "cpp", "css", "go", "gdscript", "haskell", "html",
-	"javascript", "java", "json", "jsonc","latex", "lua", "python", "query","r", "regex", "rust",
-	"scss","typescript", "vue", "yaml"},
+require('nvim-treesitter.configs').setup({
+	ensure_installed = {"bash", "c", "clojure", "commonlisp", "cpp", "css", "go", "gdscript", "haskell", "html",
+                     "javascript", "java", "json", "jsonc", "latex", "lua", "python", "query", "r", "regex", "rust",
+                     "scss", "typescript", "yaml"},
 	highlight = {
-		enable = true,              -- false will disable the whole extension
+		enable = true -- false will disable the whole extension
 	},
 	incremental_selection = {
-		enable = true,
+		enable = true
 	},
 	playground = {
-		enable = true,
+		enable = true
 	},
 	indent = {
-		disable = true,
+		disable = true
 	},
 	rainbow = {
 		enable = true,
 		extended_mode = true,
-		max_file_lines = 1000,
+		max_file_lines = nil
 	}
 })
-
 

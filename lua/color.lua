@@ -1,6 +1,27 @@
 local util = require('utils')
 vim.cmd('syntax enable')
-vim.cmd('colorscheme onedark')
+
+function colorscheme_nightfox()
+	vim.cmd 'colorscheme nightfox'
+	local nightfox = require 'nightfox'
+	nightfox.load 'nordfox'
+	nightfox.setup {
+		styles = {
+			comments = "italic", -- change style of comments to be italic
+			keywords = "bold" -- change style of keywords to be bold
+		}
+	}
+end
+
+function colorscheme_tokyonight()
+	vim.cmd 'colorscheme tokyonight'
+end
+
+function colorscheme_onedark()
+	vim.cmd 'colorscheme onedark'
+end
+
+colorscheme_onedark()
 
 -- Indent guide
 vim.cmd("autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3")
