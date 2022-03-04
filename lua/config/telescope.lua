@@ -38,6 +38,7 @@ t.setup {
 le('fzf')
 le('octo')
 le('emoji')
+le('dap')
 
 u.lmap('ff', '<cmd>Telescope find_files<cr>')
 u.lmap('fg', '<cmd>Telescope live_grep<cr>')

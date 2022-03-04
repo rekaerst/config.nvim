@@ -1,4 +1,3 @@
-local u = require "utils"
 require'bufferline'.setup {
 	options = {
 		numbers = function(opts)
@@ -14,9 +13,3 @@ require'bufferline'.setup {
 	}
 }
 
-u.nmap('gb', '<cmd>BufferLinePick<CR>')
-u.nmap(']b', '<cmd>BufferLineCycleNext<CR>')
-u.nmap('[b', '<cmd>BufferLineCyclePrev<CR>')
-u.nmap('b>>', '<cmd>BufferLineMoveNext<CR>')
-u.nmap('b<<', '<cmd>BufferLineMovePrev<CR>')
-u.nmap('<leader>bd', '<cmd>bd<cr>')

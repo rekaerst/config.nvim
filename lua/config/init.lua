@@ -1,12 +1,15 @@
 require 'config.internals'
 require 'config.binding'
 
-require 'config.lspsaga'
+require'lspsaga'.setup()
 require'fidget'.setup()
 require'lsp_signature'.setup()
 require 'config.cmp'
 require 'config.trouble'
 require 'config.goto-preview'
+
+require'dapui'.setup()
+require("nvim-dap-virtual-text").setup()
 
 require 'config.lualine'
 require 'config.bufferline'

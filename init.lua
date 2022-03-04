@@ -14,6 +14,5 @@ require('color')
 require('config')
 -- LSP (code completion, formating, etc.)
 require('lsp')
-
 -- DAP (debugging)
--- require('dbg')
+require('dbg')

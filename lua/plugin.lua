@@ -34,8 +34,10 @@ use {'hrsh7th/cmp-buffer'}
 use {'saadparwaiz1/cmp_luasnip'}
 
 -- DAP
--- use {'mfussenegger/nvim-dap', config='require("config.dap")'}
--- use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
+use {'mfussenegger/nvim-dap'}
+use {'nvim-telescope/telescope-dap.nvim'}
+use {"rcarriga/nvim-dap-ui"}
+use {'theHamsta/nvim-dap-virtual-text'}
 
 -- Treesitter
 use {
@@ -136,6 +138,6 @@ use {'rktjmp/lush.nvim'} -- theme
 
 -- Note
 use {"jbyuki/venn.nvim"}
-
+use {"nvim-neorg/neorg"}
 -- Utils
 use {"dstein64/vim-startuptime"} -- Profile startup time
