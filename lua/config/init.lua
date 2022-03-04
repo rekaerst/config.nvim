@@ -14,6 +14,7 @@ require 'config.bufferline'
 require 'config.tree'
 
 require 'config.treesitter'
+require'spellsitter'.setup()
 require'Comment'.setup()
 
 require'nvim-ts-autotag'.setup()
@@ -24,5 +25,6 @@ require 'config.whichkey'
 require 'config.telescope'
 
 require 'config.octo'
+require'neogit'.setup()
 
 require 'config.venn'

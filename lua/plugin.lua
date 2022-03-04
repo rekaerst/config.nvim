@@ -33,6 +33,10 @@ use {'hrsh7th/cmp-path'}
 use {'hrsh7th/cmp-buffer'}
 use {'saadparwaiz1/cmp_luasnip'}
 
+-- DAP
+-- use {'mfussenegger/nvim-dap', config='require("config.dap")'}
+-- use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
+
 -- Treesitter
 use {
 	'nvim-treesitter/nvim-treesitter',
@@ -42,6 +46,8 @@ use {
 	'nvim-treesitter/playground',
 	cmd = {'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor'}
 }
+use {'lewis6991/spellsitter.nvim'}
+
 -- Snips
 use {'L3MON4D3/LuaSnip'}
 
@@ -74,12 +80,13 @@ use {'windwp/nvim-autopairs'}
 use {'windwp/nvim-ts-autotag'}
 use {'p00f/nvim-ts-rainbow'}
 use {'abecodes/tabout.nvim'}
+use {'tpope/vim-surround'}
 
 -- Indentation tracking
 use {'nathanaelkane/vim-indent-guides'}
 
 -- -- Mutli line
--- use {'mg979/vim-visual-multi'} -- Multiple cursors
+use {'mg979/vim-visual-multi'} -- Multiple cursors
 
 -- Highlight colors
 use {
@@ -88,42 +95,47 @@ use {
 }
 
 -- -- Undo
--- use {
--- 	'mbbill/undotree',
--- 	cmd = 'UndotreeToggle',
--- 	config='vim.g.undotree_SetFocusWhenToggle = 1'
--- }
+use {
+	'mbbill/undotree',
+	cmd = 'UndotreeToggle',
+	config = 'vim.g.undotree_SetFocusWhenToggle = 1'
+}
 
 -- -- Runner
--- use {'michaelb/sniprun', run = 'bash ./install.sh'}
+use {
+	'michaelb/sniprun',
+	run = 'bash ./install.sh'
+}
 
--- -- Debugging
--- use {'mfussenegger/nvim-dap', config='require("config.dap")'}
--- use {'nvim-telescope/telescope-dap.nvim', config='require("config.telescope-dap")'}
-
--- -- Git
--- use {'tpope/vim-fugitive'} -- A plugin for git
--- use {'lewis6991/gitsigns.nvim'} -- git side signs
+-- Git
+use {'TimUntersberger/neogit'}
 
 -- Github
 use {'pwntester/octo.nvim'}
 
 -- -- Database
--- use {'tpope/vim-dadbod', cmd = {"DB", "DBUI"}}
--- use {'kristijanhusak/vim-dadbod-ui', cmd = "DBUI"}
+use {
+	'tpope/vim-dadbod',
+	cmd = {"DB", "DBUI"}
+}
+use {
+	'kristijanhusak/vim-dadbod-ui',
+	cmd = "DBUI"
+}
 
 -- Preview
 use {'davidgranstrom/nvim-markdown-preview'}
 
 -- -- Nevim Development
--- use {'tjdevries/nlua.nvim', opt = true} -- lua
--- use {'rafcamlet/nvim-luapad' , opt = true, cmd = "Luapad"} -- lua
--- use {'rktjmp/lush.nvim'} -- theme
+use {
+	'rafcamlet/nvim-luapad',
+	opt = true,
+	cmd = "Luapad"
+} -- lua
+use {'rktjmp/lush.nvim'} -- theme
 
 -- Note
 use {"jbyuki/venn.nvim"}
 
 -- Utils
 use {"dstein64/vim-startuptime"} -- Profile startup time
-
--- -- Tabnine
