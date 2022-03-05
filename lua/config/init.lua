@@ -33,5 +33,6 @@ require 'config.telescope'
 
 require 'config.octo'
 require 'neogit'.setup{}
+vim.g.gitblame_enabled = 0
 
 require 'config.venn'

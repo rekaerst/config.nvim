@@ -63,7 +63,8 @@ wk.register({
 			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"},
 			n = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 			m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
-			g = {'<cmd>Neogit<cr>', "Open Neogit"}
+			g = {'<cmd>Neogit<cr>', "Open Neogit"},
+			b = {'<cmd>GitBlameToggle', "Show Git Blame"},
 		},
 		h = {
 			name = "Help",
