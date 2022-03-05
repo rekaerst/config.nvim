@@ -1,5 +1,4 @@
 require 'config.internals'
-require 'config.binding'
 
 require 'lsp_signature'.setup{}
 require 'config.cmp'
@@ -34,5 +33,6 @@ require 'config.telescope'
 require 'config.octo'
 require 'neogit'.setup{}
 vim.g.gitblame_enabled = 0
+require "config.gitsigns"
 
 require 'config.venn'

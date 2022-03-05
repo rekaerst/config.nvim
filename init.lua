@@ -16,3 +16,5 @@ require('config')
 require('lsp')
 -- DAP (debugging)
 require('dbg')
+-- Keybinding
+require('binding').reg_main()

@@ -1,5 +1,5 @@
 local lspconfig = require 'lspconfig'
-local reg = require 'lsp.binding'.register
+local reg = require 'binding'.reg_lsp
 require "lsp.ui"
 
 local on_attach = function(client, bufnr)
