@@ -25,12 +25,22 @@ M.on_attach = function(client, bufnr)
 			}
 		},
 		['g'] = {
-			name = "Preview",
-			d = {'<cmd>lua require"lspsaga.provider".preview_definition()<CR>', "Preview Definition"}
+			name = "Go",
+			D = {'<cmd>lua vim.lsp.buf.declaration()<cr>',"Goto Declaratoin"},
+			d = {'<cmd>lua vim.lsp.buf.definition()<cr>',"Goto Definition"},
+			i = {'<cmd>lua vim.lsp.buf.implementation()<CR>', "Goto Implementation"},
+			r = {'<cmd>Trouble lsp_references<cr>', "References"},
+			s = {'<cmd>Telescope lsp_document_symbols<cr>', "Document Symbols"},
+			S = {'<cmd>Telescope lsp_workspace_symbols<cr>', "Workspace Symbols"},
+			p = {
+				name = "Preview",
+				d = {'<cmd>lua require"lspsaga.provider".preview_definition()<CR>', "Preview Definition"}
+			}
+
 		},
 		['K'] = {'<cmd>Lspsaga hover_doc<CR>', "Hoverdoc"},
-		["<C-d>"] = {'<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1, "<c-d>")<cr>'},
-		['<C-u>'] = {'<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1, "<c-u>")<cr>'}
+		["<C-d>"] = {'<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1, "<c-d>")<cr>', "Scroll Down"},
+		['<C-u>'] = {'<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1, "<c-u>")<cr>', "Scroll Up"}
 	}, {
 		buffer = bufnr
 	})
