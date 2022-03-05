@@ -1,6 +1,5 @@
 local dap = require 'dap'
 
-require'dap.ext.vscode'.load_launchjs()
 require 'dbg.ui'
 
 dap.adapters.lldb = {
