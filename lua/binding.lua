@@ -6,7 +6,8 @@ function M.reg_main()
 	local dapui = require 'dapui'
 	local t = require 'telescope.builtin'
 
-	require('which-key').register({
+	local wk = require'which-key'
+	wk.register({
 		['<leader>'] = {
 			f = {
 				name = "File",
@@ -65,7 +66,6 @@ function M.reg_main()
 				n = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 				m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
 				g = {'<cmd>Neogit<cr>', "Open Neogit"},
-				b = {'<cmd>GitBlameToggle', "Show Git Blame"},
 			},
 			h = {
 				name = "Help",
@@ -86,6 +86,18 @@ function M.reg_main()
 		['<F23>'] = {dap.setp_out, "Step Out"},
 		['<F29>'] = {dap.terminate, "Stop Debugging"},
 	}, {silent = true,})
+
+	-- Visual mode
+	wk.register({
+		['<leader>'] = {
+			r = {
+				name = "Run",
+				s = {':SnipRun <cr>', "SnipRun"}
+			},
+		}
+	}, {
+		mode = 'v',
+	})
 
 	u.imap('<C-a>', '<C-o>^')
 	u.imap('<C-e>', '<C-o>$')
@@ -119,9 +131,9 @@ function M.reg_lsp(bufnr)
 		},
 		['g'] = {
 			name = "Go",
-			D = {vim.lsp.buf.declaration, "Goto Declaratoin"},
-			d = {'<cmd>Trouble lsp_definitions<cr>',"Goto Definition"},
-			i = {'<cmd>Trouble lsp_implementations<cr>', "Goto Implementation"},
+			D = {vim.lsp.buf.declaration, "Go to Declaratoin"},
+			d = {'<cmd>Trouble lsp_definitions<cr>',"Go to Definition"},
+			i = {'<cmd>Trouble lsp_implementations<cr>', "Go to Implementation"},
 			r = {'<cmd>Trouble lsp_references<cr>', "References"},
 			s = {t.lsp_document_symbols, "Document Symbols"},
 			S = {t.lsp_workspace_symbols, "Workspace Symbols"},
@@ -131,13 +143,34 @@ function M.reg_lsp(bufnr)
 		['K'] = {'<cmd>Lspsaga hover_doc<CR>', "Hoverdoc"},
 		["<C-d>"] = {function() a.smart_scroll_with_saga(1, "<c-d>") end, "Scroll Down"},
 		['<C-u>'] = {function() a.smart_scroll_with_saga(-1, "<c-u>") end, "Scroll Up"}
-	}, {
-		buffer = bufnr
-	})
+	}, { buffer = bufnr })
 end
 
 function M.reg_git(bufnr)
-	require('which-key').register({
+	local gs = package.loaded.gitsigns
+	local wk = require'which-key'
+
+	wk.register({
+		['<leader>'] = {
+			g = {
+				name = "Git",
+				s = {':Gitsigns stage_hunk<CR>', "Stage Hunk"},
+				r = {':Gitsigns reset_hunk<CR>', "Reset Hunk"},
+				S = {gs.stage_buffer, "Stage All Hunk"},
+				u = {gs.undo_stage_hunk, "Reset All Hunk" },
+				R = {gs.reset_buffer, "Unstage All Huck for Buffer"},
+				p = {gs.preview_hunk, "Preview Hunk"},
+				b = {':GitBlameToggle<cr>', "Git Blame Line"},
+				B = {function() gs.blame_line{full=true} end, "Full Blame"},
+				d = {gs.diffthis, "Show diff"},
+				x = {gs.toggle_deleted, "Show Deleted"},
+			}
+		}
+	}, {
+		buffer = bufnr
+	})
+	-- For visual mode
+	wk.register({
 		['<leader>'] = {
 			g = {
 				name = "Git",
@@ -146,7 +179,8 @@ function M.reg_git(bufnr)
 			}
 		}
 	}, {
-		buffer = bufnr
+		mode = 'v',
+		buffer = bufnr,
 	})
 end
 

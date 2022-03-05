@@ -120,6 +120,7 @@ use {
 -- Git
 use {'TimUntersberger/neogit'}
 use {'f-person/git-blame.nvim'}
+use {'lewis6991/gitsigns.nvim'}
 
 -- Github
 use {'pwntester/octo.nvim'}
