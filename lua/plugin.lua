@@ -22,22 +22,27 @@ use {'neovim/nvim-lspconfig'}
 use {'tami5/lspsaga.nvim'}
 use {'folke/trouble.nvim'}
 use {'ray-x/lsp_signature.nvim'}
-use {'rmagatti/goto-preview'}
 use {'simrat39/symbols-outline.nvim'}
 use {'j-hui/fidget.nvim'}
+use {'mfussenegger/nvim-lint'}
 
 -- Completion
-use {'hrsh7th/nvim-cmp'}
-use {'hrsh7th/cmp-nvim-lsp'}
-use {'hrsh7th/cmp-path'}
-use {'hrsh7th/cmp-buffer'}
-use {'saadparwaiz1/cmp_luasnip'}
+use {'hrsh7th/nvim-cmp', requires = {
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-path',
+	'hrsh7th/cmp-buffer',
+	'saadparwaiz1/cmp_luasnip'
+}}
 
 -- DAP
 use {'mfussenegger/nvim-dap'}
 use {'nvim-telescope/telescope-dap.nvim'}
 use {"rcarriga/nvim-dap-ui"}
 use {'theHamsta/nvim-dap-virtual-text'}
+use {'leoluz/nvim-dap-go'}
+use {'mfussenegger/nvim-dap-python'}
+use {'jbyuki/one-small-step-for-vimkind'}
+use {'mfussenegger/nvim-jdtls'}
 
 -- Treesitter
 use {
@@ -134,7 +139,6 @@ use {
 	opt = true,
 	cmd = "Luapad"
 } -- lua
-use {'rktjmp/lush.nvim'} -- theme
 
 -- Note
 use {"jbyuki/venn.nvim"}
