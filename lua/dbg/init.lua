@@ -10,5 +10,9 @@ dap.adapters.lldb = {
 }
 
 require 'dbg.lldb'
+require 'dbg.nvim-lua'
+require 'dap-go'.setup {}
+require 'dap-python'.setup('/usr/bin/python')
+require 'dbg.jdtls'
 
 vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]
