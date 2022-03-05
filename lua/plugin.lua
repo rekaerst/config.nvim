@@ -17,6 +17,9 @@ use {'folke/tokyonight.nvim'}
 -- Icons
 use {'kyazdani42/nvim-web-devicons'}
 
+-- Terminal
+use {"akinsho/toggleterm.nvim"}
+
 -- LSP
 use {'neovim/nvim-lspconfig'}
 use {'tami5/lspsaga.nvim'}

@@ -23,10 +23,6 @@ end
 
 colorscheme_onedark()
 
--- Indent guide
-vim.cmd("autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#3B374A ctermbg=3")
-vim.cmd("autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2E3F49 ctermbg=4")
-
 -- Highlight on yank
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 
@@ -46,4 +42,5 @@ end
 vim.cmd [[ 
 hi Comment gui=italic 
 hi CursorLineNR guifg=#9794e8
+hi link NvimTreeIndentMarker Comment
 ]]

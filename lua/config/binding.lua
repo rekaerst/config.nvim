@@ -1,7 +1,6 @@
 local u = require('utils')
 local wk = require 'which-key'
 
--- silent
 wk.register({
 	['<leader>'] = {
 		f = {
