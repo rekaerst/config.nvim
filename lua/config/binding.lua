@@ -62,7 +62,8 @@ wk.register({
 			s = {'<cmd>SymbolsOutline<cr>', "Outline"},
 			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"},
 			n = {'<cmd>set relativenumber!<cr>', "Relative Number"},
-			m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"}
+			m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
+			g = {'<cmd>Neogit<cr>', "Open Neogit"}
 		},
 		h = {
 			name = "Help",
