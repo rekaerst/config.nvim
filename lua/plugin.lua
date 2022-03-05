@@ -121,27 +121,18 @@ use {'TimUntersberger/neogit'}
 use {'pwntester/octo.nvim'}
 
 -- -- Database
-use {
-	'tpope/vim-dadbod',
-	cmd = {"DB", "DBUI"}
-}
-use {
-	'kristijanhusak/vim-dadbod-ui',
-	cmd = "DBUI"
-}
+use { 'tpope/vim-dadbod', cmd = {"DB", "DBUI"} }
+use { 'kristijanhusak/vim-dadbod-ui', cmd = "DBUI" }
 
 -- Preview
 use {'davidgranstrom/nvim-markdown-preview'}
 
 -- -- Nevim Development
-use {
-	'rafcamlet/nvim-luapad',
-	opt = true,
-	cmd = "Luapad"
-} -- lua
+use {'rafcamlet/nvim-luapad', opt = true, cmd = "Luapad"} 
 
 -- Note
 use {"jbyuki/venn.nvim"}
 use {"nvim-neorg/neorg"}
+
 -- Utils
 use {"dstein64/vim-startuptime"} -- Profile startup time

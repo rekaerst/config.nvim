@@ -5,7 +5,7 @@ require'bufferline'.setup {
 		end,
 		diagnostics = "nvim_lsp",
 		max_name_length = 20,
-		tab_size = 20,
+		tab_size = 16,
 		offsets = {{
 			filetype = "NvimTree",
 			text = "File Explorer"

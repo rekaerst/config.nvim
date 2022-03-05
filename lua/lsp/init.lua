@@ -20,18 +20,23 @@ require'lspconfig'.sumneko_lua.setup {
 	settings = {
 		Lua = {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = 'LuaJIT'
 			},
+			completion = {
+				keywordSnippet = "Disable",
+				showWord = "Disable",
+			},
+			-- get the language server to recognize the 'vim' global
 			diagnostics = {
-				-- Get the language server to recognize the `vim` global
+				enable = true,
 				globals = {'vim'}
 			},
+			-- Make the server aware of Neovim runtime files
 			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true)
+				library = vim.api.nvim_get_runtime_file("", true),
+				maxPreload = 10000,
+				preloadFileSize = 10000,
 			},
-			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
 				enable = false
 			}

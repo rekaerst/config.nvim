@@ -1,6 +1,7 @@
 local u = require('utils')
 local wk = require 'which-key'
 
+-- silent
 wk.register({
 	['<leader>'] = {
 		f = {
@@ -51,23 +52,29 @@ wk.register({
 			G = {':lua require"dap".goto_()<cr>', "Goto Cursor"},
 			u = {':lua require"dapui".toggle()<cr>', "Toggle Debug UI"}
 		},
+		t = {":Telescope builtin<cr>", "Telescope"},
 		v = {
 			name = "View",
 			t = {'<cmd>NvimTreeToggle<cr>', "File Browser"},
 			T = {'<cmd>NvimTreeRefresh<cr>', "Refresh File Browser"},
+			f = {'<cmd>NvimTreeFindFile<cr>', "Find File in Tree"},
 			e = {':if &ve == "all" | echo "disable venn " | set ve= | else | set ve=all | echo "enable venn" | endif | :IndentGuidesToggle | :lua Toggle_venn() <cr>',
         "Venn"},
 			s = {'<cmd>SymbolsOutline<cr>', "Outline"},
 			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"},
-			i = {'<cmd>set !invrelativenumber<cr>', "Toggle Invrelative"},
+			n = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 			m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"}
 		},
 		h = {
 			name = "Help",
 			h = {':help<cr>', "Open Help"},
 			f = {'<cmd>Telescope help_tags<cr>', "Find Help"},
-			d = { function() require'osv'.launch() end, "Debug Neovim"}
-		}
+			d = {':lua require"osv".launch()<cr>', "Debug Neovim"}
+		},
+	},
+	g = {
+		b = "Block Comment",
+ 	 	c = "Line Comment",
 	},
 	['<F6>'] = {':w | :make<cr>', "Make"},
 	['<F9>'] = {':lua require"dap".toggle_breakpoint()<cr>', "Toggle Breakpoint"},
@@ -75,10 +82,8 @@ wk.register({
 	['<F10>'] = {':lua require"dap".step_over()<cr>', "Step Over"},
 	['<F11>'] = {':lua require"dap".step_into()<cr>', "Step Into"},
 	['<F23>'] = {':lua require"dap".setp_out()<cr>', "Step Out"},
-	['<F29>'] = {':lua require"dap".terminate()<cr>', "Stop Debugging"}
-}, {
-	silent = true
-})
+	['<F29>'] = {':lua require"dap".terminate()<cr>', "Stop Debugging"},
+}, {silent = true,})
 
 u.imap('<C-a>', '<C-o>^')
 u.imap('<C-e>', '<C-o>$')

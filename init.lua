@@ -6,11 +6,11 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 -------------------------------
 
--- Plugins
+-- Packer
 require('plugin')
 -- Colorscheme and highlighting configurations
 require('color')
--- settings
+-- Plugin Configurations
 require('config')
 -- LSP (code completion, formating, etc.)
 require('lsp')
