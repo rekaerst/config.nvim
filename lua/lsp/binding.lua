@@ -43,10 +43,4 @@ function M.register(bufnr)
 	})
 end
 
-M.on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	M.register(bufnr)
-end
-
-
 return M

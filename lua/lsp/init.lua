@@ -1,14 +1,25 @@
 local lspconfig = require 'lspconfig'
-local binding = require 'lsp.binding'
+local reg = require 'lsp.binding'.register
 require "lsp.ui"
 
+local on_attach = function(client, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	reg(bufnr)
+end
 -- LSP Servers
-local servers = { -- "pyright",
-"jedi_language_server", "jdtls", "rust_analyzer", "tsserver", "clangd", "html", "jsonls", 'cmake', "gopls", "bashls", 'gdscript',
-'vala_ls', 'hls', 'cmake', 'cssls', 'sqls', 'r_language_server'}
+local servers = {
+	"pyright",
+	-- 'jedi_language_server',
+	"jdtls",
+	'rust_analyzer', 'clangd', 'gopls', 'hls', 'r_language_server',
+	'tsserver', 'html', "jsonls", 'cssls',
+	'bashls', 'gdscript', 'cmake',
+	'vala_ls',
+	'sqls',
+}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
-		on_attach = binding.on_attach,
+		on_attach = on_attach,
 		debounce_text_changes = 150,
 		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	}
@@ -16,7 +27,7 @@ end
 
 -- this ass is too special...
 require'lspconfig'.sumneko_lua.setup {
-	on_attach = binding.on_attach,
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			runtime = {
