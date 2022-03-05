@@ -12,6 +12,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local kind_symbols = utils.kind_symbols
 
+---@diagnostic disable-next-line: redundant-parameter
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -49,27 +50,41 @@ cmp.setup({
 			end
 		end
 	},
-	sources = cmp.config.sources({{
-		name = 'nvim_lsp'
-	}, {
-		name = 'luasnip'
-	}}, {{
-		name = 'buffer'
-	}}),
+	sources = cmp.config.sources {
+		{ name = 'nvim_lsp', },
+		{ name = 'path', },
+		{ name = 'luasnip', },
+		{ name = 'buffer', },
+	},
 	formatting = {
 		format = function(entry, vim_item)
-			vim_item.kind = kind_symbols[vim_item.kind]
+			-- vim_item.kind = kind_symbols[vim_item.kind]
+			vim_item.kind = string.format('%s ', kind_symbols[vim_item.kind])
+			vim_item.abbr = string.sub(vim_item.abbr, 1, 64)
 			return vim_item
 		end
-	}
+	},
 })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
 	sources = cmp.config.sources({{
 		name = 'cmp_git'
-	} -- You can specify the `cmp_git` source if you were installed it. 
-	}, {{
-		name = 'buffer'
-	}})
+	} -- You can specify the `cmp_git` source if you were installed it.
+}, {{
+	name = 'buffer'
+}})
 })
+
+vim.cmd [[
+highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
+highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
+highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
+highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4 ]]
