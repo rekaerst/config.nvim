@@ -26,6 +26,7 @@ wk.register({
 			name = "Buffer",
 			f = {'<cmd>Telescope buffers<cr>', "Find Buffer"},
 			d = {'<cmd>bd<cr>', "Delete Buffer"},
+			D = {'<cmd>bd!<cr>', "Force Delete Buffer"},
 			p = {'<cmd>BufferLinePick<cr>', "Pick Buffer"},
 			[']'] = {'<cmd>BufferLineCycleNext<cr>', "Next Buffer"},
 			['['] = {'<cmd>BufferLineCyclePrev<cr>', "Previous Buffer"},
@@ -57,12 +58,15 @@ wk.register({
 			e = {':if &ve == "all" | echo "disable venn " | set ve= | else | set ve=all | echo "enable venn" | endif | :IndentGuidesToggle | :lua Toggle_venn() <cr>',
         "Venn"},
 			s = {'<cmd>SymbolsOutline<cr>', "Outline"},
-			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"}
+			k = {'<cmd>Telescope keymaps<cr>', "Keymaps"},
+			i = {'<cmd>set !invrelativenumber<cr>', "Toggle Invrelative"},
+			m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"}
 		},
 		h = {
 			name = "Help",
 			h = {':help<cr>', "Open Help"},
-			f = {'<cmd>Telescope help_tags<cr>', "Find Help"}
+			f = {'<cmd>Telescope help_tags<cr>', "Find Help"},
+			d = { function() require'osv'.launch() end, "Debug Neovim"}
 		}
 	},
 	['<F6>'] = {':w | :make<cr>', "Make"},

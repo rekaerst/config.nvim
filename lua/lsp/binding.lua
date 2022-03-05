@@ -1,9 +1,7 @@
 local M = {}
 local wk = require 'which-key'
 
-M.on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+function M.register(bufnr) 
 	wk.register({
 		['<leader>'] = {
 			c = {
@@ -45,4 +43,11 @@ M.on_attach = function(client, bufnr)
 		buffer = bufnr
 	})
 end
+
+M.on_attach = function(client, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	M.register(bufnr)
+end
+
+
 return M

@@ -4,7 +4,7 @@ require "lsp.ui"
 
 -- LSP Servers
 local servers = { -- "pyright",
-"jedi_language_server","jdtls", "rust_analyzer", "tsserver", "clangd", "html", "jsonls", 'cmake', "gopls", "bashls", 'gdscript',
+"jedi_language_server", "jdtls", "rust_analyzer", "tsserver", "clangd", "html", "jsonls", 'cmake', "gopls", "bashls", 'gdscript',
 'vala_ls', 'hls', 'cmake', 'cssls', 'sqls', 'r_language_server'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {

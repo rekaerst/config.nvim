@@ -1,4 +1,4 @@
-local util = require('utils')
+local u = require('utils')
 vim.cmd('syntax enable')
 
 function colorscheme_nightfox()
@@ -32,15 +32,18 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 
 -- semantic highlight
 if vim.g.colors_name == "onedark" then
-	util.hi('Keyword', '#C678DD')
-	util.hi('TSParameter', '#ABB2BF')
-	util.hi('TSConstructor', '#E5C07B')
-	util.hi('Operator', '#7680EF')
-	util.hi('Include', '#C678DD')
-	util.hi('TSFuncMacro', '#61DEEF')
-	util.hi('TSFuncBuiltin', '#56B6C2')
-	util.hi('pythonTSVariableBuiltin', '#E5C07B')
+	u.hi('Keyword', '#C678DD')
+	u.hi('TSParameter', '#ABB2BF')
+	u.hi('TSConstructor', '#E5C07B')
+	u.hi('Operator', '#7680EF')
+	u.hi('Include', '#C678DD')
+	u.hi('TSFuncMacro', '#61DEEF')
+	u.hi('TSFuncBuiltin', '#56B6C2')
+	u.hi('pythonTSVariableBuiltin', '#E5C07B')
 	-- vim.cmd 'hi Identifier guifg=#ABB2BF'
-	vim.cmd "hi Comment gui=italic"
 end
 
+vim.cmd [[ 
+hi Comment gui=italic 
+hi CursorLineNR guifg=#9794e8
+]]
