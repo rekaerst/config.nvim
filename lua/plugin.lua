@@ -82,6 +82,10 @@ use {'akinsho/bufferline.nvim'}
 -- File explorer
 use {'kyazdani42/nvim-tree.lua'}
 
+-- Window manager
+use {'luukvbaal/stabilize.nvim'}
+use {'sindrets/winshift.nvim'}
+
 -- Keymapping
 use {'folke/which-key.nvim'} -- displays keybindings when typing
 

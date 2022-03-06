@@ -12,6 +12,7 @@ require "nvim-dap-virtual-text".setup{}
 
 require 'config.lualine'
 require 'config.bufferline'
+require 'stabilize'.setup{}
 
 require 'config.toggleterm'
 
