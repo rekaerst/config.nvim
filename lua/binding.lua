@@ -71,6 +71,7 @@ function M.reg_main()
 				r = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 				m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
 				g = {'<cmd>Neogit<cr>', "Open Neogit"},
+				p = {'<cmd>:set spell!', "Spell Check"}
 			},
 			h = {
 				name = "Misc",
