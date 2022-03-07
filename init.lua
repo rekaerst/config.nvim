@@ -9,11 +9,11 @@ end
 require'impatient'
 -- Packer
 require('plugin')
--- Colorscheme and highlighting configurations
+-- Color scheme and highlighting configurations
 require('color')
 -- Plugin Configurations
 require('config')
--- LSP (code completion, formating, etc.)
+-- LSP (code completion, formatting, etc.)
 require('lsp')
 -- DAP (debugging)
 require('dbg')

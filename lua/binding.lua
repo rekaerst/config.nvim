@@ -71,7 +71,7 @@ function M.reg_main()
 				r = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 				m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
 				g = {'<cmd>Neogit<cr>', "Open Neogit"},
-				p = {'<cmd>:set spell!', "Spell Check"}
+				p = {'<cmd>:set spell!<cr>', "Spell Check"}
 			},
 			h = {
 				name = "Misc",
@@ -147,7 +147,7 @@ function M.reg_lsp(bufnr)
 		},
 		['g'] = {
 			name = "Go",
-			D = {vim.lsp.buf.declaration, "Go to Declaratoin"},
+			D = {vim.lsp.buf.declaration, "Go to Declaration"},
 			d = {'<cmd>Trouble lsp_definitions<cr>',"Go to Definition"},
 			i = {'<cmd>Trouble lsp_implementations<cr>', "Go to Implementation"},
 			r = {'<cmd>Trouble lsp_references<cr>', "References"},
