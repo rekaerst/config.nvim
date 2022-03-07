@@ -5,6 +5,8 @@ local use = packer.use
 packer.reset()
 use 'wbthomason/packer.nvim'
 
+use {'lewis6991/impatient.nvim'}
+
 -- Libraries
 use {'nvim-lua/plenary.nvim'}
 use {'nvim-lua/popup.nvim'}

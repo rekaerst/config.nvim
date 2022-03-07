@@ -3,7 +3,7 @@ require 'config.internals'
 require 'lsp_signature'.setup{}
 require 'config.cmp'
 require 'config.trouble'
-require 'lspsaga'.setup{}
+require 'config.lspsaga'
 require 'fidget'.setup{}
 require 'config.lint'
 

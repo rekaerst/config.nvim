@@ -14,7 +14,7 @@ function M.reg_main()
 				w = {':w<cr>', "Save Current File"},
 				a = {':wa<cr>', "Save All Files"},
 				x = {':wq<cr>', "Save and Close"},
-				r = { t.oldfiles, "Open Recent File",},
+				r = { t.oldfiles, "Open Recent",},
 				f = {t.find_files, "Find File"},
 				g = {t.gitfiles, "Git Files"}
 			},
@@ -22,7 +22,9 @@ function M.reg_main()
 				name = "Edit",
 				f = {t.live_grep, "Find"},
 				t = {t.treesitter, "Treesitter"},
-				s = {t.grep_string, "Find String"}
+				s = {t.grep_string, "Find String"},
+				h = {'<cmd>noh<cr>', "Clear Highlight"},
+				e = {'<cmd>set foldmethod=expr<cr>', "Enable folding"},
 			},
 			b = {
 				name = "Buffer",
@@ -37,15 +39,18 @@ function M.reg_main()
 			},
 			r = {
 				name = "Run",
-				s = {':SnipRun <cr>', "SnipRun"}
+				s = {'<cmd>SnipRun<cr>', "SnipRun"},
+				t = {'<cmd>ToggleTerm<cr>', "Terminal"},
 			},
 			d = {
 				name = "Debug",
 				b = {dap.toggle_breakpoint, "Toggle Breakpoint"},
 				B = {function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, "Conditional BreakPoint"},
+				C = {dap.clear_breakpoints, "Clear Breakpoints"},
 				c = {dap.continue, "Continue"},
-				o = {dap.step_over, "Step Over"},
-				O = {dap.step_out, "Step Out"},
+				k = {dap.step_over, "Step Over"},
+				j = {dap.step_back, "Step Back"},
+				o = {dap.step_out, "Step Out"},
 				i = {dap.step_into, "Step Into"},
 				r = {dap.repl.open, "Open Debug REPL"},
 				t = {dap.terminate, "Stop Debugging"},
@@ -63,16 +68,26 @@ function M.reg_main()
 				"Venn"},
 				s = {'<cmd>SymbolsOutline<cr>', "Outline"},
 				k = {t.keymaps, "Keymaps"},
-				n = {'<cmd>set relativenumber!<cr>', "Relative Number"},
+				r = {'<cmd>set relativenumber!<cr>', "Relative Number"},
 				m = {'<cmd>MarkdownPreview<cr>', "Preview Markdown"},
 				g = {'<cmd>Neogit<cr>', "Open Neogit"},
 			},
 			h = {
-				name = "Help",
-				h = {':help<cr>', "Open Help"},
+				name = "Misc",
+				h = {'<cmd>help<cr>', "Open Help"},
 				f = {'<cmd>Telescope help_tags<cr>', "Find Help"},
-				d = {require"osv".launch, "Debug Neovim"}
+				d = {require"osv".launch, "Debug Neovim"},
+				c = {'<cmd>LuaCacheClear<cr>', "Clean Cache"},
 			},
+			w = {
+				name = "Window",
+				h = {'<cmd>WinShift left<cr>', "Move Left"},
+				j = {'<cmd>WinShift down<cr>', "Move Down"},
+				k = {'<cmd>WinShift up<cr>', "Move Up"},
+				l = {'<cmd>WinShift right<cr>', "Move Right"},
+				s = {'<cmd>WinShift swap<cr>', "Swap"},
+			},
+			['<C-q>'] = {':qa!<cr>', "Quit"}
 		},
 		g = {
 			b = "Block Comment",
@@ -83,6 +98,7 @@ function M.reg_main()
 		['<F5>'] = {dap.continue, "Continue"},
 		['<F10>'] = {dap.step_over, "Step Over"},
 		['<F11>'] = {dap.step_into, "Step Into"},
+		['<F8>'] = {dap.step_back, "Step Back"},
 		['<F23>'] = {dap.setp_out, "Step Out"},
 		['<F29>'] = {dap.terminate, "Stop Debugging"},
 	}, {silent = true,})
@@ -117,13 +133,12 @@ function M.reg_lsp(bufnr)
 				a = {'<cmd>Lspsaga code_action<CR>', "Code Action"},
 				n = {'<cmd>Lspsaga rename<cr>', "Rename"},
 				f = {vim.lsp.buf.formatting, "Format Documents"},
-				p = {p.lsp_finder, "Providers"},
 				t = {'<cmd>Trouble<cr>', "Trouble"},
 				w = {'<cmd>Trouble workspace_diagnostics<cr>', "Workspace Diagnostics"},
 				r = {'<cmd>Trouble lsp_references<cr>', "References"},
 				q = {'<cmd>Trouble quickfix<cr>', "Quick Fix"},
-				s = {t.lsp_document_symbols, "Document Symbols"},
-				S = {t.lsp_workspace_symbols, "Workspace Symbols"},
+				s = {t.lsp_document_symbols, "Find Symbols"},
+				S = {t.lsp_workspace_symbols, "Find Symbols (workspace)"},
 				['['] = {'<cmd>Lspsaga diagnostic_jump_prev<CR>', "Previous Diagnostic"},
 				[']'] = {'<cmd>Lspsaga diagnostic_jump_next<CR>', "Next Diagnostic"}
 
@@ -137,7 +152,8 @@ function M.reg_lsp(bufnr)
 			r = {'<cmd>Trouble lsp_references<cr>', "References"},
 			s = {t.lsp_document_symbols, "Document Symbols"},
 			S = {t.lsp_workspace_symbols, "Workspace Symbols"},
-			p = {p.preview_definition, "Preview Definition"}
+			p = {p.preview_definition, "Preview Definition"},
+			P = {p.lsp_finder, "Providers"}
 
 		},
 		['K'] = {'<cmd>Lspsaga hover_doc<CR>', "Hoverdoc"},

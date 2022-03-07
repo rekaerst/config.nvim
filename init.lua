@@ -6,6 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 -------------------------------
 
+require'impatient'
 -- Packer
 require('plugin')
 -- Colorscheme and highlighting configurations

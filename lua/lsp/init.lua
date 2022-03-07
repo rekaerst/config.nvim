@@ -15,6 +15,7 @@ local servers = {
 	'tsserver', 'html', "jsonls", 'cssls',
 	'bashls', 'gdscript', 'cmake',
 	'vala_ls',
+	'vimls',
 	'sqls',
 }
 for _, lsp in ipairs(servers) do
