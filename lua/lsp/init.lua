@@ -8,10 +8,11 @@ local on_attach = function(client, bufnr)
 end
 -- LSP Servers
 local servers = {
-	"pyright",
-	-- 'jedi_language_server',
+	-- "pyright",
+	'jedi_language_server',
 	"jdtls",
-	'rust_analyzer', 'clangd', 'gopls', 'hls', 'r_language_server',
+	'rust_analyzer',
+	'clangd', 'gopls', 'hls', 'r_language_server',
 	'tsserver', 'html', "jsonls", 'cssls',
 	'bashls', 'gdscript', 'cmake',
 	'vala_ls',
@@ -22,10 +23,11 @@ for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		debounce_text_changes = 150,
-		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	}
 end
 
+-- lua
 -- this ass is too special...
 require'lspconfig'.sumneko_lua.setup {
 	on_attach = on_attach,

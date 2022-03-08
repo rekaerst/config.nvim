@@ -157,7 +157,7 @@ function M.reg_lsp(bufnr)
 			P = {p.lsp_finder, "Providers"}
 
 		},
-		['K'] = {'<cmd>Lspsaga hover_doc<CR>', "Hoverdoc"},
+		['K'] = {'<cmd>Lspsaga hover_doc<CR>', "Hover"},
 		["<C-d>"] = {function() a.smart_scroll_with_saga(1, "<c-d>") end, "Scroll Down"},
 		['<C-u>'] = {function() a.smart_scroll_with_saga(-1, "<c-u>") end, "Scroll Up"}
 	}, { buffer = bufnr })
