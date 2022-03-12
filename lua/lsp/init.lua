@@ -29,7 +29,11 @@ end
 
 -- lua
 -- this ass is too special...
-local luadev = require('lua-dev').setup()
+local luadev = require('lua-dev').setup{
+	lspconfig = {
+		on_attach = on_attach
+	}
+}
 lspconfig.sumneko_lua.setup(luadev)
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

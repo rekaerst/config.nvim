@@ -2,6 +2,7 @@
 local packer = require('packer')
 packer.init()
 local use = packer.use
+local use_rockes = packer.use_rocks
 packer.reset()
 use 'wbthomason/packer.nvim'
 
