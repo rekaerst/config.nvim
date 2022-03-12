@@ -30,6 +30,7 @@ use {'ray-x/lsp_signature.nvim'}
 use {'simrat39/symbols-outline.nvim'}
 use {'j-hui/fidget.nvim'}
 use {'mfussenegger/nvim-lint'}
+use {'folke/lua-dev.nvim'}
 
 -- Completion
 use {'hrsh7th/nvim-cmp', requires = {
