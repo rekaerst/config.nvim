@@ -103,7 +103,7 @@ use {'tpope/vim-surround'}
 -- Indentation tracking
 use {'lukas-reineke/indent-blankline.nvim'}
 
--- -- Mutli line
+-- -- Multi line
 use {'mg979/vim-visual-multi'} -- Multiple cursors
 
 -- Highlight colors
