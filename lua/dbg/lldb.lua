@@ -8,7 +8,7 @@ dap.adapters.lldb = {
 }
 
 dap.configurations.cpp = {{
-	name = "Launch(lldb default)",
+	name = "lldb",
 	type = "lldb",
 	request = "launch",
 	program = function()
