@@ -1,4 +1,6 @@
 local M = {}
+local json = require('lib.json')
+
 local opts = {
 	noremap = true,
 	silent = true
@@ -83,5 +85,26 @@ function M.bmap(bufnr, mod, lh, rh)
 end
 
 M.signdef = vim.fn.sign_define
+
+-- json schema: {"dap":{"program": "string"}}
+
+function M.readcfg(path)
+	local f = io.open(path, "rb")
+	local content = {}
+	if f then
+		pcall( function ()
+			content = json.decode(f:read("*all"))
+		end)
+		f:close()
+	end
+	return content
+end
+
+function M.writecfg(path, content)
+	local f = io.open(path, "rb")
+	f = io.open(path, 'wb')
+	f:write(json.encode(content))
+	f:close()
+end
 
 return M
