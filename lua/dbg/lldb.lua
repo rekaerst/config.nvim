@@ -1,5 +1,4 @@
 local dap = require('dap')
-local json = require('lib.json')
 local u = require('utils')
 
 
@@ -26,7 +25,7 @@ dap.configurations.cpp = {{
 	stopOnEntry = false,
 	args = {},
 
-	runInTerminal = false
+	runInTerminal = true
 }}
 
 dap.configurations.c = dap.configurations.cpp
