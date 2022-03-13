@@ -94,7 +94,7 @@ function M.reg_main()
 			b = "Block Comment",
 			c = "Line Comment",
 		},
-		['<F6>'] = {':w | :make<cr>', "Make"},
+		['<F6>'] = {':up | :make<cr>', "Make"},
 		['<F9>'] = {dap.toggle_breakpoint, "Toggle Breakpoint"},
 		['<F5>'] = {dap.continue, "Continue"},
 		['<F10>'] = {dap.step_over, "Step Over"},
