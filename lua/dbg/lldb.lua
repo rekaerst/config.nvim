@@ -1,6 +1,11 @@
 local dap = require('dap')
 local u = require('utils')
 
+dap.adapters.lldb = {
+	type = 'executable',
+	command = '/usr/bin/lldb-vscode', -- adjust as needed
+	name = "lldb"
+}
 
 dap.configurations.cpp = {{
 	name = "Launch(lldb default)",
