@@ -3,7 +3,7 @@ local u = require('utils')
 
 
 dap.configurations.cpp = {{
-	name = "Launch",
+	name = "Launch(lldb default)",
 	type = "lldb",
 	request = "launch",
 	program = function()
@@ -25,7 +25,7 @@ dap.configurations.cpp = {{
 	stopOnEntry = false,
 	args = {},
 
-	runInTerminal = true
+	runInTerminal = true,
 }}
 
 dap.configurations.c = dap.configurations.cpp

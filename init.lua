@@ -13,9 +13,9 @@ require('plugin')
 require('color')
 -- Plugin Configurations
 require('config')
+-- Keybinding
+require('binding').reg_main()
 -- LSP (code completion, formatting, etc.)
 require('lsp')
 -- DAP (debugging)
 require('dbg')
--- Keybinding
-require('binding').reg_main()
