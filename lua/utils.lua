@@ -1,5 +1,4 @@
 local M = {}
-local json = require('lib.json')
 
 local opts = {
 	noremap = true,
@@ -93,7 +92,7 @@ function M.readcfg(path)
 	local content = {}
 	if f then
 		pcall( function ()
-			content = json.decode(f:read("*all"))
+			content = vim.fn.json_decode(f:read("*all"))
 		end)
 		f:close()
 	end
@@ -103,7 +102,7 @@ end
 function M.writecfg(path, content)
 	local f = io.open(path, "rb")
 	f = io.open(path, 'wb')
-	f:write(json.encode(content))
+	f:write(vim.fn.json_encode(content))
 	f:close()
 end
 
