@@ -48,6 +48,7 @@ function M.reg_main()
 				B = {function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, "Conditional BreakPoint"},
 				C = {dap.clear_breakpoints, "Clear Breakpoints"},
 				c = {dap.continue, "Continue"},
+				e = {dapui.eval, "Evaluate Expression"},
 				k = {dap.step_over, "Step Over"},
 				j = {dap.step_back, "Step Back"},
 				o = {dap.step_out, "Step Out"},
