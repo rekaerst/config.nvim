@@ -1,7 +1,6 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 local trouble = require("trouble.providers.telescope")
-local u = require("core.util")
 local t = require("telescope")
 local le = t.load_extension
 t.setup({
