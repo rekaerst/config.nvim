@@ -1,9 +1,0 @@
-{
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "Lua.diagnostics.globals": [
-        "vim",
-        "colorscheme_nightfox",
-        "colorscheme_onedark",
-        "colorscheme_tokyonight"
-    ]
-}
