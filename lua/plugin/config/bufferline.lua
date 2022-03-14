@@ -5,7 +5,7 @@ require("bufferline").setup({
 		end,
 		diagnostics = "nvim_lsp",
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			local icon = level:match("error") and " " or " "
+			local icon = level:match("error") and " " or " "
 			return " " .. icon .. count
 		end,
 		max_name_length = 20,
@@ -13,7 +13,8 @@ require("bufferline").setup({
 		offsets = {
 			{
 				filetype = "NvimTree",
-				text = "Files",
+				text = "",
+				padding = 1,
 			},
 			{
 				filetype = "Outline",
@@ -24,5 +25,11 @@ require("bufferline").setup({
 				text = "Packer",
 			},
 		},
+		buffer_close_icon = "",
+		modified_icon = "",
+		close_icon = "",
+		left_trunc_marker = "",
+		right_trunc_marker = "",
+		separator_style = "thin",
 	},
 })
