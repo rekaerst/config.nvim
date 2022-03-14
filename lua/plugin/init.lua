@@ -177,8 +177,10 @@ local plugins = {
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
 	-- Highlight colors
 	{
-		"RRethy/vim-hexokinase",
-		run = "make",
+		"norcalli/nvim-colorizer.lua",
+		config = function ()
+			require("colorizer").setup()
+		end
 	},
 	-- -- Undo
 	{
@@ -198,7 +200,10 @@ local plugins = {
 			require("neogit").setup({})
 		end,
 	},
-	{ "f-person/git-blame.nvim" },
+	{ 
+		"f-person/git-blame.nvim",
+		config = 'vim.cmd [[let g:gitblame_enabled = 0]]'
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = cfg("gitsigns"),
@@ -263,7 +268,7 @@ else
 			end,
 			prompt_border = "single",
 		},
-		git = {
+	git = {
 			clone_timeout = 6000,
 		},
 		auto_clean = true,

@@ -68,6 +68,7 @@ function M.reg_main()
 			v = {
 				name = "View",
 				t = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
+				c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
 				T = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
 				f = { "<cmd>NvimTreeFindFile<cr>", "Find File in Tree" },
 				e = {
