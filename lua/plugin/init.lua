@@ -32,9 +32,7 @@ local plugins = {
 	},
 	{
 		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("lsp_signature").setup()
-		end,
+ 	 	config = cfg('lsp_signature'),
 	},
 	{ "simrat39/symbols-outline.nvim" },
 	{
