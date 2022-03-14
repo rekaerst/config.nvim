@@ -32,6 +32,7 @@ require("nvim-tree").setup({
 			},
 		},
 		allow_resize = true,
+		hide_root_folder = true,
 	},
 	actions = {
 		open_file = {

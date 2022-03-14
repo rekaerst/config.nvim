@@ -118,7 +118,7 @@ function M.setup()
 	fg("DiagnosticHint", purple)
 	fg("DiagnosticError", red)
 	fg("DiagnosticWarn", yellow)
-	fg("DiagnosticInformation", green)
+	fg("DiagnosticInformation", blue)
 
 	-- NvimTree
 	fg("NvimTreeEmptyFolderName", folder_bg)

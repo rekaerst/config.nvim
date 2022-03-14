@@ -20,7 +20,7 @@ require("lualine").setup({
 				a = {bg = colors.yellow, fg = colors.black, gui = 'bold'},
 			},
 			inactive = {
-				a = {bg = colors.one_bg2, fg = colors.grey_fg2 },
+				a = {bg = colors.one_bg2, fg = colors.white },
 			},
 		},
 	},
