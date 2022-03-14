@@ -149,6 +149,9 @@ function M.setup()
 	fg_bg("TelescopeResultsTitle", darker_black, darker_black)
 
 	bg("TelescopeSelection", black2)
+
+ 	-- Which-key
+	bg("WhichKeyFloat", one_bg)
 end
 
 return M
