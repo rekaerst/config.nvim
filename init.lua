@@ -1,21 +1,21 @@
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-	vim.cmd 'packadd packer.nvim'
+local present, impatient = pcall(require, "impatient")
+if present then
+	impatient.enable_profile()
 end
--------------------------------
 
-require'impatient'
--- Packer
-require('plugin')
--- Color scheme and highlighting configurations
-require('color')
--- Plugin Configurations
-require('config')
--- Keybinding
-require('binding').reg_main()
--- LSP (code completion, formatting, etc.)
-require('lsp')
--- DAP (debugging)
-require('dbg')
+local modules = {
+	"plugin",
+	"core.mapping",
+	"core.util",
+	"core.internal",
+	"color",
+	"lsp",
+	"dbg",
+}
+
+for _, module in ipairs(modules) do
+	local ok, err = pcall(require, module)
+	if not ok then
+		error("Error loading " .. module .. "\n\n" .. err)
+	end
+end
