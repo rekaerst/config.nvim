@@ -8,6 +8,7 @@ local modules = {
 	"core.mapping",
 	"core.util",
 	"core.internal",
+	"core.commands",
 	"color",
 	"lsp",
 	"dbg",
