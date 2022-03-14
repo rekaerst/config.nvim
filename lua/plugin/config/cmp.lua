@@ -61,6 +61,9 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 	}),
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
 	formatting = {
 		format = function(entry, vim_item)
 			-- vim_item.kind = kind_symbols[vim_item.kind]
@@ -78,7 +81,7 @@ cmp.setup.filetype("gitcommit", {
 			name = "cmp_git",
 		}, -- You can specify the `cmp_git` source if you were installed it.
 	}, { {
-		name = "buffer",
+			name = "buffer",
 	} }),
 })
 
