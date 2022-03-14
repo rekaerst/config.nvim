@@ -41,9 +41,9 @@ end
 -- Modified from https://github.com/chriskempson/base16-vim
 local function apply_base16_theme(theme)
 	-- Neovim terminal colours
-	if vim.fn.has "nvim" then
-		vim.g.terminal_color_0 =  theme.base00
-		vim.g.terminal_color_1 =  theme.base08
+	if vim.fn.has("nvim") then
+		vim.g.terminal_color_0 = theme.base00
+		vim.g.terminal_color_1 = theme.base08
 		vim.g.terminal_color_2 = theme.base0B
 		vim.g.terminal_color_3 = theme.base0A
 		vim.g.terminal_color_4 = theme.base0D
@@ -231,7 +231,7 @@ local function apply_base16_theme(theme)
 end
 
 function M.setup()
-	apply_base16_theme( M.colors)
+	apply_base16_theme(M.colors)
 end
 
 return M

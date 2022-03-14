@@ -12,7 +12,7 @@ local plugins = {
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-lua/popup.nvim" },
 	-- Colorscheme
-	{'joshdick/onedark.vim' },
+	{ "joshdick/onedark.vim" },
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
 	-- Terminal
@@ -32,7 +32,7 @@ local plugins = {
 	},
 	{
 		"ray-x/lsp_signature.nvim",
- 	 	config = cfg('lsp_signature'),
+		config = cfg("lsp_signature"),
 	},
 	{ "simrat39/symbols-outline.nvim" },
 	{
@@ -174,9 +174,9 @@ local plugins = {
 	-- Highlight colors
 	{
 		"norcalli/nvim-colorizer.lua",
-		config = function ()
+		config = function()
 			require("colorizer").setup()
-		end
+		end,
 	},
 	-- -- Undo
 	{
@@ -196,9 +196,9 @@ local plugins = {
 			require("neogit").setup({})
 		end,
 	},
-	{ 
+	{
 		"f-person/git-blame.nvim",
-		config = 'vim.cmd [[let g:gitblame_enabled = 0]]'
+		config = "vim.cmd [[let g:gitblame_enabled = 0]]",
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -264,7 +264,7 @@ else
 			end,
 			prompt_border = "single",
 		},
-	git = {
+		git = {
 			clone_timeout = 6000,
 		},
 		auto_clean = true,

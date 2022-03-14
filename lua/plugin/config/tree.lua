@@ -1,16 +1,16 @@
 local g = vim.g
 
 g.nvim_tree_icons = {
-   default = "",
-   git = {
-      deleted = "",
-      ignored = "◌",
-      renamed = "➜",
-      staged = "✓",
-      unmerged = "",
-      unstaged = "✗",
-      untracked = "★",
-   },
+	default = "",
+	git = {
+		deleted = "",
+		ignored = "◌",
+		renamed = "➜",
+		staged = "✓",
+		unmerged = "",
+		unstaged = "✗",
+		untracked = "★",
+	},
 }
 
 g.nvim_tree_indent_markers = 1
@@ -37,6 +37,6 @@ require("nvim-tree").setup({
 	actions = {
 		open_file = {
 			resize_window = true,
-		}
-	}
+		},
+	},
 })
