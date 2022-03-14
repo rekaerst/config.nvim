@@ -1,5 +1,7 @@
 local M = {}
 
+local cmd = vim.cmd
+
 M.kind_symbols = {
 	Text = "",
 	Method = "",
@@ -70,6 +72,8 @@ function M.cfg(name)
 	return 'require "plugin.config.' .. name .. '"'
 end
 
+-- check if file exists
+-- @param path Path of file
 function M.file_exists(path)
 	local f = io.open(path, "r")
 	if f ~= nil then
@@ -78,6 +82,30 @@ function M.file_exists(path)
 	else
 		return false
 	end
+end
+
+-- Highlight functions
+
+-- Define bg color
+-- @param group Group
+-- @param color Color
+M.bg = function(group, col)
+   cmd("hi " .. group .. " guibg=" .. col)
+end
+
+-- Define fg color
+-- @param group Group
+-- @param color Color
+M.fg = function(group, col)
+   cmd("hi " .. group .. " guifg=" .. col)
+end
+
+-- Define bg and fg color
+-- @param group Group
+-- @param fgcol Fg Color
+-- @param bgcol Bg Color
+M.fg_bg = function(group, fgcol, bgcol)
+   cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
 function M.readcfg(path)

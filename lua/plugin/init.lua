@@ -12,9 +12,7 @@ local plugins = {
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-lua/popup.nvim" },
 	-- Colorscheme
-	{ "joshdick/onedark.vim" },
-	{ "EdenEast/nightfox.nvim" },
-	{ "folke/tokyonight.nvim" },
+	{'joshdick/onedark.vim' },
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
 	-- Terminal
