@@ -2,8 +2,17 @@
 local packer = require('packer')
 packer.init()
 local use = packer.use
-local use_rockes = packer.use_rocks
 packer.reset()
+packer.startup({function()
+  -- Your plugins here
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
 use 'wbthomason/packer.nvim'
 
 use {'lewis6991/impatient.nvim'}
