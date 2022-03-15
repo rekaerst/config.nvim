@@ -3,9 +3,10 @@ local cmd = vim.cmd
 
 M.colors = {
 	white = "#abb2bf",
-	darker_black = "#1b1f27",
-	black = "#1e222a", --  nvim bg
-	black2 = "#252931",
+	black0 = "#13171d",
+	black = "#1b1f27",
+	black2 = "#1e222a", --  nvim bg
+	black3 = "#252931",
 	one_bg = "#282c34", -- real bg of onedark
 	one_bg2 = "#353b45",
 	one_bg3 = "#30343c",
@@ -37,10 +38,11 @@ M.colors = {
 local colors = M.colors
 
 function M.setup()
-	local black = colors.black
 	local black2 = colors.black2
+	local black3 = colors.black3
 	local blue = colors.blue
-	local darker_black = colors.darker_black
+	local black = colors.black
+	local black0 = colors.black0
 	local folder_bg = colors.folder_bg
 	local green = colors.green
 	local grey = colors.grey
@@ -71,11 +73,11 @@ function M.setup()
 	fg("cursorlinenr", white)
 
 	-- same it bg, so it doesn't appear
-	fg("EndOfBuffer", black)
+	fg("EndOfBuffer", black2)
 
 	-- For floating windows
 	fg("FloatBorder", blue)
-	bg("NormalFloat", darker_black)
+	bg("NormalFloat", black)
 
 	-- Pmenu
 	bg("Pmenu", one_bg)
@@ -122,33 +124,33 @@ function M.setup()
 
 	-- NvimTree
 	fg("NvimTreeEmptyFolderName", folder_bg)
-	fg("NvimTreeEndOfBuffer", darker_black)
+	fg("NvimTreeEndOfBuffer", black)
 	fg("NvimTreeFolderIcon", folder_bg)
 	fg("NvimTreeFolderName", folder_bg)
 	fg("NvimTreeGitDirty", red)
 	fg("NvimTreeIndentMarker", one_bg2)
-	bg("NvimTreeNormal", darker_black)
-	bg("NvimTreeNormalNC", darker_black)
+	bg("NvimTreeNormal", black)
+	bg("NvimTreeNormalNC", black)
 	fg("NvimTreeOpenedFolderName", folder_bg)
 	fg("NvimTreeRootFolder", red .. " gui=underline") -- enable underline for root folder in nvim tree
-	fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-	fg_bg("NvimTreeVertSplit", darker_black, darker_black)
-	fg_bg("NvimTreeWindowPicker", red, black2)
+	fg_bg("NvimTreeStatuslineNc", black, black)
+	fg_bg("NvimTreeVertSplit", black, black)
+	fg_bg("NvimTreeWindowPicker", red, black3)
 
 	-- Telescope
-	fg_bg("TelescopeBorder", darker_black, darker_black)
-	fg_bg("TelescopePromptBorder", black2, black2)
+	fg_bg("TelescopeBorder", black0, black0)
+	fg_bg("TelescopePromptBorder", black3, black3)
 
-	fg_bg("TelescopePromptNormal", white, black2)
-	fg_bg("TelescopePromptPrefix", red, black2)
+	fg_bg("TelescopePromptNormal", white, black3)
+	fg_bg("TelescopePromptPrefix", red, black3)
 
-	bg("TelescopeNormal", darker_black)
+	bg("TelescopeNormal", black0)
 
-	fg_bg("TelescopePreviewTitle", black, green)
-	fg_bg("TelescopePromptTitle", black, red)
-	fg_bg("TelescopeResultsTitle", darker_black, darker_black)
+	fg_bg("TelescopePreviewTitle", black2, green)
+	fg_bg("TelescopePromptTitle", black2, red)
+	fg_bg("TelescopeResultsTitle", black0, black0)
 
-	bg("TelescopeSelection", black2)
+	bg("TelescopeSelection", black3)
 
 	-- Which-key
 	bg("WhichKeyFloat", one_bg)
