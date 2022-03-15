@@ -3,10 +3,10 @@ local cmd = vim.cmd
 
 M.colors = {
 	white = "#abb2bf",
-	black0 = "#13171d",
-	black = "#1b1f27",
-	black2 = "#1e222a", --  nvim bg
-	black3 = "#252931",
+	black = "#1e222a", --  nvim bg
+	black2 = "#252931",
+	black3 = "#13171d",
+	black4 = "#1b1f27",
 	one_bg = "#282c34", -- real bg of onedark
 	one_bg2 = "#353b45",
 	one_bg3 = "#30343c",
@@ -38,11 +38,11 @@ M.colors = {
 local colors = M.colors
 
 function M.setup()
-	local black2 = colors.black2
-	local black3 = colors.black3
+	local black2 = colors.black
+	local black3 = colors.black2
 	local blue = colors.blue
-	local black = colors.black
-	local black0 = colors.black0
+	local black = colors.black4
+	local black0 = colors.black3
 	local folder_bg = colors.folder_bg
 	local green = colors.green
 	local grey = colors.grey
