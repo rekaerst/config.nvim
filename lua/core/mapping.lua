@@ -124,9 +124,10 @@ function M.reg_main()
 	}, {
 		mode = "v",
 	})
-
-	-- u.imap('<C-a>', '<C-o>^')
-	-- u.imap('<C-e>', '<C-o>$')
+	vim.cmd [[
+ 	imap <C-a> <C-o>I
+ 	imap <C-e> <C-o>$
+	]]
 end
 
 function M.reg_lsp(bufnr)
