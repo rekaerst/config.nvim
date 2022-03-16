@@ -24,7 +24,7 @@ M.colors = {
 	blue = "#61afef",
 	yellow = "#e7c787",
 	sun = "#EBCB8B",
-	purple = "#b4bbc8",
+	purple = "#faa2ff",
 	dark_purple = "#c882e7",
 	teal = "#519ABA",
 	orange = "#fca2aa",
@@ -99,7 +99,7 @@ function M.setup()
 	fg("VertSplit", one_bg2)
 
 	-- [[ Plugin Highlights
-
+ 	 	 	 	 	 	 	
 	-- Dashboard
 	fg("AlphaHeader", grey_fg)
 	fg("AlphaButtons", light_grey)
@@ -111,16 +111,11 @@ function M.setup()
 	fg_bg("DiffModified", red, "NONE")
 	fg_bg("DiffDelete", red, "NONE")
 
-	-- Indent blankline plugin
-	fg("IndentBlanklineChar", line)
-	fg("IndentBlanklineSpaceChar", line)
-
 	-- Lsp diagnostics
-
-	fg("DiagnosticHint", purple)
 	fg("DiagnosticError", red)
 	fg("DiagnosticWarn", yellow)
-	fg("DiagnosticInformation", blue)
+	fg("DiagnosticInfo", blue)
+	fg("DiagnosticHint", purple)
 
 	-- NvimTree
 	fg("NvimTreeEmptyFolderName", folder_bg)

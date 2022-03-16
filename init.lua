@@ -9,9 +9,9 @@ local modules = {
 	"core.util",
 	"core.internal",
 	"core.commands",
-	"color",
 	"lsp",
 	"dbg",
+	"color",
 }
 
 for _, module in ipairs(modules) do
