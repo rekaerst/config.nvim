@@ -72,6 +72,7 @@ cmp.setup({
 			return vim_item
 		end,
 	},
+	preselect = cmp.PreselectMode.None,
 })
 
 -- Set configuration for specific filetype.
