@@ -222,7 +222,7 @@ local plugins = {
 	},
 
 	-- Preview
-	{ "davidgranstrom/nvim-markdown-preview" },
+	{ "iamcco/markdown-preview.nvim" },
 
 	-- -- Nevim Development
 	{
