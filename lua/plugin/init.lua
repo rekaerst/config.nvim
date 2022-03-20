@@ -222,7 +222,10 @@ local plugins = {
 	},
 
 	-- Preview
-	{ "iamcco/markdown-preview.nvim" },
+	{
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && yarn install"
+	},
 
 	-- -- Nevim Development
 	{
@@ -264,7 +267,7 @@ else
 			end,
 			prompt_border = "single",
 		},
-		git = {
+	git = {
 			clone_timeout = 6000,
 		},
 		auto_clean = true,
