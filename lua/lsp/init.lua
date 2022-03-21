@@ -10,7 +10,6 @@ end
 local servers = {
 	-- "pyright",
 	"jedi_language_server",
-	"jdtls",
 	"rust_analyzer",
 	"clangd",
 	"gopls",
