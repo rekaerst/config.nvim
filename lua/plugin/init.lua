@@ -239,10 +239,6 @@ local plugins = {
 		"jbyuki/venn.nvim",
 		config = cfg("venn"),
 	},
-	{
-		"nvim-neorg/neorg",
-		config = cfg("neorg")
-	},
 
 	-- util
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
