@@ -34,7 +34,10 @@ local plugins = {
 		"ray-x/lsp_signature.nvim",
 		config = cfg("lsp_signature"),
 	},
-	{ "simrat39/symbols-outline.nvim" },
+	{
+		"simrat39/symbols-outline.nvim",
+		config = cfg("symbols-outline")
+	},
 	{
 		"j-hui/fidget.nvim",
 		config = function()
