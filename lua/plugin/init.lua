@@ -11,8 +11,6 @@ local plugins = {
 	-- Libraries
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-lua/popup.nvim" },
-	-- Colorscheme
-	{ "joshdick/onedark.vim" },
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
 	-- Terminal
