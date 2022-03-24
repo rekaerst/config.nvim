@@ -35,120 +35,98 @@ M.colors = {
 	pmenu_bg = "#A3BE8C",
 	folder_bg = "#61afef",
 }
-local colors = M.colors
+local c = M.colors
 
 function M.setup()
-	local black2 = colors.black
-	local black3 = colors.black2
-	local blue = colors.blue
-	local black = colors.black4
-	local black0 = colors.black3
-	local folder_bg = colors.folder_bg
-	local green = colors.green
-	local grey = colors.grey
-	local grey_fg = colors.grey_fg
-	local light_grey = colors.light_grey
-	local line = colors.line
-	local nord_blue = colors.nord_blue
-	local one_bg = colors.one_bg
-	local one_bg2 = colors.one_bg2
-	local pmenu_bg = colors.pmenu_bg
-	local purple = colors.purple
-	local red = colors.red
-	local white = colors.white
-	local yellow = colors.yellow
-	local orange = colors.orange
-	local one_bg3 = colors.one_bg3
-
 	-- functions for setting highlights
 	local fg = require("core.util").fg
 	local fg_bg = require("core.util").fg_bg
 	local bg = require("core.util").bg
 
-	fg("Comment", grey_fg .. " gui=italic")
+	fg("Comment", c.grey_fg .. " gui=italic")
 
 	-- Disable cursor line
 	cmd("hi clear CursorLine")
 	-- Line number
-	fg("cursorlinenr", white)
+	fg("cursorlinenr", c.white)
 
 	-- same it bg, so it doesn't appear
-	fg("EndOfBuffer", black2)
+	fg("EndOfBuffer", c.black)
 
 	-- For floating windows
-	fg("FloatBorder", blue)
-	bg("NormalFloat", black)
+	fg("FloatBorder", c.blue)
+	bg("NormalFloat", c.black4)
 
 	-- Pmenu
-	bg("Pmenu", one_bg)
-	bg("PmenuSbar", one_bg2)
-	bg("PmenuSel", pmenu_bg)
-	bg("PmenuThumb", nord_blue)
-	fg("CmpItemAbbr", white)
-	fg("CmpItemAbbrMatch", white)
-	fg("CmpItemKind", white)
-	fg("CmpItemMenu", white)
+	bg("Pmenu", c.one_bg)
+	bg("PmenuSbar", c.one_bg2)
+	bg("PmenuSel", c.pmenu_bg)
+	bg("PmenuThumb", c.nord_blue)
+	fg("CmpItemAbbr", c.white)
+	fg("CmpItemAbbrMatch", c.white)
+	fg("CmpItemKind", c.white)
+	fg("CmpItemMenu", c.white)
 
 	-- misc
 
 	-- inactive statuslines as thin lines
-	fg("StatusLineNC", one_bg3 .. " gui=underline")
+	fg("StatusLineNC", c.one_bg3 .. " gui=underline")
 
-	fg("LineNr", grey)
-	fg("NvimInternalError", red)
-	fg("VertSplit", one_bg2)
+	fg("LineNr", c.grey)
+	fg("NvimInternalError", c.red)
+	fg("VertSplit", c.one_bg2)
 
 	-- [[ Plugin Highlights
  	 	 	 	 	 	 	
 	-- Dashboard
-	fg("AlphaHeader", grey_fg)
-	fg("AlphaButtons", light_grey)
+	fg("AlphaHeader", c.grey_fg)
+	fg("AlphaButtons", c.light_grey)
 
 	-- Git signs
-	fg_bg("DiffAdd", blue, "NONE")
-	fg_bg("DiffChange", yellow, "NONE")
-	fg_bg("DiffChangeDelete", red, "NONE")
-	fg_bg("DiffModified", red, "NONE")
-	fg_bg("DiffDelete", red, "NONE")
+	fg_bg("DiffAdd", c.blue, "NONE")
+	fg_bg("DiffChange", c.yellow, "NONE")
+	fg_bg("DiffChangeDelete", c.red, "NONE")
+	fg_bg("DiffModified", c.red, "NONE")
+	fg_bg("DiffDelete", c.red, "NONE")
 
 	-- Lsp diagnostics
-	fg("DiagnosticError", red)
-	fg("DiagnosticWarn", yellow)
-	fg("DiagnosticInfo", blue)
-	fg("DiagnosticHint", purple)
+	fg("DiagnosticError", c.red)
+	fg("DiagnosticWarn", c.yellow)
+	fg("DiagnosticInfo", c.blue)
+	fg("DiagnosticHint", c.purple)
 
 	-- NvimTree
-	fg("NvimTreeEmptyFolderName", folder_bg)
-	fg("NvimTreeEndOfBuffer", black)
-	fg("NvimTreeFolderIcon", folder_bg)
-	fg("NvimTreeFolderName", folder_bg)
-	fg("NvimTreeGitDirty", red)
-	fg("NvimTreeIndentMarker", one_bg2)
-	bg("NvimTreeNormal", black)
-	bg("NvimTreeNormalNC", black)
-	fg("NvimTreeOpenedFolderName", folder_bg)
-	fg("NvimTreeRootFolder", red .. " gui=underline") -- enable underline for root folder in nvim tree
-	fg_bg("NvimTreeStatuslineNc", black, black)
-	fg_bg("NvimTreeVertSplit", black, black)
-	fg_bg("NvimTreeWindowPicker", red, black3)
+	fg("NvimTreeEmptyFolderName", c.folder_bg)
+	fg("NvimTreeEndOfBuffer", c.black4)
+	fg("NvimTreeFolderIcon", c.folder_bg)
+	fg("NvimTreeFolderName", c.folder_bg)
+	fg("NvimTreeGitDirty", c.red)
+	fg("NvimTreeIndentMarker", c.one_bg2)
+	bg("NvimTreeNormal", c.black4)
+	bg("NvimTreeNormalNC", c.black4)
+	fg("NvimTreeOpenedFolderName", c.folder_bg)
+	fg("NvimTreeRootFolder", c.red .. " gui=underline") -- enable underline for root folder in nvim tree
+	fg_bg("NvimTreeStatuslineNc", c.black4, c.black4)
+	fg_bg("NvimTreeVertSplit", c.black4, c.black4)
+	fg_bg("NvimTreeWindowPicker", c.red, c.black2)
 
 	-- Telescope
-	fg_bg("TelescopeBorder", black0, black0)
-	fg_bg("TelescopePromptBorder", black3, black3)
+	fg_bg("TelescopeBorder", c.black3, c.black3)
+	fg_bg("TelescopePromptBorder", c.black2, c.black2)
 
-	fg_bg("TelescopePromptNormal", white, black3)
-	fg_bg("TelescopePromptPrefix", red, black3)
+	fg_bg("TelescopePromptNormal", c.white, c.black2)
+	fg_bg("TelescopePromptPrefix", c.red, c.black2)
 
-	bg("TelescopeNormal", black0)
+	bg("TelescopeNormal", c.black3)
 
-	fg_bg("TelescopePreviewTitle", black2, green)
-	fg_bg("TelescopePromptTitle", black2, red)
-	fg_bg("TelescopeResultsTitle", black0, black0)
+	fg_bg("TelescopePreviewTitle", c.black, c.green)
+	fg_bg("TelescopePromptTitle", c.black, c.red)
+	fg_bg("TelescopeResultsTitle", c.black3, c.black3)
 
-	bg("TelescopeSelection", black3)
+	bg("TelescopeSelection", c.black2)
 
 	-- Which-key
-	bg("WhichKeyFloat", one_bg)
+	bg("WhichKeyFloat", c.one_bg)
 end
 
 return M
