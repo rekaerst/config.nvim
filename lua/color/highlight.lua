@@ -22,6 +22,7 @@ M.colors = {
 	vibrant_green = "#7eca9c",
 	nord_blue = "#81A1C1",
 	blue = "#61afef",
+	slate_blue = "#7680EF",
 	yellow = "#e7c787",
 	sun = "#EBCB8B",
 	purple = "#faa2ff",
@@ -76,8 +77,6 @@ function M.setup()
 	fg("NvimInternalError", c.red)
 	fg("VertSplit", c.one_bg2)
 
-	-- [[ Plugin Highlights
- 	 	 	 	 	 	 	
 	-- Dashboard
 	fg("AlphaHeader", c.grey_fg)
 	fg("AlphaButtons", c.light_grey)
@@ -127,6 +126,9 @@ function M.setup()
 
 	-- Which-key
 	bg("WhichKeyFloat", c.one_bg)
+
+	-- Syntax
+	fg("Operator", c.slate_blue)
 end
 
 return M
