@@ -227,7 +227,7 @@ local plugins = {
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && yarn install"
+		run = function() vim.fn['mkdp#util#install']() end
 	},
 
 	-- -- Nevim Development
