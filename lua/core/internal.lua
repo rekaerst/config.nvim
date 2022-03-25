@@ -47,7 +47,8 @@ o.cursorlineopt = "number"
 vim.cmd([[
 autocmd TermOpen * setlocal nonumber
 au FileType python set expandtab
-au FileType nim set expandtab
 au FileType markdown set expandtab | set tabstop=2 | set shiftwidth=2
 au FileType nasm set tabstop=8 | set shiftwidth=8 | set expandtab
+au BufNew,BufNewFile,BufRead *.tex :set ft=markdown
+au BufNew,BufNewFile,BufRead *.s,*.S,*.asm,*.ASM :set ft=nasm
 ]])
