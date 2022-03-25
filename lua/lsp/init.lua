@@ -30,22 +30,22 @@ local on_attach = function(client, bufnr)
 end
 -- LSP Servers
 local servers = {
-	"pylsp",
-	"rust_analyzer",
+	"bashls",
 	"clangd",
+	"cmake",
+	"cssls",
+	"gdscript",
 	"gopls",
 	"hls",
-	"r_language_server",
-	"tsserver",
 	"html",
 	"jsonls",
-	"cssls",
-	"bashls",
-	"gdscript",
-	"cmake",
+	"pylsp",
+	"r_language_server",
+	"rust_analyzer",
+	"sqls",
+	"tsserver",
 	"vala_ls",
 	"vimls",
-	"sqls",
 }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
