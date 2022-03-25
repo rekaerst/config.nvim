@@ -144,6 +144,7 @@ function M.reg_lsp(bufnr)
 				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
 				f = { lspformat.format, "Format Documents" },
+				F = { "<cmd>FormatToggle<cr>", "Toggle Auto Formatting" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },
