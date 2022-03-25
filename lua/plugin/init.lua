@@ -46,6 +46,7 @@ local plugins = {
 		"mfussenegger/nvim-lint",
 		config = cfg("lint"),
 	},
+	{ "lukas-reineke/lsp-format.nvim" },
 	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{

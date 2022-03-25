@@ -1,15 +1,18 @@
 local lspconfig = require("lspconfig")
+local lspformat = require("lsp-format")
+lspformat.setup({})
+
 local reg = require("core.mapping").reg_lsp
 require("lsp.ui")
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+ 	lspformat.on_attach(client)
 	reg(bufnr)
 end
 -- LSP Servers
 local servers = {
-	-- "pyright",
-	"jedi_language_server",
+	"pylsp",
 	"rust_analyzer",
 	"clangd",
 	"gopls",
