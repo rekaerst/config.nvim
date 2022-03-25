@@ -1,5 +1,4 @@
 -- Packer configurations
-local packer = require("packer")
 local present, packer = pcall(require, "packer")
 
 local u = require("core.util")
@@ -17,6 +16,7 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		config = cfg("toggleterm"),
+		cmd = "ToggleTerm",
 	},
 	-- LSP
 	{ "neovim/nvim-lspconfig" },
@@ -35,8 +35,9 @@ local plugins = {
 	{
 		"simrat39/symbols-outline.nvim",
 		config = cfg("symbols-outline"),
+		cmd = "SymbolsOutline",
 	},
-	{
+	{ -- Show LSP's progress
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup()
@@ -64,8 +65,15 @@ local plugins = {
 		},
 	},
 	-- DAP
-	{ "mfussenegger/nvim-dap" },
-	{ "nvim-telescope/telescope-dap.nvim" },
+	{
+		"mfussenegger/nvim-dap",
+		requires = {
+			"leoluz/nvim-dap-go",
+			"mfussenegger/nvim-dap-python",
+			"jbyuki/one-small-step-for-vimkind",
+			"nvim-telescope/telescope-dap.nvim",
+		},
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		config = function()
@@ -78,10 +86,6 @@ local plugins = {
 			require("nvim-dap-virtual-text").setup()
 		end,
 	},
-	{ "leoluz/nvim-dap-go" },
-	{ "mfussenegger/nvim-dap-python" },
-	{ "jbyuki/one-small-step-for-vimkind" },
-	{ "mfussenegger/nvim-jdtls" },
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -192,6 +196,7 @@ local plugins = {
 	{
 		"michaelb/sniprun",
 		run = "bash ./install.sh",
+		cmd = "SnipRun",
 	},
 	-- Git
 	{
