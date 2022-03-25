@@ -47,6 +47,10 @@ local plugins = {
 		config = cfg("lint"),
 	},
 	{ "lukas-reineke/lsp-format.nvim" },
+	{
+		"mhartington/formatter.nvim",
+		config = cfg("formatter"),
+	},
 	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{

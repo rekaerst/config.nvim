@@ -7,8 +7,25 @@ require("lsp.ui")
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	lspformat.on_attach(client)
-	vim.cmd([[autocmd InsertLeave <buffer> lua require'lsp-format'.format()]])
+
+	if client.resolved_capabilities.document_formatting then
+		vim.cmd([[
+			augroup Format
+			autocmd! * <buffer>
+			autocmd BufWritePost <buffer> lua require'lsp-format'.format()
+			autocmd InsertLeave <buffer> lua require'lsp-format'.format()
+			augroup END
+			]])
+	else
+		vim.cmd([[
+			augroup Format
+			autocmd! * <buffer>
+			autocmd BufWritePost <buffer> FormatWrite
+			autocmd InsertLeave <buffer> Format
+			augroup END
+			]])
+	end
+
 	reg(bufnr)
 end
 -- LSP Servers
