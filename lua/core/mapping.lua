@@ -4,7 +4,7 @@ function M.reg_main()
 	local u = require("core.util")
 	local dap = require("dap")
 	local dapui = require("dapui")
-	local t = require("telescope.builtin")
+	local telescope = require("telescope.builtin")
 
 	local wk = require("which-key")
 	wk.register({
@@ -14,21 +14,21 @@ function M.reg_main()
 				w = { ":w<cr>", "Save Current File" },
 				a = { ":wa<cr>", "Save All Files" },
 				x = { ":wq<cr>", "Save and Close" },
-				r = { t.oldfiles, "Open Recent" },
-				f = { t.find_files, "Find File" },
-				g = { t.gitfiles, "Git Files" },
+				r = { telescope.oldfiles, "Open Recent" },
+				f = { telescope.find_files, "Find File" },
+				g = { telescope.gitfiles, "Git Files" },
 			},
 			e = {
 				name = "Edit",
-				f = { t.live_grep, "Find" },
-				t = { t.treesitter, "Treesitter" },
-				s = { t.grep_string, "Find String" },
+				f = { telescope.live_grep, "Find" },
+				t = { telescope.treesitter, "Treesitter" },
+				s = { telescope.grep_string, "Find String" },
 				h = { "<cmd>noh<cr>", "Clear Highlight" },
 				e = { "<cmd>set foldmethod=expr<cr>", "Enable folding" },
 			},
 			b = {
 				name = "Buffer",
-				f = { t.buffers, "Find Buffer" },
+				f = { telescope.buffers, "Find Buffer" },
 				d = { "<cmd>bd<cr>", "Delete Buffer" },
 				D = { "<cmd>bd!<cr>", "Force Delete Buffer" },
 				p = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
@@ -76,7 +76,7 @@ function M.reg_main()
 					"Venn",
 				},
 				s = { "<cmd>SymbolsOutline<cr>", "Outline" },
-				k = { t.keymaps, "Keymaps" },
+				k = { telescope.keymaps, "Keymaps" },
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
 				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
@@ -131,10 +131,10 @@ function M.reg_main()
 end
 
 function M.reg_lsp(bufnr)
-	local p = require("lspsaga.provider")
-	local a = require("lspsaga.action")
-	local t = require("telescope.builtin")
-	local f = require("lsp-format")
+	local provider = require("lspsaga.provider")
+	local actoin = require("lspsaga.action")
+	local telescope = require("telescope.builtin")
+	local lspformat = require("lsp-format")
 
 	require("which-key").register({
 		["<leader>"] = {
@@ -143,13 +143,13 @@ function M.reg_lsp(bufnr)
 				d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics" },
 				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				f = { f.format , "Format Documents" },
+				f = { lspformat.format , "Format Documents" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },
 				q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
-				s = { t.lsp_document_symbols, "Find Symbols" },
-				S = { t.lsp_workspace_symbols, "Find Symbols (workspace)" },
+				s = { telescope.lsp_document_symbols, "Find Symbols" },
+				S = { telescope.lsp_workspace_symbols, "Find Symbols (workspace)" },
 				["["] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Previous Diagnostic" },
 				["]"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
 			},
@@ -160,21 +160,21 @@ function M.reg_lsp(bufnr)
 			d = { "<cmd>Trouble lsp_definitions<cr>", "Go to Definition" },
 			i = { "<cmd>Trouble lsp_implementations<cr>", "Go to Implementation" },
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },
-			s = { t.lsp_document_symbols, "Document Symbols" },
-			S = { t.lsp_workspace_symbols, "Workspace Symbols" },
-			p = { p.preview_definition, "Preview Definition" },
-			P = { p.lsp_finder, "Providers" },
+			s = { telescope.lsp_document_symbols, "Document Symbols" },
+			S = { telescope.lsp_workspace_symbols, "Workspace Symbols" },
+			p = { provider.preview_definition, "Preview Definition" },
+			P = { provider.lsp_finder, "Providers" },
 		},
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
 		["<C-d>"] = {
 			function()
-				a.smart_scroll_with_saga(1, "<c-d>")
+				actoin.smart_scroll_with_saga(1, "<c-d>")
 			end,
 			"Scroll Down",
 		},
 		["<C-u>"] = {
 			function()
-				a.smart_scroll_with_saga(-1, "<c-u>")
+				actoin.smart_scroll_with_saga(-1, "<c-u>")
 			end,
 			"Scroll Up",
 		},
@@ -182,7 +182,7 @@ function M.reg_lsp(bufnr)
 end
 
 function M.reg_git(bufnr)
-	local gs = package.loaded.gitsigns
+	local gitsigns = package.loaded.gitsigns
 	local wk = require("which-key")
 
 	wk.register({
@@ -191,19 +191,19 @@ function M.reg_git(bufnr)
 				name = "Git",
 				s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
 				r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
-				S = { gs.stage_buffer, "Stage All Hunk" },
-				u = { gs.undo_stage_hunk, "Reset All Hunk" },
-				R = { gs.reset_buffer, "Unstage All Huck for Buffer" },
-				p = { gs.preview_hunk, "Preview Hunk" },
+				S = { gitsigns.stage_buffer, "Stage All Hunk" },
+				u = { gitsigns.undo_stage_hunk, "Reset All Hunk" },
+				R = { gitsigns.reset_buffer, "Unstage All Huck for Buffer" },
+				p = { gitsigns.preview_hunk, "Preview Hunk" },
 				b = { ":GitBlameToggle<cr>", "Git Blame Line" },
 				B = {
 					function()
-						gs.blame_line({ full = true })
+						gitsigns.blame_line({ full = true })
 					end,
 					"Full Blame",
 				},
-				d = { gs.diffthis, "Show diff" },
-				x = { gs.toggle_deleted, "Show Deleted" },
+				d = { gitsigns.diffthis, "Show diff" },
+				x = { gitsigns.toggle_deleted, "Show Deleted" },
 			},
 		},
 	}, {
