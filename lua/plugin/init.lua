@@ -48,10 +48,6 @@ local plugins = {
 		config = cfg("lint"),
 	},
 	{ "lukas-reineke/lsp-format.nvim" },
-	{
-		"mhartington/formatter.nvim",
-		config = cfg("formatter"),
-	},
 	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{
@@ -61,6 +57,7 @@ local plugins = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-emoji",
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},

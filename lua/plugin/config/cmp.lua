@@ -60,6 +60,7 @@ cmp.setup({
 		},
 		{ name = "luasnip" },
 		{ name = "buffer" },
+		{ name = "emoji" },
 	}),
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

@@ -1,13 +1,7 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
 lspformat.setup({})
-
-local reg = require("core.mapping").reg_lsp
-require("lsp.ui")
-
-local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
+lspformat.on_attach = function(client)
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[
 			augroup Format
@@ -16,16 +10,15 @@ local on_attach = function(client, bufnr)
 			autocmd InsertLeave <buffer> lua require'lsp-format'.format()
 			augroup END
 			]])
-	else
-		vim.cmd([[
-			augroup Format
-			autocmd! * <buffer>
-			autocmd BufWritePost <buffer> FormatWrite
-			autocmd InsertLeave <buffer> Format
-			augroup END
-			]])
 	end
+end
 
+local reg = require("core.mapping").reg_lsp
+require("lsp.ui")
+
+local on_attach = function(client, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	lspformat.on_attach(client)
 	reg(bufnr)
 end
 -- LSP Servers
@@ -54,6 +47,26 @@ for _, lsp in ipairs(servers) do
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	})
 end
+
+-- Linting
+lspconfig.efm.setup({
+	on_attach = lspformat.on_attach,
+	init_options = { documentFormatting = true },
+	settings = {
+		rootMarkers = { ".git/" },
+		languages = {
+			lua = {
+				{ formatCommand = "stylua -", formatStdin = true },
+			},
+		},
+	},
+	filetypes = {
+		"python",
+		"c",
+		"cpp",
+		"lua",
+	},
+})
 
 -- lua
 -- this ass is too special...
