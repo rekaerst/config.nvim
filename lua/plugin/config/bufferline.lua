@@ -22,6 +22,10 @@ require("bufferline").setup({
 				text = "Outline",
 			},
 			{
+				filetype = "undotree",
+				text = "undotree",
+			},
+			{
 				filetype = "packer",
 				text = "Packer",
 			},
