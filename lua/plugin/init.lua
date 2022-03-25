@@ -120,8 +120,6 @@ local plugins = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",
 	},
-	{ "xiyaowong/telescope-emoji.nvim" },
-
 	-- Powerline
 	{
 		"hoob3rt/lualine.nvim",

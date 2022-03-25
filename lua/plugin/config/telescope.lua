@@ -36,5 +36,4 @@ t.setup({
 })
 le("fzf")
 le("octo")
-le("emoji")
 le("dap")
