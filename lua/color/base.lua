@@ -116,16 +116,16 @@ local function apply_base16_theme(theme)
 	highlight("TabLine", theme.base03, theme.base01, "none", nil)
 	highlight("TabLineFill", theme.base03, theme.base01, "none", nil)
 	highlight("TabLineSel", theme.base0B, theme.base01, "none", nil)
-	
+
 	-- Diagnostic
 	highlight("DiagnosticError", theme.base08, nil, nil, nil)
 	highlight("DiagnosticWarn", theme.base0A, nil, nil, nil)
 	highlight("DiagnosticInfo", theme.base0D, nil, nil, nil)
 	highlight("DiagnosticHint", theme.base0E, nil, nil, nil)
-	highlight("DiagnosticUnderlineError", nil, nil, 'underline', theme.base08)
-	highlight("DiagnosticUnderlineWarn", nil, nil, 'underline', theme.base0A)
-	highlight("DiagnosticUnderlineInfo", nil, nil, 'underline', theme.base0D)
-	highlight("DiagnosticUnderlineHint", nil, nil, 'underline', theme.base0E)
+	highlight("DiagnosticUnderlineError", nil, nil, "underline", theme.base08)
+	highlight("DiagnosticUnderlineWarn", nil, nil, "underline", theme.base0A)
+	highlight("DiagnosticUnderlineInfo", nil, nil, "underline", theme.base0D)
+	highlight("DiagnosticUnderlineHint", nil, nil, "underline", theme.base0E)
 
 	-- Standard syntax highlighting
 	highlight("Boolean", theme.base09, nil, nil, nil)

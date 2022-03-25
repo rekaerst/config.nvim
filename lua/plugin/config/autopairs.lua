@@ -4,5 +4,3 @@ np.setup({
 	check_ts = true,
 	fast_wap = {},
 })
-
-

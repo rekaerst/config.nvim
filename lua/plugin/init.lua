@@ -34,7 +34,7 @@ local plugins = {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		config = cfg("symbols-outline")
+		config = cfg("symbols-outline"),
 	},
 	{
 		"j-hui/fidget.nvim",
@@ -226,7 +226,9 @@ local plugins = {
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn['mkdp#util#install']() end
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 
 	-- -- Nevim Development
@@ -268,7 +270,7 @@ else
 			end,
 			prompt_border = "single",
 		},
-	git = {
+		git = {
 			clone_timeout = 6000,
 		},
 		auto_clean = true,

@@ -22,6 +22,6 @@ dap.configurations.haskell = {
 		ghciEnv = vim.empty_dict(),
 		logFile = vim.fn.stdpath("cache") .. "/haskell-dap.log",
 		logLevel = "WARNING",
-		forceInspect = false
+		forceInspect = false,
 	},
 }

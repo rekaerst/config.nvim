@@ -7,7 +7,7 @@ l.linters_by_ft = {
 	markdown = { "codespell" },
 	text = { "codespell" },
 	html = { "tidy" },
-	javascript = { "eslint" }
+	javascript = { "eslint" },
 }
 
 vim.cmd([[au BufWritePost <buffer> lua require('lint').try_lint()]])

@@ -124,10 +124,10 @@ function M.reg_main()
 	}, {
 		mode = "v",
 	})
-	vim.cmd [[
+	vim.cmd([[
  	imap <C-a> <C-o>I
  	imap <C-e> <C-o>$
-	]]
+	]])
 end
 
 function M.reg_lsp(bufnr)
@@ -143,7 +143,7 @@ function M.reg_lsp(bufnr)
 				d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics" },
 				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				f = { lspformat.format , "Format Documents" },
+				f = { lspformat.format, "Format Documents" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },

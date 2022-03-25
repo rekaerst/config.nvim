@@ -1,1 +1,1 @@
-require("tabout").setup({ })
+require("tabout").setup({})

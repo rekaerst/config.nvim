@@ -56,7 +56,7 @@ require("bufferline").setup({
 			guifg = colors.green,
 		},
 		pick = {
-			guifg = colors.green
-		}
+			guifg = colors.green,
+		},
 	},
 })
