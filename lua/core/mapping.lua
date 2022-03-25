@@ -134,6 +134,7 @@ function M.reg_lsp(bufnr)
 	local p = require("lspsaga.provider")
 	local a = require("lspsaga.action")
 	local t = require("telescope.builtin")
+	local f = require("lsp-format")
 
 	require("which-key").register({
 		["<leader>"] = {
@@ -142,7 +143,7 @@ function M.reg_lsp(bufnr)
 				d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics" },
 				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				f = { vim.lsp.buf.formatting, "Format Documents" },
+				f = { f.format , "Format Documents" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },

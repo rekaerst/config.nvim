@@ -51,8 +51,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	},
 	update_in_insert = true,
 })
-
-vim.cmd([[
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-autocmd InsertLeave <buffer> lua vim.lsp.buf.formatting_sync()
-]])
