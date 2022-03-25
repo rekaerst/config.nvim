@@ -1,20 +1,32 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
+local u = require("core.util")
 lspformat.setup({})
+
+local nonaggressive_format = { "markdown" }
+
 lspformat.on_attach = function(client)
 	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[
-			augroup Format
-			autocmd! * <buffer>
-			autocmd BufWritePost <buffer> lua require'lsp-format'.format()
-			autocmd InsertLeave <buffer> lua require'lsp-format'.format()
-			augroup END
+		if u.has_value(nonaggressive_format, vim.bo.filetype) then
+			vim.cmd([[
+				augroup Format
+				autocmd! * <buffer>
+				autocmd BufWritePost <buffer> lua require'lsp-format'.format()
+				augroup END
 			]])
+		else
+			vim.cmd([[
+				augroup Format
+				autocmd! * <buffer>
+				autocmd BufWritePost <buffer> lua require'lsp-format'.format()
+				autocmd InsertLeave <buffer> lua require'lsp-format'.format()
+				augroup END
+			]])
+		end
 	end
 end
 
 local reg = require("core.mapping").reg_lsp
-require("lsp.ui")
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -32,10 +44,11 @@ local servers = {
 	"hls",
 	"html",
 	"jsonls",
-	"pylsp",
+	"jedi_language_server",
 	"r_language_server",
 	"rust_analyzer",
 	"sqls",
+	"texlab",
 	"tsserver",
 	"vala_ls",
 	"vimls",
@@ -58,13 +71,18 @@ lspconfig.efm.setup({
 			lua = {
 				{ formatCommand = "stylua -", formatStdin = true },
 			},
+			python = {
+				{ formatCommand = "yapf --quiet", formatStdin = true },
+			},
+			markdown = {
+				{ formatCommand = "prettier --parser markdown" },
+			},
 		},
 	},
 	filetypes = {
 		"python",
-		"c",
-		"cpp",
 		"lua",
+		"markdown",
 	},
 })
 

@@ -109,6 +109,16 @@ M.fg_bg = function(group, fgcol, bgcol)
 	cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
+-- Check if table contains specific value
+function M.has_value(table, value)
+	for _, v in ipairs(table) do
+		if v == value then
+			return true
+		end
+	end
+	return false
+end
+
 function M.readcfg(path)
 	local f = io.open(path, "rb")
 	local content = {}
