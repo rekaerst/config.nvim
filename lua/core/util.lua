@@ -119,7 +119,7 @@ function M.has_value(table, value)
 	return false
 end
 
-function M.readcfg(path)
+function M.read_json(path)
 	local f = io.open(path, "rb")
 	local content = {}
 	if f then
@@ -131,7 +131,7 @@ function M.readcfg(path)
 	return content
 end
 
-function M.writecfg(path, content)
+function M.write_json(path, content)
 	local f = io.open(path, "rb")
 	f = io.open(path, "wb")
 	f:write(vim.fn.json_encode(content))

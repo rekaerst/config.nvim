@@ -16,7 +16,7 @@ dap.configurations.cpp = {
 			-- json schema: {"dap":{"program": "string"}}
 			local path = vim.fn.getcwd() .. "/.nvim.json"
 			local program = nil
-			local content = u.readcfg(path)
+			local content = u.read_json(path)
 
 			pcall(function()
 				program = content.dap.program
@@ -25,7 +25,7 @@ dap.configurations.cpp = {
 				program = vim.fn.input("Name of executable: ")
 				-- TODO: implement a proper setcfg function
 				content.dap = { program = program }
-				u.writecfg(path, content)
+				u.write_json(path, content)
 			end
 			return vim.fn.getcwd() .. "/" .. program
 		end,
