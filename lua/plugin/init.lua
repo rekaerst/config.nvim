@@ -10,6 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
+	print(packer_bootstrap)
 end
 
 local packer = require("packer")
