@@ -1,4 +1,5 @@
 local colors = require("color.highlight").colors
+
 require("bufferline").setup({
 	options = {
 		numbers = function(opts)

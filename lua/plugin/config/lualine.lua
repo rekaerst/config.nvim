@@ -1,4 +1,5 @@
 local colors = require("color.highlight").colors
+
 require("lualine").setup({
 	options = {
 		theme = {

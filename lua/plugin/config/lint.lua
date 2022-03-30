@@ -1,4 +1,5 @@
 local l = require("lint")
+
 l.linters_by_ft = {
 	python = { "flake8", "codespell" },
 	c = { "cppcheck", "codespell" },

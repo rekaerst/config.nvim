@@ -124,12 +124,15 @@ function M.reg_main()
 	}, {
 		mode = "v",
 	})
+
+	-- Emacs keys
 	vim.cmd([[
  	imap <C-a> <C-o>I
  	imap <C-e> <C-o>$
 	]])
 end
 
+-- invoked when a language server was attached
 function M.reg_lsp(bufnr)
 	local provider = require("lspsaga.provider")
 	local actoin = require("lspsaga.action")
@@ -182,6 +185,7 @@ function M.reg_lsp(bufnr)
 	}, { buffer = bufnr })
 end
 
+-- invoked only when cwd is a git repo
 function M.reg_git(bufnr)
 	local gitsigns = package.loaded.gitsigns
 	local wk = require("which-key")
@@ -224,5 +228,5 @@ function M.reg_git(bufnr)
 		buffer = bufnr,
 	})
 end
-M.reg_main()
+
 return M

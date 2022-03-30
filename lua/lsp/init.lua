@@ -33,6 +33,7 @@ local on_attach = function(client, bufnr)
 	lspformat.on_attach(client)
 	reg(bufnr)
 end
+
 -- LSP Servers
 local servers = {
 	"bashls",
@@ -53,15 +54,8 @@ local servers = {
 	"vala_ls",
 	"vimls",
 }
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		on_attach = on_attach,
-		debounce_text_changes = 150,
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	})
-end
 
--- Linting
+-- EFM
 lspconfig.efm.setup({
 	on_attach = lspformat.on_attach,
 	init_options = { documentFormatting = true },
@@ -95,6 +89,7 @@ local luadev = require("lua-dev").setup({
 })
 lspconfig.sumneko_lua.setup(luadev)
 
+-- Update diagnostics while inserting
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	underline = true,
 	virtual_text = {
@@ -103,3 +98,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	},
 	update_in_insert = true,
 })
+
+-- setup language servers
+for _, lsp in ipairs(servers) do
+	lspconfig[lsp].setup({
+		on_attach = on_attach,
+		debounce_text_changes = 150,
+		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	})
+end

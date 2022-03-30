@@ -37,7 +37,7 @@ local plugins = {
 		config = cfg("symbols-outline"),
 		cmd = "SymbolsOutline",
 	},
-	{ -- Show LSP's progress
+	{ -- Standalone UI for nvim-lsp progress
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup()
@@ -230,6 +230,9 @@ local plugins = {
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",
+		config = function()
+			vim.g.mkdp_auto_close = 0
+		end,
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,

@@ -3,6 +3,7 @@ local action_layout = require("telescope.actions.layout")
 local trouble = require("trouble.providers.telescope")
 local t = require("telescope")
 local le = t.load_extension
+
 t.setup({
 	defaults = {
 		mappings = {
