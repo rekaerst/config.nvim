@@ -1,5 +1,18 @@
 -- Packer configurations
-local present, packer = pcall(require, "packer")
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
+
+local packer = require("packer")
 
 local u = require("core.util")
 local cfg = u.cfg
@@ -255,37 +268,22 @@ local plugins = {
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
 }
 
-if not present then
-	local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	print("Installing packer...")
-	vim.fn.delete(packer_path, "rf")
-	vim.fn.system("git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", packer_path)
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "single" })
+		end,
+		prompt_border = "single",
+	},
+	git = {
+		clone_timeout = 6000,
+	},
+	auto_clean = true,
+	compile_on_sync = true,
+})
 
-	vim.cmd("packadd packer.nvim")
-	local present, packer = pcall(require, "packer")
-
-	if present then
-		print("Packer installation succeed")
-	else
-		error("Packer installation failed")
+return packer.startup(function(use)
+	for _, v in pairs(plugins) do
+		use(v)
 	end
-else
-	packer.init({
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "single" })
-			end,
-			prompt_border = "single",
-		},
-		git = {
-			clone_timeout = 6000,
-		},
-		auto_clean = true,
-		compile_on_sync = true,
-	})
-	return packer.startup(function(use)
-		for _, v in pairs(plugins) do
-			use(v)
-		end
-	end)
-end
+end)
