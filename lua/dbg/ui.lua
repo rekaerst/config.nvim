@@ -2,7 +2,7 @@ local u = require("core.util")
 
 u.signdef("DapBreakpoint", {
 	text = "",
-	texthl = "Error",
+	texthl = "DiagnosticError",
 })
 u.signdef("DapBreakpointCondition", {
 	text = "",
