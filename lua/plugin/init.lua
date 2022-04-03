@@ -230,17 +230,6 @@ local plugins = {
 		"pwntester/octo.nvim",
 		config = cfg("octo"),
 	},
-
-	-- -- Database
-	{
-		"tpope/vim-dadbod",
-		cmd = { "DB", "DBUI" },
-	},
-	{
-		"kristijanhusak/vim-dadbod-ui",
-		cmd = "DBUI",
-	},
-
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",

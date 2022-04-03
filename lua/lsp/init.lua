@@ -48,7 +48,6 @@ local servers = {
 	"jedi_language_server",
 	"r_language_server",
 	"rust_analyzer",
-	"sqls",
 	"texlab",
 	"tsserver",
 	"vala_ls",
