@@ -19,7 +19,7 @@ lspformat.on_attach = function(client)
 				augroup Format
 				autocmd! * <buffer>
 				autocmd BufWritePost <buffer> lua require'lsp-format'.format()
-				autocmd InsertLeave <buffer> lua require'lsp-format'.format()
+				autocmd InsertLeave <buffer> lua vim.lsp.buf.formatting_sync()
 				augroup END
 			]])
 		end
