@@ -13,11 +13,11 @@ g.nvim_tree_icons = {
 	},
 }
 
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_add_trailing = 0
 
 require("nvim-tree").setup({
 	disable_netrw = true,
+ 	indent_markers = 1,
+	add_trailing = 0,
 	system_open = { cmd = "open" },
 	hijack_cursor = true,
 	diagnostics = {
