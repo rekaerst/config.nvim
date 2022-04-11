@@ -83,7 +83,10 @@ lspconfig.efm.setup({
 -- this ass is too special...
 local luadev = require("lua-dev").setup({
 	lspconfig = {
-		on_attach = on_attach,
+		on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+			on_attach(client)
+		end,
 	},
 })
 lspconfig.sumneko_lua.setup(luadev)
