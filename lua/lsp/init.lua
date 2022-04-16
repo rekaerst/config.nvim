@@ -57,7 +57,11 @@ local servers = {
 
 -- EFM
 lspconfig.efm.setup({
-	on_attach = lspformat.on_attach,
+	on_attach = function(client)
+		lspformat.on_attach(client)
+		-- I Don't like ctags
+		client.resolved_capabilities.goto_definition = false
+	end,
 	init_options = { documentFormatting = true },
 	settings = {
 		rootMarkers = { ".git/" },
