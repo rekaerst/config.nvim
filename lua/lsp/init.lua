@@ -4,6 +4,7 @@ local u = require("core.util")
 lspformat.setup({})
 
 local nonaggressive_format = { "markdown" }
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspformat.on_attach = function(client)
 	if client.resolved_capabilities.document_formatting then
@@ -106,7 +107,11 @@ for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		debounce_text_changes = 150,
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = capabilities,
+		flags = {
+			-- This will be the default in neovim 0.7+
+			debounce_text_changes = 150,
+		},
 	})
 end
 

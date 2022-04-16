@@ -32,6 +32,7 @@ function M.reg_main()
 				d = { "<cmd>bd<cr>", "Delete Buffer" },
 				D = { "<cmd>bd!<cr>", "Force Delete Buffer" },
 				p = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
+				s = { "<cmd>BufferLineSortByDirectory<cr>", "Sort Buffer by Directory" },
 				["]"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" },
 				["["] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" },
 				[">"] = { "<cmd>BufferLineMoveNext<cr>", "Move Buffer to Next" },

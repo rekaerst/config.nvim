@@ -1,4 +1,5 @@
 local colors = require("color.highlight").colors
+local groups = require("bufferline.groups")
 
 require("bufferline").setup({
 	options = {
@@ -31,12 +32,35 @@ require("bufferline").setup({
 				text = "Packer",
 			},
 		},
-		buffer_close_icon = "",
-		modified_icon = "",
 		close_icon = "",
-		left_trunc_marker = "",
-		right_trunc_marker = "",
-		separator_style = "thin",
+		separator_style = "thick",
+		groups = {
+			options = {
+				toggle_hidden_on_enter = true,
+			},
+			items = {
+				groups.builtin.ungrouped,
+				{
+					name = "Tests",
+					highlight = { guisp = colors.blue },
+					icon = "",
+					matcher = function(buf)
+						return buf.filename:match("_test") or buf.filename:match("test")
+					end,
+				},
+				{
+					highlight = { guisp = colors.yellow },
+					name = "Dcs",
+					matcher = function(buf)
+						for _, ext in ipairs({ "md", "txt", "org", "norg", "wiki" }) do
+							if ext == vim.fn.fnamemodify(buf.path, ":e") then
+								return true
+							end
+						end
+					end,
+				},
+			},
+		},
 	},
 	highlights = {
 		fill = {
@@ -50,6 +74,9 @@ require("bufferline").setup({
 		},
 		close_button_selected = {
 			guifg = colors.red,
+		},
+		indicator_selected = {
+			guifg = colors.nord_blue,
 		},
 		modified = {
 			guifg = colors.red,

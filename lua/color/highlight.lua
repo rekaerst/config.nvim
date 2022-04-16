@@ -3,7 +3,7 @@ local cmd = vim.cmd
 
 M.colors = {
 	white = "#abb2bf",
-	black = "#1e222a", --  nvim bg
+	black = "#1e222a",
 	black2 = "#252931",
 	black3 = "#13171d",
 	black4 = "#1b1f27",
@@ -112,16 +112,12 @@ function M.setup()
 	-- Telescope
 	fg_bg("TelescopeBorder", c.black3, c.black3)
 	fg_bg("TelescopePromptBorder", c.black2, c.black2)
-
 	fg_bg("TelescopePromptNormal", c.white, c.black2)
 	fg_bg("TelescopePromptPrefix", c.red, c.black2)
-
 	bg("TelescopeNormal", c.black3)
-
 	fg_bg("TelescopePreviewTitle", c.black, c.green)
 	fg_bg("TelescopePromptTitle", c.black, c.red)
 	fg_bg("TelescopeResultsTitle", c.black3, c.black3)
-
 	bg("TelescopeSelection", c.black2)
 
 	-- Which-key
