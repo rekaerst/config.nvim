@@ -34,6 +34,7 @@ local plugins = {
 	},
 	-- LSP
 	{ "neovim/nvim-lspconfig" },
+	{ "jose-elias-alvarez/null-ls.nvim" },
 	{
 		"tami5/lspsaga.nvim",
 		config = cfg("lspsaga"),
@@ -55,10 +56,6 @@ local plugins = {
 		config = function()
 			require("fidget").setup()
 		end,
-	},
-	{
-		"mfussenegger/nvim-lint",
-		config = cfg("lint"),
 	},
 	{ "lukas-reineke/lsp-format.nvim" },
 	{ "folke/lua-dev.nvim" },
