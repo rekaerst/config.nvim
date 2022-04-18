@@ -12,7 +12,7 @@ vim.g.symbols_outline = {
 		Enum = { icon = "", hl = "TSType" },
 		Interface = { icon = "", hl = "TSType" },
 		Function = { icon = "", hl = "TSFunction" },
-		Variable = { icon = "", hl = "TSConstant" },
+		Variable = { icon = "", hl = "TSConstant" },
 		Constant = { icon = "", hl = "TSConstant" },
 		String = { icon = "", hl = "TSString" },
 		Number = { icon = "", hl = "TSNumber" },

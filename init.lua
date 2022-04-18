@@ -4,8 +4,8 @@ if present then
 end
 
 require("plugin")
-require("core.internal")
-require("core.mapping").reg_main()
-require("lsp")
-require("dbg")
-require("color")
+require("core.internal").setup()
+require("core.mapping").setup()
+require("lsp").setup()
+require("dbg").setup()
+require("color").setup()

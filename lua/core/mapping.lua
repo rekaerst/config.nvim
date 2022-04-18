@@ -142,7 +142,6 @@ end
 function M.reg_lsp(bufnr)
 	local provider = require("lspsaga.provider")
 	local actoin = require("lspsaga.action")
-	local lspformat = require("lsp-format")
 
 	require("which-key").register({
 		["<leader>"] = {
@@ -151,7 +150,7 @@ function M.reg_lsp(bufnr)
 				d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics" },
 				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				f = { lspformat.format, "Format Documents" },
+				f = { vim.lsp.buf.formatting_sync, "Format Documents" },
 				F = { "<cmd>FormatToggle<cr>", "Toggle Auto Formatting" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
@@ -235,6 +234,10 @@ function M.reg_git(bufnr)
 		mode = "v",
 		buffer = bufnr,
 	})
+end
+
+function M.setup()
+	M.reg_main()
 end
 
 return M

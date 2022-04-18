@@ -49,7 +49,6 @@ local plugins = {
 	{
 		"simrat39/symbols-outline.nvim",
 		config = cfg("symbols-outline"),
-		cmd = "SymbolsOutline",
 	},
 	{ -- Standalone UI for nvim-lsp progress
 		"j-hui/fidget.nvim",
@@ -189,7 +188,7 @@ local plugins = {
 		"lukas-reineke/indent-blankline.nvim",
 		config = cfg("indent-blankline"),
 	},
-	-- -- Multi line
+	-- Multi line
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
 	-- Highlight colors
 	{
@@ -198,13 +197,13 @@ local plugins = {
 			require("colorizer").setup()
 		end,
 	},
-	-- -- Undo
+	-- Undo
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",
 		config = "vim.g.undotree_SetFocusWhenToggle = 1",
 	},
-	-- -- Runner
+	-- Runner
 	{
 		"michaelb/sniprun",
 		run = "bash ./install.sh",
@@ -240,7 +239,7 @@ local plugins = {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	-- -- Nevim Development
+	-- Nevim Development
 	{
 		"rafcamlet/nvim-luapad",
 		opt = true,
@@ -248,6 +247,12 @@ local plugins = {
 	},
 	-- util
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
+	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("todo-comments").setup({})
+		end,
+	},
 }
 
 packer.init({
