@@ -6,6 +6,6 @@ end
 require("plugin")
 require("core.internal").setup()
 require("core.mapping").setup()
-require("lsp")
+require("lsp").setup()
 require("dbg").setup()
 require("color").setup()
