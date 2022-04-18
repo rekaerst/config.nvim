@@ -88,9 +88,9 @@ lspconfig.efm.setup({
 -- this ass is too special...
 local luadev = require("lua-dev").setup({
 	lspconfig = {
-		on_attach = function(client)
+		on_attach = function(client, bufnr)
 			client.resolved_capabilities.document_formatting = false
-			on_attach(client)
+			on_attach(client, bufnr)
 		end,
 	},
 })
@@ -112,10 +112,6 @@ for _, lsp in ipairs(servers) do
 		on_attach = on_attach,
 		debounce_text_changes = 150,
 		capabilities = capabilities,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
 	})
 end
 
