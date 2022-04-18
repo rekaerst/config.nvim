@@ -113,10 +113,8 @@ local plugins = {
 			require("spellsitter").setup()
 		end,
 	},
-
 	-- Snips
 	{ "L3MON4D3/LuaSnip" },
-
 	-- Commenting
 	{
 		"numToStr/Comment.nvim",
@@ -124,7 +122,13 @@ local plugins = {
 			require("Comment").setup()
 		end,
 	},
-
+	-- Motion
+	{
+		"phaazon/hop.nvim",
+		config = function()
+			require("hop").setup()
+		end,
+	},
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -140,19 +144,16 @@ local plugins = {
 		"hoob3rt/lualine.nvim",
 		config = cfg("lualine"),
 	},
-
 	-- -- Tab bar
 	{
 		"akinsho/bufferline.nvim",
 		config = cfg("bufferline"),
 	},
-
 	-- File explorer
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = cfg("tree"),
 	},
-
 	-- Window manager
 	{
 		"luukvbaal/stabilize.nvim",
@@ -224,7 +225,6 @@ local plugins = {
 		"lewis6991/gitsigns.nvim",
 		config = cfg("gitsigns"),
 	},
-
 	-- Github
 	{
 		"pwntester/octo.nvim",
@@ -240,20 +240,12 @@ local plugins = {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-
 	-- -- Nevim Development
 	{
 		"rafcamlet/nvim-luapad",
 		opt = true,
 		cmd = "Luapad",
 	},
-
-	-- Note
-	{
-		"jbyuki/venn.nvim",
-		config = cfg("venn"),
-	},
-
 	-- util
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
 }
