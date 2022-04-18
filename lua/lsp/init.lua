@@ -8,7 +8,7 @@ require("lsp.null_ls").setup()
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	format.on_attach(client)
+	format.on_attach(client, bufnr)
 	require("core.mapping").reg_lsp(bufnr)
 end
 
@@ -64,7 +64,7 @@ function M.setup()
 	)
 
 	-- disable lspformat when using python
-	vim.cmd([[au FileType python :FormatDisable]])
+	-- vim.cmd([[au FileType python lua require("lsp.format").disable()]])
 end
 
 return M

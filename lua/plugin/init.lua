@@ -57,7 +57,6 @@ local plugins = {
 			require("fidget").setup()
 		end,
 	},
-	{ "lukas-reineke/lsp-format.nvim" },
 	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{
