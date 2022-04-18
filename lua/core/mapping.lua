@@ -1,26 +1,26 @@
 local M = {}
+local telescope = require("telescope.builtin")
 
 function M.reg_main()
 	local u = require("core.util")
 	local dap = require("dap")
 	local dapui = require("dapui")
-	local telescope = require("telescope.builtin")
 
 	local wk = require("which-key")
 	wk.register({
 		["<leader>"] = {
 			f = {
 				name = "File",
+				r = { telescope.oldfiles, "Open Recent" },
+				f = { telescope.find_files, "Find File" },
 				w = { ":w<cr>", "Save Current File" },
 				a = { ":wa<cr>", "Save All Files" },
 				x = { ":wq<cr>", "Save and Close" },
-				r = { telescope.oldfiles, "Open Recent" },
-				f = { telescope.find_files, "Find File" },
-				g = { telescope.gitfiles, "Git Files" },
 			},
 			e = {
 				name = "Edit",
 				f = { telescope.live_grep, "Find" },
+				F = { "<cmd>NvimTreeFindFile<cr>", "Find File in Tree" },
 				t = { telescope.treesitter, "Treesitter" },
 				s = { telescope.grep_string, "Find String" },
 				h = { "<cmd>noh<cr>", "Clear Highlight" },
@@ -68,20 +68,16 @@ function M.reg_main()
 			t = { ":Telescope builtin<cr>", "Telescope" },
 			v = {
 				name = "View",
-				t = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
+				F = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
 				c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
-				T = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
-				f = { "<cmd>NvimTreeFindFile<cr>", "Find File in Tree" },
-				e = {
-					':if &ve == "all" | echo "disable venn " | set ve= | else | set ve=all | echo "enable venn" | endif | :IndentGuidesToggle | :lua Toggle_venn() <cr>',
-					"Venn",
-				},
-				s = { "<cmd>SymbolsOutline<cr>", "Outline" },
-				k = { telescope.keymaps, "Keymaps" },
-				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
-				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
+				f = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
-				p = { "<cmd>:set spell!<cr>", "Spell Check" },
+				k = { telescope.keymaps, "Keymaps" },
+				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
+				s = { "<cmd>:set spell!<cr>", "Spell Check" },
+				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
+				o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+				u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
 			},
 			h = {
 				name = "Misc",
@@ -104,14 +100,23 @@ function M.reg_main()
 			b = "Block Comment",
 			c = "Line Comment",
 		},
+		f = {
+			w = { "<cmd>HopWord<cr>", "Hop Word" },
+			W = { "<cmd>HopWordCurrentLine<cr>", "Hop Current Word" },
+			l = { "<cmd>HopLine<cr>", "Hop Line" },
+			n = { "<cmd>HopPattern<cr>", "Hop Line" },
+			a = { "<cmd>HopAnywhere<cr>", "Hop Anywhere" },
+			c = { "<cmd>HopChar1<cr>", "Hop One Character" },
+			C = { "<cmd>HopChar1<cr>", "Hop Two Character" },
+		},
 		["<F6>"] = { ":up | :make<cr>", "Make" },
 		["<F9>"] = { dap.toggle_breakpoint, "Toggle Breakpoint" },
 		["<F5>"] = { dap.continue, "Continue" },
 		["<F10>"] = { dap.step_over, "Step Over" },
 		["<F11>"] = { dap.step_into, "Step Into" },
 		["<F8>"] = { dap.step_back, "Step Back" },
-		["<F23>"] = { dap.setp_out, "Step Out" },
-		["<F29>"] = { dap.terminate, "Stop Debugging" },
+		["<F23>"] = { dap.setp_out, "Step Out" }, -- Shift F11
+		["<F29>"] = { dap.terminate, "Stop Debugging" }, -- Ctrl F5
 	}, { silent = true })
 
 	-- Visual mode
@@ -137,7 +142,6 @@ end
 function M.reg_lsp(bufnr)
 	local provider = require("lspsaga.provider")
 	local actoin = require("lspsaga.action")
-	local telescope = require("telescope.builtin")
 	local lspformat = require("lsp-format")
 
 	require("which-key").register({
@@ -153,10 +157,10 @@ function M.reg_lsp(bufnr)
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },
 				q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
-				s = { telescope.lsp_document_symbols, "Find Symbols" },
-				S = { telescope.lsp_workspace_symbols, "Find Symbols (workspace)" },
 				["["] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Previous Diagnostic" },
 				["]"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+				s = { telescope.lsp_document_symbols, "Find Symbols" },
+				S = { telescope.lsp_workspace_symbols, "Find Symbols (workspace)" },
 			},
 		},
 		["g"] = {
@@ -195,11 +199,14 @@ function M.reg_git(bufnr)
 		["<leader>"] = {
 			g = {
 				name = "Git",
-				s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
-				r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
+				f = { telescope.git_files, "Files" },
+				c = { telescope.git_bcommits, "Buffer Commits" },
+				C = { telescope.git_commits, "All Commits" },
+				s = { gitsigns.stage_hunk, "Stage Hunk" },
+				r = { gitsigns.reset_hunk, "Reset Hunk" },
+				u = { gitsigns.undo_stage_hunk, "Undo stage Hunk" },
 				S = { gitsigns.stage_buffer, "Stage All Hunk" },
-				u = { gitsigns.undo_stage_hunk, "Reset All Hunk" },
-				R = { gitsigns.reset_buffer, "Unstage All Huck for Buffer" },
+				R = { gitsigns.reset_buffer, "Unstage All Huck" },
 				p = { gitsigns.preview_hunk, "Preview Hunk" },
 				b = { ":GitBlameToggle<cr>", "Git Blame Line" },
 				B = {
