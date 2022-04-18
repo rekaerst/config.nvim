@@ -13,7 +13,6 @@ function M.setup()
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.yapf,
 			null_ls.builtins.diagnostics.codespell,
-			null_ls.builtins.diagnostics.cppcheck,
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.formatting.markdownlint,
@@ -21,4 +20,5 @@ function M.setup()
 		},
 	})
 end
+
 return M
