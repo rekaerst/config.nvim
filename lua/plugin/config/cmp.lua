@@ -64,7 +64,7 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	-- Do don't alow preselect (for gopls)
+	-- Do don't allow preselect (for gopls)
 	preselect = cmp.PreselectMode.None,
 })
 
