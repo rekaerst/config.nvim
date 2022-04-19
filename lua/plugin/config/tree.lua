@@ -13,10 +13,9 @@ g.nvim_tree_icons = {
 	},
 }
 
-
 require("nvim-tree").setup({
 	disable_netrw = true,
- 	indent_markers = 1,
+	indent_markers = 1,
 	add_trailing = 0,
 	system_open = { cmd = "open" },
 	hijack_cursor = true,

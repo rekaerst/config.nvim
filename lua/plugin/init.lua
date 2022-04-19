@@ -37,15 +37,7 @@ local plugins = {
 	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
 	{ -- Standalone UI for nvim-lsp progress
 		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({
-				sources = {
-					["null-ls"] = {
-						ignore = true,
-					},
-				},
-			})
-		end,
+		config = cfg("fidget"),
 	},
 	{ "folke/lua-dev.nvim" },
 	-- Completion
@@ -116,7 +108,7 @@ local plugins = {
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	-- Powerline
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
-	-- -- Tab bar
+	-- Tab bar
 	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	-- File explorer
 	{ "kyazdani42/nvim-tree.lua", config = cfg("tree") },
@@ -129,7 +121,12 @@ local plugins = {
 	},
 	{ "sindrets/winshift.nvim" },
 	-- Keymapping
-	{ "folke/which-key.nvim", config = cfg("whichkey") },
+	{
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup()
+		end,
+	},
 	-- Parentheses
 	{ "windwp/nvim-autopairs", config = cfg("autopairs") },
 	{
@@ -139,7 +136,12 @@ local plugins = {
 		end,
 	},
 	{ "p00f/nvim-ts-rainbow" },
-	{ "abecodes/tabout.nvim", config = cfg("tabout") },
+	{
+		"abecodes/tabout.nvim",
+		config = function()
+			require("tabout").setup()
+		end,
+	},
 	{ "tpope/vim-surround" },
 	-- Indentation tracking
 	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
@@ -165,7 +167,12 @@ local plugins = {
 	},
 	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]" },
 	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
-	{ "sindrets/diffview.nvim", config = cfg("diffview") },
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup()
+		end,
+	},
 	-- Github
 	{ "pwntester/octo.nvim", config = cfg("octo") },
 	-- Preview
