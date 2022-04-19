@@ -29,6 +29,13 @@ function M.reg_main()
 			b = {
 				name = "Buffer",
 				f = { telescope.buffers, "Find Buffer" },
+				n = {
+					function()
+						local bufname = vim.fn.input("new buffer> ")
+						vim.cmd("e " .. bufname)
+					end,
+					"New Buffer",
+				},
 				d = { "<cmd>bd<cr>", "Delete Buffer" },
 				D = { "<cmd>bd!<cr>", "Force Delete Buffer" },
 				p = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
