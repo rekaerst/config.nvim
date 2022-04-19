@@ -27,30 +27,14 @@ local plugins = {
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
 	-- Terminal
-	{
-		"akinsho/toggleterm.nvim",
-		config = cfg("toggleterm"),
-		cmd = "ToggleTerm",
-	},
+	{ "akinsho/toggleterm.nvim", config = cfg("toggleterm"), cmd = "ToggleTerm" },
 	-- LSP
 	{ "neovim/nvim-lspconfig" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
-	{
-		"tami5/lspsaga.nvim",
-		config = cfg("lspsaga"),
-	},
-	{
-		"folke/trouble.nvim",
-		config = cfg("trouble"),
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		config = cfg("lsp_signature"),
-	},
-	{
-		"simrat39/symbols-outline.nvim",
-		config = cfg("symbols-outline"),
-	},
+	{ "tami5/lspsaga.nvim", config = cfg("lspsaga") },
+	{ "folke/trouble.nvim", config = cfg("trouble") },
+	{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
+	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
 	{ -- Standalone UI for nvim-lsp progress
 		"j-hui/fidget.nvim",
 		config = function()
@@ -99,11 +83,7 @@ local plugins = {
 		end,
 	},
 	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		config = cfg("treesitter"),
-		run = ":TSUpdate",
-	}, -- Semantic highlighting
+	{ "nvim-treesitter/nvim-treesitter", config = cfg("treesitter"), run = ":TSUpdate" }, -- Semantic highlighting
 	{
 		"nvim-treesitter/playground",
 		cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
@@ -131,30 +111,15 @@ local plugins = {
 		end,
 	},
 	-- Telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		config = cfg("telescope"),
-	}, -- Fizzy
+	{ "nvim-telescope/telescope.nvim", config = cfg("telescope") }, -- Fizzy
 	{ "nvim-telescope/telescope-packer.nvim" },
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	-- Powerline
-	{
-		"hoob3rt/lualine.nvim",
-		config = cfg("lualine"),
-	},
+	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
 	-- -- Tab bar
-	{
-		"akinsho/bufferline.nvim",
-		config = cfg("bufferline"),
-	},
+	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	-- File explorer
-	{
-		"kyazdani42/nvim-tree.lua",
-		config = cfg("tree"),
-	},
+	{ "kyazdani42/nvim-tree.lua", config = cfg("tree") },
 	-- Window manager
 	{
 		"luukvbaal/stabilize.nvim",
@@ -164,15 +129,9 @@ local plugins = {
 	},
 	{ "sindrets/winshift.nvim" },
 	-- Keymapping
-	{
-		"folke/which-key.nvim",
-		config = cfg("whichkey"),
-	},
+	{ "folke/which-key.nvim", config = cfg("whichkey") },
 	-- Parentheses
-	{
-		"windwp/nvim-autopairs",
-		config = cfg("autopairs"),
-	},
+	{ "windwp/nvim-autopairs", config = cfg("autopairs") },
 	{
 		"windwp/nvim-ts-autotag",
 		config = function()
@@ -180,16 +139,10 @@ local plugins = {
 		end,
 	},
 	{ "p00f/nvim-ts-rainbow" },
-	{
-		"abecodes/tabout.nvim",
-		config = cfg("tabout"),
-	},
+	{ "abecodes/tabout.nvim", config = cfg("tabout") },
 	{ "tpope/vim-surround" },
 	-- Indentation tracking
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = cfg("indent-blankline"),
-	},
+	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
 	-- Multi line
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
 	-- Highlight colors
@@ -200,17 +153,9 @@ local plugins = {
 		end,
 	},
 	-- Undo
-	{
-		"mbbill/undotree",
-		cmd = "UndotreeToggle",
-		config = "vim.g.undotree_SetFocusWhenToggle = 1",
-	},
+	{ "mbbill/undotree", cmd = "UndotreeToggle", config = "vim.g.undotree_SetFocusWhenToggle = 1" },
 	-- Runner
-	{
-		"michaelb/sniprun",
-		run = "bash ./install.sh",
-		cmd = "SnipRun",
-	},
+	{ "michaelb/sniprun", run = "bash ./install.sh", cmd = "SnipRun" },
 	-- Git
 	{
 		"TimUntersberger/neogit",
@@ -234,11 +179,7 @@ local plugins = {
 		end,
 	},
 	-- Nevim Development
-	{
-		"rafcamlet/nvim-luapad",
-		opt = true,
-		cmd = "Luapad",
-	},
+	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
 	-- util
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
 	{
