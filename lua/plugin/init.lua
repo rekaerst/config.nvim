@@ -218,19 +218,11 @@ local plugins = {
 			require("neogit").setup({})
 		end,
 	},
-	{
-		"f-person/git-blame.nvim",
-		config = "vim.cmd [[let g:gitblame_enabled = 0]]",
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		config = cfg("gitsigns"),
-	},
+	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]" },
+	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
+	{ "sindrets/diffview.nvim", config = cfg("diffview") },
 	-- Github
-	{
-		"pwntester/octo.nvim",
-		config = cfg("octo"),
-	},
+	{ "pwntester/octo.nvim", config = cfg("octo") },
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",
