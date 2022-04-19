@@ -62,9 +62,6 @@ function M.setup()
 		vim.lsp.diagnostic.on_publish_diagnostics,
 		{ update_in_insert = true }
 	)
-
-	-- disable lspformat when using python
-	-- vim.cmd([[au FileType python lua require("lsp.format").disable()]])
 end
 
 return M

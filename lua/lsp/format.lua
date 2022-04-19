@@ -1,9 +1,10 @@
 local u = require("core.util")
+local autocmd = vim.api.nvim_create_autocmd
 local M = {
 	disabled = false,
 }
 
-local aggressive_ft = { "c", "cpp", "lua" }
+local aggressive_ft = { "c", "cpp", "lua", "go" }
 
 function M._format()
 	if M.disabled then
@@ -14,9 +15,9 @@ function M._format()
 end
 
 function M.on_attach(client, bufnr)
-	vim.cmd([[autocmd BufWritePre <buffer> lua require("lsp.format")._format()]])
+	autocmd("BufWritePre", { buffer = bufnr, callback = M._format })
 	if u.has_value(aggressive_ft, vim.bo.filetype) then
-		vim.cmd([[autocmd InsertLeave <buffer> lua require("lsp.format")._format()]])
+		autocmd("InsertLeave", { buffer = bufnr, callback = M._format })
 	end
 end
 

@@ -1,12 +1,34 @@
 local g = vim.g
 local o = vim.opt
+local autocmd = vim.api.nvim_create_autocmd
 
 local M = {}
-function M.setup()
-	vim.cmd([[
-autocmd TermOpen * setlocal nonumber
-]])
 
+local function ft_config()
+	autocmd("TermOpen", { command = "setlocal nonumber" })
+	-- expandtab
+	autocmd("FileType", {
+		pattern = { "python", "markdown" },
+		command = "set expandtab",
+	})
+	-- tabsize = 2
+	autocmd("FileType", {
+		pattern = { "markdown", "css" },
+		command = "set tabstop=2 | set shiftwidth=2",
+	})
+	-- tabsize = 8
+	autocmd("FileType", {
+		pattern = { "nasm" },
+		command = "set tabstop=8 | set shiftwidth=8",
+	})
+	-- force filetype
+	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
+		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
+		command = "set ft=nasm",
+	})
+end
+
+function M.setup()
 	-- Map space to leader
 	g.mapleader = " "
 	g.maplocalleader = "\\"
@@ -38,14 +60,7 @@ autocmd TermOpen * setlocal nonumber
 	o.writebackup = false
 	o.title = true
 
-	vim.cmd([[
-		autocmd TermOpen * setlocal nonumber
-		au FileType python set expandtab
-		au FileType markdown set expandtab | set tabstop=2 | set shiftwidth=2
-		au FileType nasm set tabstop=8 | set shiftwidth=8 | set expandtab
-		au BufNew,BufNewFile,BufRead *.tex :set ft=markdown
-		au BufNew,BufNewFile,BufRead *.s,*.S,*.asm,*.ASM :set ft=nasm
-	]])
+	ft_config()
 end
 
 return M
