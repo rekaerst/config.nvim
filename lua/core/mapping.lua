@@ -40,8 +40,9 @@ function M.reg_main()
 			},
 			r = {
 				name = "Run",
-				s = { "<cmd>SnipRun<cr>", "SnipRun" },
+				r = { "<cmd>SnipRun<cr>", "SnipRun" },
 				t = { "<cmd>ToggleTerm<cr>", "Terminal" },
+				s = { "<cmd>Telescope builtin", "Telescope" },
 			},
 			d = {
 				name = "Debug",
@@ -65,7 +66,13 @@ function M.reg_main()
 				G = { dap.goto_, "Goto Cursor" },
 				u = { dapui.toggle, "Toggle Debug UI" },
 			},
-			t = { ":Telescope builtin<cr>", "Telescope" },
+			t = {
+				name = "Tab",
+				n = { "<cmd>tabnew<cr>", "New Tab" },
+				b = { "<cmd>tabclose<cr>", "Close Tab" },
+				["["] = { "<cmd>tabp<cr>", "Previous Tab" },
+				["]"] = { "<cmd>tabnext<cr>", "Next Tab" },
+			},
 			v = {
 				name = "View",
 				F = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
