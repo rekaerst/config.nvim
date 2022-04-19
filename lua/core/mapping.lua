@@ -76,7 +76,7 @@ function M.reg_main()
 			t = {
 				name = "Tab",
 				n = { "<cmd>tabnew<cr>", "New Tab" },
-				b = { "<cmd>tabclose<cr>", "Close Tab" },
+				d = { "<cmd>tabclose<cr>", "Close Tab" },
 				["["] = { "<cmd>tabp<cr>", "Previous Tab" },
 				["]"] = { "<cmd>tabnext<cr>", "Next Tab" },
 			},
