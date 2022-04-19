@@ -31,6 +31,10 @@ require("bufferline").setup({
 				filetype = "packer",
 				text = "Packer",
 			},
+			{
+				filetype = "DiffviewFiles",
+				text = "Diffview",
+			},
 		},
 		close_icon = "",
 		separator_style = "thick",

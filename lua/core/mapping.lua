@@ -2,7 +2,7 @@ local M = {}
 local telescope = require("telescope.builtin")
 
 function M.reg_main()
-	local u = require("core.util")
+	local diffview = require("diffview")
 	local dap = require("dap")
 	local dapui = require("dapui")
 
@@ -92,6 +92,8 @@ function M.reg_main()
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
 				o = { "<cmd>SymbolsOutline<cr>", "Outline" },
 				u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
+				d = { diffview.open, "Toggle Diffview" },
+				h = { diffview.file_history, "Open File History" },
 			},
 			h = {
 				name = "Misc",
@@ -228,8 +230,8 @@ function M.reg_git(bufnr)
 					end,
 					"Full Blame",
 				},
-				d = { gitsigns.diffthis, "Show diff" },
 				x = { gitsigns.toggle_deleted, "Show Deleted" },
+				d = { gitsigns.diffthis, "Show diff" },
 			},
 		},
 	}, {

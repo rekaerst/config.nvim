@@ -1,5 +1,16 @@
 local colors = require("color.highlight").colors
 
+local diffview_extension = {
+	sections = {
+		lualine_a = {
+			function()
+				return "DiffView"
+			end,
+		},
+	},
+	filetypes = { "DiffviewFiles" },
+}
+
 require("lualine").setup({
 	options = {
 		theme = {
@@ -33,5 +44,5 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
-	extensions = { "nvim-tree", "toggleterm", "symbols-outline" },
+	extensions = { "nvim-tree", "toggleterm", "symbols-outline", diffview_extension },
 })
