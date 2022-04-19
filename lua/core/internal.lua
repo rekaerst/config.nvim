@@ -36,6 +36,7 @@ autocmd TermOpen * setlocal nonumber
 	o.updatetime = 300 -- having longer updatetime leads to noticeable delays
 	o.wildmode = "longest:full,full"
 	o.writebackup = false
+	o.title = true
 
 	vim.cmd([[
 		autocmd TermOpen * setlocal nonumber
