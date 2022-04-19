@@ -67,7 +67,6 @@ local plugins = {
 			"leoluz/nvim-dap-go",
 			"mfussenegger/nvim-dap-python",
 			"jbyuki/one-small-step-for-vimkind",
-			"nvim-telescope/telescope-dap.nvim",
 		},
 	},
 	{
@@ -114,6 +113,7 @@ local plugins = {
 	{ "nvim-telescope/telescope.nvim", config = cfg("telescope") }, -- Fizzy
 	{ "nvim-telescope/telescope-packer.nvim" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 	-- Powerline
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
 	-- -- Tab bar
