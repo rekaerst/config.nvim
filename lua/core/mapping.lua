@@ -1,5 +1,6 @@
 local M = {}
 local telescope = require("telescope.builtin")
+local autocmd = vim.api.nvim_create_autocmd
 
 function M.reg_main()
 	local diffview = require("diffview")
@@ -152,6 +153,13 @@ function M.reg_main()
  	imap <C-a> <C-o>I
  	imap <C-e> <C-o>$
 	]])
+
+	-- Window to close with Q
+	autocmd(
+		"FileType",
+		{ pattern = { "help", "startuptime", "qf", "lspinfo" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
+	)
+	autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 end
 
 -- invoked when a language server was attached
