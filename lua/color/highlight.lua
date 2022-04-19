@@ -34,7 +34,6 @@ M.colors = {
 	lightbg = "#2d3139",
 	lightbg2 = "#262a32",
 	pmenu_bg = "#A3BE8C",
-	folder_bg = "#61afef",
 }
 local c = M.colors
 
@@ -95,15 +94,15 @@ function M.setup()
 	fg("DiagnosticHint", c.purple)
 
 	-- NvimTree
-	fg("NvimTreeEmptyFolderName", c.folder_bg)
+	fg("NvimTreeEmptyFolderName", c.blue)
 	fg("NvimTreeEndOfBuffer", c.black4)
-	fg("NvimTreeFolderIcon", c.folder_bg)
-	fg("NvimTreeFolderName", c.folder_bg)
+	fg("NvimTreeFolderIcon", c.yellow)
+	fg("NvimTreeFolderName", c.blue)
 	fg("NvimTreeGitDirty", c.red)
 	fg("NvimTreeIndentMarker", c.one_bg2)
 	bg("NvimTreeNormal", c.black4)
 	bg("NvimTreeNormalNC", c.black4)
-	fg("NvimTreeOpenedFolderName", c.folder_bg)
+	fg("NvimTreeOpenedFolderName", c.blue)
 	fg("NvimTreeRootFolder", c.red .. " gui=underline") -- enable underline for root folder in nvim tree
 	fg_bg("NvimTreeStatuslineNc", c.black4, c.black4)
 	fg_bg("NvimTreeVertSplit", c.black4, c.black4)
