@@ -1,22 +1,22 @@
-local u = require("core.util")
+local signdef = vim.fn.sign_define
 
 local M = {}
 
 function M.setup()
-	u.signdef("DapBreakpoint", {
+	signdef("DapBreakpoint", {
 		text = "",
 		texthl = "DiagnosticError",
 	})
-	u.signdef("DapBreakpointCondition", {
+	signdef("DapBreakpointCondition", {
 		text = "",
 		texthl = "Type",
 	})
-	u.signdef("DapStopped", {
+	signdef("DapStopped", {
 		text = "",
 		texthl = "Function",
 		-- linehl = 'Error'
 	})
-	u.signdef("DapBreakpointRejected", {
+	signdef("DapBreakpointRejected", {
 		text = "",
 		texthl = "Error",
 	})

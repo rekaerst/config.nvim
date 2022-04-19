@@ -1,10 +1,7 @@
-local lspconfig = require("lspconfig")
 local format = require("lsp.format")
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- TODO: remove this after offset encoding issue is fixed
-capabilities.offsetEncoding = { "utf-18" }
+local signdef = vim.fn.sign_define
 
-require("lsp.null_ls").setup()
+local M = {}
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -12,56 +9,26 @@ local on_attach = function(client, bufnr)
 	require("core.mapping").reg_lsp(bufnr)
 end
 
--- LSP Servers
-local servers = {
-	"bashls",
-	"clangd",
-	"cmake",
-	"cssls",
-	"gdscript",
-	"gopls",
-	"hls",
-	"html",
-	"jsonls",
-	"jedi_language_server",
-	"r_language_server",
-	"rust_analyzer",
-	"texlab",
-	"tsserver",
-	"vala_ls",
-	"vimls",
-}
-
--- lua
--- this ass is too special...
-local luadev = require("lua-dev").setup({
-	lspconfig = {
-		on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			on_attach(client, bufnr)
-		end,
-	},
-})
-
-local M = {}
-
 function M.setup()
-	lspconfig.sumneko_lua.setup(luadev)
+	signdef("DiagnosticSignError", {
+		text = "",
+		texthl = "DiagnosticError",
+	})
+	signdef("DiagnosticSignWarn", {
+		text = "",
+		texthl = "DiagnosticWarn",
+	})
+	signdef("DiagnosticSignHint", {
+		text = "",
+		texthl = "DiagnosticHint",
+	})
+	signdef("DiagnosticSignInfo", {
+		text = "",
+		texthl = "DiagnosticInfo",
+	})
 
-	-- setup language servers
-	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup({
-			on_attach = on_attach,
-			debounce_text_changes = 150,
-			capabilities = capabilities,
-		})
-	end
-
-	-- Update diagnostics while inserting
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics,
-		{ update_in_insert = true }
-	)
+	require("lsp.null_ls").setup()
+	require("lsp.server").setup(on_attach)
 end
 
 return M
