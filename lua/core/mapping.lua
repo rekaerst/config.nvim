@@ -6,6 +6,7 @@ function M.reg_main()
 	local diffview = require("diffview")
 	local dap = require("dap")
 	local dapui = require("dapui")
+	local bufdelete = require("bufdelete")
 
 	local wk = require("which-key")
 	wk.register({
@@ -32,13 +33,27 @@ function M.reg_main()
 				f = { telescope.buffers, "Find Buffer" },
 				n = {
 					function()
-						local bufname = vim.fn.input("new buffer> ")
+						local bufname = vim.fn.input("new buffer ")
+						if bufname == "" then
+							vim.api.nvim_err_writeln("buffer name required")
+							return
+						end
 						vim.cmd("e " .. bufname)
 					end,
 					"New Buffer",
 				},
-				d = { "<cmd>bd<cr>", "Delete Buffer" },
-				D = { "<cmd>bd!<cr>", "Force Delete Buffer" },
+				d = {
+					function()
+						bufdelete.bufdelete(0, false)
+					end,
+					"Delete Buffer",
+				},
+				D = {
+					function()
+						bufdelete.bufdelete(0, true)
+					end,
+					"Force Delete Buffer",
+				},
 				p = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
 				s = { "<cmd>BufferLineSortByDirectory<cr>", "Sort Buffer by Directory" },
 				["]"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" },

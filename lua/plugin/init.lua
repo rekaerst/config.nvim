@@ -99,6 +99,12 @@ local plugins = {
 			require("Comment").setup()
 		end,
 	},
+	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	},
 	-- Motion
 	{
 		"phaazon/hop.nvim",
@@ -110,14 +116,14 @@ local plugins = {
 	{ "nvim-telescope/telescope.nvim", config = cfg("telescope") }, -- Fizzy
 	{ "nvim-telescope/telescope-packer.nvim" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	-- UI
+	{ "stevearc/dressing.nvim", config = cfg("dressing") },
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	-- Powerline
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
-	-- Tab bar
-	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	-- File explorer
 	{ "kyazdani42/nvim-tree.lua", config = cfg("tree") },
-	-- Window manager
+	-- Window Management
 	{
 		"luukvbaal/stabilize.nvim",
 		config = function()
@@ -125,6 +131,9 @@ local plugins = {
 		end,
 	},
 	{ "sindrets/winshift.nvim" },
+	-- Buffer Management
+	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
+	{ "famiu/bufdelete.nvim" },
 	-- Keymapping
 	{
 		"folke/which-key.nvim",
@@ -194,12 +203,6 @@ local plugins = {
 	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
 	-- util
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
-	{
-		"folke/todo-comments.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	},
 }
 
 packer.init({
