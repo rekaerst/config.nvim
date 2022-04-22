@@ -64,11 +64,7 @@ function M.reg_main()
 			r = {
 				name = "Run",
 				s = { "<cmd>SnipRun<cr>", "SnipRun" },
-			},
-			m = {
-				name = "Terminal",
 				t = { "<cmd>ToggleTerm<cr>", "Toggle" },
-				n = { "", "New" },
 			},
 			d = {
 				name = "Debug",
