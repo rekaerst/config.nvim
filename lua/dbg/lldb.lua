@@ -25,6 +25,10 @@ function M.setup()
 				end)
 				if not program then
 					program = vim.fn.input("Name of executable: ")
+					if program == "" then
+						vim.api.nvim_err_writeln("program name required")
+						return
+					end
 					-- TODO: implement a proper setcfg function
 					content.dap = { program = program }
 					u.write_json(path, content)
