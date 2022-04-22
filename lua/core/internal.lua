@@ -37,6 +37,7 @@ function M.setup()
 	g.python3_host_prog = "/usr/bin/python3"
 	g.loaded_python_provider = 0
 	g.loaded_ruby_provider = 0
+	g.loaded_perl_provider = 0
 
 	-- config
 	o.backup = false -- some language servers have issues with backup file

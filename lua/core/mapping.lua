@@ -33,7 +33,7 @@ function M.reg_main()
 				f = { telescope.buffers, "Find Buffer" },
 				n = {
 					function()
-						local bufname = vim.fn.input("new buffer ")
+						local bufname = vim.fn.input("new buffer> ")
 						if bufname == "" then
 							vim.api.nvim_err_writeln("buffer name required")
 							return
