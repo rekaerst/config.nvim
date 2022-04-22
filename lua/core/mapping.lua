@@ -117,6 +117,7 @@ function M.reg_main()
 				f = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 				d = { require("osv").launch, "Debug Neovim" },
 				c = { "<cmd>LuaCacheClear<cr>", "Clean Cache" },
+				s = { "<cmd>StartupTime<cr>", "Startup Time" },
 			},
 			w = {
 				name = "Window",
