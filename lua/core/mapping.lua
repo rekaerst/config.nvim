@@ -108,7 +108,7 @@ function M.reg_main()
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
 				k = { telescope.keymaps, "Keymaps" },
 				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
-				s = { "<cmd>:set spell!<cr>", "Spell Check" },
+				s = { "<cmd>:setlocal spell!<cr>", "Spell Check" },
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
 				o = { "<cmd>SymbolsOutline<cr>", "Outline" },
 				u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
