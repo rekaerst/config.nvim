@@ -63,9 +63,12 @@ function M.reg_main()
 			},
 			r = {
 				name = "Run",
-				r = { "<cmd>SnipRun<cr>", "SnipRun" },
-				t = { "<cmd>ToggleTerm<cr>", "Terminal" },
-				s = { "<cmd>Telescope builtin", "Telescope" },
+				s = { "<cmd>SnipRun<cr>", "SnipRun" },
+			},
+			m = {
+				name = "Terminal",
+				t = { "<cmd>ToggleTerm<cr>", "Toggle" },
+				n = { "", "New" },
 			},
 			d = {
 				name = "Debug",
@@ -103,6 +106,7 @@ function M.reg_main()
 				f = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
 				k = { telescope.keymaps, "Keymaps" },
+				t = { "<cmd>Telescope<cr>", "Telescope" },
 				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
 				s = { "<cmd>:setlocal spell!<cr>", "Spell Check" },
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
