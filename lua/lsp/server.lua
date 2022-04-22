@@ -3,6 +3,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 -- TODO: remove this after offset encoding issue is fixed
 capabilities.offsetEncoding = { "utf-18" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- LSP Servers
 local servers = {
