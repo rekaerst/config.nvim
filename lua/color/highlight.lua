@@ -55,7 +55,7 @@ function M.setup()
 
 	-- For floating windows
 	fg_bg("FloatBorder", c.blue, c.black)
-	bg("NormalFloat", c.black)
+	bg("NormalFloat", c.black3)
 
 	-- Pmenu
 	bg("Pmenu", c.one_bg)
