@@ -4,7 +4,7 @@ local M = {
 	disabled = false,
 }
 
-local aggressive_ft = { "c", "cpp", "lua", "go", "rust" }
+local aggressive_ft = { "c", "cpp", "lua", "go", "rust", "javascript" }
 
 function M._format()
 	if M.disabled then
