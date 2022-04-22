@@ -174,7 +174,12 @@ local plugins = {
 	},
 	{ "TimUntersberger/neogit", config = cfg("neogit") },
 	-- Github
-	{ "pwntester/octo.nvim", config = cfg("octo") },
+	{
+		"pwntester/octo.nvim",
+		config = function()
+			require("octo").setup()
+		end,
+	},
 	-- Preview
 	{
 		"iamcco/markdown-preview.nvim",
