@@ -118,7 +118,6 @@ local plugins = {
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	-- UI
 	{ "stevearc/dressing.nvim", config = cfg("dressing") },
-	{ "nvim-telescope/telescope-ui-select.nvim" },
 	-- Powerline
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
 	-- File explorer
