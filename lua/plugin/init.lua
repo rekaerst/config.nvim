@@ -54,6 +54,7 @@ local plugins = {
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
+	{ "L3MON4D3/LuaSnip" },
 	-- DAP
 	{
 		"mfussenegger/nvim-dap",
@@ -77,10 +78,8 @@ local plugins = {
 	},
 	-- Treesitter
 	{ "nvim-treesitter/nvim-treesitter", config = cfg("treesitter"), run = ":TSUpdate" }, -- Semantic highlighting
-	{
-		"nvim-treesitter/playground",
-		cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
-	},
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
 	{
 		"lewis6991/spellsitter.nvim",
 		config = function()
@@ -93,7 +92,6 @@ local plugins = {
 			require("treesitter-context").setup()
 		end,
 	},
-	{ "L3MON4D3/LuaSnip" },
 	-- Commenting
 	{
 		"numToStr/Comment.nvim",
