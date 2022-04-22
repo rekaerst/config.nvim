@@ -5,6 +5,7 @@ local M = {
 	disabled = false,
 }
 
+-- flags
 local attached = false
 
 local aggressive_ft = { "c", "cpp", "lua", "go", "rust" }
@@ -12,12 +13,14 @@ local aggressive_ft = { "c", "cpp", "lua", "go", "rust" }
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
 	-- avoid run autocmd multiple times
-	if not attached then
-		attached = true
-		autocmd("BufWritePre", { buffer = bufnr, callback = M.formatting_sync })
-		if u.has_value(aggressive_ft, vim.bo.filetype) then
-			autocmd("InsertLeave", { buffer = bufnr, callback = M.formatting })
-		end
+	if attached then
+		return
+	end
+
+	attached = true
+	autocmd("BufWritePre", { buffer = bufnr, callback = M.formatting_sync })
+	if u.has_value(aggressive_ft, vim.bo.filetype) then
+		autocmd("InsertLeave", { buffer = bufnr, callback = M.formatting })
 	end
 end
 

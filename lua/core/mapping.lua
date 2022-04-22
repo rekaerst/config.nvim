@@ -3,6 +3,10 @@ local telescope = require("telescope.builtin")
 local autocmd = vim.api.nvim_create_autocmd
 local wk = require("which-key")
 
+-- flags
+local lsp_registered = false
+local git_registered = false
+
 function M.reg_main()
 	local diffview = require("diffview")
 	local dap = require("dap")
@@ -179,6 +183,11 @@ end
 
 -- invoked when a language server was attached
 function M.reg_lsp(bufnr)
+	if lsp_registered then
+		return
+	end
+	lsp_registered = true
+
 	local gp = require("goto-preview")
 	wk.register({
 		["<leader>"] = {
@@ -237,6 +246,11 @@ end
 
 -- invoked only when cwd is a git repo
 function M.reg_git(bufnr)
+	if git_registered then
+		return
+	end
+	git_registered = true
+
 	local gitsigns = package.loaded.gitsigns
 	wk.register({
 		["<leader>"] = {
