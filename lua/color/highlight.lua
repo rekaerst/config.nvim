@@ -54,8 +54,8 @@ function M.setup()
 	fg("EndOfBuffer", c.black)
 
 	-- For floating windows
-	fg("FloatBorder", c.blue)
-	bg("NormalFloat", c.black3)
+	fg_bg("FloatBorder", c.blue, c.black)
+	bg("NormalFloat", c.black)
 
 	-- Pmenu
 	bg("Pmenu", c.one_bg)
