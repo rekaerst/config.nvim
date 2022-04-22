@@ -40,10 +40,7 @@ local plugins = {
 	{ "folke/trouble.nvim", config = cfg("trouble") },
 	{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
-	{ -- Standalone UI for nvim-lsp progress
-		"j-hui/fidget.nvim",
-		config = cfg("fidget"),
-	},
+	{ "j-hui/fidget.nvim", config = cfg("fidget") },
 	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{
