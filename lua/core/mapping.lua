@@ -192,7 +192,7 @@ function M.reg_lsp(bufnr)
 				},
 				a = { vim.lsp.buf.code_action, "Code Action" },
 				n = { vim.lsp.buf.rename, "Rename" },
-				f = { vim.lsp.buf.formatting_sync, "Format Documents" },
+				f = { vim.lsp.buf.formatting, "Format Documents" },
 				F = { require("lsp.format").toggle, "Toggle Formatting" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
