@@ -206,6 +206,7 @@ local plugins = {
 	-- Nevim Development
 	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
 	-- util
+	{ "sudormrfbin/cheatsheet.nvim" },
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
 }
 
