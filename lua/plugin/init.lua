@@ -85,7 +85,12 @@ local plugins = {
 			require("spellsitter").setup()
 		end,
 	},
-	-- Snips
+	{
+		"lewis6991/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup()
+		end,
+	},
 	{ "L3MON4D3/LuaSnip" },
 	-- Commenting
 	{
