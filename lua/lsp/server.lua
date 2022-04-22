@@ -47,6 +47,7 @@ function M.setup(on_attach)
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = capabilities,
+			single_file_support = true,
 		})
 	end
 
