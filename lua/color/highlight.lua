@@ -5,8 +5,8 @@ M.colors = {
 	white = "#abb2bf",
 	black = "#1e222a",
 	black2 = "#252931",
-	black3 = "#13171d",
-	black4 = "#1b1f27",
+	black3 = "#1b1f27",
+	black4 = "#13171d",
 	one_bg = "#282c34", -- real bg of onedark
 	one_bg2 = "#353b45",
 	one_bg3 = "#30343c",
@@ -55,7 +55,7 @@ function M.setup()
 
 	-- For floating windows
 	fg("FloatBorder", c.blue)
-	bg("NormalFloat", c.black4)
+	bg("NormalFloat", c.black3)
 
 	-- Pmenu
 	bg("Pmenu", c.one_bg)
@@ -95,28 +95,28 @@ function M.setup()
 
 	-- NvimTree
 	fg("NvimTreeEmptyFolderName", c.blue)
-	fg("NvimTreeEndOfBuffer", c.black4)
+	fg("NvimTreeEndOfBuffer", c.black3)
 	fg("NvimTreeFolderIcon", c.yellow)
 	fg("NvimTreeFolderName", c.blue)
 	fg("NvimTreeGitDirty", c.red)
 	fg("NvimTreeIndentMarker", c.one_bg2)
-	bg("NvimTreeNormal", c.black4)
-	bg("NvimTreeNormalNC", c.black4)
+	bg("NvimTreeNormal", c.black3)
+	bg("NvimTreeNormalNC", c.black3)
 	fg("NvimTreeOpenedFolderName", c.blue)
 	fg("NvimTreeRootFolder", c.red .. " gui=underline") -- enable underline for root folder in nvim tree
-	fg_bg("NvimTreeStatuslineNc", c.black4, c.black4)
-	fg_bg("NvimTreeVertSplit", c.black4, c.black4)
+	fg_bg("NvimTreeStatuslineNc", c.black3, c.black3)
+	fg_bg("NvimTreeVertSplit", c.black3, c.black3)
 	fg_bg("NvimTreeWindowPicker", c.red, c.black2)
 
 	-- Telescope
-	fg_bg("TelescopeBorder", c.black3, c.black3)
+	fg_bg("TelescopeBorder", c.black4, c.black4)
 	fg_bg("TelescopePromptBorder", c.black2, c.black2)
 	fg_bg("TelescopePromptNormal", c.white, c.black2)
 	fg_bg("TelescopePromptPrefix", c.red, c.black2)
-	bg("TelescopeNormal", c.black3)
+	bg("TelescopeNormal", c.black4)
 	fg_bg("TelescopePreviewTitle", c.black, c.green)
 	fg_bg("TelescopePromptTitle", c.black, c.red)
-	fg_bg("TelescopeResultsTitle", c.black3, c.black3)
+	fg_bg("TelescopeResultsTitle", c.black4, c.black4)
 	bg("TelescopeSelection", c.black2)
 
 	-- Which-key
