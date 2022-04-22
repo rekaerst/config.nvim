@@ -163,12 +163,7 @@ local plugins = {
 	-- Multi line
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
 	-- Highlight colors
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
+	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
 	-- Undo
 	{ "mbbill/undotree", cmd = "UndotreeToggle", config = "vim.g.undotree_SetFocusWhenToggle = 1" },
 	-- Runner
