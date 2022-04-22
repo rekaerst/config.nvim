@@ -1,6 +1,7 @@
 local M = {}
 local telescope = require("telescope.builtin")
 local autocmd = vim.api.nvim_create_autocmd
+local wk = require("which-key")
 
 function M.reg_main()
 	local diffview = require("diffview")
@@ -8,7 +9,6 @@ function M.reg_main()
 	local dapui = require("dapui")
 	local bufdelete = require("bufdelete")
 
-	local wk = require("which-key")
 	wk.register({
 		["<leader>"] = {
 			f = {
@@ -179,24 +179,37 @@ end
 
 -- invoked when a language server was attached
 function M.reg_lsp(bufnr)
-	local provider = require("lspsaga.provider")
-	local actoin = require("lspsaga.action")
-
-	require("which-key").register({
+	local gp = require("goto-preview")
+	wk.register({
 		["<leader>"] = {
 			c = {
 				name = "Code",
-				d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics" },
-				a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
-				n = { "<cmd>Lspsaga rename<cr>", "Rename" },
+				d = {
+					function()
+						vim.diagnostic.open_float({ border = "single" })
+					end,
+					"Show Diagnostics",
+				},
+				a = { vim.lsp.buf.code_action, "Code Action" },
+				n = { vim.lsp.buf.rename, "Rename" },
 				f = { vim.lsp.buf.formatting_sync, "Format Documents" },
 				F = { require("lsp.format").toggle, "Toggle Formatting" },
 				t = { "<cmd>Trouble<cr>", "Trouble" },
 				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },
 				q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
-				["["] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Previous Diagnostic" },
-				["]"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+				["["] = {
+					function()
+						vim.diagnostic.goto_prev({ float = { border = "single" } })
+					end,
+					"Previous Diagnostic",
+				},
+				["]"] = {
+					function()
+						vim.diagnostic.goto_next({ float = { border = "single" } })
+					end,
+					"Next Diagnostic",
+				},
 				s = { telescope.lsp_document_symbols, "Find Symbols" },
 				S = { telescope.lsp_workspace_symbols, "Find Symbols (workspace)" },
 			},
@@ -209,29 +222,22 @@ function M.reg_lsp(bufnr)
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },
 			s = { telescope.lsp_document_symbols, "Document Symbols" },
 			S = { telescope.lsp_workspace_symbols, "Workspace Symbols" },
-			p = { provider.lsp_finder, "Lsp Finder" },
+			p = {
+				name = "Preview",
+				d = { gp.goto_preview_definition, "Preview Definition" },
+				r = { gp.goto_preview_references, "Preview References" },
+				i = { gp.goto_preview_implementation, "Preview Implementation" },
+				c = { gp.close_all_win, "Close All Preview" },
+				m = { gp.dismiss_preview, "Dismiss Preview" },
+			},
 		},
-		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
-		["<C-d>"] = {
-			function()
-				actoin.smart_scroll_with_saga(1, "<c-d>")
-			end,
-			"Scroll Down",
-		},
-		["<C-u>"] = {
-			function()
-				actoin.smart_scroll_with_saga(-1, "<c-u>")
-			end,
-			"Scroll Up",
-		},
+		["K"] = { vim.lsp.buf.hover, "Hover" },
 	}, { buffer = bufnr })
 end
 
 -- invoked only when cwd is a git repo
 function M.reg_git(bufnr)
 	local gitsigns = package.loaded.gitsigns
-	local wk = require("which-key")
-
 	wk.register({
 		["<leader>"] = {
 			g = {

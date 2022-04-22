@@ -27,6 +27,10 @@ function M.setup()
 		texthl = "DiagnosticInfo",
 	})
 
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "single",
+	})
+
 	require("lsp.null_ls").setup()
 	require("lsp.server").setup(on_attach)
 end

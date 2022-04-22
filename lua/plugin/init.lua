@@ -31,7 +31,12 @@ local plugins = {
 	-- LSP
 	{ "neovim/nvim-lspconfig" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
-	{ "tami5/lspsaga.nvim", config = cfg("lspsaga") },
+	{
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({})
+		end,
+	},
 	{ "folke/trouble.nvim", config = cfg("trouble") },
 	{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
