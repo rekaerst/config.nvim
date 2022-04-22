@@ -164,12 +164,6 @@ local plugins = {
 	-- Runner
 	{ "michaelb/sniprun", run = "bash ./install.sh", cmd = "SnipRun" },
 	-- Git
-	{
-		"TimUntersberger/neogit",
-		config = function()
-			require("neogit").setup({})
-		end,
-	},
 	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]" },
 	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
@@ -178,6 +172,7 @@ local plugins = {
 			require("diffview").setup()
 		end,
 	},
+	{ "TimUntersberger/neogit", config = cfg("neogit") },
 	-- Github
 	{ "pwntester/octo.nvim", config = cfg("octo") },
 	-- Preview
@@ -197,7 +192,7 @@ local plugins = {
 	{
 		"folke/todo-comments.nvim",
 		config = function()
-			require("todo-comments").setup({})
+			require("todo-comments").setup()
 		end,
 	},
 }
