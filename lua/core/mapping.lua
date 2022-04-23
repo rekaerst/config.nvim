@@ -116,6 +116,7 @@ function M.reg_main()
 				h = { "<cmd>help<cr>", "Open Help" },
 				f = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 				d = { require("osv").launch, "Debug Neovim" },
+				p = { "<cmd>Luapad<cr>", "Launch Luapad" },
 				c = { "<cmd>LuaCacheClear<cr>", "Clean Cache" },
 				s = { "<cmd>StartupTime<cr>", "Startup Time" },
 			},
