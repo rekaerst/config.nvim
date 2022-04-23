@@ -4,10 +4,6 @@ local kind_symbols = u.kind_symbols
 
 local luasnip = require("luasnip")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
----@diagnostic disable-next-line: redundant-parameter
 cmp.setup({
 	snippet = {
 		expand = function(args)
