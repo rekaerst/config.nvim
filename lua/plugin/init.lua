@@ -38,29 +38,29 @@ local plugins = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-emoji",
 			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
 		},
 	},
-	{ "L3MON4D3/LuaSnip" },
 	-- DAP
 	{
 		"mfussenegger/nvim-dap",
 		requires = {
 			"leoluz/nvim-dap-go",
 			"mfussenegger/nvim-dap-python",
+			{
+				"rcarriga/nvim-dap-ui",
+				config = function()
+					require("dapui").setup()
+				end,
+			},
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				config = function()
+					require("nvim-dap-virtual-text").setup()
+				end,
+			},
 			"jbyuki/one-small-step-for-vimkind",
 		},
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		config = function()
-			require("dapui").setup()
-		end,
-	},
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		config = function()
-			require("nvim-dap-virtual-text").setup()
-		end,
 	},
 	-- Treesitter
 	{ "nvim-treesitter/nvim-treesitter", config = cfg("treesitter"), run = ":TSUpdate" }, -- Semantic highlighting
@@ -115,7 +115,7 @@ local plugins = {
 			require("stabilize").setup()
 		end,
 	},
-	{ "sindrets/winshift.nvim" },
+	{ "sindrets/winshift.nvim", cmd = "WinShift" },
 	-- Buffer Management
 	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	{ "famiu/bufdelete.nvim" },
@@ -149,7 +149,7 @@ local plugins = {
 	-- Highlight colors
 	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
 	-- Undo
-	{ "mbbill/undotree", cmd = "UndotreeToggle", config = "vim.g.undotree_SetFocusWhenToggle = 1" },
+	{ "mbbill/undotree", config = "vim.g.undotree_SetFocusWhenToggle = 1", cmd = "UndotreeToggle" },
 	-- Runner
 	{ "michaelb/sniprun", run = "bash ./install.sh", cmd = "SnipRun" },
 	-- Git
@@ -161,7 +161,7 @@ local plugins = {
 			require("diffview").setup()
 		end,
 	},
-	{ "TimUntersberger/neogit", config = cfg("neogit") },
+	{ "TimUntersberger/neogit", config = cfg("neogit"), cmd = "Neogit" },
 	-- Github
 	{
 		"pwntester/octo.nvim",
@@ -175,9 +175,8 @@ local plugins = {
 		config = function()
 			vim.g.mkdp_auto_close = 0
 		end,
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
+		run = "cd app && yarn install",
+		cmd = "MarkdownPreview",
 	},
 	-- Nevim Development
 	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
