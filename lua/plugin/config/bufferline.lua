@@ -54,7 +54,7 @@ require("bufferline").setup({
 				},
 				{
 					highlight = { guisp = colors.yellow },
-					name = "Dcs",
+					name = "Docs",
 					matcher = function(buf)
 						for _, ext in ipairs({ "md", "txt", "org", "norg", "wiki" }) do
 							if ext == vim.fn.fnamemodify(buf.path, ":e") then
