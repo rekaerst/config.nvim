@@ -157,7 +157,7 @@ local plugins = {
 	-- Multi line
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
 	-- Highlight colors
-	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
+	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer"), event = "BufRead" },
 	-- Undo
 	{ "mbbill/undotree", config = "vim.g.undotree_SetFocusWhenToggle = 1", cmd = "UndotreeToggle" },
 	-- Runner
