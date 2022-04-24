@@ -13,47 +13,29 @@ local plugins = {
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = cfg("tree"),
-		event = "VimEnter",
+		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeRefresh" },
 	},
 
 	{ "kyazdani42/nvim-web-devicons" },
 
-	{
-		"hoob3rt/lualine.nvim",
-		config = cfg("lualine"),
-		event = "VimEnter",
-	},
-	{
-		"akinsho/bufferline.nvim",
-		config = cfg("bufferline"),
-		event = "VimEnter",
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = cfg("indent-blankline"),
-		event = { "BufRead", "BufNewFile" },
-	},
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = cfg("colorizer"),
-		event = { "BufRead", "BufNewFile" },
-	},
+	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
+	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
+	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
+	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
 	{
 		"windwp/nvim-autopairs",
-		event = { "BufRead", "BufNewFile" },
 		config = cfg("autopairs"),
+		event = "InsertEnter",
 	},
 
 	-- git
-	{
-		"lewis6991/gitsigns.nvim",
-		config = cfg("gitsigns"),
-	},
+	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
 		"sindrets/diffview.nvim",
 		config = function()
 			require("diffview").setup()
 		end,
+		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
 	},
 	{
 		"TimUntersberger/neogit",
@@ -77,48 +59,35 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		config = cfg("treesitter"),
 		run = ":TSUpdate",
-		event = { "BufRead", "BufNewFile" },
 		requires = {
-			{
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				event = { "BufRead", "BufNewFile" },
-			},
-			{
-				"nvim-treesitter/playground",
-				cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
-				event = { "BufRead", "BufNewFile" },
-			},
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
 			{
 				"lewis6991/spellsitter.nvim",
 				config = function()
 					require("spellsitter").setup()
 				end,
-				event = { "BufRead", "BufNewFile" },
 			},
 			{
 				"lewis6991/nvim-treesitter-context",
 				config = function()
 					require("treesitter-context").setup()
 				end,
-				event = { "BufRead", "BufNewFile" },
 			},
 			{
 				"windwp/nvim-ts-autotag",
 				config = function()
 					require("nvim-ts-autotag").setup({})
 				end,
-				event = { "BufRead", "BufNewFile" },
+				event = "InsertEnter",
 			},
-			{
-				"p00f/nvim-ts-rainbow",
-				event = { "BufRead", "BufNewFile" },
-			},
+			{ "p00f/nvim-ts-rainbow" },
 			{
 				"abecodes/tabout.nvim",
 				config = function()
 					require("tabout").setup()
 				end,
-				event = { "BufRead", "BufNewFile" },
+				event = "InsertEnter",
 			},
 		},
 	},
@@ -129,9 +98,9 @@ local plugins = {
 		config = function()
 			require("lsp").setup()
 		end,
-		event = { "BufRead", "BufNewFile" },
 		requires = {
-			{ "jose-elias-alvarez/null-ls.nvim" },
+			"jose-elias-alvarez/null-ls.nvim",
+			"folke/lua-dev.nvim",
 			{
 				"rmagatti/goto-preview",
 				config = function()
@@ -143,26 +112,14 @@ local plugins = {
 				config = function()
 					require("trouble").setup()
 				end,
-				event = "VimEnter",
 			},
-			{
-				"ray-x/lsp_signature.nvim",
-				config = cfg("lsp_signature"),
-				event = { "BufRead", "BufNewFile" },
-			},
+			{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 			{
 				"simrat39/symbols-outline.nvim",
-				cmd = "SymbolsOutline",
 				config = cfg("symbols-outline"),
+				cmd = "SymbolsOutline",
 			},
-			{
-				"j-hui/fidget.nvim",
-				config = cfg("fidget"),
-				event = { "BufRead", "BufNewFile" },
-			},
-			{
-				"folke/lua-dev.nvim",
-			},
+			{ "j-hui/fidget.nvim", config = cfg("fidget") },
 		},
 	},
 	-- Completion
@@ -206,17 +163,10 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		config = cfg("telescope"),
-		event = "VimEnter",
+		cmd = "Telescope",
 		requires = {
-			{
-				"nvim-telescope/telescope-packer.nvim",
-				event = "VimEnter",
-			},
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				run = "make",
-				event = "VimEnter",
-			},
+			{ "nvim-telescope/telescope-packer.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 	},
 	-- comment
@@ -225,14 +175,12 @@ local plugins = {
 		config = function()
 			require("Comment").setup()
 		end,
-		event = { "BufRead", "BufNewFile" },
 	},
 	{
 		"folke/todo-comments.nvim",
 		config = function()
 			require("todo-comments").setup()
 		end,
-		event = { "BufRead", "BufNewFile" },
 	},
 	-- motion
 	{
@@ -240,7 +188,6 @@ local plugins = {
 		config = function()
 			require("hop").setup()
 		end,
-		event = { "BufRead", "BufNewFile" },
 	},
 	-- ui
 	{ "stevearc/dressing.nvim", config = cfg("dressing") },
@@ -301,14 +248,8 @@ local plugins = {
 		cmd = "ToggleTerm",
 	},
 	-- util
-	{
-		"sudormrfbin/cheatsheet.nvim",
-		cmd = "Cheatsheet",
-	},
-	{
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-	}, -- Profile startup time
+	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
+	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 }
 
 local disabled_built_ins = {

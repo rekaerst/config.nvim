@@ -3,7 +3,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local wk = require("which-key")
 
 function M.reg_main()
-	local diffview = require("diffview")
 	local dap = require("dap")
 	local dapui = require("dapui")
 	local bufdelete = require("bufdelete")
@@ -111,8 +110,8 @@ function M.reg_main()
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
 				o = { "<cmd>SymbolsOutline<cr>", "Outline" },
 				u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
-				d = { diffview.open, "Toggle Diffview" },
-				h = { diffview.file_history, "Open File History" },
+				d = { "<cmd>DiffviewOpen<cr>", "Toggle Diffview" },
+				h = { "<cmd>DiffviewFileHistory<cmd>", "Open File History" },
 			},
 			h = {
 				name = "Misc",
