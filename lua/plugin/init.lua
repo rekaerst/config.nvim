@@ -68,40 +68,26 @@ local plugins = {
 		},
 	},
 	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter", config = cfg("treesitter"), run = ":TSUpdate" }, -- Semantic highlighting
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
 	{
-		"lewis6991/spellsitter.nvim",
-		config = function()
-			require("spellsitter").setup()
-		end,
-	},
-	{
-		"lewis6991/nvim-treesitter-context",
-		config = function()
-			require("treesitter-context").setup()
-		end,
-	},
-	-- Commenting
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
-	{
-		"folke/todo-comments.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	},
-	-- Motion
-	{
-		"phaazon/hop.nvim",
-		config = function()
-			require("hop").setup()
-		end,
+		"nvim-treesitter/nvim-treesitter",
+		config = cfg("treesitter"),
+		run = ":TSUpdate",
+		requires = {
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
+			{
+				"lewis6991/spellsitter.nvim",
+				config = function()
+					require("spellsitter").setup()
+				end,
+			},
+			{
+				"lewis6991/nvim-treesitter-context",
+				config = function()
+					require("treesitter-context").setup()
+				end,
+			},
+		},
 	},
 	-- Telescope
 	{
@@ -109,10 +95,33 @@ local plugins = {
 		config = cfg("telescope"),
 		event = "VimEnter",
 		require = {
-			{ "nvim-telescope/telescope-packer.nvim", event = "VimEnter" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", event = "VimEnter" },
+			{ "nvim-telescope/telescope-packer.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 	}, -- Fizzy
+	-- Commenting
+	{
+		"numToStr/Comment.nvim",
+		event = "BufRead",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+	{
+		"folke/todo-comments.nvim",
+		event = "BufRead",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	},
+	-- Motion
+	{
+		"phaazon/hop.nvim",
+		event = "BufRead",
+		config = function()
+			require("hop").setup()
+		end,
+	},
 	-- UI
 	{ "stevearc/dressing.nvim", config = cfg("dressing") },
 	-- Powerline
@@ -188,12 +197,13 @@ local plugins = {
 		end,
 		run = "cd app && yarn install",
 		cmd = "MarkdownPreview",
+		ft = "markdown",
 	},
 	-- Nevim Development
 	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
 	-- util
-	{ "sudormrfbin/cheatsheet.nvim" },
-	{ "dstein64/vim-startuptime" }, -- Profile startup time
+	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
+	{ "dstein64/vim-startuptime", cmd = "StartupTime" }, -- Profile startup time
 }
 
 local disabled_built_ins = {

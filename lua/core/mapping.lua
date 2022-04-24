@@ -137,6 +137,7 @@ function M.reg_main()
 				s = { "<cmd>WinShift swap<cr>", "Swap" },
 			},
 			["<C-q>"] = { ":qa!<cr>", "Quit" },
+			["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 		},
 		g = {
 			b = "Block Comment",
