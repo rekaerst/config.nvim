@@ -66,6 +66,9 @@ local plugins = {
 			},
 			"jbyuki/one-small-step-for-vimkind",
 		},
+		config = function ()
+			require("dbg").setup()
+		end
 	},
 	-- Treesitter
 	{
