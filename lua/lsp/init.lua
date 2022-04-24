@@ -1,4 +1,5 @@
 local fmt = require("lsp.format")
+
 local signdef = vim.fn.sign_define
 
 local M = {}
@@ -33,7 +34,7 @@ function M.setup()
 	})
 
 	require("lsp.server").setup(on_attach)
-	require("lsp.null_ls").setup()
+	require("lsp.null_ls").setup(fmt.on_attach)
 end
 
 return M

@@ -1,24 +1,20 @@
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 local u = require("core.util")
 
 local M = {
 	disabled = false,
 }
 
-
 local aggressive_ft = { "c", "cpp", "lua", "go", "rust" }
 
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
-	-- avoid run autocmd multiple times
-	if vim.b.lsp_format_attached then
-		return
-	end
-
-	vim.b.lsp_format_attached = true
-	autocmd("BufWritePre", { buffer = bufnr, callback = M.formatting_sync })
+	-- clear existing commands of the group
+	local lsp_fmt_grp = augroup("LspFormat", { clear = true })
+	autocmd("BufWritePre", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting_sync })
 	if u.has_value(aggressive_ft, vim.bo.filetype) then
-		autocmd("InsertLeave", { buffer = bufnr, callback = M.formatting })
+		autocmd("InsertLeave", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting })
 	end
 end
 

@@ -29,39 +29,6 @@ M.kind_symbols = {
 	Operator = "",
 	TypeParameter = "",
 }
-local kind_order = {
-	"Text",
-	"Method",
-	"Function",
-	"Constructor",
-	"Field",
-	"Variable",
-	"Class",
-	"Interface",
-	"Module",
-	"Property",
-	"Unit",
-	"Value",
-	"Enum",
-	"Keyword",
-	"Snippet",
-	"Color",
-	"File",
-	"Reference",
-	"Folder",
-	"EnumMember",
-	"Constant",
-	"Struct",
-	"Event",
-	"Operator",
-	"TypeParameter",
-}
-M.symbols = {}
-local len = 25
-for i = 1, len do
-	local name = kind_order[i]
-	M.symbols[i] = M.kind_symbols[name]
-end
 
 M.signdef = vim.fn.sign_define
 
@@ -71,18 +38,6 @@ end
 
 function M.cfg(name)
 	return 'require "plugin.config.' .. name .. '"'
-end
-
--- check if file exists
--- @param path Path of file
-function M.file_exists(path)
-	local f = io.open(path, "r")
-	if f ~= nil then
-		io.close(f)
-		return true
-	else
-		return false
-	end
 end
 
 -- Highlight functions

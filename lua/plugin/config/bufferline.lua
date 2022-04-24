@@ -7,6 +7,7 @@ require("bufferline").setup({
 			return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
 		end,
 		diagnostics = "nvim_lsp",
+		---@diagnostic disable-next-line: unused-local
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			local icon = level:match("error") and " " or " "
 			return icon .. count
@@ -68,7 +69,7 @@ require("bufferline").setup({
 	},
 	highlights = {
 		fill = {
-			guibg = colors.black2,
+			guibg = colors.light_black,
 		},
 		tab_selected = {
 			guibg = colors.nord_blue,

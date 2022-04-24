@@ -44,7 +44,11 @@ function M.reg_main()
 				},
 				d = {
 					function()
-						bufdelete.bufdelete(0, false)
+						if vim.fn.getbufinfo({ bufnr = 0 })[1].changed == 1 then
+							vim.api.nvim_err_writeln("buffer changed")
+						else
+							bufdelete.bufdelete(0, false)
+						end
 					end,
 					"Delete Buffer",
 				},
@@ -115,7 +119,12 @@ function M.reg_main()
 				name = "Misc",
 				h = { "<cmd>help<cr>", "Open Help" },
 				f = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-				d = { require("osv").launch, "Debug Neovim" },
+				d = {
+					function()
+						require("osv").launch({ port = 7058 })
+					end,
+					"Debug Neovim",
+				},
 				p = { "<cmd>Luapad<cr>", "Launch Luapad" },
 				c = { "<cmd>LuaCacheClear<cr>", "Clean Cache" },
 				s = { "<cmd>StartupTime<cr>", "Startup Time" },

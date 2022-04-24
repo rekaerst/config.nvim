@@ -40,27 +40,32 @@ function M.setup()
 	g.loaded_perl_provider = 0
 
 	-- config
-	o.backup = false -- some language servers have issues with backup file
-	o.completeopt = "menuone,noselect"
-	o.cursorline = true
-	o.cursorlineopt = "number"
-	o.inccommand = "nosplit"
-	o.lazyredraw = true -- speed up marco
-	o.mouse = "a"
-	o.number = true
-	o.shiftwidth = 4
-	o.shortmess = vim.o.shortmess .. "cI"
-	o.signcolumn = "yes"
-	o.smartindent = true
-	o.splitbelow = true
-	o.tabstop = 4
 	o.termguicolors = true
-	o.timeoutlen = 400
-	o.updatetime = 300 -- having longer updatetime leads to noticeable delays
-	o.wildmode = "longest:full,full"
-	o.writebackup = false
 	o.title = true
 
+	o.completeopt = "menuone,noselect"
+	o.wildmode = "longest:full,full"
+	o.shortmess = vim.o.shortmess .. "cI"
+
+	o.cursorline = true
+	o.cursorlineopt = "number"
+	o.number = true
+	o.signcolumn = "yes"
+	o.mouse = "a"
+
+	o.shiftwidth = 4
+	o.tabstop = 4
+	o.smartindent = true
+
+	o.lazyredraw = true -- speed up marco
+
+	o.splitbelow = true
+
+	o.timeoutlen = 400
+	o.updatetime = 300 -- having longer updatetime leads to noticeable delays
+
+	o.writebackup = false
+	o.backup = false -- some language servers have issues with backup file
 	ft_config()
 end
 

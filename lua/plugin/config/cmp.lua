@@ -40,19 +40,14 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{
-			name = "path",
-			option = {
-				trailing_slash = false,
-			},
-		},
+		{ name = "path", option = { trailing_slash = false } },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "emoji" },
 	}),
 	formatting = {
+		---@diagnostic disable-next-line: unused-local
 		format = function(entry, vim_item)
-			-- vim_item.kind = kind_symbols[vim_item.kind]
 			vim_item.kind = string.format("%s ", kind_symbols[vim_item.kind])
 			vim_item.abbr = string.sub(vim_item.abbr, 1, 64)
 			return vim_item

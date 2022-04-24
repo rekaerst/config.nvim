@@ -23,7 +23,12 @@ local plugins = {
 			require("goto-preview").setup({})
 		end,
 	},
-	{ "folke/trouble.nvim", config = cfg("trouble") },
+	{
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup()
+		end,
+	},
 	{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
 	{ "j-hui/fidget.nvim", config = cfg("fidget") },
@@ -40,6 +45,7 @@ local plugins = {
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
 		},
+		after = "LuaSnip",
 	},
 	-- DAP
 	{
@@ -99,15 +105,20 @@ local plugins = {
 		end,
 	},
 	-- Telescope
-	{ "nvim-telescope/telescope.nvim", config = cfg("telescope") }, -- Fizzy
-	{ "nvim-telescope/telescope-packer.nvim" },
-	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{
+		"nvim-telescope/telescope.nvim",
+		config = cfg("telescope"),
+		require = {
+			{ "nvim-telescope/telescope-packer.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+	}, -- Fizzy
 	-- UI
 	{ "stevearc/dressing.nvim", config = cfg("dressing") },
 	-- Powerline
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
 	-- File explorer
-	{ "kyazdani42/nvim-tree.lua", config = cfg("tree") },
+	{ "kyazdani42/nvim-tree.lua", config = cfg("tree"), event = "VimEnter" },
 	-- Window Management
 	{
 		"luukvbaal/stabilize.nvim",
@@ -153,7 +164,7 @@ local plugins = {
 	-- Runner
 	{ "michaelb/sniprun", run = "bash ./install.sh", cmd = "SnipRun" },
 	-- Git
-	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]" },
+	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]", cmd = "GitBlameToggle" },
 	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
 		"sindrets/diffview.nvim",
@@ -184,6 +195,18 @@ local plugins = {
 	{ "sudormrfbin/cheatsheet.nvim" },
 	{ "dstein64/vim-startuptime" }, -- Profile startup time
 }
+
+local disabled_built_ins = {
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"vimball",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+	vim.g["loaded_" .. plugin] = 1
+end
 
 packer.init({
 	display = {
