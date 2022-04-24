@@ -7,32 +7,164 @@ local cfg = u.cfg
 local plugins = {
 	{ "wbthomason/packer.nvim" },
 	{ "lewis6991/impatient.nvim" },
-	-- Libraries
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-lua/popup.nvim" },
-	-- Icons
+
+	{
+		"kyazdani42/nvim-tree.lua",
+		config = cfg("tree"),
+		event = "VimEnter",
+	},
+
 	{ "kyazdani42/nvim-web-devicons" },
-	-- Terminal
-	{ "akinsho/toggleterm.nvim", config = cfg("toggleterm"), cmd = "ToggleTerm" },
+
+	{
+		"hoob3rt/lualine.nvim",
+		config = cfg("lualine"),
+		event = "VimEnter",
+	},
+	{
+		"akinsho/bufferline.nvim",
+		config = cfg("bufferline"),
+		event = "VimEnter",
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = cfg("indent-blankline"),
+		event = { "BufRead", "BufNewFile" },
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = cfg("colorizer"),
+		event = { "BufRead", "BufNewFile" },
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = { "BufRead", "BufNewFile" },
+		config = cfg("autopairs"),
+	},
+
+	-- git
+	{
+		"lewis6991/gitsigns.nvim",
+		config = cfg("gitsigns"),
+	},
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup()
+		end,
+	},
+	{
+		"TimUntersberger/neogit",
+		config = cfg("neogit"),
+		cmd = "Neogit",
+	},
+	{
+		"f-person/git-blame.nvim",
+		config = "vim.cmd [[let g:gitblame_enabled = 0]]",
+		cmd = "GitBlameToggle",
+	},
+	{
+		"pwntester/octo.nvim",
+		config = function()
+			require("octo").setup()
+		end,
+	},
+
+	-- treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = cfg("treesitter"),
+		run = ":TSUpdate",
+		event = { "BufRead", "BufNewFile" },
+		requires = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"nvim-treesitter/playground",
+				cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"lewis6991/spellsitter.nvim",
+				config = function()
+					require("spellsitter").setup()
+				end,
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"lewis6991/nvim-treesitter-context",
+				config = function()
+					require("treesitter-context").setup()
+				end,
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"windwp/nvim-ts-autotag",
+				config = function()
+					require("nvim-ts-autotag").setup({})
+				end,
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"p00f/nvim-ts-rainbow",
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"abecodes/tabout.nvim",
+				config = function()
+					require("tabout").setup()
+				end,
+				event = { "BufRead", "BufNewFile" },
+			},
+		},
+	},
+
 	-- LSP
-	{ "neovim/nvim-lspconfig" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
 	{
-		"rmagatti/goto-preview",
+		"neovim/nvim-lspconfig",
 		config = function()
-			require("goto-preview").setup({})
+			require("lsp").setup()
 		end,
+		event = { "BufRead", "BufNewFile" },
+		requires = {
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			{
+				"rmagatti/goto-preview",
+				config = function()
+					require("goto-preview").setup({})
+				end,
+			},
+			{
+				"folke/trouble.nvim",
+				config = function()
+					require("trouble").setup()
+				end,
+				event = "VimEnter",
+			},
+			{
+				"ray-x/lsp_signature.nvim",
+				config = cfg("lsp_signature"),
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"simrat39/symbols-outline.nvim",
+				cmd = "SymbolsOutline",
+				config = cfg("symbols-outline"),
+			},
+			{
+				"j-hui/fidget.nvim",
+				config = cfg("fidget"),
+				event = { "BufRead", "BufNewFile" },
+			},
+			{
+				"folke/lua-dev.nvim",
+			},
+		},
 	},
-	{
-		"folke/trouble.nvim",
-		config = function()
-			require("trouble").setup()
-		end,
-	},
-	{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
-	{ "simrat39/symbols-outline.nvim", config = cfg("symbols-outline") },
-	{ "j-hui/fidget.nvim", config = cfg("fidget") },
-	{ "folke/lua-dev.nvim" },
 	-- Completion
 	{
 		"hrsh7th/nvim-cmp",
@@ -66,133 +198,87 @@ local plugins = {
 			},
 			"jbyuki/one-small-step-for-vimkind",
 		},
-		config = function ()
+		config = function()
 			require("dbg").setup()
-		end
+		end,
 	},
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		config = cfg("treesitter"),
-		run = ":TSUpdate",
-		requires = {
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
-			{
-				"lewis6991/spellsitter.nvim",
-				config = function()
-					require("spellsitter").setup()
-				end,
-			},
-			{
-				"lewis6991/nvim-treesitter-context",
-				config = function()
-					require("treesitter-context").setup()
-				end,
-			},
-		},
-	},
-	-- Telescope
+	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		config = cfg("telescope"),
 		event = "VimEnter",
-		require = {
-			{ "nvim-telescope/telescope-packer.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		requires = {
+			{
+				"nvim-telescope/telescope-packer.nvim",
+				event = "VimEnter",
+			},
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "make",
+				event = "VimEnter",
+			},
 		},
-	}, -- Fizzy
-	-- Commenting
+	},
+	-- comment
 	{
 		"numToStr/Comment.nvim",
-		event = "BufRead",
 		config = function()
 			require("Comment").setup()
 		end,
+		event = { "BufRead", "BufNewFile" },
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "BufRead",
 		config = function()
 			require("todo-comments").setup()
 		end,
+		event = { "BufRead", "BufNewFile" },
 	},
-	-- Motion
+	-- motion
 	{
 		"phaazon/hop.nvim",
-		event = "BufRead",
 		config = function()
 			require("hop").setup()
 		end,
+		event = { "BufRead", "BufNewFile" },
 	},
-	-- UI
+	-- ui
 	{ "stevearc/dressing.nvim", config = cfg("dressing") },
-	-- Powerline
-	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
-	-- File explorer
-	{ "kyazdani42/nvim-tree.lua", config = cfg("tree"), event = "VimEnter" },
-	-- Window Management
 	{
 		"luukvbaal/stabilize.nvim",
 		config = function()
 			require("stabilize").setup()
 		end,
 	},
-	{ "sindrets/winshift.nvim", cmd = "WinShift" },
-	-- Buffer Management
-	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
+	{
+		"sindrets/winshift.nvim",
+		cmd = "WinShift",
+	},
+	-- buffer
 	{ "famiu/bufdelete.nvim" },
-	-- Keymapping
+	-- keymapping
 	{
 		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup()
 		end,
 	},
-	-- Parentheses
-	{ "windwp/nvim-autopairs", config = cfg("autopairs") },
-	{
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup({})
-		end,
-	},
-	{ "p00f/nvim-ts-rainbow" },
-	{
-		"abecodes/tabout.nvim",
-		config = function()
-			require("tabout").setup()
-		end,
-	},
 	{ "tpope/vim-surround" },
-	-- Indentation tracking
-	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
-	-- Multi line
+	-- multi line
 	{ "mg979/vim-visual-multi" }, -- Multiple cursors
-	-- Highlight colors
-	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer"), event = "BufRead" },
-	-- Undo
-	{ "mbbill/undotree", config = "vim.g.undotree_SetFocusWhenToggle = 1", cmd = "UndotreeToggle" },
+	-- undo
+	{
+		"mbbill/undotree",
+		config = "vim.g.undotree_SetFocusWhenToggle = 1",
+		cmd = "UndotreeToggle",
+	},
 	-- Runner
-	{ "michaelb/sniprun", run = "bash ./install.sh", cmd = "SnipRun" },
-	-- Git
-	{ "f-person/git-blame.nvim", config = "vim.cmd [[let g:gitblame_enabled = 0]]", cmd = "GitBlameToggle" },
-	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
-		"sindrets/diffview.nvim",
-		config = function()
-			require("diffview").setup()
-		end,
+		"michaelb/sniprun",
+		run = "bash ./install.sh",
+		cmd = "SnipRun",
 	},
-	{ "TimUntersberger/neogit", config = cfg("neogit"), cmd = "Neogit" },
-	-- Github
-	{
-		"pwntester/octo.nvim",
-		config = function()
-			require("octo").setup()
-		end,
-	},
-	-- Preview
+	-- preview
 	{
 		"iamcco/markdown-preview.nvim",
 		config = function()
@@ -202,11 +288,27 @@ local plugins = {
 		cmd = "MarkdownPreview",
 		ft = "markdown",
 	},
-	-- Nevim Development
-	{ "rafcamlet/nvim-luapad", opt = true, cmd = "Luapad" },
+	-- nevim development
+	{
+		"rafcamlet/nvim-luapad",
+		opt = true,
+		cmd = "Luapad",
+	},
+	-- terminal
+	{
+		"akinsho/toggleterm.nvim",
+		config = cfg("toggleterm"),
+		cmd = "ToggleTerm",
+	},
 	-- util
-	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
-	{ "dstein64/vim-startuptime", cmd = "StartupTime" }, -- Profile startup time
+	{
+		"sudormrfbin/cheatsheet.nvim",
+		cmd = "Cheatsheet",
+	},
+	{
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+	}, -- Profile startup time
 }
 
 local disabled_built_ins = {

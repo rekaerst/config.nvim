@@ -8,12 +8,12 @@ t.setup({
 	defaults = {
 		mappings = {
 			i = {
-				["<c-b>"] = trouble.open_with_trouble,
+				["<c-t>"] = trouble.open_with_trouble,
 				["<esc"] = actions.close,
 				["<M-p>"] = action_layout.toggle_preview,
 			},
 			n = {
-				["<c-b>"] = trouble.open_with_trouble,
+				["<c-t>"] = trouble.open_with_trouble,
 				["<M-p>"] = action_layout.toggle_preview,
 				["cd"] = function(prompt_bufnr)
 					local selection = require("telescope.actions.state").get_selected_entry()
