@@ -1,5 +1,4 @@
 local M = {}
-local telescope = require("telescope.builtin")
 local autocmd = vim.api.nvim_create_autocmd
 local wk = require("which-key")
 
@@ -13,24 +12,24 @@ function M.reg_main()
 		["<leader>"] = {
 			f = {
 				name = "File",
-				r = { telescope.oldfiles, "Open Recent" },
-				f = { telescope.find_files, "Find File" },
+				r = { "<cmd>Telescope oldfiles<cr>", "Open Recent" },
+				f = { "<cmd>Telescope find_files<cr>", "Find File" },
 				w = { ":w<cr>", "Save Current File" },
 				a = { ":wa<cr>", "Save All Files" },
 				x = { ":wq<cr>", "Save and Close" },
 			},
 			e = {
 				name = "Edit",
-				f = { telescope.live_grep, "Find" },
+				f = { "<cmd>Telescope live_grep<cr>", "Find" },
 				F = { "<cmd>NvimTreeFindFile<cr>", "Find File in Tree" },
-				t = { telescope.treesitter, "Treesitter" },
-				s = { telescope.grep_string, "Find String" },
+				t = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
+				s = { "<cmd>Telescope grep_string<cr>", "Find String" },
 				h = { "<cmd>noh<cr>", "Clear Highlight" },
 				e = { "<cmd>set foldmethod=expr<cr>", "Enable folding" },
 			},
 			b = {
 				name = "Buffer",
-				f = { telescope.buffers, "Find Buffer" },
+				f = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
 				n = {
 					function()
 						local bufname = vim.fn.input("new buffer> ")
@@ -105,7 +104,7 @@ function M.reg_main()
 				c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
 				f = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
-				k = { telescope.keymaps, "Keymaps" },
+				k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				t = { "<cmd>Telescope<cr>", "Telescope" },
 				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
 				s = { "<cmd>:setlocal spell!<cr>", "Spell Check" },
@@ -226,8 +225,8 @@ function M.reg_lsp(bufnr)
 					end,
 					"Next Diagnostic",
 				},
-				s = { telescope.lsp_document_symbols, "Find Symbols" },
-				S = { telescope.lsp_workspace_symbols, "Find Symbols (workspace)" },
+				s = { "<cmd>Telescope lsp_document_symbols<cr>", "Find Symbols" },
+				S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Find Symbols (workspace)" },
 			},
 		},
 		["g"] = {
@@ -236,8 +235,8 @@ function M.reg_lsp(bufnr)
 			d = { "<cmd>Trouble lsp_definitions<cr>", "Go to Definition" },
 			i = { "<cmd>Trouble lsp_implementations<cr>", "Go to Implementation" },
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },
-			s = { telescope.lsp_document_symbols, "Document Symbols" },
-			S = { telescope.lsp_workspace_symbols, "Workspace Symbols" },
+			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+			S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
 			p = {
 				name = "Preview",
 				d = { gp.goto_preview_definition, "Preview Definition" },
@@ -263,9 +262,9 @@ function M.reg_git(bufnr)
 		["<leader>"] = {
 			g = {
 				name = "Git",
-				f = { telescope.git_files, "Files" },
-				c = { telescope.git_bcommits, "Buffer Commits" },
-				C = { telescope.git_commits, "All Commits" },
+				f = { "<cmd>Telescope git_files<cr>", "Files" },
+				c = { "<cmd>Telescope git_bcommits<cr>", "Buffer Commits" },
+				C = { "<cmd>Telescope git_commits<cr>", "All Commits" },
 				s = { gitsigns.stage_hunk, "Stage Hunk" },
 				r = { gitsigns.reset_hunk, "Reset Hunk" },
 				u = { gitsigns.undo_stage_hunk, "Undo stage Hunk" },
