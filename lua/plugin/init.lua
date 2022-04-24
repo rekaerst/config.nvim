@@ -107,9 +107,10 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		config = cfg("telescope"),
+		event = "VimEnter",
 		require = {
-			{ "nvim-telescope/telescope-packer.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+			{ "nvim-telescope/telescope-packer.nvim", event = "VimEnter" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", event = "VimEnter" },
 		},
 	}, -- Fizzy
 	-- UI
