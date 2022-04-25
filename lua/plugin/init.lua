@@ -22,6 +22,7 @@ local plugins = {
 	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
 	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
+	{ "tpope/vim-surround" },
 	{
 		"windwp/nvim-autopairs",
 		config = cfg("autopairs"),
@@ -61,7 +62,14 @@ local plugins = {
 		run = ":TSUpdate",
 		requires = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" } },
+			"p00f/nvim-ts-rainbow",
+			{
+				"nvim-treesitter/playground",
+				cmd = {
+					"TSPlaygroundToggle",
+					"TSHighlightCapturesUnderCursor",
+				},
+			},
 			{
 				"lewis6991/spellsitter.nvim",
 				config = function()
@@ -81,7 +89,6 @@ local plugins = {
 				end,
 				event = "InsertEnter",
 			},
-			{ "p00f/nvim-ts-rainbow" },
 			{
 				"abecodes/tabout.nvim",
 				config = function()
@@ -205,7 +212,6 @@ local plugins = {
 		"sindrets/winshift.nvim",
 		cmd = "WinShift",
 	},
-	-- buffer
 	{ "famiu/bufdelete.nvim" },
 	-- keymapping
 	{
@@ -214,9 +220,8 @@ local plugins = {
 			require("which-key").setup()
 		end,
 	},
-	{ "tpope/vim-surround" },
 	-- multi line
-	{ "mg979/vim-visual-multi" }, -- Multiple cursors
+	{ "mg979/vim-visual-multi" },
 	-- undo
 	{
 		"mbbill/undotree",
