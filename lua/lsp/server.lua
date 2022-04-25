@@ -32,6 +32,7 @@ local function override_single_file(lsp)
 		"gopls",
 		"html",
 		"jsonls",
+		"vala_ls",
 	}
 	if u.has_value(sf, lsp) then
 		return true
