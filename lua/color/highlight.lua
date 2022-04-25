@@ -51,18 +51,29 @@ function M.setup()
 
 	-- For floating windows
 	highlight("FloatBorder", c.blue, c.black, nil, nil)
-	highlight("NormalFloat",nil, c.black2,nil,nil)
+	highlight("NormalFloat", nil, c.black2, nil, nil)
 
 	-- Pmenu
 	hclear("PmenuSel")
-	highlight("Pmenu",nil, c.one_bg,nil,nil)
-	highlight("PmenuSbar",nil, c.one_bg2,nil,nil)
-	highlight("PmenuSel",nil, c.grey,nil,nil)
-	highlight("PmenuThumb",nil, c.nord_blue,nil,nil)
-	highlight("CmpItemAbbr", c.white, nil, nil, nil)
-	highlight("CmpItemAbbrMatch", c.white, nil, nil, nil)
+	highlight("Pmenu", nil, c.one_bg, nil, nil)
+	highlight("PmenuSbar", nil, c.one_bg2, nil, nil)
+	highlight("PmenuSel", nil, c.grey, nil, nil)
+	highlight("PmenuThumb", nil, c.nord_blue, nil, nil)
+
+	-- cmp
 	highlight("CmpItemKind", c.white, nil, nil, nil)
 	highlight("CmpItemMenu", c.white, nil, nil, nil)
+	highlight("CmpItemAbbrMatch", c.bright, nil, "bold", nil)
+	highlight("CmpItemAbbrMatchFuzzy", c.bright, nil, "bold", nil)
+	highlight("CmpItemAbbrDeprecated", c.light_grey, c.NONE, "strikethrough", nil)
+	highlight("CmpItemKindVariable", c.blue, nil, nil, nil)
+	highlight("CmpItemKindInterface", c.blue, nil, nil, nil)
+	highlight("CmpItemKindText", c.blue, nil, nil, nil)
+	highlight("CmpItemKindFunction", c.purple, nil, nil, nil)
+	highlight("CmpItemKindMethod", c.purple, nil, nil, nil)
+	highlight("CmpItemKindKeyword", c.bright, nil, nil, nil)
+	highlight("CmpItemKindProperty", c.bright, nil, nil, nil)
+	highlight("CmpItemKindUnit", c.bright, nil, nil, nil)
 
 	-- misc
 
@@ -100,7 +111,7 @@ function M.setup()
 	highlight("NvimTreeNormal", nil, c.black2, nil, nil)
 	highlight("NvimTreeNormalNC", nil, c.black2, nil, nil)
 	highlight("NvimTreeOpenedFolderName", c.blue, nil, nil, nil)
-	highlight("NvimTreeRootFolder", c.red, nil, "underline", nil) -- enable underline for root folder in nvim tree
+	highlight("NvimTreeRootFolder", c.red, nil, "underline", nil)
 	highlight("NvimTreeStatuslineNc", c.black2, c.black2, nil, nil)
 	highlight("NvimTreeVertSplit", c.black2, c.black2, nil, nil)
 	highlight("NvimTreeWindowPicker", c.red, c.light_black, nil, nil)
