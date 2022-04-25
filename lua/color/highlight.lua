@@ -31,6 +31,7 @@ M.colors = {
 	orange = "#fca2aa",
 	cyan = "#a3b8ef",
 	statusline_bg = "#22262e",
+	dap_stopped = "#565a30",
 	none = "none",
 }
 local c = M.colors
@@ -129,6 +130,9 @@ function M.setup()
 
 		-- Syntax
 		{ "Operator", c.slate_blue, nil, nil, nil },
+
+		-- dap
+		{ "DapStopped", c.none, c.dap_stopped, nil, nil },
 	})
 end
 
