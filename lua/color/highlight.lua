@@ -1,5 +1,4 @@
 local M = {}
-local cmd = vim.cmd
 local u = require("core.util")
 
 M.colors = {
@@ -31,100 +30,98 @@ M.colors = {
 	orange = "#fca2aa",
 	cyan = "#a3b8ef",
 	statusline_bg = "#22262e",
-	pmenu_sel = "#A3BE8C",
 }
 local c = M.colors
 
 function M.setup()
 	-- functions for setting highlights
-	local fg = u.fg
-	local fg_bg = u.fg_bg
-	local bg = u.bg
+	local hclear = u.hclear
+	local highlight = u.highlight
 
-	fg("Comment", c.grey2 .. " gui=italic")
+	highlight("Comment", c.grey2, nil, "italic", nil)
 
 	-- Disable cursor line
-	cmd("hi clear CursorLine")
-	-- Line number
-	fg("cursorlinenr", c.white)
+	hclear("CursorLine")
+	highlight("CursorLineNr", c.white, nil, nil, nil)
 
 	-- same it bg, so it doesn't appear
-	fg("EndOfBuffer", c.black)
+	highlight("EndOfBuffer", c.black, nil, nil, nil)
 
 	-- For floating windows
-	fg_bg("FloatBorder", c.blue, c.black)
-	bg("NormalFloat", c.black2)
+	highlight("FloatBorder", c.blue, c.black, nil, nil)
+	highlight("NormalFloat",nil, c.black2,nil,nil)
 
 	-- Pmenu
-	bg("Pmenu", c.one_bg)
-	bg("PmenuSbar", c.one_bg2)
-	bg("PmenuSel", c.pmenu_sel)
-	bg("PmenuThumb", c.nord_blue)
-	fg("CmpItemAbbr", c.white)
-	fg("CmpItemAbbrMatch", c.white)
-	fg("CmpItemKind", c.white)
-	fg("CmpItemMenu", c.white)
+	hclear("PmenuSel")
+	highlight("Pmenu",nil, c.one_bg,nil,nil)
+	highlight("PmenuSbar",nil, c.one_bg2,nil,nil)
+	highlight("PmenuSel",nil, c.grey,nil,nil)
+	highlight("PmenuThumb",nil, c.nord_blue,nil,nil)
+	highlight("CmpItemAbbr", c.white, nil, nil, nil)
+	highlight("CmpItemAbbrMatch", c.white, nil, nil, nil)
+	highlight("CmpItemKind", c.white, nil, nil, nil)
+	highlight("CmpItemMenu", c.white, nil, nil, nil)
 
 	-- misc
 
 	-- inactive statuslines as thin lines
-	fg("StatusLineNC", c.one_bg3 .. " gui=underline")
+	highlight("StatusLineNC", c.one_bg3, nil, "underline", nil)
 
-	fg("LineNr", c.grey)
-	fg("NvimInternalError", c.red)
-	fg("VertSplit", c.one_bg2)
+	highlight("LineNr", c.grey, nil, nil, nil)
+	highlight("NvimInternalError", c.red, nil, nil, nil)
+	highlight("VertSplit", c.one_bg2, nil, nil, nil)
 
 	-- Dashboard
-	fg("AlphaHeader", c.grey2)
-	fg("AlphaButtons", c.light_grey)
+	highlight("AlphaHeader", c.grey2, nil, nil, nil)
+	highlight("AlphaButtons", c.light_grey, nil, nil, nil)
 
 	-- Git signs
-	fg_bg("DiffAdd", c.blue, "NONE")
-	fg_bg("DiffChange", c.yellow, "NONE")
-	fg_bg("DiffChangeDelete", c.red, "NONE")
-	fg_bg("DiffModified", c.red, "NONE")
-	fg_bg("DiffDelete", c.red, "NONE")
+	highlight("DiffAdd", c.blue, "NONE", nil, nil)
+	highlight("DiffChange", c.yellow, "NONE", nil, nil)
+	highlight("DiffChangeDelete", c.red, "NONE", nil, nil)
+	highlight("DiffModified", c.red, "NONE", nil, nil)
+	highlight("DiffDelete", c.red, "NONE", nil, nil)
 
 	-- Lsp diagnostics
-	fg("DiagnosticError", c.red)
-	fg("DiagnosticWarn", c.yellow)
-	fg("DiagnosticInfo", c.blue)
-	fg("DiagnosticHint", c.purple)
+	highlight("DiagnosticError", c.red, nil, nil, nil)
+	highlight("DiagnosticWarn", c.yellow, nil, nil, nil)
+	highlight("DiagnosticInfo", c.blue, nil, nil, nil)
+	highlight("DiagnosticHint", c.purple, nil, nil, nil)
 
 	-- NvimTree
-	fg("NvimTreeEmptyFolderName", c.blue)
-	fg("NvimTreeEndOfBuffer", c.black2)
-	fg("NvimTreeFolderIcon", c.yellow)
-	fg("NvimTreeFolderName", c.blue)
-	fg("NvimTreeGitDirty", c.red)
-	fg("NvimTreeIndentMarker", c.one_bg2)
-	bg("NvimTreeNormal", c.black2)
-	bg("NvimTreeNormalNC", c.black2)
-	fg("NvimTreeOpenedFolderName", c.blue)
-	fg("NvimTreeRootFolder", c.red .. " gui=underline") -- enable underline for root folder in nvim tree
-	fg_bg("NvimTreeStatuslineNc", c.black2, c.black2)
-	fg_bg("NvimTreeVertSplit", c.black2, c.black2)
-	fg_bg("NvimTreeWindowPicker", c.red, c.light_black)
+	highlight("NvimTreeEmptyFolderName", c.blue, nil, nil, nil)
+	highlight("NvimTreeEndOfBuffer", c.black2, nil, nil, nil)
+	highlight("NvimTreeFolderIcon", c.yellow, nil, nil, nil)
+	highlight("NvimTreeFolderName", c.blue, nil, nil, nil)
+	highlight("NvimTreeGitDirty", c.red, nil, nil, nil)
+	highlight("NvimTreeIndentMarker", c.one_bg2, nil, nil, nil)
+	highlight("NvimTreeNormal",nil, c.black2,nil,nil)
+	highlight("NvimTreeNormalNC",nil, c.black2,nil,nil)
+	highlight("NvimTreeOpenedFolderName", c.blue, nil, nil, nil)
+	highlight("NvimTreeRootFolder", c.red, nil, "underline", nil) -- enable underline for root folder in nvim tree
+	highlight("NvimTreeStatuslineNc", c.black2, c.black2, nil, nil)
+	highlight("NvimTreeVertSplit", c.black2, c.black2, nil, nil)
+	highlight("NvimTreeWindowPicker", c.red, c.light_black, nil, nil)
 
 	-- WinShift
-	fg_bg("WinShiftWindowPicker", c.red, c.light_black)
+	highlight("WinShiftWindowPicker", c.red, c.light_black, nil, nil)
 
 	-- Telescope
-	fg_bg("TelescopeBorder", c.black3, c.black3)
-	fg_bg("TelescopePromptBorder", c.light_black, c.light_black)
-	fg_bg("TelescopePromptNormal", c.white, c.light_black)
-	fg_bg("TelescopePromptPrefix", c.red, c.light_black)
-	bg("TelescopeNormal", c.black3)
-	fg_bg("TelescopePreviewTitle", c.black, c.green)
-	fg_bg("TelescopePromptTitle", c.black, c.red)
-	fg_bg("TelescopeResultsTitle", c.black3, c.black3)
-	bg("TelescopeSelection", c.light_black)
+	highlight("TelescopeBorder", c.black3, c.black3, nil, nil)
+	highlight("TelescopePromptBorder", c.light_black, c.light_black, nil, nil)
+	highlight("TelescopePromptNormal", c.white, c.light_black, nil, nil)
+	highlight("TelescopePromptPrefix", c.red, c.light_black, nil, nil)
+	highlight("TelescopeNormal",nil, c.black3,nil,nil)
+	highlight("TelescopePreviewTitle", c.black, c.green, nil, nil)
+	highlight("TelescopePromptTitle", c.black, c.red, nil, nil)
+	highlight("TelescopeResultsTitle", c.black3, c.black3, nil, nil)
+	highlight("TelescopeSelection",nil, c.light_black,nil,nil)
 
 	-- Which-key
-	bg("WhichKeyFloat", c.one_bg)
+	highlight("WhichKeyFloat",nil, c.one_bg,nil,nil)
 
 	-- Syntax
-	fg("Operator", c.slate_blue)
+	highlight("Operator", c.slate_blue, nil, nil, nil)
 end
 
 return M
