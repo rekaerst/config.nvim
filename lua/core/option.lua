@@ -1,32 +1,7 @@
 local g = vim.g
 local opt = vim.opt
-local autocmd = vim.api.nvim_create_autocmd
 
 local M = {}
-
-local function ft_config()
-	autocmd("TermOpen", { command = "setlocal nonumber" })
-	-- expandtab
-	autocmd("FileType", {
-		pattern = { "python", "markdown" },
-		command = "set expandtab",
-	})
-	-- tabsize = 2
-	autocmd("FileType", {
-		pattern = { "markdown", "css" },
-		command = "set tabstop=2 | set shiftwidth=2",
-	})
-	-- tabsize = 8
-	autocmd("FileType", {
-		pattern = { "nasm" },
-		command = "set tabstop=8 | set shiftwidth=8",
-	})
-	-- force filetype
-	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
-		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
-		command = "set ft=nasm",
-	})
-end
 
 function M.setup()
 	-- Map space to leader
@@ -42,6 +17,7 @@ function M.setup()
 	-- config
 	opt.termguicolors = true
 	opt.title = true
+	opt.colorcolumn = "80"
 
 	opt.completeopt = "menuone,noselect"
 	opt.wildmode = "longest:full,full"
@@ -55,6 +31,7 @@ function M.setup()
 
 	opt.shiftwidth = 4
 	opt.tabstop = 4
+	opt.softtabstop = 4
 	opt.smartindent = true
 
 	opt.lazyredraw = true -- speed up marco
@@ -66,7 +43,6 @@ function M.setup()
 
 	opt.writebackup = false
 	opt.backup = false -- some language servers have issues with backup file
-	ft_config()
 end
 
 return M
