@@ -1,3 +1,4 @@
+local highlight = require("core.util").highlight
 local M = {}
 
 M.colors = {
@@ -18,25 +19,6 @@ M.colors = {
 	base0E = "#c678dd",
 	base0F = "#be5046",
 }
-
-local function highlight(group, guifg, guibg, attr, guisp)
-	local parts = { group }
-	if guifg then
-		table.insert(parts, "guifg=" .. guifg)
-	end
-	if guibg then
-		table.insert(parts, "guibg=" .. guibg)
-	end
-	if attr then
-		table.insert(parts, "gui=" .. attr)
-	end
-	if guisp then
-		table.insert(parts, "guisp=" .. guisp)
-	end
-
-	-- nvim.ex.highlight(parts)
-	vim.api.nvim_command("highlight " .. table.concat(parts, " "))
-end
 
 -- Modified from https://github.com/chriskempson/base16-vim
 local function apply_base16_theme(theme)
@@ -66,10 +48,6 @@ local function apply_base16_theme(theme)
 			vim.g.terminal_color_foreground = theme.base0E
 		end
 	end
-
-	-- TODO
-	-- nvim.command "hi clear"
-	-- nvim.command "syntax reset"
 
 	-- Vim editor colors
 	highlight("Normal", theme.base05, theme.base00, nil, nil)

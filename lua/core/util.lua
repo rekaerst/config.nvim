@@ -64,6 +64,37 @@ M.fg_bg = function(group, fgcol, bgcol)
 	cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
+--- Clear highlight group
+--- @param group string Group
+M.hclear = function(group)
+	cmd("hi clear " .. group)
+end
+
+--- Define color
+--- @param group string Group
+--- @param guifg string Foreground Color
+--- @param guibg string Background Color
+--- @param attr  string Gui Attributes
+--- @param guisp string Special Color
+function M.highlight(group, guifg, guibg, attr, guisp)
+	local parts = { group }
+	if guifg then
+		table.insert(parts, "guifg=" .. guifg)
+	end
+	if guibg then
+		table.insert(parts, "guibg=" .. guibg)
+	end
+	if attr then
+		table.insert(parts, "gui=" .. attr)
+	end
+	if guisp then
+		table.insert(parts, "guisp=" .. guisp)
+	end
+
+	-- nvim.ex.highlight(parts)
+	vim.api.nvim_command("highlight " .. table.concat(parts, " "))
+end
+
 -- Check if table contains specific value
 function M.has_value(table, value)
 	for _, v in ipairs(table) do
