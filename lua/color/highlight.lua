@@ -42,18 +42,13 @@ function M.setup()
 	hclear("CursorLine")
 	hclear("PmenuSel")
 	hmany({
+		-- editor
 		{ "Comment", c.grey2, nil, "italic", nil },
-
+		{ "ColorColumn", c.none, c.black2, nil, nil },
 		{ "CursorLineNr", c.white, nil, nil, nil },
-
-		-- same it bg, so it doesn't appear
 		{ "EndOfBuffer", c.black, nil, nil, nil },
-
-		-- For floating windows
 		{ "FloatBorder", c.blue, c.black, nil, nil },
 		{ "NormalFloat", nil, c.black2, nil, nil },
-
-		-- Pmenu
 		{ "Pmenu", nil, c.one_bg, nil, nil },
 		{ "PmenuSbar", nil, c.one_bg2, nil, nil },
 		{ "PmenuSel", nil, c.grey, nil, nil },

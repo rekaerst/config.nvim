@@ -50,8 +50,8 @@ local function apply_theme(c)
 		end
 	end
 
-	-- Vim editor colors
 	hmany({
+		-- Vim editor colors
 		{ "Normal", c.base05, c.base00, nil, nil },
 		{ "Bold", nil, nil, "bold", nil },
 		{ "Debug", c.base08, nil, nil, nil },
