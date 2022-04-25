@@ -48,6 +48,13 @@ M.hclear = function(group)
 	cmd("hi clear " .. group)
 end
 
+--- Link two highlight group
+--- @param src string group to link from
+--- @param desc string group to link to
+M.hlink = function(src, desc)
+	cmd("hi link " .. src .. " " .. desc)
+end
+
 --- Define color
 --- @param group string Group
 --- @param guifg string Foreground Color
