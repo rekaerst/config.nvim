@@ -13,7 +13,7 @@ local plugins = {
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = cfg("tree"),
-		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeRefresh" },
+		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeRefresh", "NvimTreeFindFile" },
 	},
 
 	{ "kyazdani42/nvim-web-devicons" },
