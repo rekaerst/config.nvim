@@ -291,8 +291,8 @@ function M.reg_git(bufnr)
 		["<leader>"] = {
 			g = {
 				name = "Git",
-				s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
-				r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
+				s = { gitsigns.stage_hunk, "Stage Hunk" },
+				r = { gitsigns.reset_hunk, "Reset Hunk" },
 			},
 		},
 	}, {
