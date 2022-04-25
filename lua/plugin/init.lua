@@ -113,7 +113,11 @@ local plugins = {
 					require("trouble").setup()
 				end,
 			},
-			{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
+			{
+				"ray-x/lsp_signature.nvim",
+				config = cfg("lsp_signature"),
+				event = "InsertEnter",
+			},
 			{
 				"simrat39/symbols-outline.nvim",
 				config = cfg("symbols-outline"),
