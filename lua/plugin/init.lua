@@ -33,9 +33,7 @@ local plugins = {
 	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
 		"sindrets/diffview.nvim",
-		config = function()
-			require("diffview").setup()
-		end,
+		config = cfg("diffview"),
 		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
 	},
 	{
