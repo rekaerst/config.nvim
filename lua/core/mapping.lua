@@ -99,9 +99,10 @@ function M.reg_main()
 			},
 			v = {
 				name = "View",
-				F = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
+				R = { "<cmd>NvimTreeRefresh<cr>", "Refresh File Browser" },
 				c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
-				f = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
+				f = { "<cmd>NvimTreeFocus<cr>", "File Browser" },
+				F = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
 				k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				t = { "<cmd>Telescope<cr>", "Telescope" },
