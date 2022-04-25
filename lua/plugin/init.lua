@@ -107,7 +107,11 @@ local plugins = {
 		end,
 		requires = {
 			"jose-elias-alvarez/null-ls.nvim",
-			"folke/lua-dev.nvim",
+			{
+				"folke/lua-dev.nvim",
+				config = cfg("luadev"),
+				ft = "lua",
+			},
 			{
 				"rmagatti/goto-preview",
 				config = function()
@@ -120,10 +124,7 @@ local plugins = {
 					require("trouble").setup()
 				end,
 			},
-			{
-				"ray-x/lsp_signature.nvim",
-				config = cfg("lsp_signature"),
-			},
+			{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 			{
 				"simrat39/symbols-outline.nvim",
 				config = cfg("symbols-outline"),

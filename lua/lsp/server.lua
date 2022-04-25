@@ -43,19 +43,6 @@ end
 local M = {}
 
 function M.setup(on_attach)
-	-- lua
-	-- this ass is too special...
-	local luadev = require("lua-dev").setup({
-		lspconfig = {
-			on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
-				on_attach(client, bufnr)
-			end,
-		},
-	})
-
-	lspconfig.sumneko_lua.setup(luadev)
-
 	-- setup language servers
 	for _, lsp in ipairs(servers) do
 		lspconfig[lsp].setup({

@@ -4,7 +4,7 @@ local signdef = vim.fn.sign_define
 
 local M = {}
 
-local on_attach = function(client, bufnr)
+function M.on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	require("core.mapping").reg_lsp(bufnr)
 
@@ -33,7 +33,7 @@ function M.setup()
 		border = "single",
 	})
 
-	require("lsp.server").setup(on_attach)
+	require("lsp.server").setup(M.on_attach)
 	require("lsp.null_ls").setup(fmt.on_attach)
 end
 
