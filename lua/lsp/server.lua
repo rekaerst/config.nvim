@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local u = require("core.util")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- TODO: remove this after offset encoding issue is fixed
@@ -25,6 +26,20 @@ local servers = {
 	"vimls",
 }
 
+local function override_single_file(lsp)
+	local sf = {
+		"tsserver",
+		"gopls",
+		"html",
+		"jsonls",
+	}
+	if u.has_value(sf, lsp) then
+		return true
+	else
+		return false
+	end
+end
+
 local M = {}
 
 function M.setup(on_attach)
@@ -47,7 +62,7 @@ function M.setup(on_attach)
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = capabilities,
-			single_file_support = true,
+			single_file_support = override_single_file(lsp),
 		})
 	end
 
