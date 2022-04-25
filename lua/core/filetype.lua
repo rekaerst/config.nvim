@@ -12,12 +12,12 @@ function M.setup()
 	-- tabsize = 2
 	autocmd("FileType", {
 		pattern = { "markdown", "css" },
-		command = "set tabstop=2 | set shiftwidth=2 | set softtabstop = 4",
+		command = "set tabstop=2 | set shiftwidth=2 | set softtabstop=4",
 	})
 	-- tabsize = 8
 	autocmd("FileType", {
 		pattern = { "nasm" },
-		command = "set tabstop=8 | set shiftwidth=8 | set softtabstop = 8",
+		command = "set tabstop=8 | set shiftwidth=8 | set softtabstop=8",
 	})
 	-- force filetype
 	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
