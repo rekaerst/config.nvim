@@ -139,10 +139,6 @@ function M.reg_main()
 			["<C-q>"] = { ":qa!<cr>", "Quit" },
 			["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 		},
-		g = {
-			b = "Block Comment",
-			c = "Line Comment",
-		},
 		f = {
 			w = { "<cmd>HopWord<cr>", "Hop Word" },
 			W = { "<cmd>HopWordCurrentLine<cr>", "Hop Current Word" },
@@ -230,7 +226,7 @@ function M.reg_lsp(bufnr)
 				S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Find Symbols (workspace)" },
 			},
 		},
-		["g"] = {
+		g = {
 			name = "Go",
 			D = { vim.lsp.buf.declaration, "Go to Declaration" },
 			d = { "<cmd>Trouble lsp_definitions<cr>", "Go to Definition" },
@@ -247,7 +243,7 @@ function M.reg_lsp(bufnr)
 				m = { gp.dismiss_preview, "Dismiss Preview" },
 			},
 		},
-		["K"] = { vim.lsp.buf.hover, "Hover" },
+		K = { vim.lsp.buf.hover, "Hover" },
 	}, { buffer = bufnr })
 end
 
