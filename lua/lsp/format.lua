@@ -11,11 +11,14 @@ local aggressive_ft = { "c", "cpp", "lua", "go", "rust" }
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
 	-- clear existing commands of the group
-	local lsp_fmt_grp = augroup("LspFormat", { clear = true })
+	local lsp_fmt_grp = augroup("lsp_fmt_" .. tostring(bufnr), { clear = true })
 	autocmd("BufWritePre", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting_sync })
 	if u.has_value(aggressive_ft, vim.bo.filetype) then
 		autocmd("InsertLeave", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting })
 	end
+	autocmd("BufDelete", { group = lsp_fmt_grp, buffer = bufnr, callback = function ()
+		vim.api.nvim_del_augroup_by_id(lsp_fmt_grp)
+	end })
 end
 
 function M.formatting()
