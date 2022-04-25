@@ -2,6 +2,7 @@ local M = {}
 local u = require("core.util")
 
 M.colors = {
+	bright = "#dfdfdf",
 	white = "#abb2bf",
 	light_black = "#252931",
 	black = "#1e222a",
@@ -14,22 +15,23 @@ M.colors = {
 	grey = "#42464e",
 	grey2 = "#565c64",
 	red = "#d47d85",
-	light_pink = "#DE8C92",
+	light_pink = "#de8C92",
 	pink = "#ff75a0",
 	line = "#2a2e36", -- for lines like vertsplit
-	green = "#A3BE8C",
+	green = "#a3be8c",
 	vibrant_green = "#7eca9c",
-	nord_blue = "#81A1C1",
+	nord_blue = "#81a1c1",
 	blue = "#61afef",
 	slate_blue = "#8078DD",
 	yellow = "#e7c787",
-	sun = "#EBCB8B",
+	sun = "#ebcB8B",
 	purple = "#faa2ff",
 	dark_purple = "#c882e7",
-	teal = "#519ABA",
+	teal = "#519aba",
 	orange = "#fca2aa",
 	cyan = "#a3b8ef",
 	statusline_bg = "#22262e",
+	NONE = "NONE",
 }
 local c = M.colors
 
@@ -76,11 +78,11 @@ function M.setup()
 	highlight("AlphaButtons", c.light_grey, nil, nil, nil)
 
 	-- Git signs
-	highlight("DiffAdd", c.blue, "NONE", nil, nil)
-	highlight("DiffChange", c.yellow, "NONE", nil, nil)
-	highlight("DiffChangeDelete", c.red, "NONE", nil, nil)
-	highlight("DiffModified", c.red, "NONE", nil, nil)
-	highlight("DiffDelete", c.red, "NONE", nil, nil)
+	highlight("DiffAdd", c.blue, c.NONE, nil, nil)
+	highlight("DiffChange", c.yellow, c.NONE, nil, nil)
+	highlight("DiffChangeDelete", c.red, c.NONE, nil, nil)
+	highlight("DiffModified", c.red, c.NONE, nil, nil)
+	highlight("DiffDelete", c.red, c.NONE, nil, nil)
 
 	-- Lsp diagnostics
 	highlight("DiagnosticError", c.red, nil, nil, nil)
@@ -95,8 +97,8 @@ function M.setup()
 	highlight("NvimTreeFolderName", c.blue, nil, nil, nil)
 	highlight("NvimTreeGitDirty", c.red, nil, nil, nil)
 	highlight("NvimTreeIndentMarker", c.one_bg2, nil, nil, nil)
-	highlight("NvimTreeNormal",nil, c.black2,nil,nil)
-	highlight("NvimTreeNormalNC",nil, c.black2,nil,nil)
+	highlight("NvimTreeNormal", nil, c.black2, nil, nil)
+	highlight("NvimTreeNormalNC", nil, c.black2, nil, nil)
 	highlight("NvimTreeOpenedFolderName", c.blue, nil, nil, nil)
 	highlight("NvimTreeRootFolder", c.red, nil, "underline", nil) -- enable underline for root folder in nvim tree
 	highlight("NvimTreeStatuslineNc", c.black2, c.black2, nil, nil)
@@ -111,14 +113,14 @@ function M.setup()
 	highlight("TelescopePromptBorder", c.light_black, c.light_black, nil, nil)
 	highlight("TelescopePromptNormal", c.white, c.light_black, nil, nil)
 	highlight("TelescopePromptPrefix", c.red, c.light_black, nil, nil)
-	highlight("TelescopeNormal",nil, c.black3,nil,nil)
+	highlight("TelescopeNormal", nil, c.black3, nil, nil)
 	highlight("TelescopePreviewTitle", c.black, c.green, nil, nil)
 	highlight("TelescopePromptTitle", c.black, c.red, nil, nil)
 	highlight("TelescopeResultsTitle", c.black3, c.black3, nil, nil)
-	highlight("TelescopeSelection",nil, c.light_black,nil,nil)
+	highlight("TelescopeSelection", nil, c.light_black, nil, nil)
 
 	-- Which-key
-	highlight("WhichKeyFloat",nil, c.one_bg,nil,nil)
+	highlight("WhichKeyFloat", nil, c.one_bg, nil, nil)
 
 	-- Syntax
 	highlight("Operator", c.slate_blue, nil, nil, nil)
