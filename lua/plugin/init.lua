@@ -87,7 +87,7 @@ local plugins = {
 				config = function()
 					require("nvim-ts-autotag").setup({})
 				end,
-				event = "InsertEnter",
+				ft = { "html", "xml" },
 			},
 			{
 				"abecodes/tabout.nvim",
