@@ -49,7 +49,7 @@ M.hclear = function(group)
 end
 
 --- Link two highlight group
---- @param src string group to link from
+--- @param src  string group to link from
 --- @param desc string group to link to
 M.hlink = function(src, desc)
 	cmd("highlight! link " .. src .. " " .. desc)
@@ -78,6 +78,14 @@ function M.highlight(group, guifg, guibg, attr, guisp)
 
 	-- nvim.ex.highlight(parts)
 	vim.api.nvim_command("highlight! " .. table.concat(parts, " "))
+end
+
+--- Define multiple colors
+--- @param rules table {group, guifg, guibg, attr, guisp}
+function M.hmany(rules)
+	for _, v in ipairs(rules) do
+		M.highlight(v[1], v[2], v[3], v[4], v[5])
+	end
 end
 
 -- Check if table contains specific value

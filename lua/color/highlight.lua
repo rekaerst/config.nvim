@@ -31,110 +31,110 @@ M.colors = {
 	orange = "#fca2aa",
 	cyan = "#a3b8ef",
 	statusline_bg = "#22262e",
-	NONE = "NONE",
+	none = "none",
 }
 local c = M.colors
 
 function M.setup()
 	-- functions for setting highlights
 	local hclear = u.hclear
-	local highlight = u.highlight
-
-	highlight("Comment", c.grey2, nil, "italic", nil)
-
-	-- Disable cursor line
+	local hmany = u.hmany
 	hclear("CursorLine")
-	highlight("CursorLineNr", c.white, nil, nil, nil)
-
-	-- same it bg, so it doesn't appear
-	highlight("EndOfBuffer", c.black, nil, nil, nil)
-
-	-- For floating windows
-	highlight("FloatBorder", c.blue, c.black, nil, nil)
-	highlight("NormalFloat", nil, c.black2, nil, nil)
-
-	-- Pmenu
 	hclear("PmenuSel")
-	highlight("Pmenu", nil, c.one_bg, nil, nil)
-	highlight("PmenuSbar", nil, c.one_bg2, nil, nil)
-	highlight("PmenuSel", nil, c.grey, nil, nil)
-	highlight("PmenuThumb", nil, c.nord_blue, nil, nil)
+	hmany({
+		{ "Comment", c.grey2, nil, "italic", nil },
 
-	-- cmp
-	highlight("CmpItemKind", c.white, nil, nil, nil)
-	highlight("CmpItemMenu", c.white, nil, nil, nil)
-	highlight("CmpItemAbbrMatch", c.bright, nil, "bold", nil)
-	highlight("CmpItemAbbrMatchFuzzy", c.bright, nil, "bold", nil)
-	highlight("CmpItemAbbrDeprecated", c.light_grey, c.NONE, "strikethrough", nil)
-	highlight("CmpItemKindVariable", c.blue, nil, nil, nil)
-	highlight("CmpItemKindInterface", c.blue, nil, nil, nil)
-	highlight("CmpItemKindText", c.blue, nil, nil, nil)
-	highlight("CmpItemKindFunction", c.purple, nil, nil, nil)
-	highlight("CmpItemKindMethod", c.purple, nil, nil, nil)
-	highlight("CmpItemKindKeyword", c.bright, nil, nil, nil)
-	highlight("CmpItemKindProperty", c.bright, nil, nil, nil)
-	highlight("CmpItemKindUnit", c.bright, nil, nil, nil)
+		{ "CursorLineNr", c.white, nil, nil, nil },
 
-	-- misc
+		-- same it bg, so it doesn't appear
+		{ "EndOfBuffer", c.black, nil, nil, nil },
 
-	-- inactive statuslines as thin lines
-	highlight("StatusLineNC", c.one_bg3, nil, "underline", nil)
+		-- For floating windows
+		{ "FloatBorder", c.blue, c.black, nil, nil },
+		{ "NormalFloat", nil, c.black2, nil, nil },
 
-	highlight("LineNr", c.grey, nil, nil, nil)
-	highlight("NvimInternalError", c.red, nil, nil, nil)
-	highlight("VertSplit", c.one_bg2, nil, nil, nil)
+		-- Pmenu
+		{ "Pmenu", nil, c.one_bg, nil, nil },
+		{ "PmenuSbar", nil, c.one_bg2, nil, nil },
+		{ "PmenuSel", nil, c.grey, nil, nil },
+		{ "PmenuThumb", nil, c.nord_blue, nil, nil },
 
-	-- Dashboard
-	highlight("AlphaHeader", c.grey2, nil, nil, nil)
-	highlight("AlphaButtons", c.light_grey, nil, nil, nil)
+		-- cmp
+		{ "CmpItemKind", c.white, nil, nil, nil },
+		{ "CmpItemMenu", c.white, nil, nil, nil },
+		{ "CmpItemAbbrMatch", c.bright, nil, "bold", nil },
+		{ "CmpItemAbbrMatchFuzzy", c.bright, nil, "bold", nil },
+		{ "CmpItemAbbrDeprecated", c.light_grey, c.none, "strikethrough", nil },
+		{ "CmpItemKindVariable", c.blue, nil, nil, nil },
+		{ "CmpItemKindInterface", c.blue, nil, nil, nil },
+		{ "CmpItemKindText", c.blue, nil, nil, nil },
+		{ "CmpItemKindFunction", c.purple, nil, nil, nil },
+		{ "CmpItemKindMethod", c.purple, nil, nil, nil },
+		{ "CmpItemKindKeyword", c.bright, nil, nil, nil },
+		{ "CmpItemKindProperty", c.bright, nil, nil, nil },
+		{ "CmpItemKindUnit", c.bright, nil, nil, nil },
 
-	-- Git signs
-	highlight("DiffAdd", c.blue, c.NONE, nil, nil)
-	highlight("DiffChange", c.yellow, c.NONE, nil, nil)
-	highlight("DiffChangeDelete", c.red, c.NONE, nil, nil)
-	highlight("DiffModified", c.red, c.NONE, nil, nil)
-	highlight("DiffDelete", c.red, c.NONE, nil, nil)
+		-- misc
 
-	-- Lsp diagnostics
-	highlight("DiagnosticError", c.red, nil, nil, nil)
-	highlight("DiagnosticWarn", c.yellow, nil, nil, nil)
-	highlight("DiagnosticInfo", c.blue, nil, nil, nil)
-	highlight("DiagnosticHint", c.purple, nil, nil, nil)
+		-- inactive statuslines as thin lines
+		{ "StatusLineNC", c.one_bg3, nil, "underline", nil },
 
-	-- NvimTree
-	highlight("NvimTreeEmptyFolderName", c.blue, nil, nil, nil)
-	highlight("NvimTreeEndOfBuffer", c.black2, nil, nil, nil)
-	highlight("NvimTreeFolderIcon", c.yellow, nil, nil, nil)
-	highlight("NvimTreeFolderName", c.blue, nil, nil, nil)
-	highlight("NvimTreeGitDirty", c.red, nil, nil, nil)
-	highlight("NvimTreeIndentMarker", c.one_bg2, nil, nil, nil)
-	highlight("NvimTreeNormal", nil, c.black2, nil, nil)
-	highlight("NvimTreeNormalNC", nil, c.black2, nil, nil)
-	highlight("NvimTreeOpenedFolderName", c.blue, nil, nil, nil)
-	highlight("NvimTreeRootFolder", c.red, nil, "underline", nil)
-	highlight("NvimTreeStatuslineNc", c.black2, c.black2, nil, nil)
-	highlight("NvimTreeVertSplit", c.black2, c.black2, nil, nil)
-	highlight("NvimTreeWindowPicker", c.red, c.light_black, nil, nil)
+		{ "LineNr", c.grey, nil, nil, nil },
+		{ "NvimInternalError", c.red, nil, nil, nil },
+		{ "VertSplit", c.one_bg2, nil, nil, nil },
 
-	-- WinShift
-	highlight("WinShiftWindowPicker", c.red, c.light_black, nil, nil)
+		-- Dashboard
+		{ "AlphaHeader", c.grey2, nil, nil, nil },
+		{ "AlphaButtons", c.light_grey, nil, nil, nil },
 
-	-- Telescope
-	highlight("TelescopeBorder", c.black3, c.black3, nil, nil)
-	highlight("TelescopePromptBorder", c.light_black, c.light_black, nil, nil)
-	highlight("TelescopePromptNormal", c.white, c.light_black, nil, nil)
-	highlight("TelescopePromptPrefix", c.red, c.light_black, nil, nil)
-	highlight("TelescopeNormal", nil, c.black3, nil, nil)
-	highlight("TelescopePreviewTitle", c.black, c.green, nil, nil)
-	highlight("TelescopePromptTitle", c.black, c.red, nil, nil)
-	highlight("TelescopeResultsTitle", c.black3, c.black3, nil, nil)
-	highlight("TelescopeSelection", nil, c.light_black, nil, nil)
+		-- Git signs
+		{ "DiffAdd", c.blue, c.none, nil, nil },
+		{ "DiffChange", c.yellow, c.none, nil, nil },
+		{ "DiffChangeDelete", c.red, c.none, nil, nil },
+		{ "DiffModified", c.red, c.none, nil, nil },
+		{ "DiffDelete", c.red, c.none, nil, nil },
 
-	-- Which-key
-	highlight("WhichKeyFloat", nil, c.one_bg, nil, nil)
+		-- Lsp diagnostics
+		{ "DiagnosticError", c.red, nil, nil, nil },
+		{ "DiagnosticWarn", c.yellow, nil, nil, nil },
+		{ "DiagnosticInfo", c.blue, nil, nil, nil },
+		{ "DiagnosticHint", c.purple, nil, nil, nil },
 
-	-- Syntax
-	highlight("Operator", c.slate_blue, nil, nil, nil)
+		-- NvimTree
+		{ "NvimTreeEmptyFolderName", c.blue, nil, nil, nil },
+		{ "NvimTreeEndOfBuffer", c.black2, nil, nil, nil },
+		{ "NvimTreeFolderIcon", c.yellow, nil, nil, nil },
+		{ "NvimTreeFolderName", c.blue, nil, nil, nil },
+		{ "NvimTreeGitDirty", c.red, nil, nil, nil },
+		{ "NvimTreeIndentMarker", c.one_bg2, nil, nil, nil },
+		{ "NvimTreeNormal", nil, c.black2, nil, nil },
+		{ "NvimTreeNormalNC", nil, c.black2, nil, nil },
+		{ "NvimTreeOpenedFolderName", c.blue, nil, nil, nil },
+		{ "NvimTreeRootFolder", c.red, nil, "underline", nil },
+		{ "NvimTreeStatuslineNc", c.black2, c.black2, nil, nil },
+		{ "NvimTreeVertSplit", c.black2, c.black2, nil, nil },
+		{ "NvimTreeWindowPicker", c.red, c.light_black, nil, nil },
+
+		-- WinShift
+		{ "WinShiftWindowPicker", c.red, c.light_black, nil, nil },
+
+		-- Telescope
+		{ "TelescopeBorder", c.black3, c.black3, nil, nil },
+		{ "TelescopePromptBorder", c.light_black, c.light_black, nil, nil },
+		{ "TelescopePromptNormal", c.white, c.light_black, nil, nil },
+		{ "TelescopePromptPrefix", c.red, c.light_black, nil, nil },
+		{ "TelescopeNormal", nil, c.black3, nil, nil },
+		{ "TelescopePreviewTitle", c.black, c.green, nil, nil },
+		{ "TelescopePromptTitle", c.black, c.red, nil, nil },
+		{ "TelescopeResultsTitle", c.black3, c.black3, nil, nil },
+		{ "TelescopeSelection", nil, c.light_black, nil, nil },
+
+		-- Which-key
+		{ "WhichKeyFloat", nil, c.one_bg, nil, nil },
+
+		-- Syntax
+		{ "Operator", c.slate_blue, nil, nil, nil },
+	})
 end
 
 return M
