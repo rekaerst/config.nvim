@@ -1,5 +1,5 @@
 local g = vim.g
-local o = vim.opt
+local opt = vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 
 local M = {}
@@ -40,32 +40,32 @@ function M.setup()
 	g.loaded_perl_provider = 0
 
 	-- config
-	o.termguicolors = true
-	o.title = true
+	opt.termguicolors = true
+	opt.title = true
 
-	o.completeopt = "menuone,noselect"
-	o.wildmode = "longest:full,full"
-	o.shortmess = vim.o.shortmess .. "cI"
+	opt.completeopt = "menuone,noselect"
+	opt.wildmode = "longest:full,full"
+	opt.shortmess = vim.o.shortmess .. "cI"
 
-	o.cursorline = true
-	o.cursorlineopt = "number"
-	o.number = true
-	o.signcolumn = "yes"
-	o.mouse = "a"
+	opt.cursorline = true
+	opt.cursorlineopt = "number"
+	opt.number = true
+	opt.signcolumn = "yes"
+	opt.mouse = "a"
 
-	o.shiftwidth = 4
-	o.tabstop = 4
-	o.smartindent = true
+	opt.shiftwidth = 4
+	opt.tabstop = 4
+	opt.smartindent = true
 
-	o.lazyredraw = true -- speed up marco
+	opt.lazyredraw = true -- speed up marco
 
-	o.splitbelow = true
+	opt.splitbelow = true
 
-	o.timeoutlen = 400
-	o.updatetime = 300 -- having longer updatetime leads to noticeable delays
+	opt.timeoutlen = 400
+	opt.updatetime = 300 -- having longer updatetime leads to noticeable delays
 
-	o.writebackup = false
-	o.backup = false -- some language servers have issues with backup file
+	opt.writebackup = false
+	opt.backup = false -- some language servers have issues with backup file
 	ft_config()
 end
 
