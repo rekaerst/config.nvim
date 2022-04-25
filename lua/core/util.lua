@@ -45,14 +45,14 @@ end
 --- Clear highlight group
 --- @param group string Group
 M.hclear = function(group)
-	cmd("hi clear " .. group)
+	cmd("highlight! clear " .. group)
 end
 
 --- Link two highlight group
 --- @param src string group to link from
 --- @param desc string group to link to
 M.hlink = function(src, desc)
-	cmd("hi link " .. src .. " " .. desc)
+	cmd("highlight! link " .. src .. " " .. desc)
 end
 
 --- Define color
@@ -77,7 +77,7 @@ function M.highlight(group, guifg, guibg, attr, guisp)
 	end
 
 	-- nvim.ex.highlight(parts)
-	vim.api.nvim_command("highlight " .. table.concat(parts, " "))
+	vim.api.nvim_command("highlight! " .. table.concat(parts, " "))
 end
 
 -- Check if table contains specific value
