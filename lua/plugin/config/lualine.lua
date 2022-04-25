@@ -1,6 +1,6 @@
 local colors = require("color.highlight").colors
 
-local diffview_extension = {
+local diffview_ext = {
 	sections = {
 		lualine_a = {
 			function()
@@ -9,6 +9,23 @@ local diffview_extension = {
 		},
 	},
 	filetypes = { "DiffviewFiles" },
+}
+
+local help_ext = {
+	sections = {
+		lualine_a = {
+			function()
+				return "Help"
+			end,
+		},
+		lualine_y = {
+			function()
+				return vim.api.nvim_buf_line_count(0)
+			end,
+		},
+		lualine_z = { "progress" },
+	},
+	filetypes = { "help" },
 }
 
 require("lualine").setup({
@@ -44,5 +61,5 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
-	extensions = { "nvim-tree", "toggleterm", "symbols-outline", diffview_extension },
+	extensions = { "nvim-tree", "toggleterm", "symbols-outline", "quickfix", diffview_ext, help_ext },
 })
