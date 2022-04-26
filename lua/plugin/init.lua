@@ -92,7 +92,6 @@ local plugins = {
 				config = function()
 					require("tabout").setup()
 				end,
-				event = "InsertEnter",
 			},
 		},
 	},
