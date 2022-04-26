@@ -26,7 +26,9 @@ function M.on_attach(client, bufnr)
 end
 
 function M.formatting()
-	if M.disabled then
+	-- jump_active: prevent formatting document when luasnip is active, as it cause
+	-- problem with jumping
+	if M.disabled or require("luasnip.session").jump_active then
 		return
 	end
 	vim.lsp.buf.formatting()
