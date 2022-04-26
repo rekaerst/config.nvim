@@ -19,15 +19,17 @@ function M.setup()
 	opt.title = true
 	opt.colorcolumn = "80"
 
-	opt.completeopt = "menuone,noselect"
-	opt.wildmode = "longest:full,full"
-	opt.shortmess = vim.o.shortmess .. "cI"
-
 	opt.cursorline = true
 	opt.cursorlineopt = "number"
 	opt.number = true
 	opt.signcolumn = "yes"
+	opt.showmode = false
+
 	opt.mouse = "a"
+	opt.completeopt = "menuone,noselect"
+	opt.wildmode = "longest:full,full"
+	opt.shortmess = vim.o.shortmess .. "cI"
+	opt.scrolloff = 8
 
 	opt.shiftwidth = 4
 	opt.tabstop = 4
