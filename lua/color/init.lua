@@ -8,6 +8,8 @@ end
 -- color.init: color class, methods
 -- color.theme: named and base colors data
 -- color.highlight: highlight rules
+--
+-- TODO: migrate to nvim_set_hl
 
 --- Returns darker color
 --- @param f float shade factor
