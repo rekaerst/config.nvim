@@ -34,7 +34,7 @@ function M.setup()
 	})
 
 	require("lsp.server").setup(M.on_attach)
-	require("lsp.null_ls").setup(fmt.on_attach)
+	require("lsp.null_ls").setup(M.on_attach)
 end
 
 return M
