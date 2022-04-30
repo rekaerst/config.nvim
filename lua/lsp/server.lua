@@ -24,15 +24,18 @@ local servers = {
 	"tsserver",
 	"vala_ls",
 	"vimls",
+	"yamlls",
 }
 
 local function override_single_file(lsp)
 	local sf = {
+		"bashls",
 		"tsserver",
 		"gopls",
 		"html",
 		"jsonls",
 		"vala_ls",
+		"yamlls",
 	}
 	if u.has_value(sf, lsp) then
 		return true
