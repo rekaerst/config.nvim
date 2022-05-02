@@ -40,7 +40,7 @@ local function override_single_file(lsp)
 	if u.has_value(sf, lsp) then
 		return true
 	else
-		return false
+		return nil
 	end
 end
 
