@@ -10,6 +10,8 @@ end
 -- color.highlight: highlight rules
 --
 -- TODO: migrate to nvim_set_hl
+-- TODO: migrate highlight syntax to hl.GroupName = {fg = color, bg = color, ...}
+-- use __newindex for creation and __index for update
 
 --- Returns darker color
 --- @param f float shade factor
