@@ -13,7 +13,7 @@ cmp.setup({
 	window = {
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
@@ -37,11 +37,12 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "path", option = { trailing_slash = false } },
 		{ name = "luasnip" },
+	}, {
+		{ name = "path", option = { trailing_slash = false } },
 		{ name = "buffer" },
 		{ name = "emoji" },
 	}),
