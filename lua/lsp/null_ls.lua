@@ -13,6 +13,7 @@ function M.setup(on_attach)
 			null_ls.builtins.code_actions.shellcheck,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.yapf, -- python
+			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.formatting.prettierd.with({
 				filetypes = { "json", "markdown" },
 			}),
