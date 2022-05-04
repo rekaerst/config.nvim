@@ -28,13 +28,6 @@ require("nvim-tree").setup({
 			list = {
 				{ key = "d", action = "trash" },
 				{ key = "D", action = "remove" },
-				{
-					key = "gp",
-					action = "refresh",
-					action_cb = function()
-						vim.cmd("wincmd p")
-					end,
-				}, -- go to previous window
 			},
 		},
 		allow_resize = true,
