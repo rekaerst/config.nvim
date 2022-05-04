@@ -1,22 +1,10 @@
 local g = vim.g
 
-g.nvim_tree_icons = {
-	default = "",
-	git = {
-		deleted = "",
-		ignored = "◌",
-		renamed = "➜",
-		staged = "✓",
-		unmerged = "",
-		unstaged = "✗",
-		untracked = "★",
-	},
-}
+g.nvim_tree_git_hl = 1
+g.nvim_tree_group_empty = 1
 
 require("nvim-tree").setup({
 	disable_netrw = true,
-	indent_markers = 1,
-	add_trailing = 0,
 	system_open = { cmd = "open" },
 	hijack_cursor = true,
 	diagnostics = {
@@ -30,7 +18,6 @@ require("nvim-tree").setup({
 				{ key = "D", action = "remove" },
 			},
 		},
-		allow_resize = true,
 		hide_root_folder = true,
 	},
 	actions = {
