@@ -7,10 +7,9 @@ require("nvim-tree").setup({
 	disable_netrw = true,
 	system_open = { cmd = "open" },
 	hijack_cursor = true,
-	diagnostics = {
-		enable = true,
-	},
+	update_cwd = true,
 	view = {
+		hide_root_folder = true,
 		mappings = {
 			custom_only = false,
 			list = {
@@ -18,7 +17,17 @@ require("nvim-tree").setup({
 				{ key = "D", action = "remove" },
 			},
 		},
-		hide_root_folder = true,
+	},
+	renderer = {
+		indent_markers = {
+			enable = true,
+			icons = {
+				corner = "│ ",
+			},
+		},
+	},
+	diagnostics = {
+		enable = true,
 	},
 	actions = {
 		open_file = {
