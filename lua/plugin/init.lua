@@ -167,6 +167,8 @@ local plugins = {
 			require("dbg").setup()
 		end,
 	},
+	-- rust
+	{ "simrat39/rust-tools.nvim", config = cfg("rusttools") },
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",

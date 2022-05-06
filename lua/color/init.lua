@@ -70,4 +70,6 @@ function M.setup()
 	})
 end
 
+print("Hello")
+
 return M
