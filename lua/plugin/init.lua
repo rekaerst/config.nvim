@@ -90,7 +90,7 @@ local plugins = {
 			{
 				"abecodes/tabout.nvim",
 				config = function()
-					require("tabout").setup()
+					require("tabout").setup({})
 				end,
 			},
 		},
