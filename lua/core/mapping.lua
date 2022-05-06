@@ -137,6 +137,13 @@ function M.reg_main()
 				l = { "<cmd>WinShift right<cr>", "Move Right" },
 				s = { "<cmd>WinShift swap<cr>", "Swap" },
 			},
+			y = {
+				name = "System Clipboard",
+				y = { '"+yy', "Yank" },
+				d = { '"+d', "Cut" },
+				p = { '"+p', "Paste after" },
+				P = { '"+P', "Paste before" },
+			},
 			["<C-q>"] = { ":qa!<cr>", "Quit" },
 			["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 		},
@@ -165,6 +172,13 @@ function M.reg_main()
 			r = {
 				name = "Run",
 				s = { ":SnipRun <cr>", "SnipRun" },
+			},
+			y = {
+				name = "System Clipboard",
+				y = { '"+y', "Yank" },
+				d = { '"+d', "Cut" },
+				p = { '"+p', "Paste after" },
+				P = { '"+P', "Paste before" },
 			},
 		},
 	}, {
