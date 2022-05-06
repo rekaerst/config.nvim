@@ -140,7 +140,7 @@ function M.reg_main()
 			["<C-q>"] = { ":qa!<cr>", "Quit" },
 			["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 		},
-		[","] = {
+		[";"] = {
 			w = { "<cmd>HopWord<cr>", "Hop Word" },
 			W = { "<cmd>HopWordCurrentLine<cr>", "Hop Current Word" },
 			l = { "<cmd>HopLine<cr>", "Hop Line" },
