@@ -68,6 +68,14 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 	textobjects = {
+		lsp_interop = {
+			enable = true,
+			border = "single",
+			peek_definition_code = {
+				["gpf"] = "@function.outer",
+				["gpF"] = "@class.outer",
+			},
+		},
 		select = {
 			enable = true,
 			-- Automatically jump forward to textobj, similar to targets.vim
@@ -78,6 +86,17 @@ require("nvim-treesitter.configs").setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
+				["aC"] = "@conditional.outer",
+				["iC"] = "@conditional.inner",
+				["ae"] = "@block.outer",
+				["ie"] = "@block.inner",
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
+				["is"] = "@statement.inner",
+				["as"] = "@statement.outer",
+				["ad"] = "@comment.outer",
+				["am"] = "@call.outer",
+				["im"] = "@call.inner",
 			},
 		},
 		move = {
@@ -98,6 +117,22 @@ require("nvim-treesitter.configs").setup({
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
+			},
+			select = {
+				enable = true,
+				keymaps = {
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@class.outer",
+					["ic"] = "@class.inner",
+					["iF"] = {
+						python = "(function_definition) @function",
+						cpp = "(function_definition) @function",
+						c = "(function_definition) @function",
+						java = "(method_declaration) @function",
+						go = "(method_declaration) @function",
+					},
+				},
 			},
 		},
 	},
