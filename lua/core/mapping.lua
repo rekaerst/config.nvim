@@ -233,7 +233,7 @@ function M.reg_lsp(bufnr)
 			i = { "<cmd>Trouble lsp_implementations<cr>", "Go to Implementation" },
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },
 			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-			S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
+			o = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
 			p = {
 				name = "Preview",
 				d = { gp.goto_preview_definition, "Preview Definition" },
