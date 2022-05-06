@@ -46,6 +46,7 @@ cmp.setup({
 		{ name = "path", option = { trailing_slash = false } },
 		{ name = "buffer" },
 		{ name = "emoji" },
+		{ name = "latex_symbols" },
 	}),
 	formatting = {
 		---@diagnostic disable-next-line: unused-local
