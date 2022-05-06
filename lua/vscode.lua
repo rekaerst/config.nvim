@@ -6,35 +6,36 @@ local opt = vim.opt
 
 local mapping = {
 	-- Comment
-	{ "nx", "gc", "<Plug>VSCodeCommentary" },
+	{ "a", "gc", "<Plug>VSCodeCommentary" },
 	{ "o", "gc", "<Plug>VSCodeCommentary" },
-	{ "nx", "gcc", "<Plug>VSCodeCommentaryLine" },
+	{ "n", "gcc", "<Plug>VSCodeCommentaryLine" },
 
-	{ "nx", "<leader>es", "<cmd> call VSCodeNotify('actions.find')<cr>" },
-	{ "nx", "<leader>ef", "<cmd> call VSCodeNotify('workbench.action.findInFiles')<cr>" }, -- show find panel
+	{ "a", "<leader>es", "<cmd> call VSCodeNotify('actions.find')<cr>" },
+	{ "a", "<leader>ef", "<cmd> call VSCodeNotify('workbench.action.findInFiles')<cr>" }, -- show find panel
 
-	{ "nx", "<leader>fw", "<cmd> call VSCodeNotify('workbench.action.files.save')<cr>" },
-	{ "nx", "<leader>fa", "<cmd> call VSCodeNotify('workbench.action.files.saveAll')<cr>" },
-	{ "nx", "<leader>fr", "<cmd> call VSCodeNotify('workbench.action.openRecent')<cr>" },
+	{ "a", "<leader>fw", "<cmd> call VSCodeNotify('workbench.action.files.save')<cr>" },
+	{ "a", "<leader>fa", "<cmd> call VSCodeNotify('workbench.action.files.saveAll')<cr>" },
+	{ "a", "<leader>fr", "<cmd> call VSCodeNotify('workbench.action.openRecent')<cr>" },
 
-	{ "nx", "<leader>ca", "<cmd> call VSCodeNotify('editor.action.quickFix')<cr>" },
-	{ "nx", "<leader>cn", "<cmd> call VSCodeNotify('editor.action.rename')<cr>" },
-	{ "nx", "<leader>cf", "<cmd> call VSCodeNotify('editor.action.formatDocument')<cr>" },
+	{ "a", "<leader>ca", "<cmd> call VSCodeNotify('editor.action.quickFix')<cr>" },
+	{ "a", "<leader>cn", "<cmd> call VSCodeNotify('editor.action.rename')<cr>" },
+	{ "a", "<leader>cf", "<cmd> call VSCodeNotify('editor.action.formatDocument')<cr>" },
 
-	{ "nx", "gpd", "<cmd> call VSCodeNotify('editor.action.peekDefinition')<cr>" },
-	{ "nx", "gpf", "<cmd> call VSCodeNotify('editor.action.peekDeclaration')<cr>" },
-	{ "nx", "gpr", "<cmd> call VSCodeNotify('editor.action.referenceSearch.trigger')<cr>" },
-	{ "nx", "gpi", "<cmd> call VSCodeNotify('editor.action.peekImplementation')<cr>" },
-	{ "nx", "go", "<cmd> call VSCodeNotify('workbench.action.gotoSymbol')<cr>" },
+	{ "a", "gpd", "<cmd> call VSCodeNotify('editor.action.peekDefinition')<cr>" },
+	{ "a", "gpf", "<cmd> call VSCodeNotify('editor.action.peekDeclaration')<cr>" },
+	{ "a", "gpr", "<cmd> call VSCodeNotify('editor.action.referenceSearch.trigger')<cr>" },
+	{ "a", "gpi", "<cmd> call VSCodeNotify('editor.action.peekImplementation')<cr>" },
+	{ "a", "go", "<cmd> call VSCodeNotify('workbench.action.gotoSymbol')<cr>" },
 
-	{ "nx", "<leader>eh", "<cmd>noh<cr>" },
+	{ "a", "<leader>eh", "<cmd>noh<cr>" },
 }
 
 local function map(table)
 	for _, v in ipairs(table) do
-		if v[1] == "nx" then
+		if v[1] == "a" then
 			vim.api.nvim_set_keymap("n", v[2], v[3], {} or v[4])
 			vim.api.nvim_set_keymap("x", v[2], v[3], {} or v[4])
+			vim.api.nvim_set_keymap("v", v[2], v[3], {} or v[4])
 		else
 			vim.api.nvim_set_keymap(v[1], v[2], v[3], {} or v[4])
 		end
