@@ -228,7 +228,7 @@ function M.reg_lsp(bufnr)
 		},
 		g = {
 			name = "Go",
-			D = { vim.lsp.buf.declaration, "Go to Declaration" },
+			f = { vim.lsp.buf.declaration, "Go to Declaration" },
 			d = { "<cmd>Trouble lsp_definitions<cr>", "Go to Definition" },
 			i = { "<cmd>Trouble lsp_implementations<cr>", "Go to Implementation" },
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },
