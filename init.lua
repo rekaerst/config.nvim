@@ -1,3 +1,8 @@
+-- don't run configurations for vscode-neovim
+if vim.g.vscode then
+	return
+end
+
 pcall(require, "impatient")
 
 require("plugin")
