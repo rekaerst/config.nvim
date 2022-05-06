@@ -21,6 +21,12 @@ local servers = {
 	"yamlls",
 }
 
+local settings = {
+	gopls = {
+		staticcheck = true,
+	},
+}
+
 local function override_single_file(lsp)
 	local sf = {
 		"bashls",
@@ -54,6 +60,7 @@ function M.setup(on_attach)
 			debounce_text_changes = 150,
 			capabilities = M.capabilities,
 			single_file_support = override_single_file(lsp),
+			settings = settings,
 		})
 	end
 
