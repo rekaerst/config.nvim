@@ -42,7 +42,7 @@ function M.reg_main()
 				},
 				d = {
 					function()
-						if vim.fn.getbufinfo({ bufnr = 0 })[1].changed == 1 then
+						if vim.fn.getbufinfo(vim.api.nvim_buf_get_number(0))[1].changed == 1 then
 							vim.api.nvim_err_writeln("buffer changed")
 						else
 							bufdelete.bufdelete(0, false)
