@@ -1,5 +1,4 @@
 require("indent_blankline").setup({
-	char = "",
 	char_highlight_list = {
 		"IndentBlanklineIndent1",
 		"IndentBlanklineIndent2",
@@ -23,10 +22,13 @@ require("indent_blankline").setup({
 })
 
 vim.cmd([[
-highlight IndentBlanklineIndent1 guibg=#3a323a gui=nocombine
-highlight IndentBlanklineIndent2 guibg=#3b3b3b gui=nocombine
-highlight IndentBlanklineIndent3 guibg=#333b3b gui=nocombine
-highlight IndentBlanklineIndent4 guibg=#2d3a42 gui=nocombine
-highlight IndentBlanklineIndent5 guibg=#293858 gui=nocombine
-highlight IndentBlanklineIndent6 guibg=#373345 gui=nocombine
+highlight IndentBlanklineIndent1  guifg=#807560 guibg=#242830 gui=nocombine
+highlight IndentBlanklineIndent2  guifg=#6b8060 guibg=#2c2430 gui=nocombine
+highlight IndentBlanklineIndent3  guifg=#608075 guibg=#302428 gui=nocombine
+highlight IndentBlanklineIndent4  guifg=#606b80 guibg=#302c24 gui=nocombine
+highlight IndentBlanklineIndent5  guifg=#756080 guibg=#283024 gui=nocombine
+highlight IndentBlanklineIndent6  guifg=#80606b guibg=#24302c gui=nocombine
+
+highlight IndentBlanklineContextChar guifg=#e9bfff
+highlight IndentBlanklineContextStart guisp=#e9bfff gui=underline
 ]])
