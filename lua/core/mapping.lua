@@ -106,6 +106,7 @@ function M.reg_main()
 				g = { "<cmd>Neogit<cr>", "Open Neogit" },
 				k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				t = { "<cmd>Telescope<cr>", "Telescope" },
+				q = { "<cmd>Trouble<cr>", "Trouble" },
 				m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
 				s = { "<cmd>:setlocal spell!<cr>", "Spell Check" },
 				r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
@@ -196,7 +197,7 @@ function M.reg_lsp(bufnr)
 		["<leader>"] = {
 			c = {
 				name = "Code",
-				d = {
+				D = {
 					function()
 						vim.diagnostic.open_float({ border = "single" })
 					end,
@@ -206,8 +207,7 @@ function M.reg_lsp(bufnr)
 				n = { vim.lsp.buf.rename, "Rename" },
 				f = { vim.lsp.buf.formatting, "Format Documents" },
 				F = { require("lsp.format").toggle, "Toggle Formatting" },
-				t = { "<cmd>Trouble<cr>", "Trouble" },
-				w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+				d = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 				r = { "<cmd>Trouble lsp_references<cr>", "References" },
 				q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
 				["["] = {
