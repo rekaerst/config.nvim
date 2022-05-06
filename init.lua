@@ -1,8 +1,8 @@
--- don't run configurations for vscode-neovim
+-- vscode-neovim extension
 if vim.g.vscode then
+	require("vscode").setup()
 	return
 end
-
 pcall(require, "impatient")
 
 require("plugin")
