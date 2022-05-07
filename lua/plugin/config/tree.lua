@@ -26,6 +26,9 @@ require("nvim-tree").setup({
 				corner = "│ ",
 			},
 		},
+		icons = {
+			git_placement = "after",
+		},
 	},
 	diagnostics = {
 		enable = true,
