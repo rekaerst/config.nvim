@@ -220,9 +220,7 @@ local plugins = {
 	-- keymapping
 	{
 		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup()
-		end,
+		config = cfg("whichkey"),
 	},
 	-- multi line
 	{ "mg979/vim-visual-multi" },
