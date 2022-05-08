@@ -29,6 +29,6 @@ highlight IndentBlanklineIndent4  guifg=#606b80 guibg=#302c24 gui=nocombine
 highlight IndentBlanklineIndent5  guifg=#756080 guibg=#283024 gui=nocombine
 highlight IndentBlanklineIndent6  guifg=#80606b guibg=#24302c gui=nocombine
 
-highlight IndentBlanklineContextChar guifg=#e9bfff
-highlight IndentBlanklineContextStart guisp=#e9bfff gui=underline
+highlight IndentBlanklineContextChar guifg=#ffca66
+highlight IndentBlanklineContextStart guisp=#ffca66 gui=underline
 ]])
