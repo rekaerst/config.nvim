@@ -1,3 +1,16 @@
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
+if fn.empty(fn.glob(install_path)) > 0 then
+	fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
 -- Packer configurations
 local packer = require("packer")
 
@@ -190,9 +203,7 @@ local plugins = {
 	},
 	{
 		"folke/todo-comments.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
+		config = cfg("todo-comments"),
 	},
 	-- motion
 	{
@@ -217,9 +228,7 @@ local plugins = {
 	-- keymapping
 	{
 		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup()
-		end,
+		config = cfg("whichkey"),
 	},
 	-- multi line
 	{ "mg979/vim-visual-multi" },

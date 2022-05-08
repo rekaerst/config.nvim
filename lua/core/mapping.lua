@@ -122,6 +122,7 @@ map.main = {
 			F = { "<cmd>NvimTreeToggle<cr>", "Toggle File Browser" },
 			g = { "<cmd>Neogit<cr>", "Open Neogit" },
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+			K = { "<cmd>WhichKey<cr>", "Keymaps(WhickKey)" },
 			t = { "<cmd>Telescope<cr>", "Telescope" },
 			q = { "<cmd>Trouble<cr>", "Trouble" },
 			m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },

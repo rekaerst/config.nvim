@@ -24,6 +24,11 @@ function M.setup()
 		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
 		command = "set ft=nasm",
 	})
+	-- enable spell check
+	autocmd("FileType", {
+		pattern = {"NeogitCommitMessage"},
+		command = "setlocal spell",
+	})
 end
 
 return M
