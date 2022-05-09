@@ -35,6 +35,17 @@ function M.setup()
 		pattern = { "NeogitCommitMessage" },
 		command = "setlocal spell",
 	})
+	-- open nvimtree if buf is folder
+	autocmd("BufEnter", {
+		pattern = "*",
+		callback = function()
+			local pwd = vim.api.nvim_buf_get_name(0)
+			if vim.fn.isdirectory(pwd) == 1 then
+				vim.api.nvim_set_current_dir(pwd)
+				vim.cmd("NvimTreeToggle")
+			end
+		end,
+	})
 end
 
 return M
