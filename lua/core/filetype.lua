@@ -4,6 +4,8 @@ local M = {}
 
 function M.setup()
 	autocmd("TermOpen", { command = "setlocal nonumber" })
+
+	-- tabs --
 	-- expandtab
 	autocmd("FileType", {
 		pattern = { "python", "markdown" },
@@ -19,14 +21,18 @@ function M.setup()
 		pattern = { "nasm" },
 		command = "set tabstop=8 | set shiftwidth=8 | set softtabstop=8",
 	})
-	-- force filetype
+
+	-- change filetype --
+	-- assembly
 	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
 		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
 		command = "set ft=nasm",
 	})
+
+	-- misc --
 	-- enable spell check
 	autocmd("FileType", {
-		pattern = {"NeogitCommitMessage"},
+		pattern = { "NeogitCommitMessage" },
 		command = "setlocal spell",
 	})
 end
