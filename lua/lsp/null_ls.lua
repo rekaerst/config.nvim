@@ -18,6 +18,7 @@ function M.setup(on_attach)
 				filetypes = { "markdown" },
 			}),
 			null_ls.builtins.formatting.buf, -- protobuf
+			null_ls.builtins.formatting.taplo, -- toml
 			null_ls.builtins.diagnostics.codespell,
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.shellcheck,
