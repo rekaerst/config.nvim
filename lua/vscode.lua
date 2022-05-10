@@ -9,24 +9,25 @@ local mapping = {
 	{ "a", "gc", "<Plug>VSCodeCommentary" },
 	{ "o", "gc", "<Plug>VSCodeCommentary" },
 	{ "n", "gcc", "<Plug>VSCodeCommentaryLine" },
-
+	-- find
 	{ "a", "<leader>es", "<cmd> call VSCodeNotify('actions.find')<cr>" },
 	{ "a", "<leader>ef", "<cmd> call VSCodeNotify('workbench.action.findInFiles')<cr>" }, -- show find panel
-
+	-- file
 	{ "a", "<leader>fw", "<cmd> call VSCodeNotify('workbench.action.files.save')<cr>" },
 	{ "a", "<leader>fa", "<cmd> call VSCodeNotify('workbench.action.files.saveAll')<cr>" },
+	{ "a", "<leader>fo", "<cmd> call VSCodeNotify('workbench.action.files.openFile')<cr>" },
 	{ "a", "<leader>fr", "<cmd> call VSCodeNotify('workbench.action.openRecent')<cr>" },
-
+	-- code
 	{ "a", "<leader>ca", "<cmd> call VSCodeNotify('editor.action.quickFix')<cr>" },
 	{ "a", "<leader>cn", "<cmd> call VSCodeNotify('editor.action.rename')<cr>" },
 	{ "a", "<leader>cf", "<cmd> call VSCodeNotify('editor.action.formatDocument')<cr>" },
-
+	-- preview
 	{ "a", "gpd", "<cmd> call VSCodeNotify('editor.action.peekDefinition')<cr>" },
 	{ "a", "gpf", "<cmd> call VSCodeNotify('editor.action.peekDeclaration')<cr>" },
 	{ "a", "gpr", "<cmd> call VSCodeNotify('editor.action.referenceSearch.trigger')<cr>" },
 	{ "a", "gpi", "<cmd> call VSCodeNotify('editor.action.peekImplementation')<cr>" },
 	{ "a", "go", "<cmd> call VSCodeNotify('workbench.action.gotoSymbol')<cr>" },
-
+	-- highlight
 	{ "a", "<leader>eh", "<cmd>noh<cr>" },
 }
 
