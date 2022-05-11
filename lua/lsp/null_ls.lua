@@ -20,7 +20,10 @@ function M.setup(on_attach)
 			null_ls.builtins.formatting.buf, -- protobuf
 			null_ls.builtins.formatting.taplo, -- toml
 			null_ls.builtins.diagnostics.codespell,
-			null_ls.builtins.diagnostics.flake8,
+			null_ls.builtins.diagnostics.flake8.with({
+				---@diagnostic disable-next-line: missing-parameter
+				extra_args = { "--config-path", vim.fn.expand("~/.config/flake8") },
+			}),
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.markdownlint,
 		},
