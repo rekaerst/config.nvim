@@ -11,5 +11,6 @@ autocmd("SessionLoadPost", {
 				break
 			end
 		end
+		vim.cmd("set cmdheight=1")
 	end,
 })
