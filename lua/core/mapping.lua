@@ -8,6 +8,8 @@ local bufdelete = require("bufdelete")
 local gp = require("goto-preview")
 local gs = require("gitsigns")
 
+local term = require("term")
+
 local map = {}
 
 map.hop = {
@@ -121,6 +123,12 @@ map.main = {
 			f = { "<cmd>NvimTreeFocus<cr>", "File Browser" },
 			F = { "<cmd>NvimTreeToggle<cr>", "Toggle File Browser" },
 			g = { "<cmd>Neogit<cr>", "Open Neogit" },
+			l = {
+				function()
+					term.lazygit:open()
+				end,
+				"Open Neogit",
+			},
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 			K = { "<cmd>WhichKey<cr>", "Keymaps(WhickKey)" },
 			t = { "<cmd>Telescope<cr>", "Telescope" },

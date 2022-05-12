@@ -27,4 +27,20 @@ function M.setup()
 		callback = set_terminal_keymaps,
 	})
 end
+-- custom terminals
+
+-- lazygit
+M.lazygit = Terminal:new({
+	cmd = "lazygit",
+	dir = "git_dir",
+	direction = "float",
+	float_opts = {
+		border = "single",
+	},
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+})
+
 return M
