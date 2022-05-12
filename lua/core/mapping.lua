@@ -154,7 +154,6 @@ map.main = {
 			l = { "<cmd>WinShift right<cr>", "Move Right" },
 			s = { "<cmd>WinShift swap<cr>", "Swap" },
 		},
-		["<C-q>"] = { ":qa!<cr>", "Quit" },
 		["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 	},
 	["<C-j>"] = map.hop,
