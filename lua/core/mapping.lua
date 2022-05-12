@@ -154,13 +154,6 @@ map.main = {
 			l = { "<cmd>WinShift right<cr>", "Move Right" },
 			s = { "<cmd>WinShift swap<cr>", "Swap" },
 		},
-		y = {
-			name = "System Clipboard",
-			y = { '"+yy', "Yank" },
-			d = { '"+d', "Cut" },
-			p = { '"+p', "Paste after" },
-			P = { '"+P', "Paste before" },
-		},
 		["<C-q>"] = { ":qa!<cr>", "Quit" },
 		["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 	},
@@ -182,13 +175,6 @@ map.main_v = {
 		r = {
 			name = "Run",
 			s = { ":SnipRun <cr>", "SnipRun" },
-		},
-		y = {
-			name = "System Clipboard",
-			y = { '"+y', "Yank" },
-			d = { '"+d', "Cut" },
-			p = { '"+p', "Paste after" },
-			P = { '"+P', "Paste before" },
 		},
 	},
 	["<C-j>"] = map.hop,
@@ -301,6 +287,9 @@ function M.reg_main()
 	imap <C-a> <C-o>I
 	imap <C-e> <C-o>$
 	]])
+
+	-- Access system clipboard
+	vim.api.nvim_set_keymap("n", "<C-k>", '+"', {})
 
 	-- Window to close with Q
 	autocmd("FileType", {
