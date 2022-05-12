@@ -261,11 +261,7 @@ local plugins = {
 		cmd = "Luapad",
 	},
 	-- terminal
-	{
-		"akinsho/toggleterm.nvim",
-		config = cfg("toggleterm"),
-		cmd = "ToggleTerm",
-	},
+	{ "akinsho/toggleterm.nvim" },
 	-- util
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
