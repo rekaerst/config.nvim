@@ -156,7 +156,8 @@ map.main = {
 		},
 		["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 	},
-	["<C-j>"] = map.hop,
+	["<C-q>"] = { ":qa!<cr>", "Quit" },
+	["<C-h>"] = map.hop,
 	["<F6>"] = { ":up | :make<cr>", "Make" },
 
 	-- dap
@@ -176,7 +177,7 @@ map.main_v = {
 			s = { ":SnipRun <cr>", "SnipRun" },
 		},
 	},
-	["<C-j>"] = map.hop,
+	["<C-h>"] = map.hop,
 }
 
 --
