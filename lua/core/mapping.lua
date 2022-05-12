@@ -177,6 +177,7 @@ map.main = {
 	["<F23>"] = { dap.setp_out, "Step Out" }, -- Shift F11
 	["<F29>"] = { dap.terminate, "Stop Debugging" }, -- Ctrl F5
 }
+
 map.main_v = {
 	["<leader>"] = {
 		r = {
