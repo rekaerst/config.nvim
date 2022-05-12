@@ -165,7 +165,7 @@ map.main = {
 		["<C-q>"] = { ":qa!<cr>", "Quit" },
 		["?"] = { "<cmd>Cheatsheet<cr>", "Cheat Sheet" },
 	},
-	[";"] = map.hop,
+	["<C-j>"] = map.hop,
 	["<F6>"] = { ":up | :make<cr>", "Make" },
 
 	-- dap
@@ -192,7 +192,7 @@ map.main_v = {
 			P = { '"+P', "Paste before" },
 		},
 	},
-	[";"] = map.hop,
+	["<C-j>"] = map.hop,
 }
 
 --
