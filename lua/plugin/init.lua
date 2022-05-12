@@ -270,6 +270,7 @@ local plugins = {
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{ "milisims/nvim-luaref" },
+	{ "jamessan/vim-gnupg" },
 }
 
 local disabled_built_ins = {
