@@ -3,7 +3,6 @@ local lspconfig = require("lspconfig")
 -- LSP Servers
 local servers = {
 	"bashls",
-	"clangd",
 	"cmake",
 	"cssls",
 	"gdscript",

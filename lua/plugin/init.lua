@@ -122,6 +122,7 @@ local plugins = {
 				config = cfg("luadev"),
 				ft = "lua",
 			},
+			{ "p00f/clangd_extensions.nvim", config = cfg("clangd") },
 			{
 				"rmagatti/goto-preview",
 				config = function()
