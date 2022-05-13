@@ -123,6 +123,12 @@ map.main = {
 			f = { "<cmd>NvimTreeFocus<cr>", "File Browser" },
 			F = { "<cmd>NvimTreeToggle<cr>", "Toggle File Browser" },
 			g = { "<cmd>Neogit<cr>", "Open Neogit" },
+			C = {
+				function()
+					term.dotfiles_lazygit:open()
+				end,
+				"chezmoi",
+			},
 			l = {
 				function()
 					term.lazygit:open()
