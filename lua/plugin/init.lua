@@ -250,7 +250,7 @@ local plugins = {
 		config = function()
 			vim.g.mkdp_auto_close = 0
 		end,
-		run = "cd app && yarn install",
+		run = "cd app && npm install",
 		cmd = "MarkdownPreview",
 		ft = "markdown",
 	},
