@@ -39,10 +39,10 @@ local single_file_support = {
 local M = {}
 
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- TODO: remove this after offset encoding issue is fixed
-M.capabilities.offsetEncoding = { "utf-18" }
+-- HACK: #428
+M.capabilities.offsetEncoding = { "utf-16" }
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+local disabled_server = { "sumneko_lua" }
 
 function M.setup(on_attach)
 	-- setup language servers
