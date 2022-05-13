@@ -1,5 +1,4 @@
 local lspconfig = require("lspconfig")
-local u = require("core.util")
 
 -- LSP Servers
 local servers = {
@@ -27,22 +26,15 @@ local settings = {
 	},
 }
 
-local function override_single_file(lsp)
-	local sf = {
-		"bashls",
-		"tsserver",
-		"gopls",
-		"html",
-		"jsonls",
-		"vala_ls",
-		"yamlls",
-	}
-	if u.has_value(sf, lsp) then
-		return true
-	else
-		return nil
-	end
-end
+local single_file_support = {
+	bashls = true,
+	tsserver = true,
+	gopls = true,
+	html = true,
+	jsonls = true,
+	vala_ls = true,
+	yamlls = true,
+}
 
 local M = {}
 
@@ -59,7 +51,7 @@ function M.setup(on_attach)
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = M.capabilities,
-			single_file_support = override_single_file(lsp),
+			single_file_support = single_file_support[lsp] or nil,
 			settings = settings,
 		})
 	end
