@@ -88,16 +88,6 @@ function M.hmany(rules)
 	end
 end
 
--- Check if table contains specific value
-function M.has_value(table, value)
-	for _, v in ipairs(table) do
-		if v == value then
-			return true
-		end
-	end
-	return false
-end
-
 function M.read_json(path)
 	local f = io.open(path, "rb")
 	local content = {}

@@ -211,7 +211,12 @@ map.lsp = {
 			},
 			a = { vim.lsp.buf.code_action, "Code Action" },
 			n = { vim.lsp.buf.rename, "Rename" },
-			f = { vim.lsp.buf.formatting, "Format Documents" },
+			f = {
+				function()
+					vim.lsp.buf.format({ async = true })
+				end,
+				"Format Documents",
+			},
 			F = { require("lsp.format").toggle, "Toggle Formatting" },
 			d = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 			r = { "<cmd>Trouble lsp_references<cr>", "References" },

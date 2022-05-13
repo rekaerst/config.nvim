@@ -5,10 +5,11 @@ local signdef = vim.fn.sign_define
 local M = {}
 
 function M.on_attach(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 	require("core.mapping").reg_lsp(bufnr)
-
-	fmt.on_attach(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		fmt.on_attach(client, bufnr)
+	end
 end
 
 function M.setup()

@@ -1,9 +1,6 @@
 local luadev = require("lua-dev").setup({
 	lspconfig = {
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = false
-			require("lsp").on_attach(client, bufnr)
-		end,
+		on_attach = require("lsp").on_attach,
 	},
 })
 

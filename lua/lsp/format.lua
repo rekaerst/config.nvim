@@ -1,44 +1,49 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local u = require("core.util")
-
 local M = {
 	disabled = false,
 }
 
+-- format thoes filetypes on type
 local aggressive_ft = { "c", "cpp", "lua", "javascript", "go", "rust" }
+-- disable server formatting
+local disabled_server = { "sumneko_lua" }
 
+local fmt_group = vim.api.nvim_create_augroup("LspFormatting", {})
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
-	-- clear existing commands of the group
-	local lsp_fmt_grp = augroup("lsp_fmt_" .. tostring(bufnr), { clear = true })
-	autocmd("BufWritePre", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting_sync })
-	if u.has_value(aggressive_ft, vim.bo.filetype) then
-		autocmd("InsertLeave", { group = lsp_fmt_grp, buffer = bufnr, callback = M.formatting })
+	-- disable server formatting
+	if vim.tbl_contains(disabled_server, client.name) then
+		client.server_capabilities.documentFormattingProvider = false
+		return
 	end
-	autocmd("BufDelete", {
-		group = lsp_fmt_grp,
+	-- format on save
+	vim.api.nvim_clear_autocmds({ group = fmt_group, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = fmt_group,
 		buffer = bufnr,
-		callback = function()
-			vim.api.nvim_del_augroup_by_id(lsp_fmt_grp)
-		end,
+		callback = M.format_sync,
 	})
+	-- format on type
+	if vim.tbl_contains(aggressive_ft, vim.bo.filetype) then
+		vim.api.nvim_create_autocmd("InsertLeave", {
+			group = fmt_group,
+			buffer = bufnr,
+			callback = M.format,
+		})
+	end
 end
 
-function M.formatting()
-	-- jump_active: prevent formatting document when luasnip is active, as it cause
-	-- problem with jumping
+function M.format()
 	if M.disabled or require("luasnip.session").jump_active then
 		return
 	end
-	vim.lsp.buf.formatting()
+	vim.lsp.buf.format({ async = true })
 end
 
-function M.formatting_sync()
+function M.format_sync()
 	if M.disabled then
 		return
 	end
-	vim.lsp.buf.formatting_sync()
+	vim.lsp.buf.format()
 end
 
 function M.disable()
