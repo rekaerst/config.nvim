@@ -43,4 +43,17 @@ M.lazygit = Terminal:new({
 	end,
 })
 
+M.dotfiles_lazygit = Terminal:new({
+	cmd = "chezmoi re-add; lazygit",
+	dir = vim.env.HOME .. "/.local/share/chezmoi",
+	direction = "float",
+	float_opts = {
+		border = "single",
+	},
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+})
+
 return M
