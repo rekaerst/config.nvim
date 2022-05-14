@@ -39,19 +39,23 @@ M.lazygit = Terminal:new({
 	on_open = function(term)
 		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-c>", "<cmd>wincmd p<CR>", { noremap = true, silent = true })
 	end,
 })
 
 M.dotfiles_lazygit = Terminal:new({
-	cmd = "chezmoi re-add; lazygit",
+	cmd = "lazygit",
 	dir = vim.env.HOME .. "/.local/share/chezmoi",
 	direction = "float",
 	float_opts = {
 		border = "single",
 	},
 	on_open = function(term)
+		os.execute("chezmoi re-add")
 		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-c>", "<cmd>wincmd p<CR>", { noremap = true, silent = true })
+		vim.api.nvim_feedkeys("2r", "n", false)
 	end,
 })
 
