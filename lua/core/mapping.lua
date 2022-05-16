@@ -309,6 +309,7 @@ function M.reg_main()
 
 	-- Access system clipboard
 	vim.api.nvim_set_keymap("n", "<C-k>", '"+', {})
+	vim.api.nvim_set_keymap("v", "<C-k>", '"+', {})
 
 	-- Window to close with Q
 	autocmd("FileType", {
