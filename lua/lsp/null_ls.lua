@@ -26,6 +26,9 @@ function M.setup(on_attach)
 			}),
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.markdownlint,
+			null_ls.builtins.diagnostics.sqlfluff.with({
+				extra_args = { "--dialect", "postgres" },
+			}),
 		},
 	})
 end
