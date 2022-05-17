@@ -45,6 +45,8 @@ function M.setup()
 				vim.cmd("NvimTreeToggle")
 			end
 		end,
+		once = true,
+		desc = "Open NvimTree",
 	})
 end
 
