@@ -129,12 +129,7 @@ local plugins = {
 					require("goto-preview").setup({})
 				end,
 			},
-			{
-				"folke/trouble.nvim",
-				config = function()
-					require("trouble").setup()
-				end,
-			},
+			{ "folke/trouble.nvim", config = cfg("trouble") },
 			{ "ray-x/lsp_signature.nvim", config = cfg("lsp_signature") },
 			{
 				"simrat39/symbols-outline.nvim",
