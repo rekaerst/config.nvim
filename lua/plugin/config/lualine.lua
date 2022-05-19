@@ -141,7 +141,7 @@ require("lualine").setup({
 		theme = {
 			normal = {
 				a = { bg = colors.green, fg = colors.black, gui = "bold" },
-				b = { bg = colors.one_bg2, fg = colors.white },
+				b = { bg = colors.one_bg3, fg = colors.white },
 				c = { bg = colors.statusline_bg, fg = colors.light_grey },
 			},
 			insert = {
@@ -157,7 +157,7 @@ require("lualine").setup({
 				a = { bg = colors.yellow, fg = colors.black, gui = "bold" },
 			},
 			inactive = {
-				a = { bg = colors.one_bg2, fg = colors.white },
+				a = { bg = colors.one_bg3, fg = colors.white },
 			},
 		},
 	},
