@@ -2,13 +2,6 @@ local M = {}
 
 local cmd = vim.cmd
 
-
-M.signdef = vim.fn.sign_define
-
-function M.hi(token, fg)
-	vim.cmd("hi " .. token .. " guifg=" .. fg)
-end
-
 function M.cfg(name)
 	return 'require "plugin.config.' .. name .. '"'
 end
