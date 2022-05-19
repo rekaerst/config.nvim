@@ -40,6 +40,7 @@ M.lazygit = Terminal:new({
 		vim.cmd("startinsert!")
 		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<c-c>", "<cmd>wincmd p<CR>", { noremap = true, silent = true })
+		vim.api.nvim_feedkeys("2r", "n", false)
 	end,
 })
 
