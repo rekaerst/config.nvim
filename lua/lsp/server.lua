@@ -38,6 +38,16 @@ local single_file_support = {
 	yamlls = true,
 }
 
+local init_options = {
+	tsserver = {
+		hostInfo = "neovim",
+		preferences = {
+			includeCompletionsWithSnippetText = true,
+			includeCompletionsForImportStatements = true,
+		},
+	},
+}
+
 local M = {}
 
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -53,6 +63,7 @@ function M.setup(on_attach)
 			debounce_text_changes = 150,
 			capabilities = M.capabilities,
 			single_file_support = single_file_support[lsp] or nil,
+			init_options = init_options[lsp] or nil,
 			settings = settings,
 		})
 	end
