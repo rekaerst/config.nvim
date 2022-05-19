@@ -1,7 +1,6 @@
 local cmp = require("cmp")
-local u = require("core.util")
-local kind_symbols = u.kind_symbols
 local luasnip = require("luasnip")
+local icons = require("lsp").icons
 
 cmp.setup({
 	snippet = {
@@ -21,6 +20,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
+				-- cmp.confirm({ select = true })
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			else
@@ -51,7 +51,7 @@ cmp.setup({
 	formatting = {
 		---@diagnostic disable-next-line: unused-local
 		format = function(entry, vim_item)
-			vim_item.kind = string.format("%s ", kind_symbols[vim_item.kind])
+			vim_item.kind = string.format("%s ", icons[vim_item.kind])
 			vim_item.abbr = string.sub(vim_item.abbr, 1, 64)
 			return vim_item
 		end,

@@ -2,33 +2,6 @@ local M = {}
 
 local cmd = vim.cmd
 
-M.kind_symbols = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "פּ",
-	Interface = "",
-	Module = "",
-	Property = "",
-	Unit = "ﭧ",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "鬒",
-	Operator = "",
-	TypeParameter = "",
-}
 
 M.signdef = vim.fn.sign_define
 
