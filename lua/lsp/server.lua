@@ -21,6 +21,9 @@ local servers = {
 
 local settings = {
 	gopls = {
+		analyses = {
+			unusedparams = true,
+		},
 		staticcheck = true,
 	},
 }
