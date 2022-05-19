@@ -239,6 +239,7 @@ map.lsp = {
 			},
 			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Find Symbols" },
 			S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Find Symbols (workspace)" },
+			h = { "<cmd>ClangdSwitchSourceHeader<cr>", "Switch Source/Header (clangd)" },
 		},
 	},
 	g = {
