@@ -195,6 +195,10 @@ map.main_v = {
 	["<C-h>"] = map.hop,
 }
 
+map.main_o = {
+	["<C-h>"] = map.hop,
+}
+
 --
 -- lsp
 --
@@ -300,6 +304,7 @@ map.git_v = {
 function M.reg_main()
 	wk.register(map.main, { silent = true })
 	wk.register(map.main_v, { mode = "v" })
+	wk.register(map.main_o, { mode = "o" })
 
 	-- EMACS like keys
 	vim.cmd([[
