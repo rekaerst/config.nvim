@@ -41,7 +41,6 @@ M.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.ma
 -- HACK: #428
 M.capabilities.offsetEncoding = { "utf-16" }
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-local disabled_server = { "sumneko_lua" }
 
 function M.setup(on_attach)
 	-- setup language servers
