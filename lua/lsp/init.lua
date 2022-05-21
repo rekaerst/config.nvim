@@ -43,6 +43,7 @@ function M.on_attach(client, bufnr)
 
 	M._auto_open_diagnostic_window(bufnr)
 	M._highlight_symbols_under_cursor(client, bufnr)
+	M._cmp_auto_refresh(bufnr)
 end
 
 function M.setup()
@@ -118,6 +119,23 @@ function M._highlight_symbols_under_cursor(client, bufnr)
 			callback = vim.lsp.buf.clear_references,
 		})
 	end
+end
+
+function M._cmp_auto_refresh(bufnr)
+	local cmp = require("cmp")
+	vim.api.nvim_create_autocmd({ "TextChangedI" }, {
+		callback = function()
+			vim.defer_fn(function()
+				if cmp.visible() then
+					local first_entry = cmp.get_entries()[1]
+					if #first_entry.matches == 0 then
+						cmp.complete()
+					end
+				end
+			end, 0)
+		end,
+		buffer = bufnr,
+	})
 end
 
 return M
