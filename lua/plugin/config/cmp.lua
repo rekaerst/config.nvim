@@ -89,3 +89,17 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+
+vim.api.nvim_create_autocmd({ "TextChangedI" }, {
+	callback = function()
+		vim.defer_fn(function()
+			if cmp.visible() then
+				local first_entry = cmp.get_entries()[1]
+				if #first_entry.matches == 0 then
+					require("cmp").complete()
+				end
+			end
+		end, 0)
+	end,
+	pattern = "*",
+})
