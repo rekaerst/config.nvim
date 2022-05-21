@@ -9,6 +9,7 @@ local gp = require("goto-preview")
 local gs = require("gitsigns")
 
 local term = require("term")
+local u = require("core.util")
 
 local map = {}
 
@@ -44,6 +45,24 @@ map.main = {
 			s = { "<cmd>Telescope grep_string<cr>", "Find String" },
 			h = { "<cmd>noh<cr>", "Clear Highlight" },
 			e = { "<cmd>set foldmethod=expr<cr>", "Enable folding" },
+			["2"] = {
+				function()
+					u.tabwidth(2)
+				end,
+				"Set tab width to 2",
+			},
+			["4"] = {
+				function()
+					u.tabwidth(4)
+				end,
+				"Set tab width to 4",
+			},
+			["8"] = {
+				function()
+					u.tabwidth(8)
+				end,
+				"Set tab width to 8",
+			},
 		},
 		b = {
 			name = "Buffer",

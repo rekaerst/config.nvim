@@ -73,4 +73,10 @@ function M.write_json(path, content)
 	f:close()
 end
 
+function M.tabwidth(width)
+	vim.opt.tabstop = width
+	vim.opt.shiftwidth = width
+	vim.opt.softtabstop = width
+end
+
 return M
