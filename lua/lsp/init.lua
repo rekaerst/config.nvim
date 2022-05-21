@@ -5,6 +5,34 @@ local signdef = vim.fn.sign_define
 
 local M = {}
 
+M.icons = {
+	Class = "פּ",
+	Color = "",
+	Constant = "",
+	Constructor = "",
+	Enum = "",
+	EnumMember = "",
+	Event = "鬒",
+	Field = "",
+	File = "",
+	Folder = "",
+	Function = "",
+	Interface = "",
+	Keyword = "",
+	Method = "",
+	Module = "",
+	Operator = "",
+	Property = "",
+	Reference = "",
+	Snippet = "",
+	Struct = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "ﭧ",
+	Value = "",
+	Variable = "",
+}
+
 function M.on_attach(client, bufnr)
 	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 	require("core.mapping").reg_lsp(bufnr)
@@ -51,34 +79,6 @@ function M.on_attach(client, bufnr)
 		})
 	end
 end
-
-M.icons = {
-	Class = "פּ",
-	Color = "",
-	Constant = "",
-	Constructor = "",
-	Enum = "",
-	EnumMember = "",
-	Event = "鬒",
-	Field = "",
-	File = "",
-	Folder = "",
-	Function = "",
-	Interface = "",
-	Keyword = "",
-	Method = "",
-	Module = "",
-	Operator = "",
-	Property = "",
-	Reference = "",
-	Snippet = "",
-	Struct = "",
-	Text = "",
-	TypeParameter = "",
-	Unit = "ﭧ",
-	Value = "",
-	Variable = "",
-}
 
 function M.setup()
 	signdef("DiagnosticSignError", {
