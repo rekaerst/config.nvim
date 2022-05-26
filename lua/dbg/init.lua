@@ -30,7 +30,7 @@ function M.setup()
 	require("dbg.nvim-lua").setup()
 	require("dbg.lldb").setup()
 	require("dap-go").setup()
-	require("dap-python").setup("/usr/bin/python")
+	require("dap-python").setup("/usr/bin/python", nil)
 end
 
 return M
