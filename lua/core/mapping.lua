@@ -10,6 +10,7 @@ local gs = require("gitsigns")
 
 local term = require("term")
 local u = require("core.util")
+local disabled_server = require("lsp.format").disabled_server
 
 local map = {}
 
@@ -236,7 +237,12 @@ map.lsp = {
 			n = { vim.lsp.buf.rename, "Rename" },
 			f = {
 				function()
-					vim.lsp.buf.format({ async = true })
+					vim.lsp.buf.format({
+						async = true,
+						filter = function(client)
+							return not vim.tbl_contains(disabled_server, client.name)
+						end,
+					})
 				end,
 				"Format Documents",
 			},
