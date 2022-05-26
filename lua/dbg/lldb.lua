@@ -38,6 +38,13 @@ function M.setup()
 			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
 			args = {},
+			env = function()
+				-- inherit environment variables
+				local variables = {}
+				for k, v in pairs(vim.fn.environ()) do
+					table.insert(variables, string.format("%s=%s", k, v))
+				end
+			end,
 
 			runInTerminal = true,
 		},
