@@ -24,7 +24,6 @@ function M.setup(on_attach)
 				---@diagnostic disable-next-line: missing-parameter
 				extra_args = { "--config-path", vim.fn.expand("~/.config/flake8") },
 			}),
-			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.diagnostics.sqlfluff.with({
 				extra_args = { "--dialect", "postgres" },
