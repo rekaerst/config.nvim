@@ -38,7 +38,6 @@ function M.setup()
 			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
 			args = {},
-			postRunCommands = { "process handle -p true -s false -n false SIGWINCH" },
 
 			runInTerminal = true,
 		},
