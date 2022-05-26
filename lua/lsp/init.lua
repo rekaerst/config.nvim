@@ -33,19 +33,6 @@ M.icons = {
 	Variable = "",
 }
 
-function M.on_attach(client, bufnr)
-	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-	require("core.mapping").reg_lsp(bufnr)
-	-- formatting
-	if client.supports_method("textDocument/formatting") then
-		fmt.on_attach(client, bufnr)
-	end
-
-	M._auto_open_diagnostic_window(bufnr)
-	M._highlight_symbols_under_cursor(client, bufnr)
-	M._cmp_auto_refresh(bufnr)
-end
-
 function M.setup()
 	signdef("DiagnosticSignError", {
 		text = "",
@@ -63,7 +50,6 @@ function M.setup()
 		text = "",
 		texthl = "DiagnosticInfo",
 	})
-
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "single",
 	})
@@ -71,6 +57,17 @@ function M.setup()
 	for i, kind in ipairs(kinds) do
 		kinds[i] = M.icons[kind] or kind
 	end
+	vim.diagnostic.config({
+		update_in_insert = true,
+		float = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "rounded",
+			source = "always",
+			prefix = " ",
+			scope = "cursor",
+		},
+	})
 
 	require("lsp.server").setup(M.on_attach)
 	require("lsp.null_ls").setup(function(client, bufnr)
@@ -79,19 +76,24 @@ function M.setup()
 	end)
 end
 
+function M.on_attach(client, bufnr)
+	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+	require("core.mapping").reg_lsp(bufnr)
+	-- formatting
+	if client.supports_method("textDocument/formatting") then
+		fmt.on_attach(client, bufnr)
+	end
+
+	M._auto_open_diagnostic_window(bufnr)
+	M._highlight_symbols_under_cursor(client, bufnr)
+	M._cmp_auto_refresh(bufnr)
+end
+
 function M._auto_open_diagnostic_window(bufnr)
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
-			local opts = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				prefix = " ",
-				scope = "cursor",
-			}
-			vim.diagnostic.open_float(nil, opts)
+			vim.diagnostic.open_float()
 		end,
 	})
 end
