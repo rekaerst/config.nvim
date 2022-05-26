@@ -22,7 +22,7 @@ function M.setup(on_attach)
 			null_ls.builtins.diagnostics.codespell,
 			null_ls.builtins.diagnostics.flake8.with({
 				---@diagnostic disable-next-line: missing-parameter
-				extra_args = { "--config-path", vim.fn.expand("~/.config/flake8") },
+				extra_args = { "--config", vim.fn.expand("~/.config/flake8") },
 			}),
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.diagnostics.sqlfluff.with({
