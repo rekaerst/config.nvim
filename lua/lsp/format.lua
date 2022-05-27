@@ -5,7 +5,7 @@ local M = {
 -- format thoes filetypes on type
 local aggressive_ft = { "c", "cpp", "lua", "javascript", "go", "rust" }
 -- disable server formatting
-M.disabled_server = { "sumneko_lua", "clangd" }
+M.disabled_server = { "sumneko_lua" }
 
 local fmt_group = vim.api.nvim_create_augroup("LspFormatting", {})
 ---@diagnostic disable-next-line: unused-local
