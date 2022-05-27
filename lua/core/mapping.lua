@@ -42,10 +42,10 @@ map.main = {
 			name = "Edit",
 			f = { "<cmd>Telescope live_grep<cr>", "Find" },
 			F = { "<cmd>NvimTreeFindFile<cr>", "Find File in Tree" },
-			t = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
 			s = { "<cmd>Telescope grep_string<cr>", "Find String" },
 			h = { "<cmd>noh<cr>", "Clear Highlight" },
-			e = { "<cmd>set foldmethod=expr<cr>", "Enable folding" },
+			e = { "<cmd>set foldmethod=expr<cr>", "Enable Folding" },
+			t = { "<cmd>set expandtab<cr>", "Expand Tab" },
 			["2"] = {
 				function()
 					u.tabwidth(2)
@@ -158,6 +158,7 @@ map.main = {
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 			K = { "<cmd>WhichKey<cr>", "Keymaps(WhickKey)" },
 			t = { "<cmd>Telescope<cr>", "Telescope" },
+			T = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
 			q = { "<cmd>Trouble<cr>", "Trouble" },
 			m = { "<cmd>MarkdownPreview<cr>", "Preview Markdown" },
 			s = { "<cmd>:setlocal spell!<cr>", "Spell Check" },
