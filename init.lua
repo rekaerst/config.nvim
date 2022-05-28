@@ -1,5 +1,6 @@
 -- vscode-neovim extension
 if vim.g.vscode then
+	vim.opt.loadplugins = false
 	require("vscode").setup()
 	return
 end
