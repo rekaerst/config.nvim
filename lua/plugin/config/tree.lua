@@ -1,8 +1,3 @@
-local g = vim.g
-
-g.nvim_tree_git_hl = 1
-g.nvim_tree_group_empty = 1
-
 require("nvim-tree").setup({
 	disable_netrw = true,
 	system_open = { cmd = "open" },
@@ -29,13 +24,10 @@ require("nvim-tree").setup({
 		icons = {
 			git_placement = "after",
 		},
+		highlight_git = true,
+		group_empty = true,
 	},
 	diagnostics = {
 		enable = true,
-	},
-	actions = {
-		open_file = {
-			resize_window = true,
-		},
 	},
 })
