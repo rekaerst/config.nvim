@@ -2,16 +2,6 @@ local Terminal = require("toggleterm.terminal").Terminal
 local M = {}
 
 function M.setup()
-	require("toggleterm").setup({
-		size = function(term)
-			if term.direction == "horizontal" then
-				return 15
-			elseif term.direction == "vertical" then
-				return vim.o.columns * 0.4
-			end
-		end,
-	})
-
 	function _G.set_terminal_keymaps()
 		local opts = { noremap = true }
 		vim.api.nvim_buf_set_keymap(0, "t", [[<C-\><C-h>]], [[<C-\><C-n><C-W>h]], opts)

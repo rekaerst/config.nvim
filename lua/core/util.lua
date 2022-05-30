@@ -54,6 +54,16 @@ function M.hmany(rules)
 	end
 end
 
+function M.file_exists(path)
+	local f = io.open(path, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
 function M.read_json(path)
 	local f = io.open(path, "rb")
 	local content = {}

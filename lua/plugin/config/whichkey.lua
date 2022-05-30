@@ -15,3 +15,5 @@ wk.setup({
 		},
 	},
 })
+
+require("core.mapping").setup()

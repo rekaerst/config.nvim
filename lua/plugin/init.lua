@@ -1,8 +1,10 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
----@diagnostic disable-next-line: missing-parameter
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({
+local u = require("core.util")
+local cfg = u.cfg
+
+-- bootstrap
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if not u.file_exists(install_path) then
+	_G.packer_bootstrap = vim.fn.system({
 		"git",
 		"clone",
 		"--depth",
@@ -10,13 +12,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
+	vim.cmd("packadd packer.nvim")
 end
--- Packer configurations
+
+-- packer configurations
 local packer = require("packer")
-
-local u = require("core.util")
-local cfg = u.cfg
-
 local plugins = {
 	{ "wbthomason/packer.nvim" },
 	{ "lewis6991/impatient.nvim" },
@@ -257,7 +257,7 @@ local plugins = {
 		cmd = "Luapad",
 	},
 	-- terminal
-	{ "akinsho/toggleterm.nvim" },
+	{ "akinsho/toggleterm.nvim", config = cfg("toggleterm") },
 	-- util
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
@@ -294,11 +294,18 @@ function M.setup()
 		compile_on_sync = true,
 	})
 
-	return packer.startup(function(use)
+	packer.startup(function(use)
 		for _, v in pairs(plugins) do
 			use(v)
 		end
 	end)
+
+	if packer_bootstrap then
+		if packer.config.compile_path then
+			os.remove(packer.config.compile_path)
+		end
+		packer.sync()
+	end
 end
 
 return M
