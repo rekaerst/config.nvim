@@ -6,9 +6,9 @@ if vim.g.vscode then
 end
 pcall(require, "impatient")
 
-require("plugin")
+require("plugin").setup()
 require("core.option").setup()
 require("core.filetype").setup()
 require("core.mapping").setup()
 require("color").setup()
-require("term").setup()
+require("plugin.term").setup()

@@ -273,26 +273,32 @@ local disabled_built_ins = {
 	"vimball",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
-	vim.g["loaded_" .. plugin] = 1
+local M = {}
+
+function M.setup()
+	for _, plugin in pairs(disabled_built_ins) do
+		vim.g["loaded_" .. plugin] = 1
+	end
+
+	packer.init({
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "single" })
+			end,
+			prompt_border = "single",
+		},
+		git = {
+			clone_timeout = 6000,
+		},
+		auto_clean = true,
+		compile_on_sync = true,
+	})
+
+	return packer.startup(function(use)
+		for _, v in pairs(plugins) do
+			use(v)
+		end
+	end)
 end
 
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "single" })
-		end,
-		prompt_border = "single",
-	},
-	git = {
-		clone_timeout = 6000,
-	},
-	auto_clean = true,
-	compile_on_sync = true,
-})
-
-return packer.startup(function(use)
-	for _, v in pairs(plugins) do
-		use(v)
-	end
-end)
+return M

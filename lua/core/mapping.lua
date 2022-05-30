@@ -8,7 +8,7 @@ local bufdelete = require("bufdelete")
 local gp = require("goto-preview")
 local gs = require("gitsigns")
 
-local term = require("term")
+local term = require("plugin.term")
 local u = require("core.util")
 local disabled_server = require("lsp.format").disabled_server
 
