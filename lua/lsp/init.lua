@@ -1,7 +1,9 @@
 local fmt = require("lsp.format")
 local c = require("color.highlight").colors
+local cmp = require("cmp")
 
 local signdef = vim.fn.sign_define
+local _cmp_auto_refresh_blacklist = { "bashls" }
 
 local M = {}
 
@@ -86,7 +88,7 @@ function M.on_attach(client, bufnr)
 
 	M._auto_open_diagnostic_window(bufnr)
 	M._highlight_symbols_under_cursor(client, bufnr)
-	M._cmp_auto_refresh(bufnr)
+	M._cmp_auto_refresh(client, bufnr)
 end
 
 function M._auto_open_diagnostic_window(bufnr)
@@ -123,21 +125,24 @@ function M._highlight_symbols_under_cursor(client, bufnr)
 	end
 end
 
-function M._cmp_auto_refresh(bufnr)
-	local cmp = require("cmp")
-	vim.api.nvim_create_autocmd({ "TextChangedI" }, {
-		callback = function()
-			vim.defer_fn(function()
-				if cmp.visible() then
-					local first_entry = cmp.get_entries()[1]
-					if #first_entry.matches == 0 then
-						cmp.complete()
-					end
-				end
-			end, 0)
-		end,
-		buffer = bufnr,
-	})
+local function refresh_cmp()
+	if cmp.visible() then
+		local entry = cmp.get_entries()[1]
+		if #entry.matches == 0 then
+			cmp.complete()
+		end
+	end
+end
+
+function M._cmp_auto_refresh(client, bufnr)
+	if not vim.tbl_contains(_cmp_auto_refresh_blacklist, client.name) then
+		vim.api.nvim_create_autocmd({ "TextChangedI" }, {
+			callback = function()
+				vim.defer_fn(refresh_cmp, 0)
+			end,
+			buffer = bufnr,
+		})
+	end
 end
 
 return M
