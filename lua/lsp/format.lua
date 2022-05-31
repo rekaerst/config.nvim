@@ -25,7 +25,7 @@ function M.on_attach(client, bufnr)
 			group = fmt_group,
 			buffer = bufnr,
 			callback = function()
-				M.format(true)
+				vim.defer_fn(M.format, 0) -- HACK: prevent conflict with V-BLOCK
 			end,
 		})
 	end
@@ -34,6 +34,9 @@ end
 function M.format(async)
 	if M.disabled or require("luasnip.session").jump_active then
 		return
+	end
+	if async == nil then
+		async = true
 	end
 	vim.lsp.buf.format({
 		async = async,
