@@ -334,10 +334,10 @@ function M.reg_main()
 	wk.register(map.main_o, { mode = "o" })
 
 	-- EMACS like keys
-	vim.cmd([[
-	imap <C-a> <C-o>I
-	imap <C-e> <C-o>$
-	]])
+	vim.api.nvim_set_keymap("i", "<C-a>", "<C-o>I", {})
+	vim.api.nvim_set_keymap("i", "<C-e>", "<C-o>$", {})
+	vim.api.nvim_set_keymap("i", "<C-f>", "<right>", {})
+	vim.api.nvim_set_keymap("i", "<C-b>", "<left>", {})
 
 	-- Access system clipboard
 	vim.api.nvim_set_keymap("n", "<C-k>", '"+', {})
