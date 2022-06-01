@@ -8,6 +8,7 @@ local aggressive_ft = { "c", "cpp", "lua", "javascript", "go", "rust" }
 M.disabled_server = { "sumneko_lua" }
 
 local fmt_group = vim.api.nvim_create_augroup("LspFormatting", {})
+local modes = {}
 ---@diagnostic disable-next-line: unused-local
 function M.on_attach(client, bufnr)
 	-- format on save
@@ -21,18 +22,26 @@ function M.on_attach(client, bufnr)
 	})
 	-- format on type
 	if vim.tbl_contains(aggressive_ft, vim.bo.filetype) then
-		vim.api.nvim_create_autocmd("InsertLeave", {
+		-- NOTE: prevent conflicting with V-BLOCK insertion
+		vim.api.nvim_create_autocmd("ModeChanged", {
 			group = fmt_group,
 			buffer = bufnr,
 			callback = function()
-				vim.defer_fn(M.format, 0) -- HACK: prevent conflict with V-BLOCK
+				modes[3] = modes[2]
+				modes[2] = modes[1]
+				modes[1] = vim.api.nvim_get_mode().mode
 			end,
+		})
+		vim.api.nvim_create_autocmd("InsertLeave", {
+			group = fmt_group,
+			buffer = bufnr,
+			callback = M.format,
 		})
 	end
 end
 
 function M.format(async)
-	if M.disabled or require("luasnip.session").jump_active then
+	if M.disabled or require("luasnip.session").jump_active or modes[3] == "\22" then
 		return
 	end
 	if async == nil then
