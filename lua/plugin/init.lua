@@ -3,7 +3,7 @@ local cfg = u.cfg
 
 -- bootstrap
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if not u.file_exists(install_path) then
+if not u.path.exists(install_path) then
 	_G.packer_bootstrap = vim.fn.system({
 		"git",
 		"clone",

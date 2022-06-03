@@ -1,6 +1,20 @@
+local vim = vim
+local uv = vim.loop
+local fn = vim.fn
+local api = vim.api
+
 local M = {}
 
-local cmd = vim.cmd
+M.path = (function()
+	local function exists(filename)
+		local stat = uv.fs_stat(filename)
+		return stat and stat.type or false
+	end
+
+	return {
+		exists = exists,
+	}
+end)()
 
 function M.cfg(name)
 	return 'require "plugin.config.' .. name .. '"'
@@ -11,14 +25,14 @@ end
 --- Clear highlight group
 --- @param group string Group
 M.hclear = function(group)
-	cmd("highlight! clear " .. group)
+	vim.cmd("highlight! clear " .. group)
 end
 
 --- Link two highlight group
 --- @param src  string group to link from
 --- @param desc string group to link to
 M.hlink = function(src, desc)
-	cmd("highlight! link " .. src .. " " .. desc)
+	vim.cmd("highlight! link " .. src .. " " .. desc)
 end
 
 --- Define color
@@ -43,7 +57,7 @@ function M.highlight(group, guifg, guibg, attr, guisp)
 	end
 
 	-- nvim.ex.highlight(parts)
-	vim.api.nvim_command("highlight! " .. table.concat(parts, " "))
+	api.nvim_command("highlight! " .. table.concat(parts, " "))
 end
 
 --- Define multiple colors
@@ -54,22 +68,12 @@ function M.hmany(rules)
 	end
 end
 
-function M.file_exists(path)
-	local f = io.open(path, "r")
-	if f ~= nil then
-		io.close(f)
-		return true
-	else
-		return false
-	end
-end
-
 function M.read_json(path)
 	local f = io.open(path, "rb")
 	local content = {}
 	if f then
 		pcall(function()
-			content = vim.fn.json_decode(f:read("*all"))
+			content = fn.json_decode(f:read("*all"))
 		end)
 		f:close()
 	end
@@ -79,7 +83,7 @@ end
 function M.write_json(path, content)
 	local f = io.open(path, "rb")
 	f = io.open(path, "wb")
-	f:write(vim.fn.json_encode(content))
+	f:write(fn.json_encode(content))
 	f:close()
 end
 
