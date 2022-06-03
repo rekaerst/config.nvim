@@ -181,6 +181,7 @@ map.main = {
 			p = { "<cmd>Luapad<cr>", "Launch Luapad" },
 			c = { "<cmd>LuaCacheClear<cr>", "Clean Cache" },
 			s = { "<cmd>StartupTime<cr>", "Startup Time" },
+			u = { "<cmd>PackerUpdate<cr>", "Update Plugins" },
 		},
 		w = {
 			name = "Window",
