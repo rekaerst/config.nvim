@@ -116,7 +116,11 @@ local plugins = {
 				config = cfg("luadev"),
 				ft = "lua",
 			},
-			{ "p00f/clangd_extensions.nvim", config = cfg("clangd") },
+			{
+				"p00f/clangd_extensions.nvim",
+				config = cfg("clangd"),
+				ft = { "c", "cpp" },
+			},
 			{
 				"rmagatti/goto-preview",
 				config = function()
@@ -173,7 +177,11 @@ local plugins = {
 		end,
 	},
 	-- rust
-	{ "simrat39/rust-tools.nvim", config = cfg("rusttools") },
+	{
+		"simrat39/rust-tools.nvim",
+		config = cfg("rusttools"),
+		ft = "rust",
+	},
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
