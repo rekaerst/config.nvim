@@ -59,12 +59,6 @@ local plugins = {
 		config = "vim.cmd [[let g:gitblame_enabled = 0]]",
 		cmd = "GitBlameToggle",
 	},
-	{
-		"pwntester/octo.nvim",
-		config = function()
-			require("octo").setup()
-		end,
-	},
 
 	-- treesitter
 	{
