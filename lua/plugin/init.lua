@@ -119,7 +119,7 @@ local plugins = {
 			{
 				"p00f/clangd_extensions.nvim",
 				config = cfg("clangd"),
-				ft = { "c", "cpp" },
+				ft = { "c", "cpp", "cuda" },
 			},
 			{
 				"rmagatti/goto-preview",
