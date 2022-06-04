@@ -5,7 +5,8 @@ local signdef = vim.fn.sign_define
 local M = {}
 
 function M.setup()
-	dap.defaults.fallback.terminal_win_cmd = "12sp new"
+	-- TODO: make this work with dapui
+	-- dap.defaults.fallback.terminal_win_cmd = "12sp new"
 	dap.defaults.fallback.external_terminal = { command = "/usr/bin/foot" }
 
 	signdef("DapBreakpoint", {
