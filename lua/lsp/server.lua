@@ -19,31 +19,22 @@ local servers = {
 	"yamlls",
 }
 
-local settings = {
+local override = {
 	gopls = {
-		analyses = {
-			unusedparams = true,
+		settings = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
 		},
-		staticcheck = true,
 	},
-}
-
-local single_file_support = {
-	bashls = true,
-	tsserver = true,
-	gopls = true,
-	html = true,
-	jsonls = true,
-	vala_ls = true,
-	yamlls = true,
-}
-
-local init_options = {
 	tsserver = {
-		hostInfo = "neovim",
-		preferences = {
-			includeCompletionsWithSnippetText = true,
-			includeCompletionsForImportStatements = true,
+		init_options = {
+			hostInfo = "neovim",
+			preferences = {
+				includeCompletionsWithSnippetText = true,
+				includeCompletionsForImportStatements = true,
+			},
 		},
 	},
 }
@@ -58,14 +49,13 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 function M.setup(on_attach)
 	-- setup language servers
 	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup({
+		local config = {
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = M.capabilities,
-			single_file_support = single_file_support[lsp] or nil,
-			init_options = init_options[lsp] or nil,
-			settings = settings,
-		})
+		}
+		config = vim.tbl_extend("force", config, override[lsp] or {})
+		lspconfig[lsp].setup(config)
 	end
 end
 
