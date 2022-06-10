@@ -32,6 +32,7 @@ function M.on_attach(client, bufnr)
 				modes[1] = vim.api.nvim_get_mode().mode
 			end,
 		})
+
 		vim.api.nvim_create_autocmd("InsertLeave", {
 			group = fmt_group,
 			buffer = bufnr,
@@ -47,12 +48,23 @@ function M.format(async)
 	if async == nil then
 		async = true
 	end
-	vim.lsp.buf.format({
-		async = async,
-		filter = function(client)
-			return not vim.tbl_contains(M.disabled_server, client.name)
-		end,
-	})
+	if vim.version().api_level >= 10 then
+		-- neovim >= 0.8
+		vim.lsp.buf.format({
+			async = async,
+			filter = function(client)
+				return not vim.tbl_contains(M.disabled_server, client.name)
+			end,
+		})
+	else
+		-- neovim <= 0.7
+		if async == nil then
+			vim.lsp.buf.formatting()
+		else
+			---@diagnostic disable-next-line: missing-parameter
+			vim.lsp.buf.formatting_sync()
+		end
+	end
 end
 
 function M.disable()
