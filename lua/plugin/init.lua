@@ -242,6 +242,7 @@ local plugins = {
 	-- assembly
 	{ "Shirk/vim-gas" },
 	-- misc
+	{ "monaqa/dial.nvim", config = cfg("dial") },
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{ "milisims/nvim-luaref" },
