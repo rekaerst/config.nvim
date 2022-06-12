@@ -22,26 +22,29 @@ local plugins = {
 	{ "lewis6991/impatient.nvim" },
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-lua/popup.nvim" },
-
+	-- ui
+	{ "kyazdani42/nvim-web-devicons" },
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = cfg("tree"),
 		cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeRefresh", "NvimTreeFindFile" },
 	},
-
-	{ "kyazdani42/nvim-web-devicons" },
-
+	{ "stevearc/dressing.nvim", config = cfg("dressing") },
 	{ "hoob3rt/lualine.nvim", config = cfg("lualine") },
 	{ "akinsho/bufferline.nvim", config = cfg("bufferline") },
 	{ "lukas-reineke/indent-blankline.nvim", config = cfg("indent-blankline") },
 	{ "norcalli/nvim-colorizer.lua", config = cfg("colorizer") },
-	{ "tpope/vim-surround" },
 	{
-		"windwp/nvim-autopairs",
-		config = cfg("autopairs"),
-		event = "InsertEnter",
+		"luukvbaal/stabilize.nvim",
+		config = function()
+			require("stabilize").setup()
+		end,
 	},
-
+	{
+		"sindrets/winshift.nvim",
+		cmd = "WinShift",
+	},
+	{ "famiu/bufdelete.nvim" },
 	-- git
 	{ "lewis6991/gitsigns.nvim", config = cfg("gitsigns") },
 	{
@@ -59,7 +62,6 @@ local plugins = {
 		config = "vim.cmd [[let g:gitblame_enabled = 0]]",
 		cmd = "GitBlameToggle",
 	},
-
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -102,7 +104,6 @@ local plugins = {
 			},
 		},
 	},
-
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
@@ -137,7 +138,7 @@ local plugins = {
 			{ "j-hui/fidget.nvim", config = cfg("fidget") },
 		},
 	},
-	-- Completion
+	-- completion
 	{
 		"hrsh7th/nvim-cmp",
 		config = cfg("cmp"),
@@ -176,11 +177,11 @@ local plugins = {
 			require("dbg").setup()
 		end,
 	},
-	-- rust
+	-- runner
 	{
-		"simrat39/rust-tools.nvim",
-		config = cfg("rusttools"),
-		ft = "rust",
+		"michaelb/sniprun",
+		run = "bash ./install.sh",
+		cmd = "SnipRun",
 	},
 	-- telescope
 	{
@@ -203,6 +204,13 @@ local plugins = {
 		"folke/todo-comments.nvim",
 		config = cfg("todo-comments"),
 	},
+	-- parentheses
+	{ "tpope/vim-surround" },
+	{
+		"windwp/nvim-autopairs",
+		config = cfg("autopairs"),
+		event = "InsertEnter",
+	},
 	-- motion
 	{
 		"phaazon/hop.nvim",
@@ -210,19 +218,6 @@ local plugins = {
 			require("hop").setup()
 		end,
 	},
-	-- ui
-	{ "stevearc/dressing.nvim", config = cfg("dressing") },
-	{
-		"luukvbaal/stabilize.nvim",
-		config = function()
-			require("stabilize").setup()
-		end,
-	},
-	{
-		"sindrets/winshift.nvim",
-		cmd = "WinShift",
-	},
-	{ "famiu/bufdelete.nvim" },
 	-- keymapping
 	{
 		"folke/which-key.nvim",
@@ -236,12 +231,6 @@ local plugins = {
 		config = "vim.g.undotree_SetFocusWhenToggle = 1",
 		cmd = "UndotreeToggle",
 	},
-	-- Runner
-	{
-		"michaelb/sniprun",
-		run = "bash ./install.sh",
-		cmd = "SnipRun",
-	},
 	-- preview
 	{
 		"iamcco/markdown-preview.nvim",
@@ -252,15 +241,23 @@ local plugins = {
 		cmd = "MarkdownPreview",
 		ft = "markdown",
 	},
-	-- nevim development
+	-- terminal
+	{ "akinsho/toggleterm.nvim", config = cfg("toggleterm") },
+	-- rust
+	{
+		"simrat39/rust-tools.nvim",
+		config = cfg("rusttools"),
+		ft = "rust",
+	},
+	-- lua repl
 	{
 		"rafcamlet/nvim-luapad",
 		opt = true,
 		cmd = "Luapad",
 	},
-	-- terminal
-	{ "akinsho/toggleterm.nvim", config = cfg("toggleterm") },
-	-- util
+	-- assembly
+	{ "Shirk/vim-gas" },
+	-- misc
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{ "milisims/nvim-luaref" },

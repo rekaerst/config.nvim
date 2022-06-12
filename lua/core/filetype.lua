@@ -26,7 +26,7 @@ function M.setup()
 	-- assembly
 	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
 		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
-		command = "set ft=nasm",
+		command = "set ft=gas",
 	})
 
 	-- misc --
