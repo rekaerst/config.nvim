@@ -1,22 +1,6 @@
 local u = require("core.util")
 local cfg = u.cfg
 
--- bootstrap
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if not u.path.exists(install_path) then
-	_G.packer_bootstrap = vim.fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	vim.cmd("packadd packer.nvim")
-end
-
--- packer configurations
-local packer = require("packer")
 local plugins = {
 	{ "wbthomason/packer.nvim" },
 	{ "lewis6991/impatient.nvim" },
@@ -262,6 +246,7 @@ local plugins = {
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{ "milisims/nvim-luaref" },
 	{ "jamessan/vim-gnupg" },
+	{ "antoinemadec/FixCursorHold.nvim" },
 }
 
 local disabled_built_ins = {
@@ -271,6 +256,22 @@ local disabled_built_ins = {
 	"netrwFileHandlers",
 	"vimball",
 }
+
+-- bootstrap
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if not u.path.exists(install_path) then
+	_G.packer_bootstrap = vim.fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+	vim.cmd("packadd packer.nvim")
+end
+
+local packer = require("packer")
 
 local M = {}
 
