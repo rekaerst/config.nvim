@@ -28,6 +28,11 @@ function M.setup()
 		pattern = { "*.s", "*.S", "*.asm", "*.ASM" },
 		command = "set ft=gas",
 	})
+	-- opencl
+	autocmd({ "BufNew", "BufNewFile", "BufRead" }, {
+		pattern = { "*.cl" },
+		command = "set ft=c",
+	})
 
 	-- misc --
 	-- enable spell check
