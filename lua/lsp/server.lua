@@ -5,6 +5,7 @@ local servers = {
 	"bashls",
 	"cmake",
 	"cssls",
+	"dotls",
 	"gdscript",
 	"gopls",
 	"hls",
