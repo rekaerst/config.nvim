@@ -27,6 +27,7 @@ function M.setup(on_attach)
 			null_ls.builtins.diagnostics.sqlfluff.with({
 				extra_args = { "--dialect", "postgres" },
 			}),
+			null_ls.builtins.diagnostics.cppcheck,
 		},
 	})
 end
