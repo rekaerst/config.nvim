@@ -41,18 +41,34 @@ function M.setup()
 		command = "setlocal spell",
 	})
 	-- open nvimtree if buf is folder
-	autocmd("BufEnter", {
-		pattern = "*",
-		callback = function()
-			local pwd = vim.api.nvim_buf_get_name(0)
-			if vim.fn.isdirectory(pwd) == 1 then
-				vim.api.nvim_set_current_dir(pwd)
-				vim.cmd("NvimTreeToggle")
-			end
-		end,
-		once = true,
-		desc = "Open NvimTree",
-	})
+	do
+		local count = 0
+		local pwd = vim.api.nvim_buf_get_name(0)
+		local isdirectory = vim.fn.isdirectory(pwd)
+		autocmd("BufEnter", {
+			pattern = "*",
+			callback = function(c)
+				count = count + 1
+				if isdirectory == 1 then
+					if count == 1 then
+						vim.api.nvim_set_current_dir(pwd)
+						vim.cmd("NvimTreeToggle")
+					else
+						-- NOTE: prevent nvimtree at the right side
+						vim.cmd([[
+							NvimTreeClose
+							NvimTreeOpen
+							wincmd p
+						]])
+						vim.api.nvim_del_autocmd(c.id)
+					end
+				else
+					vim.api.nvim_del_autocmd(c.id)
+				end
+			end,
+			desc = "Open NvimTree",
+		})
+	end
 end
 
 return M
