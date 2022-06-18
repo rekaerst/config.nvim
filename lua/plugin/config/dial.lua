@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap("v", "<C-x>", require("dial.map").dec_visual(), { norema
 vim.api.nvim_set_keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
 vim.api.nvim_set_keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
 local augend = require("dial.augend")
-a = augend
+
 require("dial.config").augends:register_group({
 	-- default augends used when no group name is specified
 	default = {
