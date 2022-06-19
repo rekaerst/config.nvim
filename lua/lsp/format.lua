@@ -2,6 +2,9 @@ local M = {
 	disabled = false,
 }
 
+-- FIXME: formatting on type conflict with autopair
+-- TODO: run on_attach only once per buffer
+-- TODO: improve format method
 -- format thoes filetypes on type
 local aggressive_ft = { "c", "cpp", "lua", "javascript", "go", "rust" }
 -- disable server formatting
