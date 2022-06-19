@@ -15,13 +15,13 @@ local cmp = require("cmp")
 cmp.event:on(
 	"confirm_done",
 	cmp_autopairs.on_confirm_done({
-		map_char = {
-			tex = "",
-			sh = "",
-			c = "",
-			cpp = "",
-			go = "",
-			python = "",
+		filetypes = {
+			tex = false,
+			sh = false,
+			c = false,
+			cpp = false,
+			go = false,
+			python = false,
 		},
 	})
 )
