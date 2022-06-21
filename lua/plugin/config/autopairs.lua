@@ -22,6 +22,7 @@ cmp.event:on(
 			cpp = false,
 			go = false,
 			python = false,
+			javascript = false,
 		},
 	})
 )
