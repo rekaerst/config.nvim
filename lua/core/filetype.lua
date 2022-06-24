@@ -8,17 +8,17 @@ function M.setup()
 	-- tabs --
 	-- expandtab
 	autocmd("FileType", {
-		pattern = { "python", "markdown" },
+		pattern = { "python", "markdown", "haskell" },
 		command = "set expandtab",
 	})
 	-- tabsize = 2
 	autocmd("FileType", {
-		pattern = { "markdown", "css" },
+		pattern = { "markdown", "css", "haskell" },
 		command = "set tabstop=2 | set shiftwidth=2 | set softtabstop=4",
 	})
 	-- tabsize = 8
 	autocmd("FileType", {
-		pattern = { "nasm" },
+		pattern = { "nasm", "gas" },
 		command = "set tabstop=8 | set shiftwidth=8 | set softtabstop=8",
 	})
 

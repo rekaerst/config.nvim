@@ -3,9 +3,9 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
 		"clojure",
-		"cmake",
 		"c",
 		"c_sharp",
+		"cmake",
 		"commonlisp",
 		"cpp",
 		"css",
@@ -58,7 +58,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	indent = {
 		enable = true,
-		disable = { "python", "yaml", "html" },
+		disable = { "python", "yaml", "html", "haskell" },
 	},
 	rainbow = {
 		enable = true,
