@@ -23,6 +23,7 @@ cmp.event:on(
 			go = false,
 			python = false,
 			javascript = false,
+			haskell = false,
 		},
 	})
 )

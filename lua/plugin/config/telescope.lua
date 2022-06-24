@@ -35,3 +35,4 @@ t.setup({
 	},
 })
 le("fzf")
+le("projects")
