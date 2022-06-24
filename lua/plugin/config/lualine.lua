@@ -169,5 +169,5 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
-	extensions = { "nvim-tree", "toggleterm", "symbols-outline", "quickfix", diffview_ext, help_ext },
+	extensions = { "nvim-tree", "toggleterm", "symbols-outline", "quickfix", diffview_ext, help_ext, "nvim-dap-ui" },
 })
