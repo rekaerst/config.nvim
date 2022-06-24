@@ -9,17 +9,17 @@ function M.setup()
 	-- expandtab
 	autocmd("FileType", {
 		pattern = { "python", "markdown", "haskell" },
-		command = "set expandtab",
+		command = "setl expandtab",
 	})
 	-- tabsize = 2
 	autocmd("FileType", {
-		pattern = { "markdown", "css", "haskell" },
-		command = "set tabstop=2 | set shiftwidth=2 | set softtabstop=4",
+		pattern = { "markdown", "css" },
+		command = "setl tabstop=2 | setl shiftwidth=2 | setl softtabstop=2",
 	})
 	-- tabsize = 8
 	autocmd("FileType", {
 		pattern = { "nasm", "gas" },
-		command = "set tabstop=8 | set shiftwidth=8 | set softtabstop=8",
+		command = "setl tabstop=8 | setl shiftwidth=8 | setl softtabstop=8",
 	})
 
 	-- change filetype --
@@ -38,7 +38,7 @@ function M.setup()
 	-- enable spell check
 	autocmd("FileType", {
 		pattern = { "NeogitCommitMessage" },
-		command = "setlocal spell",
+		command = "setl spell",
 	})
 	-- open nvimtree if buf is folder
 	do
