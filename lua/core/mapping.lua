@@ -36,6 +36,7 @@ map.main = {
 			f = { "<cmd>Telescope find_files<cr>", "Find File" },
 			w = { ":w<cr>", "Save Current File" },
 			a = { ":wa<cr>", "Save All Files" },
+			p = { "<cmd>Telescope projects<cr>", "Open Project" },
 			x = { ":wq<cr>", "Save and Close" },
 		},
 		e = {
