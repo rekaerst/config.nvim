@@ -242,6 +242,12 @@ local plugins = {
 	-- assembly
 	{ "Shirk/vim-gas" },
 	-- misc
+	{
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup()
+		end,
+	},
 	{ "monaqa/dial.nvim", config = cfg("dial") },
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
