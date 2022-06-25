@@ -244,9 +244,7 @@ local plugins = {
 	-- misc
 	{
 		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup()
-		end,
+		config = cfg("project"),
 	},
 	{ "monaqa/dial.nvim", config = cfg("dial") },
 	{ "sudormrfbin/cheatsheet.nvim", cmd = "Cheatsheet" },

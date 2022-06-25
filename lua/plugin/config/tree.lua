@@ -2,6 +2,7 @@ require("nvim-tree").setup({
 	disable_netrw = true,
 	system_open = { cmd = "open" },
 	hijack_cursor = true,
+	respect_buf_cwd = true,
 	update_cwd = true,
 	view = {
 		hide_root_folder = true,
