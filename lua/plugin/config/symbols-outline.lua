@@ -30,5 +30,5 @@ local opts = {
 		Variable = { icon = "", hl = "TSConstant" },
 	},
 }
-vim.highlight.create("FocusedSymbol", { guibg = c.one_bg3 }, false)
+vim.api.nvim_set_hl(0, "FocusedSymbol", { bg = c.one_bg3 })
 require("symbols-outline").setup(opts)

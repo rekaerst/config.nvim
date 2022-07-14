@@ -101,9 +101,9 @@ end
 
 function M._highlight_symbols_under_cursor(client, bufnr)
 	if client.server_capabilities.documentHighlightProvider then
-		vim.highlight.create("LspReferenceRead", { guibg = c.one_bg3 }, false)
-		vim.highlight.create("LspReferenceText", { guibg = c.one_bg3 }, false)
-		vim.highlight.create("LspReferenceWrite", { guibg = c.one_bg3 }, false)
+		vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = c.one_bg3 })
+		vim.api.nvim_set_hl(0, "LspReferenceText", { bg = c.one_bg3 })
+		vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = c.one_bg3 })
 		vim.api.nvim_create_augroup("lsp_document_highlight", {
 			clear = false,
 		})
